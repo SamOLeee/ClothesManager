@@ -280,7 +280,7 @@ function saveUser() {
     })
 }
 function delUser(uid) {
-    var r = confirm("确定办理工号：" + uid + "的离职?");
+    var r = confirm("是否删除id为：" + uid + "的用户?");
     if (r) {
         var url = getProjectPath() + "/user/delUser?id=" + uid;
         $.get(url, function (response) {

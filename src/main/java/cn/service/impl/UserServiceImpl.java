@@ -35,10 +35,11 @@ public class UserServiceImpl implements UserService {
 /*        System.out.println("impl"+user);*/
         userMapper.editUser(user);
     }
-/*    public void delUser(Integer id){
-        User user=this.findByUserId(id);
+    public void delUser(Integer id){
+        User user=this.findUserById(id);
         user.setDelete(1);
-    }*/
+        userMapper.editUser(user);
+    }
     public User findUserById(Integer id) {
         return userMapper.findUserById(id);
     }

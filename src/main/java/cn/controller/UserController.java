@@ -86,5 +86,11 @@ public class UserController {
         System.out.println(id);*/
         return userService.findUserById(id);
     }
+
+    @RequestMapping("/delUser")
+    public Result delUser(Integer id){
+        userService.delUser(id);
+        return new Result(true,"删除成功");
+    }
 }
 
