@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>云借阅-图书管理系统</title>
+    <title>xxxxx系统</title>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/webbase.css"/>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/pages-login-manage.css"/>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
@@ -10,7 +10,7 @@
 <body>
 <div class="loginmanage">
     <div class="py-container">
-        <h4 class="manage-title">云借阅-图书管理系统</h4>
+        <h4 class="manage-title">xxxxx系统</h4>
         <div class="loginform">
             <ul class="sui-nav nav-tabs tab-wraped">
                 <li class="active">

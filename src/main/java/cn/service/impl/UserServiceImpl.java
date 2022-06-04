@@ -20,15 +20,27 @@ public class UserServiceImpl implements UserService {
     public User login(User user) {
         return userMapper.login(user);
     }
-    public void addUser(User user){
+
+    public void addUser(User user) {
         userMapper.addUser(user);
     }
-    public PageResult searchUser(User user,Integer pageNUm,Integer pageSize){
-        PageHelper.startPage(pageNUm,pageSize);
-        Page<User> page=userMapper.searchUser(user);
-        return new PageResult(page.getTotal(),page.getResult());
+
+    public PageResult searchUser(User user, Integer pageNUm, Integer pageSize) {
+        PageHelper.startPage(pageNUm, pageSize);
+        Page<User> page = userMapper.searchUser(user);
+        return new PageResult(page.getTotal(), page.getResult());
     }
-    public User findByUserId(Integer id){
-        return userMapper.findByUserId(id);
+
+    public void updateUser(User user){
+/*        System.out.println("impl"+user);*/
+        userMapper.editUser(user);
     }
+/*    public void delUser(Integer id){
+        User user=this.findByUserId(id);
+        user.setDelete(1);
+    }*/
+    public User findUserById(Integer id) {
+        return userMapper.findUserById(id);
+    }
+
 }

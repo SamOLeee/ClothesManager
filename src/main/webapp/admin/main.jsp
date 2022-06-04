@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>云借阅-图书管理系统</title>
+    <title>xxxxx系统</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/AdminLTE.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/_all-skins.min.css">
@@ -26,7 +26,7 @@
     <header class="main-header">
         <!-- Logo -->
         <a href="${pageContext.request.contextPath}/admin/main.jsp" class="logo">
-            <span class="logo-lg"><b>云借阅-图书管理系统</b></span>
+            <span class="logo-lg"><b>xxxxx系统</b></span>
         </a>
         <!-- 头部导航 -->
         <nav class="navbar navbar-static-top">
@@ -62,10 +62,10 @@
                         <i class="fa fa-dashboard"></i> <span>首页</span>
                     </a>
                 </li>
-                <!-- 人员管理 -->
+                <!-- 用户管理 -->
                 <li id="admin-login">
                     <a href="${pageContext.request.contextPath}/user/search" target="iframe">
-                        <i class="fa fa-circle-o"></i>人员管理
+                        <i class="fa fa-circle-o"></i>用户管理
                     </a>
                 </li>
                 <!-- 图书管理 -->
@@ -102,9 +102,10 @@
     </aside>
     <!-- 导航侧栏 /-->
     <!-- 内容展示区域 -->
-    <div class="content-wrapper">
-        <iframe width="100%" id="iframe" name="iframe" onload="SetIFrameHeight()"
-                frameborder="0" src="${pageContext.request.contextPath}/book/selectNewbooks"></iframe>
+    <div class="content-wrapper" >
+            <%--<img src="${pageContext.request.contextPath}/img/333.jpg" class="user-image" alt="User Image">--%>
+        <iframe  width="100%" id="iframe" name="iframe" onload="SetIFrameHeight()"
+                frameborder="0" <%--src="${pageContext.request.contextPath}/book/selectNewbooks"--%>></iframe>
     </div>
 </div>
 </body>

@@ -6,7 +6,7 @@
     <!-- 页面meta -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>人员管理</title>
+    <title>用户管理</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/AdminLTE.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/pagination.css">
@@ -18,7 +18,7 @@
 <body class="hold-transition skin-red sidebar-mini">
 <!-- .box-body -->
 <div class="box-header with-border">
-    <h3 class="box-title">人员管理</h3>
+    <h3 class="box-title">用户管理</h3>
 </div>
 <div class="box-body">
     <!-- 数据表格 -->
@@ -28,18 +28,18 @@
             <div class="form-group form-inline">
                 <div class="btn-group">
                     <button type="button" class="btn btn-default" title="新建" data-toggle="modal"
-                            data-target="#addModal" onclick="resetUserFrom()"><i class="fa fa-file-o" ></i> 新增
+                            data-target="#addModal" onclick="resetUserFrom()"><i class="fa fa-file-o"></i> 新增
                     </button>
                 </div>
             </div>
         </div>
         <div class="box-tools pull-right">
             <div class="has-feedback">
-<%--                <form action="${pageContext.request.contextPath}/user/search" method="post">--%>
-<%--                    工号：<input name="id" value="${user.id}">&nbsp&nbsp&nbsp&nbsp--%>
-<%--                    姓名：<input name="name" value="${user.name}">&nbsp&nbsp&nbsp&nbsp--%>
-<%--                    <input class="btn btn-default" type="submit" value="查询">--%>
-<%--                </form>--%>
+                <form action="${pageContext.request.contextPath}/user/search" method="post">
+                    工号：<input name="id" value="${user.id}">&nbsp&nbsp&nbsp&nbsp
+                    姓名：<input name="name" value="${user.name}">&nbsp&nbsp&nbsp&nbsp
+                    <input class="btn btn-default" type="submit" value="查询">
+                </form>
             </div>
         </div>
     </div>
@@ -48,40 +48,47 @@
     <table id="dataList" class="table table-bordered table-striped table-hover dataTable text-center">
         <thead>
         <tr class="text-center">
-            <th>工号</th>
+            <th>id号</th>
             <th>姓名</th>
             <th>邮箱</th>
-<%--            <th>入职时间</th>--%>
-<%--            <th>雇佣状态</th>--%>
+            <th>权限</th>
+            <th>用户状态</th>
             <th>操作</th>
         </tr>
         </thead>
         <tbody>
         <c:forEach items="${pageResult.rows}" var="user">
-            <tr>
-                <td>${user.id}</td>
-                <td>${user.name}</td>
-                <td>${user.email}</td>
-<%--                <td>${user.hiredate}</td>--%>
-<%--                <td>--%>
-<%--                    <c:if test="${user.status == 0}">--%>
-<%--                        在职--%>
-<%--                    </c:if>--%>
-<%--                    <c:if test="${user.status == 1}">--%>
-<%--                        已离职--%>
-<%--                    </c:if>--%>
+            <td>${user.id}</td>
+            <td>${user.name}</td>
+            <td>${user.email}</td>
+            <td>
+                <c:if test="${user.role eq 'admin'}">管理员</c:if>
+                <c:if test="${user.role eq 'common'}">普通</c:if>
+            </td>
+            <td>
+                <c:if test="${user.delete == 1}">已禁用 </c:if>
+                <c:if test="${user.delete == 0}">正常</c:if>
+            </td>
+            <%--                <td>${user.hiredate}</td>--%>
+            <%--                <td>--%>
+            <%--                    <c:if test="${user.status == 0}">--%>
+            <%--                        在职--%>
+            <%--                    </c:if>--%>
+            <%--                    <c:if test="${user.status == 1}">--%>
+            <%--                        已离职--%>
+            <%--                    </c:if>--%>
 
-<%--                </td>--%>
-                <td class="text-center">
-<%--                    <c:if test="${user.status == 0}">--%>
-                        <button type="button" class="btn bg-olive btn-xs" data-toggle="modal" data-target="#editModal"
-                                onclick="findUserById(${user.id})">修改
-                        </button>
-                        &nbsp&nbsp&nbsp&nbsp
-                        <button type="button" class="btn bg-olive btn-xs" onclick="delUser(${user.id})">离职</button>
-<%--                    </c:if>--%>
+            <%--                </td>--%>
+            <td class="text-center">
+                <c:if test="${user.delete == 0}">
+                    <button type="button" class="btn bg-olive btn-xs" data-toggle="modal" data-target="#editModal"
+                            onclick="findUserById(${user.id})">修改
+                    </button>
+                    &nbsp&nbsp&nbsp&nbsp
+                    <button type="button" class="btn bg-olive btn-xs" onclick="delUser(${user.id})">删除</button>
+                </c:if>
 
-                </td>
+            </td>
             </tr>
         </c:forEach>
         </tbody>
@@ -100,38 +107,50 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h3 id="myModalLabel">人员信息</h3>
+                <h3 id="myModalLabel">用户信息</h3>
             </div>
             <div class="modal-body">
                 <form id="addUser">
                     <table class="table table-bordered table-striped" width="800px">
                         <tr>
-                            <td>人员姓名</td>
-                            <td><input class="form-control" placeholder="人员姓名" id="adduname" onblur="checkVal()" onfocus="changeVal()" name="name"></td>
-                            <td>企业邮箱</td>
-                            <td><input class="form-control" placeholder="企业邮箱" id="adduemail" onblur="checkVal()" onfocus="changeVal()"name="email"></td>
+                            <td>姓名</td>
+                            <td><input class="form-control" placeholder="姓名" id="adduname" onblur="checkVal()"
+                                       onfocus="changeVal()" name="name"></td>
+                            <td>邮箱</td>
+                            <td><input class="form-control" placeholder="邮箱" id="adduemail" onblur="checkVal()"
+                                       onfocus="changeVal()" name="email"></td>
                         </tr>
                         <tr>
-                            <td>入职时间</td>
-                            <td><input type="date" class="form-control" name="hiredate" id="time"  onchange="checkVal()"></td>
+                            <%--<td>入职时间</td>
+                            <td><input type="date" class="form-control" name="hiredate" id="time"  onchange="checkVal()"></td>--%>
                             <td>登录密码</td>
-                            <td><input class="form-control" placeholder="登录密码" id="addPw" onblur="checkVal()" onfocus="changeVal()" name="password"></td>
-                        </tr>
-						<tr>
-							<td>用户角色</td>
-							<td>
-								<select class="form-control" name="role" value="USER">
-									<option value="USER">普通员工</option>
-									<option value="ADMIN">管理员</option>
-								</select>
-							</td>
+                            <td><input class="form-control" placeholder="密码" id="addPw" onblur="checkVal()"
+                                       onfocus="changeVal()" name="password"></td>
+                            <td>用户权限</td>
+                            <td>
+                                <select class="form-control" name="role" value="USER">
+                                    <option value="common">普通</option>
+                                    <option value="admin">管理员</option>
+                                </select>
+                            </td>
                             <td colspan="2"><span style="color: red" id="addmsg"></span></td>
-						</tr>
+                        </tr>
+                        <%--						<tr>--%>
+                        <%--							<td>用户权限</td>--%>
+                        <%--							<td>--%>
+                        <%--								<select class="form-control" name="role" value="USER">--%>
+                        <%--									<option value="USER">普通</option>--%>
+                        <%--									<option value="ADMIN">管理员</option>--%>
+                        <%--								</select>--%>
+                        <%--							</td>--%>
+                        <%--                            <td colspan="2"><span style="color: red" id="addmsg"></span></td>--%>
+                        <%--						</tr>--%>
                     </table>
                 </form>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-success" data-dismiss="modal" aria-hidden="true" id="savemsg" disabled="true"
+                <button class="btn btn-success" data-dismiss="modal" <%--aria-hidden="true"--%> id="savemsg"
+                        disabled="true"
                         onclick="saveUser()">保存
                 </button>
                 <button class="btn btn-default" data-dismiss="modal" aria-hidden="true">关闭</button>
@@ -146,41 +165,41 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h3 id="myModalLabe2">人员信息</h3>
+                <h3 id="myModalLabe2">用户信息</h3>
             </div>
             <div class="modal-body">
-                <form id="editUser">
+                <form id="updateUser">
                     <table class="table table-bordered table-striped" width="800px">
 
                         <tr>
-                            <td>人员姓名</td>
-                            <td><input class="form-control"  readonly name="name" id="uname"></td>
-                            <td>人员工号</td>
-                            <td><input class="form-control"  readonly name="id" id="uid"></td>
+                            <td>姓名</td>
+                            <td><input class="form-control" readonly name="name" id="uname"></td>
+                            <td>用户id</td>
+                            <td><input class="form-control" readonly name="id" id="uid"></td>
                         </tr>
                         <tr>
-                            <td>企业邮箱</td>
-                            <td><input class="form-control" readonly name="email" id="uemail" >
+                            <td>邮箱</td>
+                            <td><input class="form-control" readonly name="email" id="uemail">
                             </td>
-                            <td>入职时间</td>
-                            <td><input class="form-control" readonly name="hiredate" id="uhire" ></td>
+                            <%-- <td>入职时间</td>
+                             <td><input class="form-control" readonly name="hiredate" id="uhire" ></td>--%>
                         </tr>
                         <tr>
-                            <td>登录密码</td>
-                            <td><input class="form-control" type="password"  name="password" id="pw"></td>
-							<td>用户角色</td>
-							<td>
-								<select class="form-control" id="urole" name="role" >
-									<option value="USER">普通员工</option>
-									<option value="ADMIN">管理员</option>
-								</select>
-							</td>
+                            <td>密码</td>
+                            <td><input class="form-control" type="password" name="password" id="pw"></td>
+                            <td>用户权限</td>
+                            <td>
+                                <select class="form-control" id="urole" name="role">
+                                    <option value="common">普通</option>
+                                    <option value="admin">管理员</option>
+                                </select>
+                            </td>
                         </tr>
                     </table>
                 </form>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-success" data-dismiss="modal" aria-hidden="true" onclick="editUser()">保存</button>
+                <button class="btn btn-success" data-dismiss="modal" aria-hidden="true" onclick="updateUser()">保存</button>
                 <button class="btn btn-default" data-dismiss="modal" aria-hidden="true">关闭</button>
             </div>
         </div>
@@ -189,13 +208,12 @@
 </body>
 <script>
     //总页数
-    pageargs.total=Math.ceil(${pageResult.total}/
-        pageargs.pagesize)
-    //当前页数
-    pageargs.cur=${pageNum}
-     pageargs.gourl="${gourl}"
-    userVO.id="${search.id}"
-    userVO.name="${search.name}"
+    pageargs.total =/*Math.ceil(*/${pageResult.total}/*/pageargs.pagesize)*/
+        //当前页数
+        pageargs.cur = ${pageNum}
+            pageargs.gourl = "${gourl}"
+    userVO.id = "${search.id}"
+    userVO.name = "${search.name}"
     pagination(pageargs);
 </script>
 </html>

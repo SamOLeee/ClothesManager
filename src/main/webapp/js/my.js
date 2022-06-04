@@ -190,21 +190,21 @@ function resetUserFrom() {
 
 }
 function findUserById(uid) {
-    var url = getProjectPath()+"/user/findById?id=" + uid;
+    var url = getProjectPath()+"/user/findUserById?id=" + uid;
     $.get(url, function (response) {
+        console.log(response);
         $("#uid").val(response.id);
         $("#uname").val(response.name);
         $("#pw").val(response.password);
         $("#urole").val(response.role);
-        $("#uemail").val(response.email);
-        $("#uhire").val(response.hiredate);
-
+        $("#uemail").val(response.email);/*
+        $("#uhire").val(response.hiredate);*/
     })
 }
 
-function editUser() {
-    var url =getProjectPath()+ "/user/editUser";
-    $.post(url, $("#editUser").serialize(), function (response) {
+function updateUser() {
+    var url =getProjectPath()+ "/user/updateUser";
+    $.post(url, $("#updateUser").serialize(), function (response) {
         alert(response.message)
         if (response.success == true) {
             window.location.href = getProjectPath()+"/user/search";
@@ -223,7 +223,7 @@ function checkVal() {
     var adduname = $("#adduname").val();
     var adduemail = $("#adduemail").val();
     var addPw = $("#addPw").val();
-    var addtime = $("#time").val();
+/*    var addtime = $("#time").val();*/
     if ($.trim(adduname) == '') {
         $("#savemsg").attr("disabled", true);
         $("#addmsg").html("姓名不能为空")
@@ -237,15 +237,16 @@ function checkVal() {
                 if ($.trim(addPw) == '') {
                 $("#savemsg").attr("disabled", true);
                 $("#addmsg").html("密码不能为空")
-            }else if($.trim(addPw) != ''){
-                if($.trim(addtime) == ''){
-                    $("#savemsg").attr("disabled", true);
-                    $("#addmsg").html("入职日期不能为空")
-                }else{
-                    cg()
-                }
             }
         }
+/*        else if($.trim(addPw) != ''){
+            if($.trim(addtime) == ''){
+                $("#savemsg").attr("disabled", true);
+                $("#addmsg").html("入职日期不能为空")
+            }else{
+                cg()
+            }
+        }*/
     }
 }
 
@@ -296,6 +297,7 @@ function delUser(uid) {
         var pathName = window.document.location.pathname;
         //获取带"/"的项目名，如：/cloudlibrary
         var projectName = pathName.substring(0, pathName.substr(1).indexOf('/') + 1);
+        console.log(projectName);
         return projectName;
     }
 
