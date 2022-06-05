@@ -68,6 +68,12 @@
                         <i class="fa fa-circle-o"></i>用户管理
                     </a>
                 </li>
+                <!-- 货号管理 -->
+                <li id="goods-manage">
+                    <a href="${pageContext.request.contextPath}/goods/search" target="iframe">
+                        <i class="fa fa-circle-o"></i>货号管理
+                    </a>
+                </li>
                 <!-- 图书管理 -->
                 <li class="treeview">
                     <a href="#">

@@ -291,9 +291,12 @@ function delUser(uid) {
         })
     }
 }
+function commonUser() {
+    var r = confirm("没有权限");
+}
 //获取当前项目的名称
     function getProjectPath() {
-        //获取主机地址之后的目录，如： cloudlibrary/admin/books.jsp
+        //获取主机地址之后的目录，如： cloudlibrary/admin/goodss.jsp
         var pathName = window.document.location.pathname;
         //获取带"/"的项目名，如：/cloudlibrary
         var projectName = pathName.substring(0, pathName.substr(1).indexOf('/') + 1);
@@ -341,9 +344,9 @@ function delUser(uid) {
      * press 图书出版社
      */
     var bookVO = {
+        id: '',
         name: '',
-        author: '',
-        press: ''
+        no: ''
     }
     /**
      *借阅记录查询栏的查询参数

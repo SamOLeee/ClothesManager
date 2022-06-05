@@ -27,9 +27,16 @@
         <div class="pull-left">
             <div class="form-group form-inline">
                 <div class="btn-group">
+                    <c:if test="${USER.role =='admin'}">
                     <button type="button" class="btn btn-default" title="新建" data-toggle="modal"
                             data-target="#addModal" onclick="resetUserFrom()"><i class="fa fa-file-o"></i> 新增
                     </button>
+                    </c:if>
+                    <c:if test="${USER.role =='common'}">
+                        <button  type="button" class="btn btn-default" onclick="commonUser()"><i class="fa fa-file-o"></i>
+                            新增
+                        </button>
+                    </c:if>
                 </div>
             </div>
         </div>
@@ -80,12 +87,19 @@
 
             <%--                </td>--%>
             <td class="text-center">
-                <c:if test="${user.delete == 0}">
-                    <button type="button" class="btn bg-olive btn-xs" data-toggle="modal" data-target="#editModal"
-                            onclick="findUserById(${user.id})">修改
-                    </button>
-                    &nbsp&nbsp&nbsp&nbsp
-                    <button type="button" class="btn bg-olive btn-xs" onclick="delUser(${user.id})">删除</button>
+                <c:if test="${user.delete == 0 }">
+                    <c:if test="${ USER.role =='admin'}">
+                        <button type="button" class="btn bg-olive btn-xs" data-toggle="modal" data-target="#editModal"
+                                onclick="findUserById(${user.id})">修改
+                        </button>
+                        &nbsp&nbsp&nbsp&nbsp
+                        <button type="button" class="btn bg-olive btn-xs" onclick="delUser(${user.id})">删除</button>
+                    </c:if>
+                    <c:if test="${ USER.role =='common'}">
+                        <button type="button" class="btn bg-olive btn-xs" onclick="commonUser()">修改</button>
+                        &nbsp&nbsp&nbsp&nbsp
+                        <button type="button" class="btn bg-olive btn-xs" onclick="commonUser()">删除</button>
+                    </c:if>
                 </c:if>
 
             </td>
@@ -199,7 +213,8 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-success" data-dismiss="modal" aria-hidden="true" onclick="updateUser()">保存</button>
+                <button class="btn btn-success" data-dismiss="modal" aria-hidden="true" onclick="updateUser()">保存
+                </button>
                 <button class="btn btn-default" data-dismiss="modal" aria-hidden="true">关闭</button>
             </div>
         </div>

@@ -32,7 +32,7 @@ public class UserController {
             if ("admin".equals(role)) {
                 return "redirect:/admin/main.jsp";
             } else {
-                return "redirect:/admin/index.jsp";
+                return "redirect:/admin/main.jsp";
             }
         }
 
@@ -82,8 +82,8 @@ public class UserController {
     @ResponseBody
     @RequestMapping ("/findUserById")
     public User findUserById(Integer id){
-/*        System.out.println(10086);
-        System.out.println(id);*/
+        System.out.println(10086);
+        System.out.println(id);
         return userService.findUserById(id);
     }
 
