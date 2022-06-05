@@ -27,4 +27,7 @@ public class GoodsServiceImpl implements GoodsService {
         return goodsMapper.findGoodsById(id);
     }
 
+    public void addGoods(Goods goods){
+        goodsMapper.addGoods(goods);
+    }
 }

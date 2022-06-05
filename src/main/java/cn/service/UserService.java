@@ -10,6 +10,7 @@ public interface UserService {
     PageResult searchUser(User user,Integer pageNum,Integer pageSize);
     void updateUser(User user);
     User findUserById(Integer id);
-
+    Integer checkName(String name);
+    Integer checkEmail(String email);
     void delUser(Integer id);
 }

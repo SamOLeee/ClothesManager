@@ -25,21 +25,35 @@ public class UserServiceImpl implements UserService {
         userMapper.addUser(user);
     }
 
+    @Override
+    public Integer checkName(String name) {
+        return userMapper.checkName(name);
+    }
+
+
+    @Override
+    public Integer checkEmail(String email) {
+        return userMapper.checkEmail(email);
+    }
+
+
     public PageResult searchUser(User user, Integer pageNUm, Integer pageSize) {
         PageHelper.startPage(pageNUm, pageSize);
         Page<User> page = userMapper.searchUser(user);
         return new PageResult(page.getTotal(), page.getResult());
     }
 
-    public void updateUser(User user){
-/*        System.out.println("impl"+user);*/
+    public void updateUser(User user) {
+        /*        System.out.println("impl"+user);*/
         userMapper.editUser(user);
     }
-    public void delUser(Integer id){
-        User user=this.findUserById(id);
+
+    public void delUser(Integer id) {
+        User user = this.findUserById(id);
         user.setDelete(1);
         userMapper.editUser(user);
     }
+
     public User findUserById(Integer id) {
         return userMapper.findUserById(id);
     }

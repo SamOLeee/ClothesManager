@@ -147,24 +147,15 @@
                                     <option value="admin">管理员</option>
                                 </select>
                             </td>
+                        </tr>
+                        <tr>
                             <td colspan="2"><span style="color: red" id="addmsg"></span></td>
                         </tr>
-                        <%--						<tr>--%>
-                        <%--							<td>用户权限</td>--%>
-                        <%--							<td>--%>
-                        <%--								<select class="form-control" name="role" value="USER">--%>
-                        <%--									<option value="USER">普通</option>--%>
-                        <%--									<option value="ADMIN">管理员</option>--%>
-                        <%--								</select>--%>
-                        <%--							</td>--%>
-                        <%--                            <td colspan="2"><span style="color: red" id="addmsg"></span></td>--%>
-                        <%--						</tr>--%>
                     </table>
                 </form>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-success" data-dismiss="modal" <%--aria-hidden="true"--%> id="savemsg"
-                        disabled="true"
+                <button class="btn btn-success" data-dismiss="modal" <%--aria-hidden="true"--%> id="savemsg" disabled="true"
                         onclick="saveUser()">保存
                 </button>
                 <button class="btn btn-default" data-dismiss="modal" aria-hidden="true">关闭</button>

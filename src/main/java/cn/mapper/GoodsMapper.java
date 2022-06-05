@@ -2,11 +2,9 @@ package cn.mapper;
 
 import cn.domain.Goods;
 import com.github.pagehelper.Page;
-import org.apache.ibatis.annotations.Result;
-import org.apache.ibatis.annotations.ResultMap;
-import org.apache.ibatis.annotations.Results;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
+@Mapper
 public interface GoodsMapper {
 
     @Select({"<script>" +
@@ -32,4 +30,6 @@ public interface GoodsMapper {
     @ResultMap("GoodsMap")
     Goods findGoodsById(Integer id);
 
+
+    void addGoods(Goods goods);
 }

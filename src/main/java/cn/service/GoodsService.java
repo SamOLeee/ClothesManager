@@ -9,4 +9,6 @@ public interface GoodsService {
     PageResult searchGoods(Goods goods, Integer pageNum, Integer pageSize);
 
     Goods findGoodsById(Integer id);
+
+    void addGoods(Goods goods);
 }

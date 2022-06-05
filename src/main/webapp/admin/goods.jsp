@@ -21,29 +21,29 @@
 <div class="box-body">
     <%--新增按钮：如果当前登录用户是管理员，页面展示新增按钮--%>
 
-        <div class="pull-left">
-            <div class="form-group form-inline">
-                <div class="btn-group">
-                    <c:if test="${USER.role =='admin'}">
+    <div class="pull-left">
+        <div class="form-group form-inline">
+            <div class="btn-group">
+                <c:if test="${USER.role =='admin'}">
                     <button type="button" class="btn btn-default" title="新建" data-toggle="modal"
-                            data-target="#addOrEditModal" onclick="resetFrom()"> 新增
+                            data-target="#addOrEditModal" onclick="resetGoodsFrom()"> 新增
                     </button>
-                    </c:if>
-                    <c:if test="${USER.role =='common'}">
-                        <button type="button" class="btn btn-default" onclick="commonUser()">新增</button>
-                    </c:if>
-                </div>
+                </c:if>
+                <c:if test="${USER.role =='common'}">
+                    <button type="button" class="btn btn-default" onclick="commonUser()">新增</button>
+                </c:if>
             </div>
         </div>
+    </div>
 
     <%--新增按钮 /--%>
     <!--工具栏 数据搜索 -->
     <div class="box-tools pull-right">
         <div class="has-feedback">
             <form action="${pageContext.request.contextPath}/goods/search" method="post">
-                货物id：<input name="id" value="${search.id}">&nbsp&nbsp&nbsp&nbsp
-                货物名称：<input name="name" value="${search.name}">&nbsp&nbsp&nbsp&nbsp
-                货号：<input name="no" value="${search.no}">&nbsp&nbsp&nbsp&nbsp
+                货物id：<input name="id" value="${goods.id}">&nbsp&nbsp&nbsp&nbsp
+                货物名称：<input name="name" value="${goods.name}">&nbsp&nbsp&nbsp&nbsp
+                货号：<input name="no" value="${goods.no}">&nbsp&nbsp&nbsp&nbsp
                 <input class="btn btn-default" type="submit" value="查询">
             </form>
         </div>
@@ -83,7 +83,7 @@
                         <c:if test="${goods.delete == 0 }">
                             <c:if test="${USER.role =='admin'}">
                                 <button type="button" class="btn bg-olive btn-xs" data-toggle="modal"
-                                        data-target="#borrowModal" onclick="findBookById(${goods.id},'borrow')"> 修改
+                                        data-target="#borrowModal" onclick="findBookById(${goods.id},'add')"> 修改
                                 </button>
                                 <%--                            <c:if test="${USER.role =='admin'}">--%>
                                 <button type="button" class="btn bg-olive btn-xs" data-toggle="modal"
@@ -112,42 +112,75 @@
     </div>
     <!--数据列表/-->
 </div>
-<!-- /.box-body -->
-<%--引入存放模态窗口的页面--%>
-<jsp:include page="/admin/book_modal.jsp"></jsp:include>
 
-<!-- 添加和编辑图书的模态窗口 -->
+
+<!-- /.box-body -->
+<tm-pagination conf="paginationConf"></tm-pagination>
+<!-- 新增货物 -->
 <div class="modal fade" id="addOrEditModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
      aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h3 id="myModalLabel">图书信息</h3>
+                <h3 id="myModalLabel">货号信息</h3>
             </div>
             <div class="modal-body">
-                <form id="addOrEditBook">
+                <form id="addGoods">
                     <span><input type="hidden" id="ebid" name="id"></span>
-                    <table id="addOrEditTab" class="table table-bordered table-striped" width="800px">
-                        <%--图书的id,不展示在页面--%>
+                    <table id="addGoodsTab" class="table table-bordered table-striped" width="800px">
+                        <%--货物的id,不展示在页面--%>
                         <tr>
-                            <td>图书名称</td>
-                            <td><input class="form-control" placeholder="图书名称" name="name" id="ebname"></td>
-                            <td>标准ISBN</td>
-                            <td><input class="form-control" placeholder="标准ISBN" name="isbn" id="ebisbn"></td>
+                            <td>货物名称</td>
+                            <td><input class="form-control" placeholder="货物名称" name="name" id="egname"
+                                       onblur="checkGoodsVal()" onfocus="changeGoodsVal()"></td>
+                            <td>货物货号</td>
+                            <td><input class="form-control" placeholder="货物货号" name="no" id="egno"
+                                       onblur="checkGoodsVal()" onfocus="changeGoodsVal()"></td>
                         </tr>
                         <tr>
-                            <td>出版社</td>
-                            <td><input class="form-control" placeholder="出版社" name="press" id="ebpress"></td>
-                            <td>作者</td>
-                            <td><input class="form-control" placeholder="作者" name="author" id="ebauthor"></td>
+
+                            <td>色号</td>
+                            <td>
+                                <select class="form-control" id="egcolor" name="color" value="白色">
+                                    <option value="白色">白色</option>
+                                    <option value="黑色">黑色</option>
+                                    <option value="红色">红色</option>
+                                    <option value="黄色">黄色</option>
+                                    <option value="蓝色">蓝色</option>
+                                    <option value="绿色">绿色</option>
+                                    <option value="青色">青色</option>
+                                    <option value="橙色">橙色</option>
+                                    <option value="紫色">紫色</option>
+
+                                </select>
+                            </td>
+                            <td>尺码</td>
+                            <td>
+                                <select class="form-control" id="egsize" name="size" value="S">
+                                    <option value="S">S</option>
+                                    <option value="M">M</option>
+                                    <option value="L">L</option>
+                                    <option value="XL">XL</option>
+                                    <option value="XXL">XXL</option>
+                                    <option value="XXXL">XXXL</option>
+                                    <option value="XXXXL">XXXXL</option>
+
+                                </select>
+                            </td>
+
                         </tr>
                         <tr>
-                            <td>书籍页数</td>
-                            <td><input class="form-control" placeholder="书籍页数" name="pagination" id="ebpagination"></td>
-                            <td>书籍价格<br/></td>
-                            <td><input class="form-control" placeholder="书籍价格" name="price" id="ebprice"></td>
+                            <td>货物数量</td>
+                            <td>
+                                <input class="form-control" placeholder="货物数量" name="amount" id="egamount" value="0">
+                            </td>
+                            <%--                            <td>书籍价格<br/></td>--%>
+                            <%--                            <td><input class="form-control" placeholder="书籍价格" name="price" id="ebprice"></td>--%>
                         </tr>
                         <tr>
+                            <td colspan="2"><span style="color: red" id="addGoodsmsg"></span></td>
+                        </tr>
+                        <%--<tr>
                             <td>上架状态</td>
                             <td>
                                 <select class="form-control" id="ebstatus" name="status">
@@ -155,13 +188,18 @@
                                     <option value="3">下架</option>
                                 </select>
                             </td>
-                        </tr>
+                        </tr>--%>
                     </table>
                 </form>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-success" data-dismiss="modal" aria-hidden="true" id="aoe" disabled
-                        onclick="addOrEdit()">保存
+                <%-- <button class="btn btn-success" data-dismiss="modal" aria-hidden="true" id="aoe" disabled
+                         onclick="saveGoods()">保存
+                 </button>
+                 <button class="btn btn-default" data-dismiss="modal" aria-hidden="true">关闭</button>--%>
+                <button class="btn btn-success" data-dismiss="modal" <%--aria-hidden="true"--%> id="saveGoodsmsg"
+                        disabled="true"
+                        onclick="saveGoods()">保存
                 </button>
                 <button class="btn btn-default" data-dismiss="modal" aria-hidden="true">关闭</button>
             </div>
@@ -178,9 +216,9 @@
         /*分页插件页码变化时将跳转到的服务器端的路径*/
         pageargs.gourl = "${gourl}"
     /*保存搜索框中的搜索条件，页码变化时携带之前的搜索条件*/
-    bookVO.id = "${search.id}"
-    bookVO.name = "${search.name}"
-    bookVO.no = "${search.no}"
+    bookVO.id = "${goods.id}"
+    bookVO.name = "${goods.name}"
+    bookVO.no = "${goods.no}"
     /*分页效果*/
     pagination(pageargs);
 </script>

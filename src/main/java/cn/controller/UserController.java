@@ -53,6 +53,33 @@ public class UserController {
         return new Result(true,"新增成功");
     }
 
+    @ResponseBody
+    @RequestMapping("/checkName")
+    public Result checkName(String name) {
+        Integer count = userService.checkName(name);
+        if (count > 0) {
+            return new Result(false, "名字重复!");
+        } else {
+            return new Result(true, "名字可用!");
+        }
+    }
+
+    /**
+     * 校验用户的邮箱是否已经存在
+     * @param email 被校验的用户邮箱
+     */
+    @ResponseBody
+    @RequestMapping("/checkEmail")
+    public Result checkEmail(String email) {
+        Integer count = userService.checkEmail(email);
+        if (count > 0) {
+            return new Result(false, "邮箱重复!");
+        } else {
+            return new Result(true, "邮箱可用!");
+        }
+    }
+
+
     @RequestMapping("/search")
     public ModelAndView searchUser(User user,Integer pageNum,Integer pageSize){
         if(pageNum == null)
@@ -92,5 +119,7 @@ public class UserController {
         userService.delUser(id);
         return new Result(true,"删除成功");
     }
+
+
 }
 

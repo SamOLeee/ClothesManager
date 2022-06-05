@@ -3,6 +3,7 @@ package cn.controller;
 import cn.domain.Goods;
 import cn.domain.User;
 import cn.entity.PageResult;
+import cn.entity.Result;
 import cn.service.GoodsService;
 import cn.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,25 +21,33 @@ public class GoodsController {
 
 
     @RequestMapping("/search")
-    public ModelAndView searchGoods(Goods goods,Integer pageNum,Integer pageSize){
-        if(pageNum == null) pageNum=1;
-        if(pageSize == null) pageSize=1;
+    public ModelAndView searchGoods(Goods goods, Integer pageNum, Integer pageSize) {
+        if (pageNum == null) pageNum = 1;
+        if (pageSize == null) pageSize = 10;
 
-        PageResult pageResult = goodsService.searchGoods(goods,pageNum,pageSize);
-        ModelAndView modelAndView =new ModelAndView();
+        PageResult pageResult = goodsService.searchGoods(goods, pageNum, pageSize);
+        ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("goods");
-        modelAndView.addObject("pageResult",pageResult);
-        modelAndView.addObject("search",goods);
-        modelAndView.addObject("pageNUm",pageNum);
-        modelAndView.addObject("gourl","/goods/search");
+        modelAndView.addObject("pageResult", pageResult);
+        modelAndView.addObject("search", goods);
+        modelAndView.addObject("pageNUm", pageNum);
+        modelAndView.addObject("gourl", "/goods/search");
         return modelAndView;
     }
 
     @ResponseBody
-    @RequestMapping ("/findGoodsById")
-    public Goods findUserById(Integer id){
+    @RequestMapping("/findGoodsById")
+    public Goods findUserById(Integer id) {
 /*        System.out.println(10086);
         System.out.println(id);*/
         return goodsService.findGoodsById(id);
+    }
+
+
+    @ResponseBody
+    @RequestMapping("/addGoods")
+    public Result addUser(Goods goods) {
+        goodsService.addGoods(goods);
+        return new Result(true, "新增成功");
     }
 }
