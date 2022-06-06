@@ -29,7 +29,7 @@
                 <div class="btn-group">
                     <c:if test="${USER.role =='admin'}">
                         <button type="button" class="btn btn-default" title="新建" data-toggle="modal"
-                                data-target="#addModal" onclick="resetUserFrom()"><i class="fa fa-file-o"></i> 新增
+                                data-target="#addUserModal" onclick="resetUserFrom()"><i class="fa fa-file-o"></i> 新增
                         </button>
                     </c:if>
                     <c:if test="${USER.role =='common'}">
@@ -79,7 +79,7 @@
             <td class="text-center">
                 <c:if test="${user.delete == 0 }">
                     <c:if test="${ USER.role =='admin'}">
-                        <button type="button" class="btn bg-olive btn-xs" data-toggle="modal" data-target="#editModal"
+                        <button type="button" class="btn bg-olive btn-xs" data-toggle="modal" data-target="#updateUserModal"
                                 onclick="findUserById(${user.id})">修改</button>
                         &nbsp&nbsp&nbsp&nbsp
                         <button type="button" class="btn bg-olive btn-xs"
@@ -106,7 +106,7 @@
 <tm-pagination conf="paginationConf"></tm-pagination>
 
 <!-- 新增窗口 -->
-<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="addUserModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -155,7 +155,7 @@
 </div>
 
 <!-- 编辑窗口 -->
-<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="updateUserModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">

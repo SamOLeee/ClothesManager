@@ -85,7 +85,7 @@
                     </a>
                     <ul class="treeview-menu">
                         <li>
-                            <a href="${pageContext.request.contextPath}/book/search" target="iframe">
+                            <a href="${pageContext.request.contextPath}/goodsIn/search" target="iframe">
                                 <i class="fa fa-circle-o"></i>入库管理
                             </a>
                         </li>
@@ -110,8 +110,8 @@
     <!-- 内容展示区域 -->
     <div class="content-wrapper" >
             <%--<img src="${pageContext.request.contextPath}/img/333.jpg" class="user-image" alt="User Image">--%>
-        <iframe  width="100%" id="iframe" name="iframe" onload="SetIFrameHeight()"
-                frameborder="0" <%--src="${pageContext.request.contextPath}/book/selectNewbooks"--%>></iframe>
+        <iframe  width="100%" id="iframe" name="iframe" onload="SetIFrameHeight()" frameborder="0" >
+        </iframe>
     </div>
 </div>
 </body>

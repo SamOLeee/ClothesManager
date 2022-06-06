@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.mapper.GoodsOutMapper">
+    <!--新增goodsOut-->
+    <insert id="addGoodsIn" parameterType="cn.domain.GoodsOut">
+        insert into goodsOut(goodsOut_no,goodsOut_library,goodsOut_datetime,goodsOut_operator,goodsOut_goto) values (#{no},#{library},#{datetime},#{operator},#{Goto})
+    </insert>
+    <!--修改goodsOut信息-->
+    <update id="updateGoodsOut" parameterType="cn.domain.GoodsOut">
+        update goodsOut
+        <trim prefix="set" suffixOverrides=",">
+            <if test="no != null" >
+                goodsOut_no = #{no},
+            </if>
+            <if test="library != null" >
+                goodsOut_library = #{library},
+            </if>
+            <if test="datetime != null" >
+                goodsOut_datetime = #{datetime},
+            </if>
+            <if test="operator != null" >
+                goodsOut_operator = #{operator},
+            </if>
+            <if test="Goto != null" >
+                goodsOut_goto = #{Goto},
+            </if>
+            <if test="delete != null" >
+                goodsOut_delete = #{delete}
+            </if>
+        </trim>
+        where gid = #{gid}
+    </update>
+</mapper>

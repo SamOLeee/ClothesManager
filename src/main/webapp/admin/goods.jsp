@@ -25,7 +25,7 @@
             <div class="btn-group">
                 <c:if test="${USER.role =='admin'}">
                     <button type="button" class="btn btn-default" title="新建" data-toggle="modal"
-                            data-target="#addOrEditModal" onclick="resetGoodsFrom()"> <i class="fa fa-file-o"></i>新增
+                            data-target="#addGoodsModal" onclick="resetGoodsFrom()"> <i class="fa fa-file-o"></i>新增
                     </button>
                 </c:if>
                 <c:if test="${USER.role =='common'}">
@@ -110,50 +110,9 @@
 
 <!-- /.box-body -->
 <tm-pagination conf="paginationConf"></tm-pagination>
-<!-- 编辑货物 -->
-<div class="modal fade" id="updateGoodsModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" >
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h3 id="myModalLabe2">货号信息</h3>
-            </div>
-            <div class="modal-body">
-                <form id="updateGoods">
-<%--                    <span><input type="hidden" id="ubid" name="id"></span>--%>
-                    <table id="updateGoodsTab" class="table table-bordered table-striped" width="800px">
-                        <tr>
-                            <td>货物名称</td>
-                            <td><input class="form-control" readonly name="name" id="ugname"></td>
-                            <td>货物id</td>
-                            <td><input class="form-control" readonly name="id" id="ugid"></td>
-                        </tr>
-                        <tr>
-                            <td>货物货号</td>
-                            <td><input class="form-control" readonly name="no" id="ugno"></td>
-                            <td>货物数量</td>
-                            <td><input class="form-control" placeholder="货物数量" name="amount" id="ugamount"></td>
-                        </tr>
-                        <tr>
-                            <td>色号</td>
-                            <td><input class="form-control" readonly id="ugcolor" name="color"></td>
-                            <td>尺码</td>
-                            <td><input class="form-control" readonly id="ugsize" name="size"></td>
-                        </tr>
 
-                    </table>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-success" data-dismiss="modal" aria-hidden="true" onclick="updateGoods()">保存
-                </button>
-                <button class="btn btn-default" data-dismiss="modal" aria-hidden="true">关闭</button>
-            </div>
-        </div>
-    </div>
-</div>
 <!-- 新增货物 -->
-<div class="modal fade" id="addOrEditModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+<div class="modal fade" id="addGoodsModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
      aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -230,6 +189,50 @@
         </div>
     </div>
 </div>
+
+<!-- 编辑货物 -->
+<div class="modal fade" id="updateGoodsModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" >
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h3 id="myModalLabe2">货号信息</h3>
+            </div>
+            <div class="modal-body">
+                <form id="updateGoods">
+<%--                    <span><input type="hidden" id="ubid" name="id"></span>--%>
+                    <table id="updateGoodsTab" class="table table-bordered table-striped" width="800px">
+                        <tr>
+                            <td>货物名称</td>
+                            <td><input class="form-control" readonly name="name" id="ugname"></td>
+                            <td>货物id</td>
+                            <td><input class="form-control" readonly name="id" id="ugid"></td>
+                        </tr>
+                        <tr>
+                            <td>货物货号</td>
+                            <td><input class="form-control" readonly name="no" id="ugno"></td>
+                            <td>货物数量</td>
+                            <td><input class="form-control" placeholder="货物数量" name="amount" id="ugamount"></td>
+                        </tr>
+                        <tr>
+                            <td>色号</td>
+                            <td><input class="form-control" readonly id="ugcolor" name="color"></td>
+                            <td>尺码</td>
+                            <td><input class="form-control" readonly id="ugsize" name="size"></td>
+                        </tr>
+
+                    </table>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-success" data-dismiss="modal" aria-hidden="true" onclick="updateGoods()">保存
+                </button>
+                <button class="btn btn-default" data-dismiss="modal" aria-hidden="true">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 </body>
 <script>
     /*分页插件展示的总页数*/

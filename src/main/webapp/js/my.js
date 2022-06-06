@@ -185,9 +185,22 @@ $(function () {
     })
 });
 
-
-
-
+///////////////////////////////////////////
+//////////////////////////////////////////
+///////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////
+// //////////////////////////////////////////
+// ///////////////////////////////////////////
+// ////////////////////////////////////////////////////////////////////////////////////////////
+// //////////////////////////////////////////
+// ///////////////////////////////////////////
+// ////////////////////////////////////////////////////////////////////////////////////////////
+// //////////////////////////////////////////
+// ///////////////////////////////////////////
+// ////////////////////////////////////////////////////////////////////////////////////////////
+// //////////////////////////////////////////
+// ///////////////////////////////////////////
+// /////////////////////////////////////////////////
 ///////////////////////////////////////////
 //////////////////////////////////////////
 ///////////////////////////////////////////
@@ -224,33 +237,22 @@ function checkGoodsVal() {
     }
 }
 
-function saveGoods(){
+function saveGoods() {
     var url = getProjectPath() + "/goods/addGoods";
     console.log(url);
-    $.post(url,$("#addGoods").serialize(),function (response){
+    $.post(url, $("#addGoods").serialize(), function (response) {
         console.log(response);
         alert(response.message)
-        if(response.success == true){
+        if (response.success == true) {
             window.location.href = getProjectPath() + "/goods/search";
         }
     })
 }
 
-// function findUserById(uid) {
-//     var url = getProjectPath() + "/user/findUserById?id=" + uid;
-//     $.get(url, function (response) {
-//         console.log(response);
-//         $("#uid").val(response.id);
-//         $("#uname").val(response.name);
-//         $("#pw").val(response.password);
-//         $("#urole").val(response.role);
-//         $("#uemail").val(response.email);
-//     })
-// }
-function findGoodsById(gid){
-    var url =getProjectPath()+"/goods/findGoodsById?id=" + gid;
+function findGoodsById(gid) {
+    var url = getProjectPath() + "/goods/findGoodsById?id=" + gid;
     // console.log(url);
-    $.get(url,function (response){
+    $.get(url, function (response) {
         console.log(url);
         console.log(response);
         $("#ugid").val(response.id);
@@ -262,47 +264,132 @@ function findGoodsById(gid){
     })
 }
 
-
-
-// function updateUser() {
-//     var url = getProjectPath() + "/user/updateUser";
-//     $.post(url, $("#updateUser").serialize(), function (response) {
-//         alert(response.message)
-//         if (response.success == true) {
-//             window.location.href = getProjectPath() + "/user/search";
-//         }
-//     })
-// }
-function updateGoods(){
-    var url=getProjectPath()+"/goods/updateGoods";
+function updateGoods() {
+    var url = getProjectPath() + "/goods/updateGoods";
     console.log(url);
-    $.post(url,$("#updateGoods").serialize(),function (response){
+    $.post(url, $("#updateGoods").serialize(), function (response) {
         alert(response.message)
-        if(response.success == true){
-            window.location.href = getProjectPath()+"/goods/search";
+        if (response.success == true) {
+            window.location.href = getProjectPath() + "/goods/search";
         }
     })
 }
 
-function delGoods(gid){
+function delGoods(gid) {
     // var ur =confirm("是否删除名为"+ gname +"货物?");
-    var r =confirm("是否id名为"+ gid +"货物?");
+    var r = confirm("是否id名为" + gid + "货物?");
 
     console.log(r);
-    if(r){
-        var url=getProjectPath()+"/goods/delGoods?id=" + gid;
-        $.get(url,function (response){
+    if (r) {
+        var url = getProjectPath() + "/goods/delGoods?id=" + gid;
+        $.get(url, function (response) {
             alert(response.message)
-            if(response.success == true){
-                window.location.href = getProjectPath()+"/goods/search";
+            if (response.success == true) {
+                window.location.href = getProjectPath() + "/goods/search";
             }
         })
     }
 }
+
 ////////////////////////////////////////////////
 ///////////////////////////////////////////////
 /////////////////////////////////////////////////////
 
+
+function resetGoodsInFrom() {
+    $("#saveGoodsInmsg").attr("disabled", true)
+    $("#addGoodsInmsg").html("")
+    var $vals = $("#addGoodsIn input");
+    $vals.each(function () {
+        $(this).attr("style", "").val("")
+    });
+}
+
+function changeGoodsInVal() {
+    $("#addGoodsInmsg").html("")
+}
+
+function checkGoodsInVal() {
+    $("#saveGoodsInmsg").attr("disabled", false)
+    $("#addGoodsInmsg").html("")
+    var gino = $("#gino").val();
+    var gilibrary = $("#gilibrary").val();
+    var gioperator = $("#gioperator").val();
+    var gisource = $("#gisource").val();
+
+    if ($.trim(gino) == '') {
+        $("#saveGoodsInmsg").attr("disabled", true);
+        $("#addGoodsInmsg").html("单据凭证不能为空！")
+    } else if ($.trim(gilibrary) == '') {
+        $("#saveGoodsInmsg").attr("disabled", true);
+        $("#addGoodsInmsg").html("所属仓库不能为空！")
+    } else if ($.trim(gioperator) == '') {
+        $("#saveGoodsInmsg").attr("disabled", true);
+        $("#addGoodsInmsg").html("经办人不能为空！")
+    } else if ($.trim(gisource) == '') {
+        $("#saveGoodsInmsg").attr("disabled", true);
+        $("#addGoodsInmsg").html("来源不能为空！")
+    }
+}
+
+function saveGoodsIn() {
+    var url = getProjectPath() + "/goodsIn/addGoodsIn";
+    console.log(url);
+    $.post(url, $("#addGoodsIn").serialize(), function (response) {
+        console.log(response);
+        alert(response.message);
+        if (response.success == true) {
+            window.location.href == getProjectPath() + "/goodsIn/search";
+        }
+    })
+}
+
+
+
+function findGoodsInById(gid) {
+    var url = getProjectPath() + "/goodsIn/findGoodsInById?id=" + gid;
+    console.log(url);
+    $.get(url,function (response){
+        console.log(response);
+        $("#upgiid").val(response.gid);
+        $("#upgino").val(response.no);
+        $("#upgitime").val(response.datetime);
+        $("#upgilibrary").val(response.library);
+        $("#upgioperator").val(response.operator);
+        $("#ugsource").val(response.source);
+        console.log(response);
+    })
+}
+
+function updateGoodsIn(){
+    var url=getProjectPath()+"/goodsIn/updateGoodsIn";
+    console.log(url);
+    $.post(url,$("updateGoodsIn").serialize(),function (response){
+        alert(response.message)
+        if(response.success == true){
+            window.location.href = getProjectPath()+"/goodsIn/search";
+        }
+    })
+}
+
+function delGoodsIn(gid) {
+    // var ur =confirm("是否删除名为"+ gname +"货物?");
+    var r = confirm("是否删除id名为" + gid + "入库单?");
+    console.log(r);
+    if (r) {
+        var url = getProjectPath() + "/goodsIn/delGoodsIn?id=" + gid;
+        $.get(url, function (response) {
+            alert(response.message)
+            if (response.success == true) {
+                window.location.href = getProjectPath() + "/goodsIn/search";
+            }
+        })
+    }
+}
+///////////////////////////////////////////
+//////////////////////////////////////////
+///////////////////////////////////////////
+/////////////////////////////////////////////////
 
 
 //重置添加和编辑窗口中输入框的内容
@@ -386,16 +473,18 @@ function checkEmail(email) {
         }
     })
 }
-function saveGoods(){
+
+function saveGoods() {
     var url = getProjectPath() + "/goods/addGoods";
     console.log(url);
-    $.post(url,$("#addGoods").serialize(),function (response){
+    $.post(url, $("#addGoods").serialize(), function (response) {
         alert(response.message)
-        if(response.success == true){
+        if (response.success == true) {
             window.location.href = getProjectPath() + "/goods/search";
         }
     })
 }
+
 function saveUser() {
     var url = getProjectPath() + "/user/addUser";
     console.log(url);
@@ -477,6 +566,11 @@ var pageargs = {
 var bookVO = {
     id: '',
     name: '',
+    no: ''
+}
+
+var goodsInVO = {
+    id: '',
     no: ''
 }
 /**

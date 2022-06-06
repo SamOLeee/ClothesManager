@@ -37,7 +37,7 @@ public class GoodsController {
 
     @ResponseBody
     @RequestMapping("/findGoodsById")
-    public Goods findUserById(Integer id) {
+    public Goods findGoodsById(Integer id) {
 /*        System.out.println(10086);
         System.out.println(id);*/
         return goodsService.findGoodsById(id);
@@ -46,7 +46,7 @@ public class GoodsController {
 
     @ResponseBody
     @RequestMapping("/addGoods")
-    public Result addUser(Goods goods) {
+    public Result addGoods(Goods goods) {
         goodsService.addGoods(goods);
         return new Result(true, "新增成功");
     }

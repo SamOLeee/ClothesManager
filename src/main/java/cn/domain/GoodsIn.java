@@ -1,31 +1,44 @@
 package cn.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.io.Serializable;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class GoodsIn implements Serializable {
-    private Integer id;
-    private Integer goods_id;
+    private Integer gid;
     private String no;
     private String library;
-    private String datetime;
+
+    @DateTimeFormat(pattern = "YYYY-MM-DD")
+    private Date datetime;
+
     private String operator;
     private String source;
-    private Integer delete ;
+    private Integer delete;
 
-    public Integer getId() {
-        return id;
+    @Override
+    public String toString() {
+        return "GoodsIn{" +
+                "gid=" + gid +
+                ", no='" + no + '\'' +
+                ", library='" + library + '\'' +
+                ", datetime=" + datetime +
+                ", operator='" + operator + '\'' +
+                ", source='" + source + '\'' +
+                ", delete=" + delete +
+                '}';
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public Integer getGid() {
+        return gid;
     }
 
-    public Integer getGoods_id() {
-        return goods_id;
-    }
-
-    public void setGoods_id(Integer goods_id) {
-        this.goods_id = goods_id;
+    public void setGid(Integer gid) {
+        this.gid = gid;
     }
 
     public String getNo() {
@@ -44,14 +57,21 @@ public class GoodsIn implements Serializable {
         this.library = library;
     }
 
-    public String getDatetime() {
+    public Date getDatetime() {
+//        DateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+//        String t=sdf.format(datetime);
+//        return t;
         return datetime;
     }
+//    public String getDatetime() {
+//        SimpleDateFormat ft = new SimpleDateFormat("yyyy-MM-dd");
+//        String time = ft.format(datetime);
+//        return time;
+//    }
 
-    public void setDatetime(String datetime) {
-        this.datetime = datetime;
-    }
+    public void setDatetime(Date datetime) {this.datetime = datetime;}
 
+    @JsonFormat(timezone = "GMT+8",pattern = "yyyy-MM-dd")
     public String getOperator() {
         return operator;
     }
@@ -74,19 +94,5 @@ public class GoodsIn implements Serializable {
 
     public void setDelete(Integer delete) {
         this.delete = delete;
-    }
-
-    @Override
-    public String toString() {
-        return "GoodsIn{" +
-                "id=" + id +
-                ", goods_id=" + goods_id +
-                ", no='" + no + '\'' +
-                ", library='" + library + '\'' +
-                ", datetime='" + datetime + '\'' +
-                ", operator='" + operator + '\'' +
-                ", source='" + source + '\'' +
-                ", delete=" + delete +
-                '}';
     }
 }
