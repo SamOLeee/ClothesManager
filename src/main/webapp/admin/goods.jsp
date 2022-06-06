@@ -20,13 +20,12 @@
 </div>
 <div class="box-body">
     <%--新增按钮：如果当前登录用户是管理员，页面展示新增按钮--%>
-
     <div class="pull-left">
         <div class="form-group form-inline">
             <div class="btn-group">
                 <c:if test="${USER.role =='admin'}">
                     <button type="button" class="btn btn-default" title="新建" data-toggle="modal"
-                            data-target="#addOrEditModal" onclick="resetGoodsFrom()"> 新增
+                            data-target="#addOrEditModal" onclick="resetGoodsFrom()"> <i class="fa fa-file-o"></i>新增
                     </button>
                 </c:if>
                 <c:if test="${USER.role =='common'}">
@@ -41,9 +40,9 @@
     <div class="box-tools pull-right">
         <div class="has-feedback">
             <form action="${pageContext.request.contextPath}/goods/search" method="post">
-                货物id：<input name="id" value="${goods.id}">&nbsp&nbsp&nbsp&nbsp
-                货物名称：<input name="name" value="${goods.name}">&nbsp&nbsp&nbsp&nbsp
-                货号：<input name="no" value="${goods.no}">&nbsp&nbsp&nbsp&nbsp
+                货物id：<input name="id" value="${search.id}">&nbsp&nbsp&nbsp&nbsp
+                货物名称：<input name="name" value="${search.name}">&nbsp&nbsp&nbsp&nbsp
+                货号：<input name="no" value="${search.no}">&nbsp&nbsp&nbsp&nbsp
                 <input class="btn btn-default" type="submit" value="查询">
             </form>
         </div>
@@ -83,24 +82,19 @@
                         <c:if test="${goods.delete == 0 }">
                             <c:if test="${USER.role =='admin'}">
                                 <button type="button" class="btn bg-olive btn-xs" data-toggle="modal"
-                                        data-target="#borrowModal" onclick="findBookById(${goods.id},'add')"> 修改
+                                        data-target="#updateGoodsModal" onclick="findGoodsById(${goods.id})"> 修改
                                 </button>
-                                <%--                            <c:if test="${USER.role =='admin'}">--%>
                                 <button type="button" class="btn bg-olive btn-xs" data-toggle="modal"
-                                        data-target="#addOrEditModal" onclick="findBookById(${goods.id},'edit')"> 删除
+                                        data-target="#delGoodsModal" onclick="delGoods(${goods.id})"> 删除
                                 </button>
                             </c:if>
-
-                            <%--                            </c:if>--%>
                             <c:if test="${ USER.role =='common'}">
                                 <button type="button" class="btn bg-olive btn-xs" onclick="commonUser()">修改</button>
                                 &nbsp&nbsp&nbsp&nbsp
                                 <button type="button" class="btn bg-olive btn-xs" onclick="commonUser()">删除</button>
                             </c:if>
                         </c:if>
-                            <%--                        <c:if test="${book.status ==1 ||book.status ==2}">
-                                                        <button type="button" class="btn bg-olive btn-xs" disabled="true">借阅</button>
-                                                    </c:if>--%>
+
                     </td>
                 </tr>
             </c:forEach>
@@ -116,12 +110,55 @@
 
 <!-- /.box-body -->
 <tm-pagination conf="paginationConf"></tm-pagination>
+<!-- 编辑货物 -->
+<div class="modal fade" id="updateGoodsModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" >
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h3 id="myModalLabe2">货号信息</h3>
+            </div>
+            <div class="modal-body">
+                <form id="updateGoods">
+<%--                    <span><input type="hidden" id="ubid" name="id"></span>--%>
+                    <table id="updateGoodsTab" class="table table-bordered table-striped" width="800px">
+                        <tr>
+                            <td>货物名称</td>
+                            <td><input class="form-control" readonly name="name" id="ugname"></td>
+                            <td>货物id</td>
+                            <td><input class="form-control" readonly name="id" id="ugid"></td>
+                        </tr>
+                        <tr>
+                            <td>货物货号</td>
+                            <td><input class="form-control" readonly name="no" id="ugno"></td>
+                            <td>货物数量</td>
+                            <td><input class="form-control" placeholder="货物数量" name="amount" id="ugamount"></td>
+                        </tr>
+                        <tr>
+                            <td>色号</td>
+                            <td><input class="form-control" readonly id="ugcolor" name="color"></td>
+                            <td>尺码</td>
+                            <td><input class="form-control" readonly id="ugsize" name="size"></td>
+                        </tr>
+
+                    </table>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-success" data-dismiss="modal" aria-hidden="true" onclick="updateGoods()">保存
+                </button>
+                <button class="btn btn-default" data-dismiss="modal" aria-hidden="true">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
 <!-- 新增货物 -->
 <div class="modal fade" id="addOrEditModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
      aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                 <h3 id="myModalLabel">货号信息</h3>
             </div>
             <div class="modal-body">
@@ -180,23 +217,10 @@
                         <tr>
                             <td colspan="2"><span style="color: red" id="addGoodsmsg"></span></td>
                         </tr>
-                        <%--<tr>
-                            <td>上架状态</td>
-                            <td>
-                                <select class="form-control" id="ebstatus" name="status">
-                                    <option value="0">上架</option>
-                                    <option value="3">下架</option>
-                                </select>
-                            </td>
-                        </tr>--%>
                     </table>
                 </form>
             </div>
             <div class="modal-footer">
-                <%-- <button class="btn btn-success" data-dismiss="modal" aria-hidden="true" id="aoe" disabled
-                         onclick="saveGoods()">保存
-                 </button>
-                 <button class="btn btn-default" data-dismiss="modal" aria-hidden="true">关闭</button>--%>
                 <button class="btn btn-success" data-dismiss="modal" <%--aria-hidden="true"--%> id="saveGoodsmsg"
                         disabled="true"
                         onclick="saveGoods()">保存
@@ -206,7 +230,6 @@
         </div>
     </div>
 </div>
-
 </body>
 <script>
     /*分页插件展示的总页数*/
@@ -216,9 +239,9 @@
         /*分页插件页码变化时将跳转到的服务器端的路径*/
         pageargs.gourl = "${gourl}"
     /*保存搜索框中的搜索条件，页码变化时携带之前的搜索条件*/
-    bookVO.id = "${goods.id}"
-    bookVO.name = "${goods.name}"
-    bookVO.no = "${goods.no}"
+    bookVO.id = "${search.id}"
+    bookVO.name = "${search.name}"
+    bookVO.no = "${search.no}"
     /*分页效果*/
     pagination(pageargs);
 </script>

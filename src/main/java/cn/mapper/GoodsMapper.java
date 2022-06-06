@@ -30,6 +30,9 @@ public interface GoodsMapper {
     @ResultMap("GoodsMap")
     Goods findGoodsById(Integer id);
 
-
     void addGoods(Goods goods);
+
+    void updateGoods(Goods goods);
+
+    void delGoods(Goods goods);
 }

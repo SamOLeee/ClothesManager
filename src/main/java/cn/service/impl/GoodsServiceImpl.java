@@ -30,4 +30,12 @@ public class GoodsServiceImpl implements GoodsService {
     public void addGoods(Goods goods){
         goodsMapper.addGoods(goods);
     }
+
+    public void updateGoods(Goods goods){goodsMapper.updateGoods(goods);}
+
+    public void delGoods(Integer id){
+        Goods goods = this.findGoodsById(id);
+        goods.setDelete(1);
+        goodsMapper.updateGoods(goods);
+    }
 }

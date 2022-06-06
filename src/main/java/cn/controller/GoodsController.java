@@ -50,4 +50,17 @@ public class GoodsController {
         goodsService.addGoods(goods);
         return new Result(true, "新增成功");
     }
+
+    @ResponseBody
+    @RequestMapping("/updateGoods")
+    public Result updateGoods(Goods goods){
+        goodsService.updateGoods(goods);
+        return new Result(true,"修改成功");
+    }
+
+    @RequestMapping("/delGoods")
+    public Result delUser(Integer id){
+        goodsService.delGoods(id);
+        return new Result(true,"删除成功");
+    }
 }

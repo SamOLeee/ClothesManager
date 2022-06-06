@@ -11,4 +11,6 @@ public interface GoodsService {
     Goods findGoodsById(Integer id);
 
     void addGoods(Goods goods);
+    void updateGoods(Goods goods);
+    void delGoods(Integer id);
 }

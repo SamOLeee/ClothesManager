@@ -34,7 +34,7 @@
                 <ul class="nav navbar-nav">
                     <li class="dropdown user user-menu">
                         <a>
-                            <img src="${pageContext.request.contextPath}/img/user.jpg" class="user-image"
+                            <img src="${pageContext.request.contextPath}/img/Sauron.jpg" class="user-image"
                                  alt="User Image">
                             <span class="hidden-xs">${USER.name}</span>
                         </a>
@@ -74,11 +74,11 @@
                         <i class="fa fa-circle-o"></i>货号管理
                     </a>
                 </li>
-                <!-- 图书管理 -->
+                <!-- 库存管理 -->
                 <li class="treeview">
                     <a href="#">
                         <i class="fa fa-folder"></i>
-                        <span>图书管理</span>
+                        <span>库存管理</span>
                         <span class="pull-right-container">
 				       			<i class="fa fa-angle-left pull-right"></i>
 				   		 	</span>
@@ -86,19 +86,19 @@
                     <ul class="treeview-menu">
                         <li>
                             <a href="${pageContext.request.contextPath}/book/search" target="iframe">
-                                <i class="fa fa-circle-o"></i>图书借阅
+                                <i class="fa fa-circle-o"></i>入库管理
                             </a>
                         </li>
                         <li>
                             <a href="${pageContext.request.contextPath}/book/searchBorrowed" target="iframe">
-                                <i class="fa fa-circle-o"></i>当前借阅
+                                <i class="fa fa-circle-o"></i>出库管理
                             </a>
                         </li>
-                        <li>
-                            <a href="${pageContext.request.contextPath}/record/searchRecords" target="iframe">
-                                <i class="fa fa-circle-o"></i>借阅记录
-                            </a>
-                        </li>
+<%--                        <li>--%>
+<%--                            <a href="${pageContext.request.contextPath}/record/searchRecords" target="iframe">--%>
+<%--                                <i class="fa fa-circle-o"></i>借阅记录--%>
+<%--                            </a>--%>
+<%--                        </li>--%>
                     </ul>
                 </li>
             </ul>

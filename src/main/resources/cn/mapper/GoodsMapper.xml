@@ -5,44 +5,29 @@
     <insert id="addGoods" parameterType="cn.domain.Goods">
         insert into goods(goods_name,goods_no,goods_color,goods_size,goods_amount) values (#{name},#{no},#{color},#{size},#{amount})
     </insert>
-<!--    &lt;!&ndash;修改goods信息&ndash;&gt;
-    <update id="editBook" >
-        update book
+    <!--修改goods信息-->
+    <update id="updateGoods" parameterType="cn.domain.Goods">
+        update goods
         <trim prefix="set" suffixOverrides=",">
             <if test="name != null" >
-                book_name = #{name},
+                goods_name = #{name},
             </if>
-            <if test="isbn != null" >
-                book_isbn = #{isbn},
+            <if test="no != null" >
+                goods_no = #{no},
             </if>
-            <if test="press != null" >
-                book_press = #{press},
+            <if test="color != null" >
+                goods_color = #{color},
             </if>
-            <if test="author != null" >
-                book_author = #{author},
+            <if test="size != null" >
+                goods_size = #{size},
             </if>
-            <if test="pagination != null" >
-                book_pagination = #{pagination},
+            <if test="amount != null" >
+                goods_amount = #{amount},
             </if>
-            <if test="price != null" >
-                book_price = #{price},
-            </if>
-            <if test="uploadTime != null" >
-                book_uploadtime = #{uploadTime},
-            </if>
-            <if test="status != null" >
-                book_status = #{status},
-            </if>
-            <if test="borrower!= null" >
-                book_borrower= #{borrower },
-            </if>
-            <if test="borrowTime != null" >
-                book_borrowtime = #{borrowTime},
-            </if>
-            <if test="returnTime != null" >
-                book_returntime = #{returnTime}
+            <if test="delete != null" >
+                goods_delete = #{delete}
             </if>
         </trim>
-        where book_id = #{id}
-    </update>-->
+        where goods_id = #{id}
+    </update>
 </mapper>

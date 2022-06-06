@@ -119,7 +119,5 @@ public class UserController {
         userService.delUser(id);
         return new Result(true,"删除成功");
     }
-
-
 }
 

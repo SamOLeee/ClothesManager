@@ -235,6 +235,70 @@ function saveGoods(){
         }
     })
 }
+
+// function findUserById(uid) {
+//     var url = getProjectPath() + "/user/findUserById?id=" + uid;
+//     $.get(url, function (response) {
+//         console.log(response);
+//         $("#uid").val(response.id);
+//         $("#uname").val(response.name);
+//         $("#pw").val(response.password);
+//         $("#urole").val(response.role);
+//         $("#uemail").val(response.email);
+//     })
+// }
+function findGoodsById(gid){
+    var url =getProjectPath()+"/goods/findGoodsById?id=" + gid;
+    // console.log(url);
+    $.get(url,function (response){
+        console.log(url);
+        console.log(response);
+        $("#ugid").val(response.id);
+        $("#ugname").val(response.name);
+        $("#ugno").val(response.no);
+        $("#ugamount").val(response.amount);
+        $("#ugcolor").val(response.color);
+        $("#ugsize").val(response.size);
+    })
+}
+
+
+
+// function updateUser() {
+//     var url = getProjectPath() + "/user/updateUser";
+//     $.post(url, $("#updateUser").serialize(), function (response) {
+//         alert(response.message)
+//         if (response.success == true) {
+//             window.location.href = getProjectPath() + "/user/search";
+//         }
+//     })
+// }
+function updateGoods(){
+    var url=getProjectPath()+"/goods/updateGoods";
+    console.log(url);
+    $.post(url,$("#updateGoods").serialize(),function (response){
+        alert(response.message)
+        if(response.success == true){
+            window.location.href = getProjectPath()+"/goods/search";
+        }
+    })
+}
+
+function delGoods(gid){
+    // var ur =confirm("是否删除名为"+ gname +"货物?");
+    var r =confirm("是否id名为"+ gid +"货物?");
+
+    console.log(r);
+    if(r){
+        var url=getProjectPath()+"/goods/delGoods?id=" + gid;
+        $.get(url,function (response){
+            alert(response.message)
+            if(response.success == true){
+                window.location.href = getProjectPath()+"/goods/search";
+            }
+        })
+    }
+}
 ////////////////////////////////////////////////
 ///////////////////////////////////////////////
 /////////////////////////////////////////////////////
@@ -259,8 +323,7 @@ function findUserById(uid) {
         $("#uname").val(response.name);
         $("#pw").val(response.password);
         $("#urole").val(response.role);
-        $("#uemail").val(response.email);/*
-        $("#uhire").val(response.hiredate);*/
+        $("#uemail").val(response.email);
     })
 }
 
@@ -323,16 +386,16 @@ function checkEmail(email) {
         }
     })
 }
-// function saveGoods(){
-//     var url = getProjectPath() + "/goods/addGoods";
-//     console.log(url);
-//     $.post(url,$("#addGoods").serialize(),function (response){
-//         alert(response.message)
-//         if(response.success == true){
-//             window.location.href = getProjectPath() + "/goods/search";
-//         }
-//     })
-// }
+function saveGoods(){
+    var url = getProjectPath() + "/goods/addGoods";
+    console.log(url);
+    $.post(url,$("#addGoods").serialize(),function (response){
+        alert(response.message)
+        if(response.success == true){
+            window.location.href = getProjectPath() + "/goods/search";
+        }
+    })
+}
 function saveUser() {
     var url = getProjectPath() + "/user/addUser";
     console.log(url);
@@ -345,7 +408,8 @@ function saveUser() {
 }
 
 function delUser(uid) {
-    var r = confirm("是否删除id为：" + uid + "的用户?");
+    // var r = confirm("是否删除名为" + uname + "的用户?");
+    var r = confirm("是否id名为" + uid + "的用户?");
     if (r) {
         var url = getProjectPath() + "/user/delUser?id=" + uid;
         $.get(url, function (response) {
@@ -438,9 +502,9 @@ function changePage(pageNo, pageSize) {
     document.write("<input type=hidden name='pageSize' value=" + pageargs.pagesize + " >");
     //如果跳转的是图书信息查询的相关链接，提交图书查询栏中的参数
     if (pageargs.gourl.indexOf("book") >= 0) {
+        document.write("<input type=hidden name='id' value=" + bookVO.id + " >");
         document.write("<input type=hidden name='name' value=" + bookVO.name + " >");
-        document.write("<input type=hidden name='author' value=" + bookVO.author + " >");
-        document.write("<input type=hidden name='press' value=" + bookVO.press + " >");
+        document.write("<input type=hidden name='no' value=" + bookVO.no + " >");
     }
     //如果跳转的是图书记录查询的相关链接，提交图书记录查询栏中的参数
     if (pageargs.gourl.indexOf("user") >= 0) {

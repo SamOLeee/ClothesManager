@@ -28,13 +28,12 @@
             <div class="form-group form-inline">
                 <div class="btn-group">
                     <c:if test="${USER.role =='admin'}">
-                    <button type="button" class="btn btn-default" title="新建" data-toggle="modal"
-                            data-target="#addModal" onclick="resetUserFrom()"><i class="fa fa-file-o"></i> 新增
-                    </button>
+                        <button type="button" class="btn btn-default" title="新建" data-toggle="modal"
+                                data-target="#addModal" onclick="resetUserFrom()"><i class="fa fa-file-o"></i> 新增
+                        </button>
                     </c:if>
                     <c:if test="${USER.role =='common'}">
-                        <button  type="button" class="btn btn-default" onclick="commonUser()"><i class="fa fa-file-o"></i>
-                            新增
+                        <button type="button" class="btn btn-default" onclick="commonUser()"><i class="fa fa-file-o"></i> 新增
                         </button>
                     </c:if>
                 </div>
@@ -76,24 +75,15 @@
                 <c:if test="${user.delete == 1}">已禁用 </c:if>
                 <c:if test="${user.delete == 0}">正常</c:if>
             </td>
-            <%--                <td>${user.hiredate}</td>--%>
-            <%--                <td>--%>
-            <%--                    <c:if test="${user.status == 0}">--%>
-            <%--                        在职--%>
-            <%--                    </c:if>--%>
-            <%--                    <c:if test="${user.status == 1}">--%>
-            <%--                        已离职--%>
-            <%--                    </c:if>--%>
 
-            <%--                </td>--%>
             <td class="text-center">
                 <c:if test="${user.delete == 0 }">
                     <c:if test="${ USER.role =='admin'}">
                         <button type="button" class="btn bg-olive btn-xs" data-toggle="modal" data-target="#editModal"
-                                onclick="findUserById(${user.id})">修改
-                        </button>
+                                onclick="findUserById(${user.id})">修改</button>
                         &nbsp&nbsp&nbsp&nbsp
-                        <button type="button" class="btn bg-olive btn-xs" onclick="delUser(${user.id})">删除</button>
+                        <button type="button" class="btn bg-olive btn-xs"
+                                onclick="delUser(${user.id})">删除</button>
                     </c:if>
                     <c:if test="${ USER.role =='common'}">
                         <button type="button" class="btn bg-olive btn-xs" onclick="commonUser()">修改</button>
@@ -155,8 +145,8 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-success" data-dismiss="modal" <%--aria-hidden="true"--%> id="savemsg" disabled="true"
-                        onclick="saveUser()">保存
+                <button class="btn btn-success" data-dismiss="modal" <%--aria-hidden="true"--%> id="savemsg"
+                        disabled="true" onclick="saveUser()">保存
                 </button>
                 <button class="btn btn-default" data-dismiss="modal" aria-hidden="true">关闭</button>
             </div>
