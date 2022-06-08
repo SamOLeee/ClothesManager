@@ -28,6 +28,6 @@
                 goodsIn_delete = #{delete}
             </if>
         </trim>
-        where gid = #{gid}
+        where gid = #{id}
     </update>
 </mapper>

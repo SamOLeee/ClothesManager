@@ -351,7 +351,7 @@ function findGoodsInById(gid) {
     console.log(url);
     $.get(url,function (response){
         console.log(response);
-        $("#upgiid").val(response.gid);
+        $("#upgiid").val(response.id);
         $("#upgino").val(response.no);
         $("#upgitime").val(response.datetime);
         $("#upgilibrary").val(response.library);
@@ -361,10 +361,10 @@ function findGoodsInById(gid) {
     })
 }
 
+
 function updateGoodsIn(){
     var url=getProjectPath()+"/goodsIn/updateGoodsIn";
-    console.log(url);
-    $.post(url,$("updateGoodsIn").serialize(),function (response){
+    $.post(url,$("#updateGoodsIn").serialize(),function (response){
         alert(response.message)
         if(response.success == true){
             window.location.href = getProjectPath()+"/goodsIn/search";
@@ -464,7 +464,7 @@ function findGoodsOutById(gid) {
 function updateGoodsOut(){
     var url=getProjectPath()+"/goodsOut/updateGoodsOut";
     console.log(url);
-    $.post(url,$("updateGoodsOut").serialize(),function (response){
+    $.post(url,$("#updateGoodsOut").serialize(),function (response){
         alert(response.message)
         if(response.success == true){
             window.location.href = getProjectPath()+"/goodsOut/search";

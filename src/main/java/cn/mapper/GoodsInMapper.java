@@ -9,11 +9,11 @@ public interface GoodsInMapper {
     @Select({"<script>" +
             "select * from goodsIn " +
             "where 1=1 " +
-            "<if test=\"gid != null\"> AND  gid  like  CONCAT('%',#{gid},'%')</if>" +
+            "<if test=\"id != null\"> AND  gid  like  CONCAT('%',#{id},'%')</if>" +
             "</script>"
     })
     @Results(id ="GoodsInMap" ,value={
-            @Result(id = true,column = "gid",property = "gid"),
+            @Result(id = true,column = "gid",property = "id"),
             @Result(column = "goodsIn_no",property = "no"),
             @Result(column = "goodsIn_library",property = "library"),
             @Result(column = "goodsIn_datetime",property = "datetime"),
@@ -25,10 +25,12 @@ public interface GoodsInMapper {
 
 
     @ResultMap("GoodsInMap")
-    @Select("select * from goodsIn where gid=#{gid}")
+    @Select("select * from goodsIn where gid=#{id}")
     GoodsIn findGoodsInById(Integer id);
 
     void addGoodsIn(GoodsIn goodsin);
+
+
     void updateGoodsIn(GoodsIn goodsin);
 
     void delGoodsIn(GoodsIn goodsin);

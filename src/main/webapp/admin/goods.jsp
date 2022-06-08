@@ -170,8 +170,6 @@
                             <td>
                                 <input class="form-control" placeholder="货物数量" name="amount" id="egamount" value="0">
                             </td>
-                            <%--                            <td>书籍价格<br/></td>--%>
-                            <%--                            <td><input class="form-control" placeholder="书籍价格" name="price" id="ebprice"></td>--%>
                         </tr>
                         <tr>
                             <td colspan="2"><span style="color: red" id="addGoodsmsg"></span></td>
