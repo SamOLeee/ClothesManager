@@ -2,7 +2,7 @@ package cn.domain;
 
 public class GoodsDetail {
     private Integer id;
-    private Integer gid;
+    private Integer gioid;
     private String name;
     private String no;
     private String color;
@@ -10,12 +10,15 @@ public class GoodsDetail {
     private Integer amount;
     private Integer type;
     private Integer delete;
+    private Integer ggid;
+
+    private GoodsIn goodsIn;
 
     @Override
     public String toString() {
         return "GoodsDetail{" +
                 "id=" + id +
-                ", gid=" + gid +
+                ", gioid=" + gioid +
                 ", name='" + name + '\'' +
                 ", no='" + no + '\'' +
                 ", color='" + color + '\'' +
@@ -23,7 +26,17 @@ public class GoodsDetail {
                 ", amount=" + amount +
                 ", type=" + type +
                 ", delete=" + delete +
+                ", ggid=" + ggid +
+                ", goodsIn=" + goodsIn +
                 '}';
+    }
+
+    public GoodsIn getGoodsIn() {
+        return goodsIn;
+    }
+
+    public void setGoodsIn(GoodsIn goodsIn) {
+        this.goodsIn = goodsIn;
     }
 
     public Integer getId() {
@@ -34,12 +47,12 @@ public class GoodsDetail {
         this.id = id;
     }
 
-    public Integer getGid() {
-        return gid;
+    public Integer getGioid() {
+        return gioid;
     }
 
-    public void setGid(Integer gid) {
-        this.gid = gid;
+    public void setGioid(Integer gioid) {
+        this.gioid = gioid;
     }
 
     public String getName() {
@@ -97,4 +110,12 @@ public class GoodsDetail {
     public void setDelete(Integer delete) {
         this.delete = delete;
     }
+    public Integer getGgid() {
+        return ggid;
+    }
+
+    public void setGgid(Integer ggid) {
+        this.ggid = ggid;
+    }
+
 }

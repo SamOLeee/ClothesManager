@@ -4,6 +4,8 @@ import cn.domain.GoodsIn;
 import com.github.pagehelper.Page;
 import org.apache.ibatis.annotations.*;
 
+import java.util.List;
+
 @Mapper
 public interface GoodsInMapper {
     @Select({"<script>" +
@@ -23,6 +25,8 @@ public interface GoodsInMapper {
     })
     Page<GoodsIn> searchGoodsIn(GoodsIn goodsin);
 
+//    @Select("select * from goodsin where gid = #{id}")
+//    List<GoodsIn> selectGoodsInById(Integer gid);
 
     @ResultMap("GoodsInMap")
     @Select("select * from goodsIn where gid=#{id}")

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.mapper.GoodsDetailMapper">
+    <!--新增goodsDetail-->
+    <insert id="addGoodsDetail" parameterType="cn.domain.GoodsDetail">
+        insert into goodsDetail(gid, detail_name, detail_no, detail_color, detail_size, detail_amount, detail_type)
+        values (#{gioid}, #{name}, #{no}, #{color}, #{size}, #{amount}, #{type})
+    </insert>
+    <!--修改goodsDetail信息-->
+    <update id="updateGoodsDetail" parameterType="cn.domain.GoodsDetail">
+        update goodsgoodsDetail
+        <trim prefix="set" suffixOverrides=",">
+            <if test="gioid != null">
+                gid = #{gioid},
+            </if>
+            <if test="name != null">
+                detail_name = #{name},
+            </if>
+            <if test="no != null">
+                detail_no = #{no},
+            </if>
+            <if test="color != null">
+                detail_color = #{color},
+            </if>
+            <if test="size != null">
+                detail_size = #{size},
+            </if>
+            <if test="amount != null">
+                detail_amount = #{amount},
+            </if>
+            <if test="delete != null">
+                detail_delete = #{delete}
+            </if>
+            <if test="type ! =null">
+                detail_type = #{type}
+            </if>
+        </trim>
+        where detail_id = #{id}
+    </update>
+</mapper>

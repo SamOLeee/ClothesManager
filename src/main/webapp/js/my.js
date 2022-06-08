@@ -490,7 +490,59 @@ function delGoodsOut(gid) {
 //////////////////////////////////////////
 ///////////////////////////////////////////
 /////////////////////////////////////////////////
+// function findGoodsInById(gid) {
+//     var url = getProjectPath() + "/goodsIn/findGoodsInById?id=" + gid;
+//     console.log(url);
+//     $.get(url,function (response){
+//         console.log(response);
+//         $("#upgiid").val(response.id);
+//         $("#upgino").val(response.no);
+//         $("#upgitime").val(response.datetime);
+//         $("#upgilibrary").val(response.library);
+//         $("#upgioperator").val(response.operator);
+//         $("#ugsource").val(response.source);
+//         console.log(response);
+//     })
+// }
 
+
+// function findGoodsInDetailByNo(no){
+//     var url=getProjectPath()+"/goodsDetail/findGoodsInDetailByNo?no=" + no;
+//     console.log(url);
+//     $.get(url,function (response){
+//
+//     })
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+///////////////////////////////////////////
+//////////////////////////////////////////
+///////////////////////////////////////////
+/////////////////////////////////////////////////
 
 
 //重置添加和编辑窗口中输入框的内容

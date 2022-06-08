@@ -69,7 +69,12 @@
             <c:forEach items="${pageResult.rows}" var="goodsIn">
                 <tr>
                     <td>${goodsIn.id}</td>
-                    <td>${goodsIn.no}</td>
+                    <td>
+                        <a href="${pageContext.request.contextPath}/goodsDetail/searchInDetail" target="iframe">
+                            <i class="fa fa-circle-o"></i>${goodsIn.no}
+                        </a>
+                    </td>
+                        <%--                    <td><a href="${pageContext.request.contextPath}/goodsDetail/searchInDetail" target="iframe">${goodsIn.no}</a> </td>--%>
                     <td>${goodsIn.library}</td>
                     <td>${goodsIn.datetime}</td>
                     <td>${goodsIn.operator }</td>
@@ -159,7 +164,8 @@
 </div>
 
 <!-- 编辑入库单 -->
-<div class="modal fade" id="updateGoodsInModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="updateGoodsInModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -179,7 +185,7 @@
                         <tr>
                             <td>入库时间</td>
                             <td><input class="form-control" readonly name="time" id="upgitime"></td>
-<%--                            <input type="date" class="form-control" name="clothes.goodsIn" value="<fmt:formatDate value="upgitime" pattern="yyyy-MM-dd" />">--%>
+                            <%--                            <input type="date" class="form-control" name="clothes.goodsIn" value="<fmt:formatDate value="upgitime" pattern="yyyy-MM-dd" />">--%>
 
                             <td>入库仓库</td>
                             <td><input class="form-control" name="library" id="upgilibrary"></td>
@@ -201,10 +207,6 @@
         </div>
     </div>
 </div>
-
-
-
-
 
 
 </body>

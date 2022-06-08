@@ -69,7 +69,7 @@
             <c:forEach items="${pageResult.rows}" var="goodsOut">
                 <tr>
                     <td>${goodsOut.id}</td>
-                    <td>${goodsOut.no}</td>
+                    <td><a href="*">${goodsOut.no}</a> </td>
                     <td>${goodsOut.library}</td>
                     <td>${goodsOut.datetime}</td>
                     <td>${goodsOut.operator }</td>

@@ -3,7 +3,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>货号管理</title>
+    <title>入库明细管理</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/AdminLTE.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/pagination.css">
@@ -16,7 +16,7 @@
 <body class="hold-transition skin-red sidebar-mini">
 <!-- .box-body -->
 <div class="box-header with-border">
-    <h3 class="box-title">货号管理</h3>
+    <h3 class="box-title">入库明细管理</h3>
 </div>
 <div class="box-body">
     <%--新增按钮：如果当前登录用户是管理员，页面展示新增按钮--%>
@@ -39,10 +39,10 @@
     <!--工具栏 数据搜索 -->
     <div class="box-tools pull-right">
         <div class="has-feedback">
-            <form action="${pageContext.request.contextPath}/goods/search" method="post">
-                货物id：<input name="id" value="${search.id}">&nbsp&nbsp&nbsp&nbsp
-                货物名称：<input name="name" value="${search.name}">&nbsp&nbsp&nbsp&nbsp
-                货号：<input name="no" value="${search.no}">&nbsp&nbsp&nbsp&nbsp
+            <form action="${pageContext.request.contextPath}/goodsDetail/c" method="post">
+                货物id：<input name="id" value="${searchInDetail.id}">&nbsp&nbsp&nbsp&nbsp
+                货物名称：<input name="name" value="${searchInDetail.name}">&nbsp&nbsp&nbsp&nbsp
+                货号：<input name="no" value="${searchInDetail.no}">&nbsp&nbsp&nbsp&nbsp
                 <input class="btn btn-default" type="submit" value="查询">
             </form>
         </div>
@@ -65,27 +65,27 @@
             </tr>
             </thead>
             <tbody>
-            <c:forEach items="${pageResult.rows}" var="goods">
+            <c:forEach items="${pageResult.rows}" var="goodsInDetail">
                 <tr>
-                    <td>${goods.id}</td>
-                    <td>${goods.name}</td>
-                    <td>${goods.no}</td>
-                    <td>${goods.color}</td>
+                    <td>${goodsInDetail.id}</td>
+                    <td>${goodsInDetail.name}</td>
+                    <td>${goodsInDetail.no}</td>
+                    <td>${goodsInDetail.color}</td>
 
-                    <td>${goods.size }</td>
-                    <td>${goods.amount}</td>
+                    <td>${goodsInDetail.size }</td>
+                    <td>${goodsInDetail.amount}</td>
                     <td>
-                        <c:if test="${goods.delete == 0}">正常</c:if>
-                        <c:if test="${goods.delete == 1}">禁用</c:if>
+                        <c:if test="${goodsInDetail.delete == 0}">正常</c:if>
+                        <c:if test="${goodsInDetail.delete == 1}">禁用</c:if>
                     </td>
                     <td class="text-center">
-                        <c:if test="${goods.delete == 0 }">
+                        <c:if test="${goodsInDetail.delete == 0 }">
                             <c:if test="${USER.role =='admin'}">
                                 <button type="button" class="btn bg-olive btn-xs" data-toggle="modal"
-                                        data-target="#updateGoodsModal" onclick="findGoodsById(${goods.id})"> 修改
+                                        data-target="#updateGoodsModal" onclick="findGoodsById(${goodsInDetail.id})"> 修改
                                 </button>
                                 <button type="button" class="btn bg-olive btn-xs" data-toggle="modal"
-                                        data-target="#delGoodsModal" onclick="delGoods(${goods.id})"> 删除
+                                        data-target="#delGoodsModal" onclick="delGoods(${goodsInDetail.id})"> 删除
                                 </button>
                             </c:if>
                             <c:if test="${ USER.role =='common'}">
@@ -198,7 +198,7 @@
             </div>
             <div class="modal-body">
                 <form id="updateGoods">
-<%--                    <span><input type="hidden" id="ubid" name="id"></span>--%>
+                    <%--                    <span><input type="hidden" id="ubid" name="id"></span>--%>
                     <table id="updateGoodsTab" class="table table-bordered table-striped" width="800px">
                         <tr>
                             <td>货物名称</td>
@@ -210,7 +210,7 @@
                             <td>货物货号</td>
                             <td><input class="form-control" readonly name="no" id="ugno"></td>
                             <td>货物数量</td>
-                            <td><input class="form-control" readonly placeholder="货物数量" name="amount" id="ugamount"></td>
+                            <td><input class="form-control" placeholder="货物数量" name="amount" id="ugamount"></td>
                         </tr>
                         <tr>
                             <td>色号</td>
@@ -240,9 +240,9 @@
         /*分页插件页码变化时将跳转到的服务器端的路径*/
         pageargs.gourl = "${gourl}"
     /*保存搜索框中的搜索条件，页码变化时携带之前的搜索条件*/
-    bookVO.id = "${search.id}"
-    bookVO.name = "${search.name}"
-    bookVO.no = "${search.no}"
+    bookVO.id = "${searchInDetail.id}"
+    bookVO.name = "${searchInDetail.name}"
+    bookVO.no = "${searchInDetail.no}"
     /*分页效果*/
     pagination(pageargs);
 </script>
