@@ -451,7 +451,7 @@ function findGoodsOutById(gid) {
     console.log(url);
     $.get(url,function (response){
         console.log(response);
-        $("#upgoid").val(response.gid);
+        $("#upgoid").val(response.id);
         $("#upgono").val(response.no);
         $("#upgotime").val(response.datetime);
         $("#upgolibrary").val(response.library);

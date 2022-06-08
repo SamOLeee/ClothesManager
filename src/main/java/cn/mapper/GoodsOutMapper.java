@@ -10,11 +10,11 @@ public interface GoodsOutMapper {
     @Select({"<script>" +
             "select * from goodsOut " +
             "where 1=1 " +
-            "<if test=\"gid != null\"> AND  gid  like  CONCAT('%',#{gid},'%')</if>" +
+            "<if test=\"id != null\"> AND  gid  like  CONCAT('%',#{id},'%')</if>" +
             "</script>"
     })
     @Results(id ="GoodsOutMap" ,value={
-            @Result(id = true,column = "gid",property = "gid"),
+            @Result(id = true,column = "gid",property = "id"),
             @Result(column = "goodsOut_no",property = "no"),
             @Result(column = "goodsOut_library",property = "library"),
             @Result(column = "goodsOut_datetime",property = "datetime"),
@@ -24,7 +24,7 @@ public interface GoodsOutMapper {
     })
     Page<GoodsOut> searchGoodsOut(GoodsOut goodsout);
 
-    @Select("select * from goodsOut where gid=#{gid}")
+    @Select("select * from goodsOut where gid=#{id}")
     @ResultMap("GoodsOutMap")
     GoodsOut findGoodsOutById(Integer id);
 

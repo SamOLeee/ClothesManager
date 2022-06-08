@@ -6,7 +6,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class GoodsOut implements Serializable {
-    private Integer gid;
+    private Integer id;
     private String no;
     private String library;
 
@@ -18,27 +18,13 @@ public class GoodsOut implements Serializable {
     private Integer delete ;
 
 
-    @Override
-    public String toString() {
-        return "GoodsOut{" +
-                "gid=" + gid +
-                ", no='" + no + '\'' +
-                ", library='" + library + '\'' +
-                ", datetime='" + datetime + '\'' +
-                ", operator='" + operator + '\'' +
-                ", send='" + send + '\'' +
-                ", delete=" + delete +
-                '}';
+    public Integer getId() {
+        return id;
     }
 
-    public Integer getGid() {
-        return gid;
+    public void setId(Integer id) {
+        this.id = id;
     }
-
-    public void setGid(Integer gid) {
-        this.gid = gid;
-    }
-
 
     public String getNo() {
         return no;
@@ -86,5 +72,18 @@ public class GoodsOut implements Serializable {
 
     public void setDelete(Integer delete) {
         this.delete = delete;
+    }
+
+    @Override
+    public String toString() {
+        return "GoodsOut{" +
+                "id=" + id +
+                ", no='" + no + '\'' +
+                ", library='" + library + '\'' +
+                ", datetime=" + datetime +
+                ", operator='" + operator + '\'' +
+                ", send='" + send + '\'' +
+                ", delete=" + delete +
+                '}';
     }
 }

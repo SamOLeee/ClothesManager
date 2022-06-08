@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.mapper.GoodsOutMapper">
     <!--新增goodsOut-->
-    <insert id="addGoodsIn" parameterType="cn.domain.GoodsOut">
+    <insert id="addGoodsOut" parameterType="cn.domain.GoodsOut">
         insert into goodsOut(goodsOut_no,goodsOut_library,goodsOut_datetime,goodsOut_operator,goodsOut_goto) values (#{no},#{library},#{datetime},#{operator},#{send})
     </insert>
     <!--修改goodsOut信息-->
@@ -28,6 +28,6 @@
                 goodsOut_delete = #{delete}
             </if>
         </trim>
-        where gid = #{gid}
+        where gid = #{id}
     </update>
 </mapper>

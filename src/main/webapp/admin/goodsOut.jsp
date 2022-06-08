@@ -42,7 +42,7 @@
     <div class="box-tools pull-right">
         <div class="has-feedback">
             <form action="${pageContext.request.contextPath}/goodsIn/search" method="post">
-                出库id：<input name="id" value="${search.gid}">&nbsp&nbsp&nbsp&nbsp
+                出库id：<input name="id" value="${search.id}">&nbsp&nbsp&nbsp&nbsp
                 单据凭证：<input name="no" value="${search.no}">&nbsp&nbsp&nbsp&nbsp
                 <input class="btn btn-default" type="submit" value="查询">
             </form>
@@ -68,7 +68,7 @@
             <tbody>
             <c:forEach items="${pageResult.rows}" var="goodsOut">
                 <tr>
-                    <td>${goodsOut.gid}</td>
+                    <td>${goodsOut.id}</td>
                     <td>${goodsOut.no}</td>
                     <td>${goodsOut.library}</td>
                     <td>${goodsOut.datetime}</td>
@@ -82,10 +82,10 @@
                         <c:if test="${goodsOut.delete == 0 }">
                             <c:if test="${USER.role =='admin'}">
                                 <button type="button" class="btn bg-olive btn-xs" data-toggle="modal"
-                                        data-target="#updateGoodsOutModal" onclick="findGoodsOutById(${goodsOut.gid})"> 修改
+                                        data-target="#updateGoodsOutModal" onclick="findGoodsOutById(${goodsOut.id})"> 修改
                                 </button>
                                 <button type="button" class="btn bg-olive btn-xs" data-toggle="modal"
-                                        data-target="#delGoodsOutModal" onclick="delGoodsOut(${goodsOut.gid})"> 删除
+                                        data-target="#delGoodsOutModal" onclick="delGoodsOut(${goodsOut.id})"> 删除
                                 </button>
                             </c:if>
                             <c:if test="${ USER.role =='common'}">
@@ -216,7 +216,7 @@
         /*分页插件页码变化时将跳转到的服务器端的路径*/
         pageargs.gourl = "${gourl}"
     /*保存搜索框中的搜索条件，页码变化时携带之前的搜索条件*/
-    goodsOutVO.id = "${search.gid}"
+    goodsOutVO.id = "${search.id}"
     goodsOutVO.no = "${search.no}"
     /*分页效果*/
     pagination(pageargs);
