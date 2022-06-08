@@ -1,9 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib prefix="fmt" uri="http://www.springframework.org/tags/form" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt_rt" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
+
 
 <html>
 <head>
@@ -21,7 +18,7 @@
 <body class="hold-transition skin-red sidebar-mini">
 <!-- .box-body -->
 <div class="box-header with-border">
-    <h3 class="box-title">库存管理</h3>
+    <h3 class="box-title">入库管理</h3>
 </div>
 <div class="box-body">
     <%--新增按钮：如果当前登录用户是管理员，页面展示新增按钮--%>
@@ -60,7 +57,7 @@
             <tr>
                 <th class="sorting_asc">入库id</th>
                 <th class="sorting">单据凭证</th>
-                <th class="sorting">所属仓库</th>
+                <th class="sorting">入库仓库</th>
                 <th class="sorting">入库时间</th>
                 <th class="sorting">经办人</th>
                 <th class="sorting">来源</th>
@@ -132,7 +129,7 @@
                             <td>单据编号</td>
                             <td><input class="form-control" placeholder="单据编号" name="no" id="gino"
                                        onblur="checkGoodsInVal()" onfocus="changeGoodsInVal()"></td>
-                            <td>所属仓库</td>
+                            <td>入库仓库</td>
                             <td><input class="form-control" placeholder="所属仓库" name="library" id="gilibrary"
                                        onblur="checkGoodsInVal()" onfocus="changeGoodsInVal()"></td>
                         </tr>
@@ -181,10 +178,10 @@
                         </tr>
                         <tr>
                             <td>入库时间</td>
-<%--                            <td><input class="form-control" readonly name="time" id="upgitime"></td>--%>
-                            <input type="date" class="form-control" name="clothes.goodsIn" value="<fmt:formatDate value="upgitime" pattern="yyyy-MM-dd" />">
+                            <td><input class="form-control" readonly name="time" id="upgitime"></td>
+<%--                            <input type="date" class="form-control" name="clothes.goodsIn" value="<fmt:formatDate value="upgitime" pattern="yyyy-MM-dd" />">--%>
 
-                            <td>所属仓库</td>
+                            <td>入库仓库</td>
                             <td><input class="form-control" name="library" id="upgilibrary"></td>
                         </tr>
                         <tr>

@@ -19,7 +19,7 @@ public interface GoodsOutMapper {
             @Result(column = "goodsOut_library",property = "library"),
             @Result(column = "goodsOut_datetime",property = "datetime"),
             @Result(column = "goodsOut_operator",property = "operator"),
-            @Result(column = "goodsOut_goto",property = "Goto"),
+            @Result(column = "goodsOut_goto",property = "send"),
             @Result(column = "goodsOut_delete",property = "delete")
     })
     Page<GoodsOut> searchGoodsOut(GoodsOut goodsout);

@@ -9,11 +9,15 @@ cn\controller\UserController.class
 cn\service\GoodsInService.class
 cn\service\UserService.class
 cn\mapper\GoodsMapper.class
+cn\mapper\GoodsOutMapper.class
 cn\service\impl\GoodsInServiceImpl.class
+cn\service\impl\GoodsOutServiceImpl.class
 cn\entity\PageResult.class
+cn\service\GoodsOutService.class
 cn\config\JdbcConfig.class
 cn\domain\Goods.class
 cn\mapper\GoodsInMapper.class
+cn\controller\GoodsOutController.class
 cn\service\impl\UserServiceImpl.class
 cn\controller\GoodsController.class
 cn\config\SpringMvcConfig.class

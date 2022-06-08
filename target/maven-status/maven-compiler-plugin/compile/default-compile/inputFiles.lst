@@ -1,3 +1,4 @@
+E:\idea_code_space\ClothesManager\src\main\java\cn\mapper\GoodsOutMapper.java
 E:\idea_code_space\ClothesManager\src\main\java\cn\domain\User.java
 E:\idea_code_space\ClothesManager\src\main\java\cn\service\impl\UserServiceImpl.java
 E:\idea_code_space\ClothesManager\src\main\java\cn\entity\PageResult.java
@@ -6,6 +7,8 @@ E:\idea_code_space\ClothesManager\src\main\java\cn\service\GoodsService.java
 E:\idea_code_space\ClothesManager\src\main\java\cn\controller\GoodsInController.java
 E:\idea_code_space\ClothesManager\src\main\java\cn\config\MyBatisConfig.java
 E:\idea_code_space\ClothesManager\src\main\java\cn\config\ServletContainersInitConfig.java
+E:\idea_code_space\ClothesManager\src\main\java\cn\service\impl\GoodsOutServiceImpl.java
+E:\idea_code_space\ClothesManager\src\main\java\cn\service\GoodsOutService.java
 E:\idea_code_space\ClothesManager\src\main\java\cn\service\impl\GoodsServiceImpl.java
 E:\idea_code_space\ClothesManager\src\main\java\cn\domain\GoodsIn.java
 E:\idea_code_space\ClothesManager\src\main\java\cn\mapper\UserMapper.java
@@ -15,6 +18,7 @@ E:\idea_code_space\ClothesManager\src\main\java\cn\controller\GoodsController.ja
 E:\idea_code_space\ClothesManager\src\main\java\cn\service\impl\GoodsInServiceImpl.java
 E:\idea_code_space\ClothesManager\src\main\java\cn\service\UserService.java
 E:\idea_code_space\ClothesManager\src\main\java\cn\config\SpringConfig.java
+E:\idea_code_space\ClothesManager\src\main\java\cn\controller\GoodsOutController.java
 E:\idea_code_space\ClothesManager\src\main\java\cn\interceptor\ResourcesInterceptor.java
 E:\idea_code_space\ClothesManager\src\main\java\cn\config\JdbcConfig.java
 E:\idea_code_space\ClothesManager\src\main\java\cn\mapper\GoodsMapper.java

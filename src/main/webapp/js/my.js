@@ -392,6 +392,107 @@ function delGoodsIn(gid) {
 /////////////////////////////////////////////////
 
 
+function resetGoodsOutFrom() {
+    $("#saveGoodsOutmsg").attr("disabled", true)
+    $("#addGoodsOutmsg").html("")
+    var $vals = $("#addGoodsOut input");
+    $vals.each(function () {
+        $(this).attr("style", "").val("")
+    });
+}
+
+function changeGoodsOutVal() {
+    $("#addGoodsOutmsg").html("")
+}
+
+function checkGoodsOutVal() {
+    $("#saveGoodsInmsg").attr("disabled", false)
+    $("#addGoodsInmsg").html("")
+    var gono = $("#gono").val();
+    var golibrary = $("#golibrary").val();
+    var gooperator = $("#gooperator").val();
+    var gosend = $("#gosend").val();
+
+    if ($.trim(gono) == '') {
+        $("#saveGoodsOutmsg").attr("disabled", true);
+        $("#addGoodsOutmsg").html("单据凭证不能为空！")
+    } else if ($.trim(golibrary) == '') {
+        $("#saveGoodsOutmsg").attr("disabled", true);
+        $("#addGoodsOutmsg").html("所属仓库不能为空！")
+    } else if ($.trim(gooperator) == '') {
+        $("#saveGoodsOutmsg").attr("disabled", true);
+        $("#addGoodsOutmsg").html("经办人不能为空！")
+    } else if ($.trim(gosend) == '') {
+        $("#saveGoodsOutmsg").attr("disabled", true);
+        $("#addGoodsIOutmsg").html("去向不能为空！")
+    }
+    console.log(gono);
+    console.log(golibrary);
+    console.log(gooperator);
+    console.log(gosend);
+}
+
+function saveGoodsOut() {
+    var url = getProjectPath() + "/goodsOut/addGoodsOut";
+    console.log(url);
+    $.post(url, $("#addGoodsOut").serialize(), function (response) {
+        console.log(response);
+        alert(response.message);
+        if (response.success == true) {
+            window.location.href == getProjectPath() + "/goodsOut/search";
+        }
+    })
+}
+
+
+
+function findGoodsOutById(gid) {
+    var url = getProjectPath() + "/goodsOut/findGoodsOutById?id=" + gid;
+    console.log(url);
+    $.get(url,function (response){
+        console.log(response);
+        $("#upgoid").val(response.gid);
+        $("#upgono").val(response.no);
+        $("#upgotime").val(response.datetime);
+        $("#upgolibrary").val(response.library);
+        $("#upgooperator").val(response.operator);
+        $("#upgosend").val(response.send);
+        console.log(response);
+    })
+}
+
+function updateGoodsOut(){
+    var url=getProjectPath()+"/goodsOut/updateGoodsOut";
+    console.log(url);
+    $.post(url,$("updateGoodsOut").serialize(),function (response){
+        alert(response.message)
+        if(response.success == true){
+            window.location.href = getProjectPath()+"/goodsOut/search";
+        }
+    })
+}
+
+function delGoodsOut(gid) {
+    // var ur =confirm("是否删除名为"+ gname +"货物?");
+    var r = confirm("是否删除id名为" + gid + "出库单?");
+    console.log(r);
+    if (r) {
+        var url = getProjectPath() + "/goodsOut/delGoodsOut?id=" + gid;
+        $.get(url, function (response) {
+            alert(response.message)
+            if (response.success == true) {
+                window.location.href = getProjectPath() + "/goodsOut/search";
+            }
+        })
+    }
+}
+///////////////////////////////////////////
+//////////////////////////////////////////
+///////////////////////////////////////////
+/////////////////////////////////////////////////
+
+
+
 //重置添加和编辑窗口中输入框的内容
 function resetUserFrom() {
     $("#savemsg").attr("disabled", true)
@@ -570,6 +671,10 @@ var bookVO = {
 }
 
 var goodsInVO = {
+    id: '',
+    no: ''
+}
+var goodsOutVO = {
     id: '',
     no: ''
 }

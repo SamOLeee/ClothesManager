@@ -1,6 +1,5 @@
 package cn.mapper;
 
-import cn.domain.Goods;
 import cn.domain.GoodsIn;
 import com.github.pagehelper.Page;
 import org.apache.ibatis.annotations.*;
@@ -24,8 +23,9 @@ public interface GoodsInMapper {
     })
     Page<GoodsIn> searchGoodsIn(GoodsIn goodsin);
 
-    @Select("select * from goodsIn where gid=#{gid}")
+
     @ResultMap("GoodsInMap")
+    @Select("select * from goodsIn where gid=#{gid}")
     GoodsIn findGoodsInById(Integer id);
 
     void addGoodsIn(GoodsIn goodsin);

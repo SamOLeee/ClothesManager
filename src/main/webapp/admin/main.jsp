@@ -36,7 +36,7 @@
                         <a>
                             <img src="${pageContext.request.contextPath}/img/Sauron.jpg" class="user-image"
                                  alt="User Image">
-                            <span class="hidden-xs">${USER.name}</span>
+                            c
                         </a>
                     </li>
                     <li class="dropdown user user-menu">
@@ -90,15 +90,10 @@
                             </a>
                         </li>
                         <li>
-                            <a href="${pageContext.request.contextPath}/book/searchBorrowed" target="iframe">
+                            <a href="${pageContext.request.contextPath}/goodsOut/search" target="iframe">
                                 <i class="fa fa-circle-o"></i>出库管理
                             </a>
                         </li>
-<%--                        <li>--%>
-<%--                            <a href="${pageContext.request.contextPath}/record/searchRecords" target="iframe">--%>
-<%--                                <i class="fa fa-circle-o"></i>借阅记录--%>
-<%--                            </a>--%>
-<%--                        </li>--%>
                     </ul>
                 </li>
             </ul>
