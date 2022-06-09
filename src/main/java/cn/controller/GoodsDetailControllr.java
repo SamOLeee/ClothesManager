@@ -40,6 +40,8 @@ public class GoodsDetailControllr {
         if (pageSize == null) pageSize = 10;
 
         PageResult pageResult = goodsDetailService.searchGoodsInDetail(goodsDetail, pageNum, pageSize);
+
+        System.out.println(goodsDetail);
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("goodsInDetail");
         modelAndView.addObject("pageResult", pageResult);

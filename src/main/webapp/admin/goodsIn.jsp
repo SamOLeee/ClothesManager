@@ -70,7 +70,7 @@
                 <tr>
                     <td>${goodsIn.id}</td>
                     <td>
-                        <a href="${pageContext.request.contextPath}/goodsDetail/searchInDetail" target="iframe">
+                        <a href="${pageContext.request.contextPath}/goodsDetail/searchInDetail?gioid=${goodsIn.id}" target="iframe">
                             <i class="fa fa-circle-o"></i>${goodsIn.no}
                         </a>
                     </td>

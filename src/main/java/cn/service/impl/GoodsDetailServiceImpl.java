@@ -27,7 +27,8 @@ public class GoodsDetailServiceImpl implements GoodsDetailService {
     @Override
     public PageResult searchGoodsInDetail(GoodsDetail goodsDetail, Integer pageNum, Integer pageSize){
         PageHelper.startPage(pageNum,pageSize);
-        Page<GoodsDetail>page=goodsDetailMapper.searchGoodsInDetail(goodsDetail.getGgid());
+        System.out.println("serviccImpl ====="+goodsDetail);
+        Page<GoodsDetail>page=goodsDetailMapper.searchGoodsInDetail(goodsDetail);
         return new PageResult(page.getTotal(),page.getResult());
     }
 

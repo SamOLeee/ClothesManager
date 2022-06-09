@@ -18,6 +18,7 @@
 <div class="box-header with-border">
     <h3 class="box-title">入库明细管理</h3>
 </div>
+
 <div class="box-body">
     <%--新增按钮：如果当前登录用户是管理员，页面展示新增按钮--%>
     <div class="pull-left">
@@ -25,7 +26,7 @@
             <div class="btn-group">
                 <c:if test="${USER.role =='admin'}">
                     <button type="button" class="btn btn-default" title="新建" data-toggle="modal"
-                            data-target="#addGoodsModal" onclick="resetGoodsFrom()"> <i class="fa fa-file-o"></i>新增
+                            data-target="#addGoodsModal" onclick="resetGoodsFrom()"><i class="fa fa-file-o"></i>新增
                     </button>
                 </c:if>
                 <c:if test="${USER.role =='common'}">
@@ -39,7 +40,7 @@
     <!--工具栏 数据搜索 -->
     <div class="box-tools pull-right">
         <div class="has-feedback">
-            <form action="${pageContext.request.contextPath}/goodsDetail/c" method="post">
+            <form action="${pageContext.request.contextPath}/goodsDetail/searchInDetail" method="post">
                 货物id：<input name="id" value="${searchInDetail.id}">&nbsp&nbsp&nbsp&nbsp
                 货物名称：<input name="name" value="${searchInDetail.name}">&nbsp&nbsp&nbsp&nbsp
                 货号：<input name="no" value="${searchInDetail.no}">&nbsp&nbsp&nbsp&nbsp
@@ -47,6 +48,8 @@
             </form>
         </div>
     </div>
+
+
     <!--工具栏 数据搜索 /-->
     <!-- 数据列表 -->
     <div class="table-box">
@@ -55,6 +58,7 @@
             <thead>
             <tr>
                 <th class="sorting_asc">货物id</th>
+<%--                <th class="sorting_asc">外键id</th>--%>
                 <th class="sorting">货物名称</th>
                 <th class="sorting">货物货号</th>
                 <th class="sorting">货物色号</th>
@@ -67,13 +71,14 @@
             <tbody>
             <c:forEach items="${pageResult.rows}" var="goodsInDetail">
                 <tr>
-                    <td>${goodsInDetail.id}</td>
+                    <td>${goodsInDetail.iid}</td>
+<%--                    <td>${goodsInDetail.gioid}</td>--%>
                     <td>${goodsInDetail.name}</td>
                     <td>${goodsInDetail.no}</td>
                     <td>${goodsInDetail.color}</td>
-
                     <td>${goodsInDetail.size }</td>
                     <td>${goodsInDetail.amount}</td>
+
                     <td>
                         <c:if test="${goodsInDetail.delete == 0}">正常</c:if>
                         <c:if test="${goodsInDetail.delete == 1}">禁用</c:if>
@@ -94,7 +99,6 @@
                                 <button type="button" class="btn bg-olive btn-xs" onclick="commonUser()">删除</button>
                             </c:if>
                         </c:if>
-
                     </td>
                 </tr>
             </c:forEach>
@@ -189,7 +193,7 @@
 </div>
 
 <!-- 编辑货物 -->
-<div class="modal fade" id="updateGoodsModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" >
+<div class="modal fade" id="updateGoodsModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">

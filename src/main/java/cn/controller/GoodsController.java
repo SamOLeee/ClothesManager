@@ -26,6 +26,7 @@ public class GoodsController {
         if (pageSize == null) pageSize = 10;
 
         PageResult pageResult = goodsService.searchGoods(goods, pageNum, pageSize);
+        System.out.println(goods);
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("goods");
         modelAndView.addObject("pageResult", pageResult);

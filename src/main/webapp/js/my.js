@@ -627,16 +627,7 @@ function checkEmail(email) {
     })
 }
 
-function saveGoods() {
-    var url = getProjectPath() + "/goods/addGoods";
-    console.log(url);
-    $.post(url, $("#addGoods").serialize(), function (response) {
-        alert(response.message)
-        if (response.success == true) {
-            window.location.href = getProjectPath() + "/goods/search";
-        }
-    })
-}
+
 
 function saveUser() {
     var url = getProjectPath() + "/user/addUser";

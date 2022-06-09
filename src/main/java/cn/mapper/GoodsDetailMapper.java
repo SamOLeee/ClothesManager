@@ -8,10 +8,10 @@ import org.apache.ibatis.annotations.*;
 
 @Mapper
 public interface GoodsDetailMapper {
-    @Select("select * from goodsdetail where gid = #{gioid}")
     @Results(id="GoodsDetailMapper",value={
-            @Result(id = true, column = "detail_id", property = "id"),
-            @Result(column = "gid", property = "gioid"),
+            @Result(id = true,column = "id", property = "iid"),
+            @Result( column = "detail_id", property = "id"),
+            @Result(column = "for_id", property = "gioid"),
             @Result(column = "detail_no", property = "no"),
             @Result(column = "detail_name", property = "name"),
             @Result(column = "detail_color", property = "color"),
@@ -19,14 +19,21 @@ public interface GoodsDetailMapper {
             @Result(column = "detail_amount", property = "amount"),
             @Result(column = "detail_type", property = "type"),
             @Result(column = "detail_delete", property = "delete")
-//            @Result(column = "goodsin.gid",property = "ggid")
     })
-    Page<GoodsDetail> searchGoodsInDetail(Integer gid);
+    //select gd.* from goodsin gi,goodsdetail gd where gd.for_id=gi.gid and gi.gid=gd.for_id and gd.for_id = 2 and gd.detail_type=1
+    @Select({"<script> " +
+            "select gd.* from goodsin gi,goodsdetail gd " +
+            "where gd.for_id=gi.gid "+
+//            "and gi.gid=gd.for_id "+
+            "and gd.for_id = #{gioid} "+
+            "and detail_type = 1 " +
+            "</script>"
+    })
+    Page<GoodsDetail> searchGoodsInDetail(GoodsDetail goodsDetail);
 //    @Select({"<script>" +
 //            "select * from goodsdetail gd,goodsin gi " +
 //            "where 1 = 1 " +
-////            "AND  detail_id = #{id} " +
-//            "AND ' goodsdetail.gid' = #{ggid} " +
+////            "AND  c #{ggid} " +
 //            "AND 'goodsin.gid' = #{gioid} " +
 //            "AND detail_type = 1 " +
 //            "</script>"

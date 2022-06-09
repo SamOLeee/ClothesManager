@@ -12,6 +12,7 @@ public class GoodsDetail {
     private Integer delete;
     private Integer ggid;
 
+    private  Integer iid;
     private GoodsIn goodsIn;
 
     @Override
@@ -29,6 +30,14 @@ public class GoodsDetail {
                 ", ggid=" + ggid +
                 ", goodsIn=" + goodsIn +
                 '}';
+    }
+
+    public Integer getIid() {
+        return iid;
+    }
+
+    public void setIid(Integer iid) {
+        this.iid = iid;
     }
 
     public GoodsIn getGoodsIn() {

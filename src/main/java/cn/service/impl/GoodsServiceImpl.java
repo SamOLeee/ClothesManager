@@ -19,6 +19,7 @@ public class GoodsServiceImpl implements GoodsService {
     @Override
     public PageResult searchGoods(Goods goods,Integer pageNum,Integer pageSize){
         PageHelper.startPage(pageNum,pageSize);
+        System.out.println("serviccImpl ====="+goods);
         Page<Goods>page=goodsMapper.searchGoods(goods);
         return new PageResult(page.getTotal(),page.getResult());
     }
