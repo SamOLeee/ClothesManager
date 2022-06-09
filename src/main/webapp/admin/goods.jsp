@@ -168,7 +168,7 @@
                         <tr>
                             <td>货物数量</td>
                             <td>
-                                <input class="form-control" placeholder="货物数量" name="amount" id="egamount" value="0">
+                                <input class="form-control" readonly name="amount" id="egamount" placeholder="0" value="0">
                             </td>
                         </tr>
                         <tr>

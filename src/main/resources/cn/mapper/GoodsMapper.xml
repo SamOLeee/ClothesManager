@@ -3,7 +3,7 @@
 <mapper namespace="cn.mapper.GoodsMapper">
     <!--新增goods-->
     <insert id="addGoods" parameterType="cn.domain.Goods">
-        insert into goods(goods_name,goods_no,goods_color,goods_size,goods_amount) values (#{name},#{no},#{color},#{size},#{amount})
+        insert into goods(goods_name,goods_no,goods_color,goods_size) values (#{name},#{no},#{color},#{size})
     </insert>
     <!--修改goods信息-->
     <update id="updateGoods" parameterType="cn.domain.Goods">
