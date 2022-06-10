@@ -33,7 +33,7 @@ public interface GoodsDetailMapper {
     Page<GoodsDetail> searchGoodsInDetail(GoodsDetail goodsDetail);
 
 
-    void addGoodsInDetail(GoodsDetail goodsDetail);
+    void addGoodsDetail(GoodsDetail goodsDetail);
 
     @ResultMap("GoodsDetailMapper")
     @Select("select * from goodsdetail where detail_no = #{no}")

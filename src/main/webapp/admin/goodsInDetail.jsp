@@ -59,7 +59,7 @@
             <thead>
             <tr>
                 <th class="sorting_asc">货物id</th>
-                <%--                <th class="sorting_asc">外键id</th>--%>
+                <th class="sorting_asc">外键id</th>
                 <th class="sorting">货物名称</th>
                 <th class="sorting">货物货号</th>
                 <th class="sorting">货物色号</th>
@@ -67,13 +67,14 @@
                 <th class="sorting">货物数量</th>
                 <th class="sorting">货物状态</th>
                 <th class="sorting">操作</th>
+<%--                <th>${searchInDetail.gioid}</th>--%>
             </tr>
             </thead>
             <tbody>
             <c:forEach items="${pageResult.rows}" var="goodsInDetail">
                 <tr>
                     <td>${goodsInDetail.iid}</td>
-                        <%--                    <td>${goodsInDetail.gioid}</td>--%>
+                    <td>${goodsInDetail.gioid}</td>
                     <td>${goodsInDetail.name}</td>
                     <td>${goodsInDetail.no}</td>
                     <td>${goodsInDetail.color}</td>
@@ -141,13 +142,13 @@
                             </td>
 
                         </tr>
-                        <tr>
-                            <td>货物数量</td>
-                            <td>
-                                <input class="form-control" placeholder="货物数量" name="amount" id="gidamount" value="0"
-                                       onblur="checkGoodsVal()" onfocus="changeGoodsVal()">
-                            </td>
-                        </tr>
+<%--                        <tr>--%>
+<%--                            <td>货物数量</td>--%>
+<%--                            <td>--%>
+<%--                                <input class="form-control" placeholder="货物数量" name="amount" id="gidamount" value="0"--%>
+<%--                                       onblur="checkGoodsVal()" onfocus="changeGoodsVal()">--%>
+<%--                            </td>--%>
+<%--                        </tr>--%>
                         <tr>
                             <td colspan="2"><span style="color: red" id="addGoodsInDetailmsg"></span></td>
                         </tr>
@@ -155,9 +156,66 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-success" data-dismiss="modal" <%--aria-hidden="true"--%> id="saveGoodsInDetailmsg"
+<%--                <button type="button" class="btn bg-olive btn-xs" data-toggle="modal"--%>
+<%--                        data-target="#updateGoodsModal" onclick="findGoodsById(${goods.id})"> 修改--%>
+<%--                </button>--%>
+                <button class="btn btn-success" data-toggle="modal" data-target="#enAddGoodsInDetailModal" id="saveGoodsInDetailmsg"
                         disabled="true"
-                        onclick="saveGoodsInDetail()">保存
+                        onclick="saveGoodsInDetail(${searchInDetail.gioid})">确定
+                </button>
+                <button class="btn btn-default" data-dismiss="modal" aria-hidden="true">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 确认货物 -->
+<div class="modal fade" id="enAddGoodsInDetailModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h3 id="myModalLabel2">确认入库明细信息</h3>
+            </div>
+            <div class="modal-body">
+                <form id="enAddGoodsInDetail">
+                    <span><input type="hidden" id="enbid" name="id"></span>
+                    <table id="enAddGoodsInDetailTab" class="table table-bordered table-striped" width="800px">
+                        <tr>
+                            <td>所属入库id</td>
+                            <td><input class="form-control" readonly name="gioid" id="engioid"></td>
+                            <td>货物名称</td>
+                            <td><input class="form-control" readonly name="name" id="engidname"></td>
+                        </tr>
+                        <tr>
+                            <td>货物货号</td>
+                            <td><input class="form-control" readonly name="no" id="engidno"></td>
+                            <td>货物数量</td>
+                            <td><input class="form-control" name="amount" id="engidamount"
+                                       onblur="checkGoodsInDetailVal2()" onfocus="changeGoodsInDetail2()"></td>
+                        </tr>
+                        <tr>
+                            <td>色号</td>
+                            <td><input class="form-control" readonly id="engidcolor" name="color"></td>
+                            <td>尺码</td>
+                            <td><input class="form-control" readonly id="engidsize" name="size"></td>
+                        </tr>
+                        <tr>
+                            <td>类型</td>
+                            <td><input class="form-control" readonly id="engidtype" name="type"></td>
+<%--                        <tr>--%>
+                            <td colspan="2"><span style="color: red" id="enaddGoodsInDetailmsg"></span></td>
+<%--                        </tr>--%>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+            <div class="modal-footer">
+
+                <button class="btn btn-success" data-dismiss="modal" <%--aria-hidden="true"--%> id="ensaveGoodsInDetailmsg"
+                        disabled="true"
+                        onclick="enSaveGoodsInDetail(${searchInDetail.gioid})">保存
                 </button>
                 <button class="btn btn-default" data-dismiss="modal" aria-hidden="true">关闭</button>
             </div>

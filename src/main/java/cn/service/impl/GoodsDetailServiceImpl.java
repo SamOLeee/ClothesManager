@@ -37,7 +37,7 @@ public class GoodsDetailServiceImpl implements GoodsDetailService {
         return goodsDetailMapper.findGoodsInDetailByNo(no);
     }
 
-    public void addGoodsInDetail(GoodsDetail goodsDetail){
-        goodsDetailMapper.addGoodsInDetail(goodsDetail);
+    public void addGoodsDetail(GoodsDetail goodsDetail){
+        goodsDetailMapper.addGoodsDetail(goodsDetail);
     }
 }

@@ -8,6 +8,6 @@ import java.util.List;
 
 public interface GoodsDetailService {
     PageResult searchGoodsInDetail(GoodsDetail goodsDetail, Integer pageNum, Integer pageSize);
-    void addGoodsInDetail(GoodsDetail goodsDetail);
+    void addGoodsDetail(GoodsDetail goodsDetail);
     GoodsDetail findGoodsInDetailByNo(String no);
 }

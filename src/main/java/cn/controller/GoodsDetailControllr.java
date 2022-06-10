@@ -22,6 +22,8 @@ public class GoodsDetailControllr {
     @Autowired
     private GoodsDetailService goodsDetailService;
 
+    @Autowired
+    private GoodsService goodsService;
 
 
     @ResponseBody
@@ -46,6 +48,7 @@ public class GoodsDetailControllr {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("goodsInDetail");
         modelAndView.addObject("pageResult", pageResult);
+//        modelAndView.addObject("pageId", pageResult);
         modelAndView.addObject("searchInDetail", goodsDetail);
 
         System.out.println(goodsDetail.getName());
@@ -56,9 +59,10 @@ public class GoodsDetailControllr {
         modelAndView.addObject("gourl", "/goodsDetail/searchInDetail");
         return modelAndView;
     }
+    @ResponseBody
     @RequestMapping("/addGoodsInDetail")
-    public Result addGoodsInDetail(GoodsDetail goodsDetail,Integer id) {
-        goodsDetailService.addGoodsInDetail(goodsDetail);
+    public Result addGoodsDetail(GoodsDetail goodsDetail) {
+        goodsDetailService.addGoodsDetail(goodsDetail);
         return new Result(true, "新增成功");
     }
 }

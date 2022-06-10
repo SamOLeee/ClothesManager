@@ -3,12 +3,12 @@
 <mapper namespace="cn.mapper.GoodsDetailMapper">
     <!--新增goodsDetail-->
     <insert id="addGoodsDetail" parameterType="cn.domain.GoodsDetail">
-        insert into goodsDetail(for_id, detail_name, detail_no, detail_color, detail_size, detail_amount, detail_type,id)
-        values (#{gioid}, #{name}, #{no}, #{color}, #{size}, #{amount}, #{type},#{iid})
+        insert into goodsDetail(for_id, detail_name, detail_no, detail_color, detail_size, detail_amount, detail_type)
+        values (#{gioid}, #{name}, #{no}, #{color}, #{size}, #{amount}, #{type})
     </insert>
     <!--修改goodsDetail信息-->
     <update id="updateGoodsDetail" parameterType="cn.domain.GoodsDetail">
-        update goodsgoodsDetail
+        update goodsDetail
         <trim prefix="set" suffixOverrides=",">
             <if test="gioid != null">
                 for_id = #{gioid},
@@ -29,15 +29,13 @@
                 detail_amount = #{amount},
             </if>
             <if test="delete != null">
-                detail_delete = #{delete}
+                detail_delete = #{delete},
             </if>
             <if test="type ! =null">
-                detail_type = #{type}
+                detail_type = #{type},
             </if>
-            <if test="iid != null">
-                id = #{iid},
-            </if>
+
         </trim>
-        where detail_id = #{id}
+        where id = #{iid}
     </update>
 </mapper>

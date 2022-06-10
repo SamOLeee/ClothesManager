@@ -242,7 +242,7 @@ function saveGoods() {
     console.log(url);
     $.post(url, $("#addGoods").serialize(), function (response) {
         console.log(response);
-        alert(response.message)
+        alert(response.message);
         if (response.success == true) {
             window.location.href = getProjectPath() + "/goods/search";
         }
@@ -345,11 +345,10 @@ function saveGoodsIn() {
 }
 
 
-
 function findGoodsInById(gid) {
     var url = getProjectPath() + "/goodsIn/findGoodsInById?id=" + gid;
     console.log(url);
-    $.get(url,function (response){
+    $.get(url, function (response) {
         console.log(response);
         $("#upgiid").val(response.id);
         $("#upgino").val(response.no);
@@ -362,12 +361,12 @@ function findGoodsInById(gid) {
 }
 
 
-function updateGoodsIn(){
-    var url=getProjectPath()+"/goodsIn/updateGoodsIn";
-    $.post(url,$("#updateGoodsIn").serialize(),function (response){
+function updateGoodsIn() {
+    var url = getProjectPath() + "/goodsIn/updateGoodsIn";
+    $.post(url, $("#updateGoodsIn").serialize(), function (response) {
         alert(response.message)
-        if(response.success == true){
-            window.location.href = getProjectPath()+"/goodsIn/search";
+        if (response.success == true) {
+            window.location.href = getProjectPath() + "/goodsIn/search";
         }
     })
 }
@@ -386,6 +385,7 @@ function delGoodsIn(gid) {
         })
     }
 }
+
 ///////////////////////////////////////////
 //////////////////////////////////////////
 ///////////////////////////////////////////
@@ -445,11 +445,10 @@ function saveGoodsOut() {
 }
 
 
-
 function findGoodsOutById(gid) {
     var url = getProjectPath() + "/goodsOut/findGoodsOutById?id=" + gid;
     console.log(url);
-    $.get(url,function (response){
+    $.get(url, function (response) {
         console.log(response);
         $("#upgoid").val(response.id);
         $("#upgono").val(response.no);
@@ -461,13 +460,13 @@ function findGoodsOutById(gid) {
     })
 }
 
-function updateGoodsOut(){
-    var url=getProjectPath()+"/goodsOut/updateGoodsOut";
+function updateGoodsOut() {
+    var url = getProjectPath() + "/goodsOut/updateGoodsOut";
     console.log(url);
-    $.post(url,$("#updateGoodsOut").serialize(),function (response){
+    $.post(url, $("#updateGoodsOut").serialize(), function (response) {
         alert(response.message)
-        if(response.success == true){
-            window.location.href = getProjectPath()+"/goodsOut/search";
+        if (response.success == true) {
+            window.location.href = getProjectPath() + "/goodsOut/search";
         }
     })
 }
@@ -486,6 +485,7 @@ function delGoodsOut(gid) {
         })
     }
 }
+
 ///////////////////////////////////////////
 //////////////////////////////////////////
 ///////////////////////////////////////////
@@ -499,6 +499,7 @@ function resetGoodsInDetailFrom() {
     });
 }
 
+
 function changeGoodsInDetail() {
     $("#addGoodsInDetailmsg").html("")
 }
@@ -507,15 +508,49 @@ function checkGoodsInDetailVal() {
     $("#saveGoodsInDetailmsg").attr("disabled", false)
     $("#addGoodsInDetailmsg").html("")
     var gidname = $("#gidname").val();
-    var gidamount = $("#gidamount").val();
+    // var gidamount = $("#gidamount").val();
     console.log(gidname);
     if (gidname == null) {
         $("#saveGoodsInDetailmsg").attr("disabled", true);
         $("#addGoodsInDetailmsg").html("请选择商品！")
-    } else if ($.trim(gidamount) == '') {
+    } /*else if ($.trim(gidamount) == '') {
         $("#saveGoodsInDetailmsg").attr("disabled", true);
         $("#addGoodsInDetailmsg").html("数量不能为空！")
+    }*/
+}
+function changeGoodsInDetail2() {
+    $("#enaddGoodsInDetailmsg").html("")
+}
+function checkGoodsInDetailVal2() {
+    $("#ensaveGoodsInDetailmsg").attr("disabled", false)
+    $("#enaddGoodsInDetailmsg").html("")
+    // var gidname = $("#gidname").val();
+    var engidamount = $("#engidamount").val();
+    console.log(gidname);
+   /* if (gidname == null) {
+        $("#saveGoodsInDetailmsg").attr("disabled", true);
+        $("#addGoodsInDetailmsg").html("请选择商品！")
+    } else */if ($.trim(engidamount) == '') {
+        $("#ensaveGoodsInDetailmsg").attr("disabled", true);
+        $("#enaddGoodsInDetailmsg").html("数量不能为空！")
     }
+}
+function saveGoodsInDetail(pageId) {
+    var select = document.getElementById("gidname");
+    var value = select.value;
+    var url = getProjectPath() + "/goods/findGoodsById?id=" + value;
+    console.log(url);
+    console.log(pageId);
+    $.get(url, function (response) {
+        console.log(response);
+        $("#engioid").val(pageId);
+        $("#engidname").val(response.name);
+        $("#engidno").val(response.no);
+        $("#engidamount").val();
+        $("#engidcolor").val(response.color);
+        $("#engidsize").val(response.size);
+        $("#engidtype").val(1);
+    })
 }
 
 // function saveGoods() {
@@ -530,42 +565,17 @@ function checkGoodsInDetailVal() {
 //     })
 // }
 
-
-function saveGoodsInDetail(){
-    var select=document.getElementById("gidname");
-    var value = select.value;
-    // var options = select.options;
-    console.log(select);
-    console.log(value);
-    // console.log(options);
-    var url = getProjectPath() + "/goodsInDetail/addGoodsInDetail?id=" + value;
-
-
+function enSaveGoodsInDetail(pageId) {
+    var url = getProjectPath() + "/goodsDetail/addGoodsInDetail";
+    console.log(url);
+    $.post(url, $("#enAddGoodsInDetail").serialize(), function (response) {
+        console.log(response);
+        alert(response.message);
+        if (response.success == true) {
+            window.location.href = getProjectPath() + "/goodsDetail/searchInDetail?gioid=" + pageId;
+        }
+    })
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 ///////////////////////////////////////////
@@ -655,7 +665,6 @@ function checkEmail(email) {
         }
     })
 }
-
 
 
 function saveUser() {
