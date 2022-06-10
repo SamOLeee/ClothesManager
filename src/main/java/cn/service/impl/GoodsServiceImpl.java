@@ -10,6 +10,8 @@ import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class GoodsServiceImpl implements GoodsService {
 
@@ -19,7 +21,7 @@ public class GoodsServiceImpl implements GoodsService {
     @Override
     public PageResult searchGoods(Goods goods,Integer pageNum,Integer pageSize){
         PageHelper.startPage(pageNum,pageSize);
-        System.out.println("serviccImpl ====="+goods);
+//        System.out.println("serviccImpl ====="+goods);
         Page<Goods>page=goodsMapper.searchGoods(goods);
         return new PageResult(page.getTotal(),page.getResult());
     }
@@ -27,6 +29,8 @@ public class GoodsServiceImpl implements GoodsService {
     public Goods findGoodsById(Integer id) {
         return goodsMapper.findGoodsById(id);
     }
+
+    public List<Goods> getAllGoodsIn(){return goodsMapper.getAllGoodsIn();}
 
     public void addGoods(Goods goods){
         goodsMapper.addGoods(goods);

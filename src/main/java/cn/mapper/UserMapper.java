@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.*;
 
 @Mapper
 public interface UserMapper {
-    @Select("select * from user where user_email=#{email} AND user_password=#{password}")
+    @Select("select * from user where user_email=#{email} AND user_password=#{password} and user_delete = 0")
     @Results(id ="userMap" ,value={
             @Result(id = true,column = "user_id",property = "id"),
             @Result(column = "user_name",property = "name"),

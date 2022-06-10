@@ -490,29 +490,58 @@ function delGoodsOut(gid) {
 //////////////////////////////////////////
 ///////////////////////////////////////////
 /////////////////////////////////////////////////
-// function findGoodsInById(gid) {
-//     var url = getProjectPath() + "/goodsIn/findGoodsInById?id=" + gid;
+function resetGoodsInDetailFrom() {
+    $("#saveGoodsmsg").attr("disabled", true)
+    $("#addGoodsmsg").html("")
+    var $vals = $("#addGoodsInDetail input");
+    $vals.each(function () {
+        $(this).attr("style", "").val("")
+    });
+}
+
+function changeGoodsInDetail() {
+    $("#addGoodsInDetailmsg").html("")
+}
+
+function checkGoodsInDetailVal() {
+    $("#saveGoodsInDetailmsg").attr("disabled", false)
+    $("#addGoodsInDetailmsg").html("")
+    var gidname = $("#gidname").val();
+    var gidamount = $("#gidamount").val();
+    console.log(gidname);
+    if (gidname == null) {
+        $("#saveGoodsInDetailmsg").attr("disabled", true);
+        $("#addGoodsInDetailmsg").html("请选择商品！")
+    } else if ($.trim(gidamount) == '') {
+        $("#saveGoodsInDetailmsg").attr("disabled", true);
+        $("#addGoodsInDetailmsg").html("数量不能为空！")
+    }
+}
+
+// function saveGoods() {
+//     var url = getProjectPath() + "/goods/addGoods";
 //     console.log(url);
-//     $.get(url,function (response){
+//     $.post(url, $("#addGoods").serialize(), function (response) {
 //         console.log(response);
-//         $("#upgiid").val(response.id);
-//         $("#upgino").val(response.no);
-//         $("#upgitime").val(response.datetime);
-//         $("#upgilibrary").val(response.library);
-//         $("#upgioperator").val(response.operator);
-//         $("#ugsource").val(response.source);
-//         console.log(response);
+//         alert(response.message)
+//         if (response.success == true) {
+//             window.location.href = getProjectPath() + "/goods/search";
+//         }
 //     })
 // }
 
 
-// function findGoodsInDetailByNo(no){
-//     var url=getProjectPath()+"/goodsDetail/findGoodsInDetailByNo?no=" + no;
-//     console.log(url);
-//     $.get(url,function (response){
-//
-//     })
-// }
+function saveGoodsInDetail(){
+    var select=document.getElementById("gidname");
+    var value = select.value;
+    // var options = select.options;
+    console.log(select);
+    console.log(value);
+    // console.log(options);
+    var url = getProjectPath() + "/goodsInDetail/addGoodsInDetail?id=" + value;
+
+
+}
 
 
 

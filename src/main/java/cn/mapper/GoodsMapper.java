@@ -4,6 +4,8 @@ import cn.domain.Goods;
 import com.github.pagehelper.Page;
 import org.apache.ibatis.annotations.*;
 
+import java.util.List;
+
 @Mapper
 public interface GoodsMapper {
 
@@ -29,6 +31,10 @@ public interface GoodsMapper {
     @Select("select * from goods where goods_id=#{id}")
     @ResultMap("GoodsMap")
     Goods findGoodsById(Integer id);
+
+    @Select("select * from goods")
+    @ResultMap("GoodsMap")
+    List<Goods> getAllGoodsIn();
 
     void addGoods(Goods goods);
 

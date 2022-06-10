@@ -1,8 +1,10 @@
 package cn.controller;
 
 
+import cn.domain.Goods;
 import cn.domain.User;
 import cn.entity.PageResult;
+import cn.service.GoodsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @Controller
 @RequestMapping("/user")
@@ -23,11 +26,17 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private GoodsService goodsService;
+
     @RequestMapping("/login")
     public String login(User user, HttpServletRequest request){
         User u = userService.login(user);
+        List<Goods> goodsList = goodsService.getAllGoodsIn();
+
         if(u != null){
             request.getSession().setAttribute("USER",u);
+            request.getSession().setAttribute("GOODS",goodsList);
             String role=u.getRole();
             if ("admin".equals(role)) {
                 return "redirect:/admin/main.jsp";

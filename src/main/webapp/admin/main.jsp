@@ -25,7 +25,7 @@
     <!-- 页面头部 -->
     <header class="main-header">
         <!-- Logo -->
-        <a href="${pageContext.request.contextPath}/admin/main.jsp" class="logo">
+        <a href="${pageContext.request.contextPath}/goods/getAllGoodsIn" class="logo">
             <span class="logo-lg"><b>xxxxx系统</b></span>
         </a>
         <!-- 头部导航 -->
@@ -58,7 +58,7 @@
             <!-- sidebar menu: : style can be found in sidebar.less -->
             <ul class="sidebar-menu">
                 <li id="admin-index">
-                    <a href="main.jsp">
+                    <a href="${pageContext.request.contextPath}/goods/getAllGoodsIn">
                         <i class="fa fa-dashboard"></i> <span>首页</span>
                     </a>
                 </li>
@@ -76,7 +76,7 @@
                 </li>
                 <!-- 库存管理 -->
                 <li class="treeview">
-                    <a href="#">
+                    <a href="*">
                         <i class="fa fa-folder"></i>
                         <span>库存管理</span>
                         <span class="pull-right-container">

@@ -5,6 +5,7 @@ import cn.domain.GoodsDetail;
 import cn.domain.GoodsIn;
 import cn.domain.User;
 import cn.entity.PageResult;
+import cn.entity.Result;
 import cn.service.GoodsDetailService;
 import cn.service.GoodsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,5 +56,9 @@ public class GoodsDetailControllr {
         modelAndView.addObject("gourl", "/goodsDetail/searchInDetail");
         return modelAndView;
     }
-
+    @RequestMapping("/addGoodsInDetail")
+    public Result addGoodsInDetail(GoodsDetail goodsDetail,Integer id) {
+        goodsDetailService.addGoodsInDetail(goodsDetail);
+        return new Result(true, "新增成功");
+    }
 }

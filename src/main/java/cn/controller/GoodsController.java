@@ -12,6 +12,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.util.List;
+
 @Controller
 @RequestMapping("/goods")
 public class GoodsController {
@@ -43,6 +49,30 @@ public class GoodsController {
         System.out.println(id);*/
         return goodsService.findGoodsById(id);
     }
+
+    @ResponseBody
+    @RequestMapping("/getAllGoodsIn")
+//    public List<Goods> getAllGoodsIn(){
+//
+//        return goodsService.getAllGoodsIn();
+//    }
+    public void getAllGoodsIn(HttpServletRequest request, HttpServletResponse response){
+        request.getSession().setAttribute("GOODS",goodsService.getAllGoodsIn());
+        try {
+            response.sendRedirect("/Clothes/admin/main.jsp");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+//    public ModelAndView getAllGoodsIn(){
+//        ModelAndView modelAndView = new ModelAndView();
+//        List<Goods> list=goodsService.getAllGoodsIn();
+//        modelAndView.setViewName("goods");
+//        modelAndView.addObject("list",list);
+//        return modelAndView;
+//    }
+
 
 
     @ResponseBody

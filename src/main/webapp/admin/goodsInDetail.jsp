@@ -26,7 +26,8 @@
             <div class="btn-group">
                 <c:if test="${USER.role =='admin'}">
                     <button type="button" class="btn btn-default" title="新建" data-toggle="modal"
-                            data-target="#addGoodsModal" onclick="resetGoodsFrom()"><i class="fa fa-file-o"></i>新增
+                            data-target="#addGoodsInDetailModal" onclick="resetGoodsInDetailFrom()"><i
+                            class="fa fa-file-o"></i>新增
                     </button>
                 </c:if>
                 <c:if test="${USER.role =='common'}">
@@ -58,7 +59,7 @@
             <thead>
             <tr>
                 <th class="sorting_asc">货物id</th>
-<%--                <th class="sorting_asc">外键id</th>--%>
+                <%--                <th class="sorting_asc">外键id</th>--%>
                 <th class="sorting">货物名称</th>
                 <th class="sorting">货物货号</th>
                 <th class="sorting">货物色号</th>
@@ -72,7 +73,7 @@
             <c:forEach items="${pageResult.rows}" var="goodsInDetail">
                 <tr>
                     <td>${goodsInDetail.iid}</td>
-<%--                    <td>${goodsInDetail.gioid}</td>--%>
+                        <%--                    <td>${goodsInDetail.gioid}</td>--%>
                     <td>${goodsInDetail.name}</td>
                     <td>${goodsInDetail.no}</td>
                     <td>${goodsInDetail.color}</td>
@@ -116,55 +117,26 @@
 <tm-pagination conf="paginationConf"></tm-pagination>
 
 <!-- 新增货物 -->
-<div class="modal fade" id="addGoodsModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+<div class="modal fade" id="addGoodsInDetailModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
      aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h3 id="myModalLabel">货号信息</h3>
+                <h3 id="myModalLabel">入库明细信息</h3>
             </div>
             <div class="modal-body">
-                <form id="addGoods">
+                <form id="addGoodsInDetail">
                     <span><input type="hidden" id="ebid" name="id"></span>
-                    <table id="addGoodsTab" class="table table-bordered table-striped" width="800px">
-                        <%--货物的id,不展示在页面--%>
+                    <table id="addGoodsInDetailModalTab" class="table table-bordered table-striped" width="800px">
                         <tr>
-                            <td>货物名称</td>
-                            <td><input class="form-control" placeholder="货物名称" name="name" id="egname"
-                                       onblur="checkGoodsVal()" onfocus="changeGoodsVal()"></td>
-                            <td>货物货号</td>
-                            <td><input class="form-control" placeholder="货物货号" name="no" id="egno"
-                                       onblur="checkGoodsVal()" onfocus="changeGoodsVal()"></td>
-                        </tr>
-                        <tr>
-
-                            <td>色号</td>
+                            <td>入库物品</td>
                             <td>
-                                <select class="form-control" id="egcolor" name="color" value="白色">
-                                    <option value="白色">白色</option>
-                                    <option value="黑色">黑色</option>
-                                    <option value="红色">红色</option>
-                                    <option value="黄色">黄色</option>
-                                    <option value="蓝色">蓝色</option>
-                                    <option value="绿色">绿色</option>
-                                    <option value="青色">青色</option>
-                                    <option value="橙色">橙色</option>
-                                    <option value="紫色">紫色</option>
-
-                                </select>
-                            </td>
-                            <td>尺码</td>
-                            <td>
-                                <select class="form-control" id="egsize" name="size" value="S">
-                                    <option value="S">S</option>
-                                    <option value="M">M</option>
-                                    <option value="L">L</option>
-                                    <option value="XL">XL</option>
-                                    <option value="XXL">XXL</option>
-                                    <option value="XXXL">XXXL</option>
-                                    <option value="XXXXL">XXXXL</option>
-
+                                <select class="form-control" id="gidname" name="name" onblur="checkGoodsInDetailVal()" onfocus="changeGoodsInDetail()">
+                                    <option value="" disabled="disabled" selected="selected">--请选择--</option>
+                                    <c:forEach items="${GOODS}" var="goods" >
+                                        <option value="${goods.id}">${goods.name} / ${goods.size} / ${goods.color}</option>
+                                    </c:forEach>
                                 </select>
                             </td>
 
@@ -172,19 +144,20 @@
                         <tr>
                             <td>货物数量</td>
                             <td>
-                                <input class="form-control" placeholder="货物数量" name="amount" id="egamount" value="0">
+                                <input class="form-control" placeholder="货物数量" name="amount" id="gidamount" value="0"
+                                       onblur="checkGoodsVal()" onfocus="changeGoodsVal()">
                             </td>
                         </tr>
                         <tr>
-                            <td colspan="2"><span style="color: red" id="addGoodsmsg"></span></td>
+                            <td colspan="2"><span style="color: red" id="addGoodsInDetailmsg"></span></td>
                         </tr>
                     </table>
                 </form>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-success" data-dismiss="modal" <%--aria-hidden="true"--%> id="saveGoodsmsg"
+                <button class="btn btn-success" data-dismiss="modal" <%--aria-hidden="true"--%> id="saveGoodsInDetailmsg"
                         disabled="true"
-                        onclick="saveGoods()">保存
+                        onclick="saveGoodsInDetail()">保存
                 </button>
                 <button class="btn btn-default" data-dismiss="modal" aria-hidden="true">关闭</button>
             </div>
