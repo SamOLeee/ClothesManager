@@ -550,6 +550,7 @@ function saveGoodsInDetail(pageId) {
         $("#engidcolor").val(response.color);
         $("#engidsize").val(response.size);
         $("#engidtype").val(1);
+        $("#engidid").val(response.id);
     })
 }
 

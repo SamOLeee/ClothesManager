@@ -62,6 +62,7 @@ public class GoodsDetailControllr {
     @ResponseBody
     @RequestMapping("/addGoodsInDetail")
     public Result addGoodsDetail(GoodsDetail goodsDetail) {
+
         goodsDetailService.addGoodsDetail(goodsDetail);
         return new Result(true, "新增成功");
     }

@@ -180,20 +180,19 @@
             </div>
             <div class="modal-body">
                 <form id="enAddGoodsInDetail">
-                    <span><input type="hidden" id="enbid" name="id"></span>
+                    <span><input type="hidden" id="enbid" name="iid"></span>
                     <table id="enAddGoodsInDetailTab" class="table table-bordered table-striped" width="800px">
                         <tr>
-                            <td>所属入库id</td>
+                            <td>入库id</td>
                             <td><input class="form-control" readonly name="gioid" id="engioid"></td>
-                            <td>货物名称</td>
-                            <td><input class="form-control" readonly name="name" id="engidname"></td>
+                            <td>货物id</td>
+                            <td><input class="form-control" readonly id="engidid" name="id"></td>
                         </tr>
                         <tr>
                             <td>货物货号</td>
                             <td><input class="form-control" readonly name="no" id="engidno"></td>
-                            <td>货物数量</td>
-                            <td><input class="form-control" name="amount" id="engidamount"
-                                       onblur="checkGoodsInDetailVal2()" onfocus="changeGoodsInDetail2()"></td>
+                            <td>货物名称</td>
+                            <td><input class="form-control" readonly name="name" id="engidname"></td>
                         </tr>
                         <tr>
                             <td>色号</td>
@@ -204,9 +203,13 @@
                         <tr>
                             <td>类型</td>
                             <td><input class="form-control" readonly id="engidtype" name="type"></td>
-<%--                        <tr>--%>
+                            <td>货物数量</td>
+                            <td><input class="form-control" name="amount" id="engidamount"
+                                       onblur="checkGoodsInDetailVal2()" onfocus="changeGoodsInDetail2()"></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><span style="color: red" ></span></td>
                             <td colspan="2"><span style="color: red" id="enaddGoodsInDetailmsg"></span></td>
-<%--                        </tr>--%>
                         </tr>
                     </table>
                 </form>
