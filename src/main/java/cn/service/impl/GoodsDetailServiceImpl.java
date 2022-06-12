@@ -33,11 +33,15 @@ public class GoodsDetailServiceImpl implements GoodsDetailService {
     }
 
     @Override
-    public GoodsDetail findGoodsInDetailByNo(String no){
-        return goodsDetailMapper.findGoodsInDetailByNo(no);
+    public GoodsDetail findGoodsDetailById(Integer id){
+        return goodsDetailMapper.findGoodsDetailById(id);
     }
 
     public void addGoodsDetail(GoodsDetail goodsDetail){
         goodsDetailMapper.addGoodsDetail(goodsDetail);
+    }
+
+    public void updateGoodsDetail(GoodsDetail goodsDetail){
+        goodsDetailMapper.updateGoodsDetail(goodsDetail);
     }
 }

@@ -34,8 +34,9 @@ public interface GoodsDetailMapper {
 
 
     void addGoodsDetail(GoodsDetail goodsDetail);
+    void updateGoodsDetail(GoodsDetail goodsDetail);
 
     @ResultMap("GoodsDetailMapper")
-    @Select("select * from goodsdetail where detail_no = #{no}")
-    GoodsDetail findGoodsInDetailByNo(String no);
+    @Select("select * from goodsdetail where id = #{iid}")
+    GoodsDetail findGoodsDetailById(Integer id);
 }

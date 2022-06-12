@@ -9,5 +9,7 @@ import java.util.List;
 public interface GoodsDetailService {
     PageResult searchGoodsInDetail(GoodsDetail goodsDetail, Integer pageNum, Integer pageSize);
     void addGoodsDetail(GoodsDetail goodsDetail);
-    GoodsDetail findGoodsInDetailByNo(String no);
+    GoodsDetail findGoodsDetailById(Integer id);
+
+    void updateGoodsDetail(GoodsDetail goodsDetail);
 }

@@ -26,17 +26,6 @@ public class GoodsDetailControllr {
     private GoodsService goodsService;
 
 
-    @ResponseBody
-    @RequestMapping("/findGoodsInDetailByNo")
-    public GoodsDetail findGoodsInDetailByNo(String no) {
-/*        System.out.println(10086);
-        System.out.println(id);*/
-        return goodsDetailService.findGoodsInDetailByNo(no);
-    }
-
-
-
-
     @RequestMapping("/searchInDetail")
     public ModelAndView searchGoodsInDetail(GoodsDetail goodsDetail, Integer pageNum, Integer pageSize) {
         if (pageNum == null) pageNum = 1;
@@ -59,6 +48,13 @@ public class GoodsDetailControllr {
         modelAndView.addObject("gourl", "/goodsDetail/searchInDetail");
         return modelAndView;
     }
+
+    @ResponseBody
+    @RequestMapping("/findGoodsDetailById")
+    public GoodsDetail findGoodsInDetailById(Integer id){
+        return goodsDetailService.findGoodsDetailById(id);
+    }
+
     @ResponseBody
     @RequestMapping("/addGoodsInDetail")
     public Result addGoodsDetail(GoodsDetail goodsDetail) {

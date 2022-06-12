@@ -89,7 +89,7 @@
                         <c:if test="${goodsInDetail.delete == 0 }">
                             <c:if test="${USER.role =='admin'}">
                                 <button type="button" class="btn bg-olive btn-xs" data-toggle="modal"
-                                        data-target="#updateGoodsModal" onclick="findGoodsById(${goodsInDetail.id})"> 修改
+                                        data-target="#updateGoodsDetailModal" onclick="findGoodsDetailById(${goodsInDetail.iid})"> 修改
                                 </button>
                                 <button type="button" class="btn bg-olive btn-xs" data-toggle="modal"
                                         data-target="#delGoodsModal" onclick="delGoods(${goodsInDetail.id})"> 删除
@@ -186,7 +186,7 @@
                             <td>入库id</td>
                             <td><input class="form-control" readonly name="gioid" id="engioid"></td>
                             <td>货物id</td>
-                            <td><input class="form-control" readonly id="engidid" name="id"></td>
+                            <td><input class="form-control" readonly name="id" id="engidid"></td>
                         </tr>
                         <tr>
                             <td>货物货号</td>
@@ -196,13 +196,13 @@
                         </tr>
                         <tr>
                             <td>色号</td>
-                            <td><input class="form-control" readonly id="engidcolor" name="color"></td>
+                            <td><input class="form-control" readonly name="color" id="engidcolor" ></td>
                             <td>尺码</td>
-                            <td><input class="form-control" readonly id="engidsize" name="size"></td>
+                            <td><input class="form-control" readonly name="size" id="engidsize" ></td>
                         </tr>
                         <tr>
                             <td>类型</td>
-                            <td><input class="form-control" readonly id="engidtype" name="type"></td>
+                            <td><input class="form-control" readonly name="type" id="engidtype" ></td>
                             <td>货物数量</td>
                             <td><input class="form-control" name="amount" id="engidamount"
                                        onblur="checkGoodsInDetailVal2()" onfocus="changeGoodsInDetail2()"></td>
@@ -227,7 +227,7 @@
 </div>
 
 <!-- 编辑货物 -->
-<div class="modal fade" id="updateGoodsModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="updateGoodsDetailModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -235,33 +235,44 @@
                 <h3 id="myModalLabe2">货号信息</h3>
             </div>
             <div class="modal-body">
-                <form id="updateGoods">
+                <form id="updateGoodsDetail">
                     <%--                    <span><input type="hidden" id="ubid" name="id"></span>--%>
-                    <table id="updateGoodsTab" class="table table-bordered table-striped" width="800px">
+                    <table id="updateGoodsDetailTab" class="table table-bordered table-striped" width="800px">
                         <tr>
-                            <td>货物名称</td>
-                            <td><input class="form-control" readonly name="name" id="ugname"></td>
+                            <td>入库id</td>
+                            <td><input class="form-control" readonly name="gioid" id="upengioid"></td>
                             <td>货物id</td>
-                            <td><input class="form-control" readonly name="id" id="ugid"></td>
+                            <td><input class="form-control" readonly name="id" id="upengidid" ></td>
                         </tr>
                         <tr>
                             <td>货物货号</td>
-                            <td><input class="form-control" readonly name="no" id="ugno"></td>
-                            <td>货物数量</td>
-                            <td><input class="form-control" placeholder="货物数量" name="amount" id="ugamount"></td>
+                            <td><input class="form-control" readonly name="no" id="upengidno"></td>
+                            <td>货物名称</td>
+                            <td><input class="form-control" readonly name="name" id="upengidname"></td>
                         </tr>
                         <tr>
                             <td>色号</td>
-                            <td><input class="form-control" readonly id="ugcolor" name="color"></td>
+                            <td><input class="form-control" readonly name="color" id="upengidcolor" ></td>
                             <td>尺码</td>
-                            <td><input class="form-control" readonly id="ugsize" name="size"></td>
+                            <td><input class="form-control" readonly name="size" id="upengidsize" ></td>
                         </tr>
+                        <tr>
+                            <td>类型</td>
+                            <td><input class="form-control" readonly name="type" id="upengidtype" ></td>
+                            <td>货物数量</td>
+                            <td><input class="form-control" name="amount" id="upengidamount"
+                                       <%--onblur="checkGoodsInDetailVal2()" onfocus="changeGoodsInDetail2()"--%>></td>
+                        </tr>
+<%--                        <tr>--%>
+<%--                            <td colspan="2"><span style="color: red" ></span></td>--%>
+<%--                            <td colspan="2"><span style="color: red" id="enaddGoodsInDetailmsg"></span></td>--%>
+<%--                        </tr>--%>
 
                     </table>
                 </form>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-success" data-dismiss="modal" aria-hidden="true" onclick="updateGoods()">保存
+                <button class="btn btn-success" data-dismiss="modal" aria-hidden="true" onclick="updateGoodsDetail()">保存
                 </button>
                 <button class="btn btn-default" data-dismiss="modal" aria-hidden="true">关闭</button>
             </div>

@@ -554,17 +554,6 @@ function saveGoodsInDetail(pageId) {
     })
 }
 
-// function saveGoods() {
-//     var url = getProjectPath() + "/goods/addGoods";
-//     console.log(url);
-//     $.post(url, $("#addGoods").serialize(), function (response) {
-//         console.log(response);
-//         alert(response.message)
-//         if (response.success == true) {
-//             window.location.href = getProjectPath() + "/goods/search";
-//         }
-//     })
-// }
 
 function enSaveGoodsInDetail(pageId) {
     var url = getProjectPath() + "/goodsDetail/addGoodsInDetail";
@@ -576,6 +565,25 @@ function enSaveGoodsInDetail(pageId) {
             window.location.href = getProjectPath() + "/goodsDetail/searchInDetail?gioid=" + pageId;
         }
     })
+}
+function findGoodsDetailById(iid){
+    var url = getProjectPath() + "/goodsDetail/findGoodsDetailById?id=" + iid;
+    console.log(url);
+    $.get(url, function (response) {
+        console.log(response);
+        $("#upengioid").val(response.gioid);
+        $("#upengidname").val(response.name);
+        $("#upengidno").val(response.no);
+        $("#upengidamount").val(response.amount);
+        $("#upengidcolor").val(response.color);
+        $("#upengidsize").val(response.size);
+        $("#upengidtype").val(response.type);
+        $("#upengidid").val(response.id);
+    })
+}
+
+function updateGoodsDetail(){
+
 }
 
 
