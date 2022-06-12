@@ -1,6 +1,8 @@
 package cn.domain;
 
-public class GoodsDetail {
+import java.io.Serializable;
+
+public class GoodsDetail implements Serializable {
 //    private Integer id;
     private Integer did;
     private Integer gioid;

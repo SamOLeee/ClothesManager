@@ -12,6 +12,7 @@ public interface GoodsInMapper {
             "select * from goodsIn " +
             "where 1=1 " +
             "<if test=\"id != null\"> AND  gid  like  CONCAT('%',#{id},'%')</if>" +
+            "<if test=\"no !=null\"> and goodsIn_no like CONCAT('%',#{no},'%') </if>" +
             "</script>"
     })
     @Results(id ="GoodsInMap" ,value={

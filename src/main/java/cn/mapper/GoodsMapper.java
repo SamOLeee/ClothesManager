@@ -14,16 +14,17 @@ public interface GoodsMapper {
             "where 1=1 " +
             "<if test=\"id != null\"> AND  goods_id  like  CONCAT('%',#{id},'%')</if>" +
             "<if test=\"name != null\"> AND goods_name like  CONCAT('%', #{name},'%') </if>" +
+            "<if test=\"no !=null\"> and goods_no like CONCAT('%',#{no},'%') </if>" +
             "</script>"
     })
-    @Results(id ="GoodsMap" ,value={
-            @Result(id = true,column = "goods_id",property = "id"),
-            @Result(column = "goods_name",property = "name"),
-            @Result(column = "goods_no",property = "no"),
-            @Result(column = "goods_color",property = "color"),
-            @Result(column = "goods_size",property = "size"),
-            @Result(column = "goods_amount",property = "amount"),
-            @Result(column = "goods_delete",property = "delete")
+    @Results(id = "GoodsMap", value = {
+            @Result(id = true, column = "goods_id", property = "id"),
+            @Result(column = "goods_name", property = "name"),
+            @Result(column = "goods_no", property = "no"),
+            @Result(column = "goods_color", property = "color"),
+            @Result(column = "goods_size", property = "size"),
+            @Result(column = "goods_amount", property = "amount"),
+            @Result(column = "goods_delete", property = "delete")
     })
     Page<Goods> searchGoods(Goods goods);
 

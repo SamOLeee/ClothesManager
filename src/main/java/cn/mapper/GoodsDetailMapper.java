@@ -9,9 +9,9 @@ import org.apache.ibatis.annotations.*;
 
 @Mapper
 public interface GoodsDetailMapper {
-    @Results(id="GoodsDetailMapper",value={
-            @Result(id = true,column = "id", property = "iid"),
-            @Result( column = "goodsin", property = "did"),
+    @Results(id = "GoodsDetailMapper", value = {
+            @Result(id = true, column = "id", property = "iid"),
+            @Result(column = "goodsin", property = "did"),
             @Result(column = "for_id", property = "gioid"),
             @Result(column = "detail_no", property = "no"),
             @Result(column = "detail_name", property = "name"),
@@ -22,11 +22,24 @@ public interface GoodsDetailMapper {
             @Result(column = "detail_delete", property = "delete")
     })
     //select gd.* from goodsin gi,goodsdetail gd where gd.for_id=gi.gid and gi.gid=gd.for_id and gd.for_id = 2 and gd.detail_type=1
+
+
+//    @Select({"<script> " +
+//            "select gd.* from goodsin gi,goodsdetail gd " +
+//            "where gd.for_id=gi.gid " +
+////            "and gi.gid=gd.for_id "+
+//            "and gd.for_id = #{gioid} " +
+//            "and detail_type = 1 " +
+//            "</script>"
+//    })
     @Select({"<script> " +
             "select gd.* from goodsin gi,goodsdetail gd " +
-            "where gd.for_id=gi.gid "+
+            "where gd.for_id=gi.gid " +
 //            "and gi.gid=gd.for_id "+
-            "and gd.for_id = #{gioid} "+
+            "and gd.for_id = #{gioid} " +
+            "<if test=\"iid !=null\"> and id like CONCAT('%',#{iid},'%') </if>" +
+            "<if test=\"name !=null\"> and detail_name like CONCAT('%',#{name},'%') </if>" +
+            "<if test=\"no !=null\"> and detail_no like CONCAT('%',#{no},'%') </if>" +
             "and detail_type = 1 " +
             "</script>"
     })
@@ -36,15 +49,19 @@ public interface GoodsDetailMapper {
     @ResultMap("GoodsDetailMapper")
     @Select({"<script> " +
             "select gd.* from goodsin gi,goodsdetail gd " +
-            "where gd.for_id=gi.gid "+
+            "where gd.for_id=gi.gid " +
 //            "and gi.gid=gd.for_id "+
-            "and gd.for_id = #{gioid} "+
+            "and gd.for_id = #{gioid} " +
+            "<if test=\"iid !=null\"> and id like CONCAT('%',#{iid},'%') </if>" +
+            "<if test=\"name !=null\"> and detail_name like CONCAT('%',#{name},'%') </if>" +
+            "<if test=\"no !=null\"> and detail_no like CONCAT('%',#{no},'%') </if>" +
             "and detail_type = 0 " +
             "</script>"
     })
     Page<GoodsDetail> searchGoodsOutDetail(GoodsDetail goodsDetail);
 
     void addGoodsDetail(GoodsDetail goodsDetail);
+
     void updateGoodsDetail(GoodsDetail goodsDetail);
 
 

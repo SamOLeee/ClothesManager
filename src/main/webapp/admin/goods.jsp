@@ -153,7 +153,7 @@
                             <td>尺码</td>
                             <td>
                                 <select class="form-control" id="egsize" name="size" value="S">
-                                    <option value="S">S</option>
+                                    c
                                     <option value="M">M</option>
                                     <option value="L">L</option>
                                     <option value="XL">XL</option>
@@ -240,9 +240,9 @@
         /*分页插件页码变化时将跳转到的服务器端的路径*/
         pageargs.gourl = "${gourl}"
     /*保存搜索框中的搜索条件，页码变化时携带之前的搜索条件*/
-    bookVO.id = "${search.id}"
-    bookVO.name = "${search.name}"
-    bookVO.no = "${search.no}"
+    goodsVO.id = "${search.id}"
+    goodsVO.name = "${search.name}"
+    goodsVO.no = "${search.no}"
     /*分页效果*/
     pagination(pageargs);
 </script>

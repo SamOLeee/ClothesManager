@@ -588,6 +588,7 @@ function findGoodsInDetailById(iid) {
         $("#upengidid").val(response.did);
     })
 }
+
 function changeGoodsInDetail3() {
     $("#upaddGoodsInDetailmsg").html("")
 }
@@ -601,6 +602,7 @@ function checkGoodsInDetailVal3() {
         $("#upaddGoodsInDetailmsg").html("数量不能为空！")
     }
 }
+
 function updateGoodsDetail(pageId) {
     var url = getProjectPath() + "/goodsDetail/updateGoodsDetail";
     $.post(url, $("#updateGoodsDetail").serialize(), function (response) {
@@ -634,8 +636,6 @@ function delGoodsInDetail(id) {
 //////////////////////////////////////////
 ///////////////////////////////////////////
 /////////////////////////////////////////////////
-
-
 
 
 function resetGoodsOutDetailFrom() {
@@ -782,10 +782,6 @@ function delGoodsOutDetail(id) {
 //////////////////////////////////////////
 ///////////////////////////////////////////
 /////////////////////////////////////////////////
-
-
-
-
 
 
 //重置添加和编辑窗口中输入框的内容
@@ -964,7 +960,7 @@ var pageargs = {
  * author 图书作者
  * press 图书出版社
  */
-var bookVO = {
+var goodsVO = {
     id: '',
     name: '',
     no: ''
@@ -976,6 +972,16 @@ var goodsInVO = {
 }
 var goodsOutVO = {
     id: '',
+    no: ''
+}
+var goodsInDetailVO = {
+    id: '',
+    name: '',
+    no: ''
+}
+var goodsOutDetailVO = {
+    id: '',
+    name: '',
     no: ''
 }
 /**

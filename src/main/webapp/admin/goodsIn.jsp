@@ -70,7 +70,8 @@
                 <tr>
                     <td>${goodsIn.id}</td>
                     <td>
-                        <a href="${pageContext.request.contextPath}/goodsDetail/searchInDetail?gioid=${goodsIn.id}" target="iframe">
+                        <a href="${pageContext.request.contextPath}/goodsDetail/searchInDetail?gioid=${goodsIn.id}"
+                           target="iframe">
                             <i class="fa fa-circle-o"></i>${goodsIn.no}
                         </a>
                     </td>
@@ -135,8 +136,12 @@
                             <td><input class="form-control" placeholder="单据编号" name="no" id="gino"
                                        onblur="checkGoodsInVal()" onfocus="changeGoodsInVal()"></td>
                             <td>入库仓库</td>
-                            <td><input class="form-control" placeholder="所属仓库" name="library" id="gilibrary"
-                                       onblur="checkGoodsInVal()" onfocus="changeGoodsInVal()"></td>
+                            <td>
+                                <select class="form-control" placeholder="所属仓库" name="library" id="gilibrary"
+                                        onblur="checkGoodsInVal()" onfocus="changeGoodsInVal()">
+                                    <option value="第一仓库">第一仓库</option>
+                                </select>
+                            </td>
                         </tr>
                         <tr>
                             <td>经办人</td>
@@ -188,7 +193,11 @@
                             <%--                            <input type="date" class="form-control" name="clothes.goodsIn" value="<fmt:formatDate value="upgitime" pattern="yyyy-MM-dd" />">--%>
 
                             <td>入库仓库</td>
-                            <td><input class="form-control" name="library" id="upgilibrary"></td>
+                            <td>
+                                <select class="form-control" name="library" id="upgilibrary">
+                                    <option value="第一仓库">第一仓库</option>
+                                </select>
+                            </td>
                         </tr>
                         <tr>
                             <td>经办人</td>

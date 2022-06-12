@@ -48,6 +48,8 @@ public class GoodsDetailControllr {
         modelAndView.addObject("gourl", "/goodsDetail/searchInDetail");
         return modelAndView;
     }
+
+
     @ResponseBody
     @RequestMapping("/findGoodsDetailById")
     public GoodsDetail findGoodsInDetailById(Integer id){

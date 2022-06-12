@@ -37,7 +37,7 @@ public class GoodsController {
         modelAndView.setViewName("goods");
         modelAndView.addObject("pageResult", pageResult);
         modelAndView.addObject("search", goods);
-        modelAndView.addObject("pageNUm", pageNum);
+        modelAndView.addObject("pageNum", pageNum);
         modelAndView.addObject("gourl", "/goods/search");
         return modelAndView;
     }

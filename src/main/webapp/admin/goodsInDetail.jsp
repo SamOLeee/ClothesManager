@@ -41,8 +41,8 @@
     <!--工具栏 数据搜索 -->
     <div class="box-tools pull-right">
         <div class="has-feedback">
-            <form action="${pageContext.request.contextPath}/goodsDetail/searchInDetail" method="post">
-                货物id：<input name="iid" value="${searchInDetail.iid}">&nbsp&nbsp&nbsp&nbsp
+            <form action="${pageContext.request.contextPath}/goodsDetail/searchInDetail?gioid=${searchInDetail.gioid}" method="post">
+                入库明细id：<input name="iid" value="${searchInDetail.iid}">&nbsp&nbsp&nbsp&nbsp
                 货物名称：<input name="name" value="${searchInDetail.name}">&nbsp&nbsp&nbsp&nbsp
                 货号：<input name="no" value="${searchInDetail.no}">&nbsp&nbsp&nbsp&nbsp
                 <input class="btn btn-default" type="submit" value="查询">
@@ -291,9 +291,9 @@
         /*分页插件页码变化时将跳转到的服务器端的路径*/
         pageargs.gourl = "${gourl}"
     /*保存搜索框中的搜索条件，页码变化时携带之前的搜索条件*/
-    bookVO.id = "${searchInDetail.iid}"
-    bookVO.name = "${searchInDetail.name}"
-    bookVO.no = "${searchInDetail.no}"
+    goodsInDetailVO.id = "${searchInDetail.iid}"
+    goodsInDetailVO.name = "${searchInDetail.name}"
+    goodsInDetailVO.no = "${searchInDetail.no}"
     /*分页效果*/
     pagination(pageargs);
 </script>

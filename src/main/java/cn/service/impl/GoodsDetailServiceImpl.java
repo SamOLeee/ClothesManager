@@ -32,6 +32,7 @@ public class GoodsDetailServiceImpl implements GoodsDetailService {
         return new PageResult(page.getTotal(),page.getResult());
     }
 
+
     @Override
     public GoodsDetail findGoodsDetailById(Integer id){
         return goodsDetailMapper.findGoodsDetailById(id);

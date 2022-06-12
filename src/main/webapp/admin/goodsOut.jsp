@@ -134,8 +134,12 @@
                             <td><input class="form-control" placeholder="单据编号" name="no" id="gono"
                                        onblur="checkGoodsOutVal()" onfocus="changeGoodsOutVal()"></td>
                             <td>出库仓库</td>
-                            <td><input class="form-control" placeholder="所属仓库" name="library" id="golibrary"
-                                       onblur="checkGoodsOutVal()" onfocus="changeGoodsOutVal()"></td>
+                            <td>
+                                <select class="form-control" placeholder="所属仓库" name="library" id="golibrary"
+                                       onblur="checkGoodsOutVal()" onfocus="changeGoodsOutVal()">
+                                    <option value="第一仓库">第一仓库</option>
+                                </select>
+                            </td>
                         </tr>
                         <tr>
                             <td>经办人</td>
@@ -186,7 +190,11 @@
 <%--                            <input type="date" class="form-control" name="clothes.goodsIn" value="<fmt:formatDate value="upgitime" pattern="yyyy-MM-dd" />">--%>
 
                             <td>出库仓库</td>
-                            <td><input class="form-control" name="library" id="upgolibrary"></td>
+                            <td>
+                                <select class="form-control" name="library" id="upgolibrary">
+                                    <option value="第一仓库">第一仓库</option>
+                                </select>
+                            </td>
                         </tr>
                         <tr>
                             <td>经办人</td>
