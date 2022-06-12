@@ -69,7 +69,11 @@
             <c:forEach items="${pageResult.rows}" var="goodsOut">
                 <tr>
                     <td>${goodsOut.id}</td>
-                    <td><a href="*">${goodsOut.no}</a> </td>
+                    <td>
+                        <a href="${pageContext.request.contextPath}/goodsDetail/searchOutDetail?gioid=${goodsOut.id}" target="iframe">
+                            <i class="fa fa-circle-o"></i>${goodsOut.no}
+                        </a>
+                    </td>
                     <td>${goodsOut.library}</td>
                     <td>${goodsOut.datetime}</td>
                     <td>${goodsOut.operator }</td>

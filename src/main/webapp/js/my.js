@@ -340,7 +340,7 @@ function saveGoodsIn() {
         console.log(response);
         alert(response.message);
         if (response.success == true) {
-            window.location.href == getProjectPath() + "/goodsIn/search";
+            window.location.href = getProjectPath() + "/goodsIn/search";
         }
     })
 }
@@ -409,8 +409,8 @@ function changeGoodsOutVal() {
 }
 
 function checkGoodsOutVal() {
-    $("#saveGoodsInmsg").attr("disabled", false)
-    $("#addGoodsInmsg").html("")
+    $("#saveGoodsOutmsg").attr("disabled", false)
+    $("#addGoodsOutmsg").html("")
     var gono = $("#gono").val();
     var golibrary = $("#golibrary").val();
     var gooperator = $("#gooperator").val();
@@ -427,7 +427,7 @@ function checkGoodsOutVal() {
         $("#addGoodsOutmsg").html("经办人不能为空！")
     } else if ($.trim(gosend) == '') {
         $("#saveGoodsOutmsg").attr("disabled", true);
-        $("#addGoodsIOutmsg").html("去向不能为空！")
+        $("#addGoodsOutmsg").html("去向不能为空！")
     }
     console.log(gono);
     console.log(golibrary);
@@ -442,7 +442,7 @@ function saveGoodsOut() {
         console.log(response);
         alert(response.message);
         if (response.success == true) {
-            window.location.href == getProjectPath() + "/goodsOut/search";
+            window.location.href = getProjectPath() + "/goodsOut/search";
         }
     })
 }
@@ -497,8 +497,8 @@ function delGoodsOut(gid) {
 ///////////////////////////////////////////
 /////////////////////////////////////////////////
 function resetGoodsInDetailFrom() {
-    $("#saveGoodsmsg").attr("disabled", true)
-    $("#addGoodsmsg").html("")
+    $("#saveGoodsInDetailmsg").attr("disabled", true)
+    $("#addGoodsInDetailmsg").html("")
     var $vals = $("#addGoodsInDetail input");
     $vals.each(function () {
         $(this).attr("style", "").val("")
@@ -627,6 +627,143 @@ function delGoodsDetail(id) {
 //////////////////////////////////////////
 ///////////////////////////////////////////
 /////////////////////////////////////////////////
+
+
+
+
+function resetGoodsOutDetailFrom() {
+    $("#saveGoodsOutDetailmsg").attr("disabled", true)
+    $("#addGoodsOutDetailmsg").html("")
+    var $vals = $("#addGoodsOutDetail input");
+    $vals.each(function () {
+        $(this).attr("style", "").val("")
+    });
+}
+
+
+function changeGoodsOutDetail() {
+    $("#addGoodsOutDetailmsg").html("")
+}
+
+function checkGoodsOutDetailVal() {
+    $("#saveGoodsOutDetailmsg").attr("disabled", false)
+    $("#addGoodsOutDetailmsg").html("")
+    var godname = $("#godname").val();
+    console.log(godname);
+    if (godname == null) {
+        $("#saveGoodsOutDetailmsg").attr("disabled", true);
+        $("#addGoodsOutDetailmsg").html("请选择商品！")
+    } /*else if ($.trim(gidamount) == '') {
+        $("#saveGoodsInDetailmsg").attr("disabled", true);
+        $("#addGoodsInDetailmsg").html("数量不能为空！")
+    }*/
+}
+
+function changeGoodsOutDetail2() {
+    $("#enaddGoodsOutDetailmsg").html("")
+}
+
+function checkGoodsOutDetailVal2() {
+    $("#ensaveGoodsOutDetailmsg").attr("disabled", false)
+    $("#enaddGoodsOutDetailmsg").html("")
+    // var gidname = $("#gidname").val();
+    var engodamount = $("#engodamount").val();
+    /* if (gidname == null) {
+         $("#saveGoodsInDetailmsg").attr("disabled", true);
+         $("#addGoodsInDetailmsg").html("请选择商品！")
+     } else */
+    if ($.trim(engodamount) == '') {
+        $("#ensaveGoodsOutDetailmsg").attr("disabled", true);
+        $("#enaddGoodsOutDetailmsg").html("数量不能为空！")
+    }
+}
+
+function saveGoodsOutDetail(pageId) {
+    var select = document.getElementById("godname");
+    var value = select.value;
+    var url = getProjectPath() + "/goods/findGoodsById?id=" + value;
+    console.log(url);
+    console.log(pageId);
+    $.get(url, function (response) {
+        console.log(response);
+        $("#engooid").val(pageId);
+        $("#engodname").val(response.name);
+        $("#engodno").val(response.no);
+        $("#engodamount").val();
+        $("#engodcolor").val(response.color);
+        $("#engodsize").val(response.size);
+        $("#engodtype").val(0);
+        $("#engodid").val(response.id);
+    })
+}
+
+
+function enSaveGoodsOutDetail(pageId) {
+    var url = getProjectPath() + "/goodsDetail/addGoodsInDetail";
+    console.log(url);
+    $.post(url, $("#enAddGoodsOutDetail").serialize(), function (response) {
+        console.log(response);
+        alert(response.message);
+        if (response.success == true) {
+            window.location.href = getProjectPath() + "/goodsDetail/searchOutDetail?gioid=" + pageId;
+        }
+    })
+}
+
+function findGoodsOutDetailById(iid) {
+    var url = getProjectPath() + "/goodsDetail/findGoodsDetailById?id=" + iid;
+    console.log(url);
+    $.get(url, function (response) {
+        console.log(response);
+        $("#upid").val(response.iid);
+        $("#upengooid").val(response.gioid);
+        $("#upengodname").val(response.name);
+        $("#upengodno").val(response.no);
+        $("#upengodamount").val(response.amount);
+        $("#upengodcolor").val(response.color);
+        $("#upengodsize").val(response.size);
+        $("#upengodtype").val(response.type);
+        $("#upengodid").val(response.did);
+    })
+}
+
+function updateGoodsOutDetail(pageId) {
+    var url = getProjectPath() + "/goodsDetail/updateGoodsDetail";
+    $.post(url, $("#updateGoodsOutDetail").serialize(), function (response) {
+        alert(response.message);
+        if (response.success == true) {
+            window.location.href = getProjectPath() + "/goodsDetail/searchOutDetail?gioid=" + pageId;
+        }
+    })
+}
+
+
+function delGoodsOutDetail(id) {
+    var url2 = getProjectPath() + "/goodsDetail/findGoodsDetailById?id=" + id;
+    $.get(url2, function (res) {
+        var r = confirm("是否删除id为" + id + "，货物名为" + res.name + "的明细信息？");
+        if (r) {
+            var url1 = getProjectPath() + "/goodsDetail/delGoodsDetail?id=" + id;
+            // var url2 = getProjectPath() + "/goodsDetail/findGoodsDetailById?id=" + id;
+            console.log(url2);
+            $.get(url1, function (response) {
+                alert(response.message);
+                if (response.message) {
+                    window.location.href = getProjectPath() + "/goodsDetail/searchOutDetail?gioid=" + res.gioid;
+                }
+            })
+        }
+    })
+}
+
+///////////////////////////////////////////
+//////////////////////////////////////////
+///////////////////////////////////////////
+/////////////////////////////////////////////////
+
+
+
+
 
 
 //重置添加和编辑窗口中输入框的内容

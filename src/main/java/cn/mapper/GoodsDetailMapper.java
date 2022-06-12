@@ -33,8 +33,21 @@ public interface GoodsDetailMapper {
     Page<GoodsDetail> searchGoodsInDetail(GoodsDetail goodsDetail);
 
 
+    @ResultMap("GoodsDetailMapper")
+    @Select({"<script> " +
+            "select gd.* from goodsin gi,goodsdetail gd " +
+            "where gd.for_id=gi.gid "+
+//            "and gi.gid=gd.for_id "+
+            "and gd.for_id = #{gioid} "+
+            "and detail_type = 0 " +
+            "</script>"
+    })
+    Page<GoodsDetail> searchGoodsOutDetail(GoodsDetail goodsDetail);
+
     void addGoodsDetail(GoodsDetail goodsDetail);
     void updateGoodsDetail(GoodsDetail goodsDetail);
+
+
     @ResultMap("GoodsDetailMapper")
     @Select("select * from goodsdetail where id = #{iid}")
     GoodsDetail findGoodsDetailById(Integer id);

@@ -12,4 +12,8 @@ public interface GoodsDetailService {
     GoodsDetail findGoodsDetailById(Integer id);
     void delGoodsDetail(Integer id);
     void updateGoodsDetail(GoodsDetail goodsDetail);
+
+
+
+    PageResult searchGoodsOutDetail(GoodsDetail goodsDetail, Integer pageNum, Integer pageSize);
 }

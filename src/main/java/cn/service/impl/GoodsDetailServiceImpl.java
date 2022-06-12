@@ -50,4 +50,15 @@ public class GoodsDetailServiceImpl implements GoodsDetailService {
         goodsDetail.setDelete(1);
         goodsDetailMapper.updateGoodsDetail(goodsDetail);
     }
+
+
+
+
+    @Override
+    public PageResult searchGoodsOutDetail(GoodsDetail goodsDetail, Integer pageNum, Integer pageSize){
+        PageHelper.startPage(pageNum,pageSize);
+        Page<GoodsDetail>page=goodsDetailMapper.searchGoodsOutDetail(goodsDetail);
+        return new PageResult(page.getTotal(),page.getResult());
+    }
+
 }

@@ -25,7 +25,7 @@ public class GoodsDetailControllr {
     @Autowired
     private GoodsService goodsService;
 
-
+/////入库明细操作
     @RequestMapping("/searchInDetail")
     public ModelAndView searchGoodsInDetail(GoodsDetail goodsDetail, Integer pageNum, Integer pageSize) {
         if (pageNum == null) pageNum = 1;
@@ -48,7 +48,6 @@ public class GoodsDetailControllr {
         modelAndView.addObject("gourl", "/goodsDetail/searchInDetail");
         return modelAndView;
     }
-
     @ResponseBody
     @RequestMapping("/findGoodsDetailById")
     public GoodsDetail findGoodsInDetailById(Integer id){
@@ -78,4 +77,31 @@ public class GoodsDetailControllr {
         goodsDetailService.delGoodsDetail(id);
         return new Result(true,"删除成功！");
     }
+
+
+
+
+////////出库明细操作
+@RequestMapping("/searchOutDetail")
+public ModelAndView searchGoodsOutDetail(GoodsDetail goodsDetail, Integer pageNum, Integer pageSize) {
+    if (pageNum == null) pageNum = 1;
+    if (pageSize == null) pageSize = 10;
+
+    PageResult pageResult = goodsDetailService.searchGoodsOutDetail(goodsDetail, pageNum, pageSize);
+
+    System.out.println(goodsDetail);
+    ModelAndView modelAndView = new ModelAndView();
+    modelAndView.setViewName("goodsOutDetail");
+    modelAndView.addObject("pageResult2", pageResult);
+//        modelAndView.addObject("pageId", pageResult);
+    modelAndView.addObject("searchOutDetail", goodsDetail);
+
+    System.out.println(goodsDetail.getName());
+    System.out.println(goodsDetail.getAmount());
+    System.out.println(pageResult.getTotal());
+
+    modelAndView.addObject("pageNum", pageNum);
+    modelAndView.addObject("gourl", "/goodsDetail/searchOutDetail");
+    return modelAndView;
+}
 }
