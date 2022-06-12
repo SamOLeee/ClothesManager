@@ -30,6 +30,4 @@ public interface GoodsOutMapper {
 
     void addGoodsOut(GoodsOut goodsout);
     void updateGoodsOut(GoodsOut goodsout);
-
-    void delGoodsOut(GoodsOut goodsout);
 }

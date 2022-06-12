@@ -11,7 +11,7 @@ import org.apache.ibatis.annotations.*;
 public interface GoodsDetailMapper {
     @Results(id="GoodsDetailMapper",value={
             @Result(id = true,column = "id", property = "iid"),
-            @Result( column = "detail_id", property = "id"),
+            @Result( column = "goodsin", property = "did"),
             @Result(column = "for_id", property = "gioid"),
             @Result(column = "detail_no", property = "no"),
             @Result(column = "detail_name", property = "name"),
@@ -35,7 +35,6 @@ public interface GoodsDetailMapper {
 
     void addGoodsDetail(GoodsDetail goodsDetail);
     void updateGoodsDetail(GoodsDetail goodsDetail);
-
     @ResultMap("GoodsDetailMapper")
     @Select("select * from goodsdetail where id = #{iid}")
     GoodsDetail findGoodsDetailById(Integer id);

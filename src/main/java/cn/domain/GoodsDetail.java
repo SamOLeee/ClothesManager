@@ -1,7 +1,8 @@
 package cn.domain;
 
 public class GoodsDetail {
-    private Integer id;
+//    private Integer id;
+    private Integer did;
     private Integer gioid;
     private String name;
     private String no;
@@ -10,15 +11,13 @@ public class GoodsDetail {
     private Integer amount;
     private Integer type;
     private Integer delete;
-    private Integer ggid;
 
-    private  Integer iid;
-    private GoodsIn goodsIn;
+    private Integer iid;
 
     @Override
     public String toString() {
         return "GoodsDetail{" +
-                "id=" + id +
+                "did=" + did +
                 ", gioid=" + gioid +
                 ", name='" + name + '\'' +
                 ", no='" + no + '\'' +
@@ -27,33 +26,16 @@ public class GoodsDetail {
                 ", amount=" + amount +
                 ", type=" + type +
                 ", delete=" + delete +
-                ", ggid=" + ggid +
-                ", goodsIn=" + goodsIn +
+                ", iid=" + iid +
                 '}';
     }
 
-    public Integer getIid() {
-        return iid;
+    public Integer getDid() {
+        return did;
     }
 
-    public void setIid(Integer iid) {
-        this.iid = iid;
-    }
-
-    public GoodsIn getGoodsIn() {
-        return goodsIn;
-    }
-
-    public void setGoodsIn(GoodsIn goodsIn) {
-        this.goodsIn = goodsIn;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
+    public void setDid(Integer did) {
+        this.did = did;
     }
 
     public Integer getGioid() {
@@ -119,12 +101,12 @@ public class GoodsDetail {
     public void setDelete(Integer delete) {
         this.delete = delete;
     }
-    public Integer getGgid() {
-        return ggid;
+
+    public Integer getIid() {
+        return iid;
     }
 
-    public void setGgid(Integer ggid) {
-        this.ggid = ggid;
+    public void setIid(Integer iid) {
+        this.iid = iid;
     }
-
 }

@@ -56,6 +56,7 @@ public class UserController {
         return "forward:/admin/login.jsp";
     }
 
+    @ResponseBody
     @RequestMapping("/addUser")
     public Result addUser(User user){
         userService.addUser(user);
@@ -88,7 +89,7 @@ public class UserController {
         }
     }
 
-
+    @ResponseBody
     @RequestMapping("/search")
     public ModelAndView searchUser(User user,Integer pageNum,Integer pageSize){
         if(pageNum == null)

@@ -268,7 +268,7 @@ function updateGoods() {
     var url = getProjectPath() + "/goods/updateGoods";
     console.log(url);
     $.post(url, $("#updateGoods").serialize(), function (response) {
-        alert(response.message)
+        alert(response.message);
         if (response.success == true) {
             window.location.href = getProjectPath() + "/goods/search";
         }
@@ -276,19 +276,20 @@ function updateGoods() {
 }
 
 function delGoods(gid) {
-    // var ur =confirm("是否删除名为"+ gname +"货物?");
-    var r = confirm("是否id名为" + gid + "货物?");
-
-    console.log(r);
-    if (r) {
-        var url = getProjectPath() + "/goods/delGoods?id=" + gid;
-        $.get(url, function (response) {
-            alert(response.message)
-            if (response.success == true) {
-                window.location.href = getProjectPath() + "/goods/search";
-            }
-        })
-    }
+    var url2 = getProjectPath() + "/goods/findGoodsById?id=" + gid;
+    $.get(url2, function (res) {
+        var r = confirm("是否id为" + gid + "，货物名称为" + res.name + "的货物?");
+        console.log(r);
+        if (r) {
+            var url = getProjectPath() + "/goods/delGoods?id=" + gid;
+            $.get(url, function (response) {
+                alert(response.message);
+                if (response.success == true) {
+                    window.location.href = getProjectPath() + "/goods/search";
+                }
+            })
+        }
+    })
 }
 
 ////////////////////////////////////////////////
@@ -364,7 +365,7 @@ function findGoodsInById(gid) {
 function updateGoodsIn() {
     var url = getProjectPath() + "/goodsIn/updateGoodsIn";
     $.post(url, $("#updateGoodsIn").serialize(), function (response) {
-        alert(response.message)
+        alert(response.message);
         if (response.success == true) {
             window.location.href = getProjectPath() + "/goodsIn/search";
         }
@@ -372,18 +373,20 @@ function updateGoodsIn() {
 }
 
 function delGoodsIn(gid) {
-    // var ur =confirm("是否删除名为"+ gname +"货物?");
-    var r = confirm("是否删除id名为" + gid + "入库单?");
-    console.log(r);
-    if (r) {
-        var url = getProjectPath() + "/goodsIn/delGoodsIn?id=" + gid;
-        $.get(url, function (response) {
-            alert(response.message)
-            if (response.success == true) {
-                window.location.href = getProjectPath() + "/goodsIn/search";
-            }
-        })
-    }
+    var url2 = getProjectPath() + "/goodsIn/findGoodsInById?id=" + gid;
+    $.get(url2, function (res) {
+        var r = confirm("是否删除id为" + gid + "，单据凭证为" + res.no + "入库单?");
+        console.log(r);
+        if (r) {
+            var url = getProjectPath() + "/goodsIn/delGoodsIn?id=" + gid;
+            $.get(url, function (response) {
+                alert(response.message);
+                if (response.success == true) {
+                    window.location.href = getProjectPath() + "/goodsIn/search";
+                }
+            })
+        }
+    })
 }
 
 ///////////////////////////////////////////
@@ -464,7 +467,7 @@ function updateGoodsOut() {
     var url = getProjectPath() + "/goodsOut/updateGoodsOut";
     console.log(url);
     $.post(url, $("#updateGoodsOut").serialize(), function (response) {
-        alert(response.message)
+        alert(response.message);
         if (response.success == true) {
             window.location.href = getProjectPath() + "/goodsOut/search";
         }
@@ -472,18 +475,21 @@ function updateGoodsOut() {
 }
 
 function delGoodsOut(gid) {
-    // var ur =confirm("是否删除名为"+ gname +"货物?");
-    var r = confirm("是否删除id名为" + gid + "出库单?");
-    console.log(r);
-    if (r) {
-        var url = getProjectPath() + "/goodsOut/delGoodsOut?id=" + gid;
-        $.get(url, function (response) {
-            alert(response.message)
-            if (response.success == true) {
-                window.location.href = getProjectPath() + "/goodsOut/search";
-            }
-        })
-    }
+    var url2 = getProjectPath() + "/goodsOut/findGoodsOutById?id=" + gid;
+    $.get(url2, function (res) {
+        var r = confirm("是否删除id为" + gid + "，单据凭证为" + res.no + "出库单?");
+        console.log(r);
+        if (r) {
+            var url = getProjectPath() + "/goodsOut/delGoodsOut?id=" + gid;
+            $.get(url, function (response) {
+                alert(response.message);
+                if (response.success == true) {
+                    window.location.href = getProjectPath() + "/goodsOut/search";
+                }
+            })
+        }
+    })
+
 }
 
 ///////////////////////////////////////////
@@ -518,23 +524,27 @@ function checkGoodsInDetailVal() {
         $("#addGoodsInDetailmsg").html("数量不能为空！")
     }*/
 }
+
 function changeGoodsInDetail2() {
     $("#enaddGoodsInDetailmsg").html("")
 }
+
 function checkGoodsInDetailVal2() {
     $("#ensaveGoodsInDetailmsg").attr("disabled", false)
     $("#enaddGoodsInDetailmsg").html("")
     // var gidname = $("#gidname").val();
     var engidamount = $("#engidamount").val();
     console.log(gidname);
-   /* if (gidname == null) {
-        $("#saveGoodsInDetailmsg").attr("disabled", true);
-        $("#addGoodsInDetailmsg").html("请选择商品！")
-    } else */if ($.trim(engidamount) == '') {
+    /* if (gidname == null) {
+         $("#saveGoodsInDetailmsg").attr("disabled", true);
+         $("#addGoodsInDetailmsg").html("请选择商品！")
+     } else */
+    if ($.trim(engidamount) == '') {
         $("#ensaveGoodsInDetailmsg").attr("disabled", true);
         $("#enaddGoodsInDetailmsg").html("数量不能为空！")
     }
 }
+
 function saveGoodsInDetail(pageId) {
     var select = document.getElementById("gidname");
     var value = select.value;
@@ -566,11 +576,13 @@ function enSaveGoodsInDetail(pageId) {
         }
     })
 }
-function findGoodsDetailById(iid){
+
+function findGoodsDetailById(iid) {
     var url = getProjectPath() + "/goodsDetail/findGoodsDetailById?id=" + iid;
     console.log(url);
     $.get(url, function (response) {
         console.log(response);
+        $("#upid").val(response.iid);
         $("#upengioid").val(response.gioid);
         $("#upengidname").val(response.name);
         $("#upengidno").val(response.no);
@@ -578,14 +590,38 @@ function findGoodsDetailById(iid){
         $("#upengidcolor").val(response.color);
         $("#upengidsize").val(response.size);
         $("#upengidtype").val(response.type);
-        $("#upengidid").val(response.id);
+        $("#upengidid").val(response.did);
     })
 }
 
-function updateGoodsDetail(){
-
+function updateGoodsDetail(pageId) {
+    var url = getProjectPath() + "/goodsDetail/updateGoodsDetail";
+    $.post(url, $("#updateGoodsDetail").serialize(), function (response) {
+        alert(response.message);
+        if (response.success == true) {
+            window.location.href = getProjectPath() + "/goodsDetail/searchInDetail?gioid=" + pageId;
+        }
+    })
 }
 
+
+function delGoodsDetail(id) {
+    var url2 = getProjectPath() + "/goodsDetail/findGoodsDetailById?id=" + id;
+    $.get(url2, function (res) {
+        var r = confirm("是否删除id为" + id + "，货物名为" + res.name + "的明细信息？");
+        if (r) {
+            var url1 = getProjectPath() + "/goodsDetail/delGoodsDetail?id=" + id;
+            // var url2 = getProjectPath() + "/goodsDetail/findGoodsDetailById?id=" + id;
+            console.log(url2);
+            $.get(url1, function (response) {
+                alert(response.message);
+                if (response.message) {
+                    window.location.href = getProjectPath() + "/goodsDetail/searchInDetail?gioid=" + res.gioid;
+                }
+            })
+        }
+    })
+}
 
 ///////////////////////////////////////////
 //////////////////////////////////////////
@@ -618,7 +654,7 @@ function findUserById(uid) {
 function updateUser() {
     var url = getProjectPath() + "/user/updateUser";
     $.post(url, $("#updateUser").serialize(), function (response) {
-        alert(response.message)
+        alert(response.message);
         if (response.success == true) {
             window.location.href = getProjectPath() + "/user/search";
         }
@@ -675,12 +711,24 @@ function checkEmail(email) {
     })
 }
 
+// function saveGoods() {
+//     var url = getProjectPath() + "/goods/addGoods";
+//     console.log(url);
+//     $.post(url, $("#addGoods").serialize(), function (response) {
+//         console.log(response);
+//         alert(response.message);
+//         if (response.success == true) {
+//             window.location.href = getProjectPath() + "/goods/search";
+//         }
+//     })
+// }
 
 function saveUser() {
     var url = getProjectPath() + "/user/addUser";
     console.log(url);
     $.post(url, $("#addUser").serialize(), function (response) {
-        alert(response.message)
+        console.log(response);
+        alert(response.message);
         if (response.success == true) {
             window.location.href = getProjectPath() + "/user/search";
         }
@@ -688,17 +736,20 @@ function saveUser() {
 }
 
 function delUser(uid) {
-    // var r = confirm("是否删除名为" + uname + "的用户?");
-    var r = confirm("是否id名为" + uid + "的用户?");
-    if (r) {
-        var url = getProjectPath() + "/user/delUser?id=" + uid;
-        $.get(url, function (response) {
-            alert(response.message)
-            if (response.success == true) {
-                window.location.href = getProjectPath() + "/user/search";
-            }
-        })
-    }
+    var url2 = getProjectPath() + "/user/findUserById?id=" + uid;
+    $.get(url2, function (res) {
+        var r = confirm("是否id为" + uid + "，名字为" + res.name + "的用户?");
+        if (r) {
+            var url = getProjectPath() + "/user/delUser?id=" + uid;
+            $.get(url, function (response) {
+                alert(response.message);
+                if (response.success == true) {
+                    window.location.href = getProjectPath() + "/user/search";
+                }
+            })
+        }
+    })
+
 }
 
 function commonUser() {

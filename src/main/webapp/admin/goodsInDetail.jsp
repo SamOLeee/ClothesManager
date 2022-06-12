@@ -42,7 +42,7 @@
     <div class="box-tools pull-right">
         <div class="has-feedback">
             <form action="${pageContext.request.contextPath}/goodsDetail/searchInDetail" method="post">
-                货物id：<input name="id" value="${searchInDetail.id}">&nbsp&nbsp&nbsp&nbsp
+                货物id：<input name="iid" value="${searchInDetail.iid}">&nbsp&nbsp&nbsp&nbsp
                 货物名称：<input name="name" value="${searchInDetail.name}">&nbsp&nbsp&nbsp&nbsp
                 货号：<input name="no" value="${searchInDetail.no}">&nbsp&nbsp&nbsp&nbsp
                 <input class="btn btn-default" type="submit" value="查询">
@@ -58,6 +58,7 @@
         <table id="dataList" class="table table-bordered table-striped table-hover dataTable text-center">
             <thead>
             <tr>
+                <th class="sorting_asc">明细id</th>
                 <th class="sorting_asc">货物id</th>
                 <th class="sorting_asc">外键id</th>
                 <th class="sorting">货物名称</th>
@@ -74,6 +75,7 @@
             <c:forEach items="${pageResult.rows}" var="goodsInDetail">
                 <tr>
                     <td>${goodsInDetail.iid}</td>
+                    <td>${goodsInDetail.did}</td>
                     <td>${goodsInDetail.gioid}</td>
                     <td>${goodsInDetail.name}</td>
                     <td>${goodsInDetail.no}</td>
@@ -92,7 +94,7 @@
                                         data-target="#updateGoodsDetailModal" onclick="findGoodsDetailById(${goodsInDetail.iid})"> 修改
                                 </button>
                                 <button type="button" class="btn bg-olive btn-xs" data-toggle="modal"
-                                        data-target="#delGoodsModal" onclick="delGoods(${goodsInDetail.id})"> 删除
+                                        data-target="#delGoodsDetailModal" onclick="delGoodsDetail(${goodsInDetail.iid})"> 删除
                                 </button>
                             </c:if>
                             <c:if test="${ USER.role =='common'}">
@@ -186,7 +188,7 @@
                             <td>入库id</td>
                             <td><input class="form-control" readonly name="gioid" id="engioid"></td>
                             <td>货物id</td>
-                            <td><input class="form-control" readonly name="id" id="engidid"></td>
+                            <td><input class="form-control" readonly name="did" id="engidid"></td>
                         </tr>
                         <tr>
                             <td>货物货号</td>
@@ -236,13 +238,13 @@
             </div>
             <div class="modal-body">
                 <form id="updateGoodsDetail">
-                    <%--                    <span><input type="hidden" id="ubid" name="id"></span>--%>
+                                        <span><input type="hidden" id="upid" name="iid"></span>
                     <table id="updateGoodsDetailTab" class="table table-bordered table-striped" width="800px">
                         <tr>
                             <td>入库id</td>
                             <td><input class="form-control" readonly name="gioid" id="upengioid"></td>
                             <td>货物id</td>
-                            <td><input class="form-control" readonly name="id" id="upengidid" ></td>
+                            <td><input class="form-control" readonly name="did" id="upengidid" ></td>
                         </tr>
                         <tr>
                             <td>货物货号</td>
@@ -272,7 +274,7 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-success" data-dismiss="modal" aria-hidden="true" onclick="updateGoodsDetail()">保存
+                <button class="btn btn-success" data-dismiss="modal" aria-hidden="true" onclick="updateGoodsDetail(${searchInDetail.gioid})">保存
                 </button>
                 <button class="btn btn-default" data-dismiss="modal" aria-hidden="true">关闭</button>
             </div>
@@ -289,7 +291,7 @@
         /*分页插件页码变化时将跳转到的服务器端的路径*/
         pageargs.gourl = "${gourl}"
     /*保存搜索框中的搜索条件，页码变化时携带之前的搜索条件*/
-    bookVO.id = "${searchInDetail.id}"
+    bookVO.id = "${searchInDetail.iid}"
     bookVO.name = "${searchInDetail.name}"
     bookVO.no = "${searchInDetail.no}"
     /*分页效果*/

@@ -44,4 +44,10 @@ public class GoodsDetailServiceImpl implements GoodsDetailService {
     public void updateGoodsDetail(GoodsDetail goodsDetail){
         goodsDetailMapper.updateGoodsDetail(goodsDetail);
     }
+
+    public void delGoodsDetail(Integer id){
+        GoodsDetail goodsDetail=this.findGoodsDetailById(id);
+        goodsDetail.setDelete(1);
+        goodsDetailMapper.updateGoodsDetail(goodsDetail);
+    }
 }

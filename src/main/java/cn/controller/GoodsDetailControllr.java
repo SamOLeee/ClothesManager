@@ -52,6 +52,7 @@ public class GoodsDetailControllr {
     @ResponseBody
     @RequestMapping("/findGoodsDetailById")
     public GoodsDetail findGoodsInDetailById(Integer id){
+        System.out.println("查找goodsDetail " + goodsDetailService.findGoodsDetailById(id));
         return goodsDetailService.findGoodsDetailById(id);
     }
 
@@ -61,5 +62,20 @@ public class GoodsDetailControllr {
 
         goodsDetailService.addGoodsDetail(goodsDetail);
         return new Result(true, "新增成功");
+    }
+
+
+    @ResponseBody
+    @RequestMapping("/updateGoodsDetail")
+    public Result updateGoodsDetail(GoodsDetail goodsDetail){
+        goodsDetailService.updateGoodsDetail(goodsDetail);
+        return new Result(true,"修改成功！");
+    }
+
+    @ResponseBody
+    @RequestMapping("/delGoodsDetail")
+    public Result delGoodsDetail(Integer id){
+        goodsDetailService.delGoodsDetail(id);
+        return new Result(true,"删除成功！");
     }
 }

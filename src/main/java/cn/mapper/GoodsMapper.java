@@ -39,6 +39,4 @@ public interface GoodsMapper {
     void addGoods(Goods goods);
 
     void updateGoods(Goods goods);
-
-    void delGoods(Goods goods);
 }

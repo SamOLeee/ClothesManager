@@ -25,7 +25,7 @@ public class GoodsController {
     @Autowired
     private GoodsService goodsService;
 
-
+    @ResponseBody
     @RequestMapping("/search")
     public ModelAndView searchGoods(Goods goods, Integer pageNum, Integer pageSize) {
         if (pageNum == null) pageNum = 1;

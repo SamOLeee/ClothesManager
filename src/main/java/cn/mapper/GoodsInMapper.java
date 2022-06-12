@@ -36,6 +36,4 @@ public interface GoodsInMapper {
 
 
     void updateGoodsIn(GoodsIn goodsin);
-
-    void delGoodsIn(GoodsIn goodsin);
 }

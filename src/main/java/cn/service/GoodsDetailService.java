@@ -10,6 +10,6 @@ public interface GoodsDetailService {
     PageResult searchGoodsInDetail(GoodsDetail goodsDetail, Integer pageNum, Integer pageSize);
     void addGoodsDetail(GoodsDetail goodsDetail);
     GoodsDetail findGoodsDetailById(Integer id);
-
+    void delGoodsDetail(Integer id);
     void updateGoodsDetail(GoodsDetail goodsDetail);
 }
