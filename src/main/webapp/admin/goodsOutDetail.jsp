@@ -91,10 +91,12 @@
                         <c:if test="${goodsOutDetail.delete == 0 }">
                             <c:if test="${USER.role =='admin'}">
                                 <button type="button" class="btn bg-olive btn-xs" data-toggle="modal"
-                                        data-target="#updateGoodsOutDetailModal" onclick="findGoodsOutDetailById(${goodsOutDetail.iid})"> 修改
+                                        data-target="#updateGoodsOutDetailModal"
+                                        onclick="findGoodsOutDetailById(${goodsOutDetail.iid})"> 修改
                                 </button>
                                 <button type="button" class="btn bg-olive btn-xs" data-toggle="modal"
-                                        data-target="#delGoodsOutDetailModal" onclick="delGoodsOutDetail(${goodsOutDetail.iid})"> 删除
+                                        data-target="#delGoodsOutDetailModal"
+                                        onclick="delGoodsOutDetail(${goodsOutDetail.iid})"> 删除
                                 </button>
                             </c:if>
                             <c:if test="${ USER.role =='common'}">
@@ -135,10 +137,12 @@
                         <tr>
                             <td>入库物品</td>
                             <td>
-                                <select class="form-control" id="godname" name="name" onblur="checkGoodsOutDetailVal()" onfocus="changeGoodsOutDetail()">
+                                <select class="form-control" id="godname" name="name" onblur="checkGoodsOutDetailVal()"
+                                        onfocus="changeGoodsOutDetail()">
                                     <option value="" disabled="disabled" selected="selected">--请选择--</option>
-                                    <c:forEach items="${GOODS}" var="goods" >
-                                        <option value="${goods.id}">${goods.name} / ${goods.size} / ${goods.color}</option>
+                                    <c:forEach items="${GOODS}" var="goods">
+                                        <option value="${goods.id}">${goods.name} / ${goods.size}
+                                            / ${goods.color}</option>
                                     </c:forEach>
                                 </select>
                             </td>
@@ -161,7 +165,8 @@
                 <%--                <button type="button" class="btn bg-olive btn-xs" data-toggle="modal"--%>
                 <%--                        data-target="#updateGoodsModal" onclick="findGoodsById(${goods.id})"> 修改--%>
                 <%--                </button>--%>
-                <button class="btn btn-success" data-toggle="modal" data-target="#enAddGoodsOutDetailModal" id="saveGoodsOutDetailmsg"
+                <button class="btn btn-success" data-toggle="modal" data-target="#enAddGoodsOutDetailModal"
+                        id="saveGoodsOutDetailmsg"
                         disabled="true"
                         onclick="saveGoodsOutDetail(${searchOutDetail.gioid})">确定
                 </button>
@@ -198,19 +203,19 @@
                         </tr>
                         <tr>
                             <td>色号</td>
-                            <td><input class="form-control" readonly name="color" id="engodcolor" ></td>
+                            <td><input class="form-control" readonly name="color" id="engodcolor"></td>
                             <td>尺码</td>
-                            <td><input class="form-control" readonly name="size" id="engodsize" ></td>
+                            <td><input class="form-control" readonly name="size" id="engodsize"></td>
                         </tr>
                         <tr>
                             <td>类型</td>
-                            <td><input class="form-control" readonly name="type" id="engodtype" ></td>
+                            <td><input class="form-control" readonly name="type" id="engodtype"></td>
                             <td>货物数量</td>
                             <td><input class="form-control" name="amount" id="engodamount"
                                        onblur="checkGoodsOutDetailVal2()" onfocus="changeGoodsOutDetail2()"></td>
                         </tr>
                         <tr>
-                            <td colspan="2"><span style="color: red" ></span></td>
+                            <td colspan="2"><span style="color: red"></span></td>
                             <td colspan="2"><span style="color: red" id="enaddGoodsOutDetailmsg"></span></td>
                         </tr>
                     </table>
@@ -218,7 +223,8 @@
             </div>
             <div class="modal-footer">
 
-                <button class="btn btn-success" data-dismiss="modal" <%--aria-hidden="true"--%> id="ensaveGoodsOutDetailmsg"
+                <button class="btn btn-success" data-dismiss="modal" <%--aria-hidden="true"--%>
+                        id="ensaveGoodsOutDetailmsg"
                         disabled="true"
                         onclick="enSaveGoodsOutDetail(${searchOutDetail.gioid})">保存
                 </button>
@@ -244,7 +250,7 @@
                             <td>入库id</td>
                             <td><input class="form-control" readonly name="gioid" id="upengooid"></td>
                             <td>货物id</td>
-                            <td><input class="form-control" readonly name="did" id="upengodid" ></td>
+                            <td><input class="form-control" readonly name="did" id="upengodid"></td>
                         </tr>
                         <tr>
                             <td>货物货号</td>
@@ -254,27 +260,28 @@
                         </tr>
                         <tr>
                             <td>色号</td>
-                            <td><input class="form-control" readonly name="color" id="upengodcolor" ></td>
+                            <td><input class="form-control" readonly name="color" id="upengodcolor"></td>
                             <td>尺码</td>
-                            <td><input class="form-control" readonly name="size" id="upengodsize" ></td>
+                            <td><input class="form-control" readonly name="size" id="upengodsize"></td>
                         </tr>
                         <tr>
                             <td>类型</td>
-                            <td><input class="form-control" readonly name="type" id="upengodtype" ></td>
+                            <td><input class="form-control" readonly name="type" id="upengodtype"></td>
                             <td>货物数量</td>
                             <td><input class="form-control" name="amount" id="upengodamount"
-                            <%--onblur="checkGoodsInDetailVal2()" onfocus="changeGoodsInDetail2()"--%>></td>
+                            onblur="checkGoodsOutDetailVal3()" onfocus="changeGoodsOutDetail3()"></td>
                         </tr>
-                        <%--                        <tr>--%>
-                        <%--                            <td colspan="2"><span style="color: red" ></span></td>--%>
-                        <%--                            <td colspan="2"><span style="color: red" id="enaddGoodsInDetailmsg"></span></td>--%>
-                        <%--                        </tr>--%>
+                        <tr>
+                            <td colspan="2"><span style="color: red"></span></td>
+                            <td colspan="2"><span style="color: red" id="upaddGoodsOutDetailmsg"></span></td>
+                        </tr>
 
                     </table>
                 </form>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-success" data-dismiss="modal" aria-hidden="true" onclick="updateGoodsOutDetail(${searchOutDetail.gioid})">保存
+                <button class="btn btn-success" data-dismiss="modal" aria-hidden="true"id="upsaveGoodsOutDetailmsg"
+                        disabled="true" onclick="updateGoodsOutDetail(${searchOutDetail.gioid})">保存
                 </button>
                 <button class="btn btn-default" data-dismiss="modal" aria-hidden="true">关闭</button>
             </div>

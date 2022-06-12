@@ -56,7 +56,7 @@ public class GoodsDetailControllr {
     }
 
     @ResponseBody
-    @RequestMapping("/addGoodsInDetail")
+    @RequestMapping("/addGoodsDetail")
     public Result addGoodsDetail(GoodsDetail goodsDetail) {
 
         goodsDetailService.addGoodsDetail(goodsDetail);

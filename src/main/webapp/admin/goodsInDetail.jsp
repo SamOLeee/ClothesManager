@@ -91,10 +91,10 @@
                         <c:if test="${goodsInDetail.delete == 0 }">
                             <c:if test="${USER.role =='admin'}">
                                 <button type="button" class="btn bg-olive btn-xs" data-toggle="modal"
-                                        data-target="#updateGoodsDetailModal" onclick="findGoodsDetailById(${goodsInDetail.iid})"> 修改
+                                        data-target="#updateGoodsDetailModal" onclick="findGoodsInDetailById(${goodsInDetail.iid})"> 修改
                                 </button>
                                 <button type="button" class="btn bg-olive btn-xs" data-toggle="modal"
-                                        data-target="#delGoodsDetailModal" onclick="delGoodsDetail(${goodsInDetail.iid})"> 删除
+                                        data-target="#delGoodsDetailModal" onclick="delGoodsInDetail(${goodsInDetail.iid})"> 删除
                                 </button>
                             </c:if>
                             <c:if test="${ USER.role =='common'}">
@@ -162,8 +162,7 @@
 <%--                        data-target="#updateGoodsModal" onclick="findGoodsById(${goods.id})"> 修改--%>
 <%--                </button>--%>
                 <button class="btn btn-success" data-toggle="modal" data-target="#enAddGoodsInDetailModal" id="saveGoodsInDetailmsg"
-                        disabled="true"
-                        onclick="saveGoodsInDetail(${searchInDetail.gioid})">确定
+                        disabled="true" onclick="saveGoodsInDetail(${searchInDetail.gioid})">确定
                 </button>
                 <button class="btn btn-default" data-dismiss="modal" aria-hidden="true">关闭</button>
             </div>
@@ -263,18 +262,19 @@
                             <td><input class="form-control" readonly name="type" id="upengidtype" ></td>
                             <td>货物数量</td>
                             <td><input class="form-control" name="amount" id="upengidamount"
-                                       <%--onblur="checkGoodsInDetailVal2()" onfocus="changeGoodsInDetail2()"--%>></td>
+                                       onblur="checkGoodsInDetailVal3()" onfocus="changeGoodsInDetail3()"></td>
                         </tr>
-<%--                        <tr>--%>
-<%--                            <td colspan="2"><span style="color: red" ></span></td>--%>
-<%--                            <td colspan="2"><span style="color: red" id="enaddGoodsInDetailmsg"></span></td>--%>
-<%--                        </tr>--%>
+                        <tr>
+                            <td colspan="2"><span style="color: red" ></span></td>
+                            <td colspan="2"><span style="color: red" id="upaddGoodsInDetailmsg"></span></td>
+                        </tr>
 
                     </table>
                 </form>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-success" data-dismiss="modal" aria-hidden="true" onclick="updateGoodsDetail(${searchInDetail.gioid})">保存
+                <button class="btn btn-success" data-dismiss="modal" aria-hidden="true" id="upsaveGoodsInDetailmsg"
+                        disabled="true" onclick="updateGoodsDetail(${searchInDetail.gioid})">保存
                 </button>
                 <button class="btn btn-default" data-dismiss="modal" aria-hidden="true">关闭</button>
             </div>

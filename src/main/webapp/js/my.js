@@ -532,13 +532,8 @@ function changeGoodsInDetail2() {
 function checkGoodsInDetailVal2() {
     $("#ensaveGoodsInDetailmsg").attr("disabled", false)
     $("#enaddGoodsInDetailmsg").html("")
-    // var gidname = $("#gidname").val();
     var engidamount = $("#engidamount").val();
     console.log(gidname);
-    /* if (gidname == null) {
-         $("#saveGoodsInDetailmsg").attr("disabled", true);
-         $("#addGoodsInDetailmsg").html("请选择商品！")
-     } else */
     if ($.trim(engidamount) == '') {
         $("#ensaveGoodsInDetailmsg").attr("disabled", true);
         $("#enaddGoodsInDetailmsg").html("数量不能为空！")
@@ -566,7 +561,7 @@ function saveGoodsInDetail(pageId) {
 
 
 function enSaveGoodsInDetail(pageId) {
-    var url = getProjectPath() + "/goodsDetail/addGoodsInDetail";
+    var url = getProjectPath() + "/goodsDetail/addGoodsDetail";
     console.log(url);
     $.post(url, $("#enAddGoodsInDetail").serialize(), function (response) {
         console.log(response);
@@ -577,7 +572,7 @@ function enSaveGoodsInDetail(pageId) {
     })
 }
 
-function findGoodsDetailById(iid) {
+function findGoodsInDetailById(iid) {
     var url = getProjectPath() + "/goodsDetail/findGoodsDetailById?id=" + iid;
     console.log(url);
     $.get(url, function (response) {
@@ -593,7 +588,19 @@ function findGoodsDetailById(iid) {
         $("#upengidid").val(response.did);
     })
 }
+function changeGoodsInDetail3() {
+    $("#upaddGoodsInDetailmsg").html("")
+}
 
+function checkGoodsInDetailVal3() {
+    $("#upsaveGoodsInDetailmsg").attr("disabled", false)
+    $("#upaddGoodsInDetailmsg").html("")
+    var upengidamount = $("#upengidamount").val();
+    if ($.trim(upengidamount) == '') {
+        $("#upsaveGoodsInDetailmsg").attr("disabled", true);
+        $("#upaddGoodsInDetailmsg").html("数量不能为空！")
+    }
+}
 function updateGoodsDetail(pageId) {
     var url = getProjectPath() + "/goodsDetail/updateGoodsDetail";
     $.post(url, $("#updateGoodsDetail").serialize(), function (response) {
@@ -605,7 +612,7 @@ function updateGoodsDetail(pageId) {
 }
 
 
-function delGoodsDetail(id) {
+function delGoodsInDetail(id) {
     var url2 = getProjectPath() + "/goodsDetail/findGoodsDetailById?id=" + id;
     $.get(url2, function (res) {
         var r = confirm("是否删除id为" + id + "，货物名为" + res.name + "的明细信息？");
@@ -699,7 +706,7 @@ function saveGoodsOutDetail(pageId) {
 
 
 function enSaveGoodsOutDetail(pageId) {
-    var url = getProjectPath() + "/goodsDetail/addGoodsInDetail";
+    var url = getProjectPath() + "/goodsDetail/addGoodsDetail";
     console.log(url);
     $.post(url, $("#enAddGoodsOutDetail").serialize(), function (response) {
         console.log(response);
@@ -725,6 +732,21 @@ function findGoodsOutDetailById(iid) {
         $("#upengodtype").val(response.type);
         $("#upengodid").val(response.did);
     })
+}
+
+
+function changeGoodsOutDetail3() {
+    $("#upaddGoodsOutDetailmsg").html("")
+}
+
+function checkGoodsOutDetailVal3() {
+    $("#upsaveGoodsOutDetailmsg").attr("disabled", false)
+    $("#upaddGoodsOutDetailmsg").html("")
+    var upengodamount = $("#upengodamount").val();
+    if ($.trim(upengodamount) == '') {
+        $("#upsaveGoodsOutDetailmsg").attr("disabled", true);
+        $("#upaddGoodsOutDetailmsg").html("数量不能为空！")
+    }
 }
 
 function updateGoodsOutDetail(pageId) {
