@@ -648,17 +648,28 @@ function delGoodsInDetail(id) {
     var url2 = getProjectPath() + "/goodsDetail/findGoodsDetailById?id=" + id;
     $.get(url2, function (res) {
         var r = confirm("是否删除id为" + id + "，货物名为" + res.name + "的明细信息？");
-        if (r) {
-            var url1 = getProjectPath() + "/goodsDetail/delGoodsDetail?id=" + id;
-            // var url2 = getProjectPath() + "/goodsDetail/findGoodsDetailById?id=" + id;
-            console.log(url2);
-            $.get(url1, function (response) {
-                alert(response.message);
-                if (response.message) {
-                    window.location.href = getProjectPath() + "/goodsDetail/searchInDetail?gioid=" + res.gioid;
+
+        $.ajax({
+            url: getProjectPath() + "/goods/delGoodsAmount",
+            type: 'post',
+            data: "iid=" + id,
+            success: function (data) {
+                alert(data.message);
+                if (data.success) {
+                    if (r) {
+                        var url1 = getProjectPath() + "/goodsDetail/delGoodsDetail?id=" + id;
+                        // var url2 = getProjectPath() + "/goodsDetail/findGoodsDetailById?id=" + id;
+                        console.log(url2);
+                        $.get(url1, function (response) {
+                            // alert(response.message);
+                            if (response.message) {
+                                window.location.href = getProjectPath() + "/goodsDetail/searchInDetail?gioid=" + res.gioid;
+                            }
+                        })
+                    }
                 }
-            })
-        }
+            }
+        })
     })
 }
 
@@ -821,21 +832,32 @@ function updateGoodsOutDetail(pageId) {
 }
 
 
+
 function delGoodsOutDetail(id) {
     var url2 = getProjectPath() + "/goodsDetail/findGoodsDetailById?id=" + id;
     $.get(url2, function (res) {
         var r = confirm("是否删除id为" + id + "，货物名为" + res.name + "的明细信息？");
-        if (r) {
-            var url1 = getProjectPath() + "/goodsDetail/delGoodsDetail?id=" + id;
-            // var url2 = getProjectPath() + "/goodsDetail/findGoodsDetailById?id=" + id;
-            console.log(url2);
-            $.get(url1, function (response) {
-                alert(response.message);
-                if (response.message) {
-                    window.location.href = getProjectPath() + "/goodsDetail/searchOutDetail?gioid=" + res.gioid;
+        $.ajax({
+            url: getProjectPath() + "/goods/delGoodsAmount",
+            type: 'post',
+            data: 'iid=' + id,
+            success: function (data) {
+                alert(data.message);
+                if (data.success) {
+                    if (r) {
+                        var url1 = getProjectPath() + "/goodsDetail/delGoodsDetail?id=" + id;
+                        // var url2 = getProjectPath() + "/goodsDetail/findGoodsDetailById?id=" + id;
+                        console.log(url2);
+                        $.get(url1, function (response) {
+                            // alert(response.message);
+                            if (response.message) {
+                                window.location.href = getProjectPath() + "/goodsDetail/searchOutDetail?gioid=" + res.gioid;
+                            }
+                        })
+                    }
                 }
-            })
-        }
+            }
+        })
     })
 }
 

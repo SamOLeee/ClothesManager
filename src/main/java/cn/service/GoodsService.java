@@ -21,4 +21,5 @@ public interface GoodsService {
     Result addGoodsAmount(Goods goods);
     Result reduceGoodsAmount(Goods goods);
     Result updateGoodsAmount(GoodsDetail goodsDetail);
+    Result delGoodsAmount(GoodsDetail goodsDetail);
 }

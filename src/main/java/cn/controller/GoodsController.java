@@ -118,4 +118,11 @@ public class GoodsController {
         System.out.println("修改明细==== "+goodsDetail);
         return goodsService.updateGoodsAmount(goodsDetail);
     }
+
+    @ResponseBody
+    @PostMapping("/delGoodsAmount")
+    public Result delGoodsAmount(GoodsDetail goodsDetail){
+        System.out.println("修改明细==== "+goodsDetail);
+        return goodsService.delGoodsAmount(goodsDetail);
+    }
 }

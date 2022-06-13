@@ -84,7 +84,7 @@ public class GoodsServiceImpl implements GoodsService {
 
     public Result updateGoodsAmount(GoodsDetail goodsDetail) {
         GoodsDetail gsd = this.findGoodsDetailById(goodsDetail.getIid());
-        System.out.println("name=="+gsd.getName()+"  color=="+gsd.getColor()+"  size=="+gsd.getSize());
+        System.out.println("name==" + gsd.getName() + "  color==" + gsd.getColor() + "  size==" + gsd.getSize());
         Goods gs = this.findGoodsByNCS(gsd.getName(), gsd.getColor(), gsd.getSize());
         System.out.println("gsd====" + gsd);
         System.out.println("gs=====" + gs);
@@ -101,5 +101,24 @@ public class GoodsServiceImpl implements GoodsService {
         gs.setAmount(sum);
         goodsMapper.updateGoods(gs);
         return new Result(true, "修改成功！当前 " + gs.getName() + " 的库存量为 " + sum + " 件！");
+    }
+
+    public Result delGoodsAmount(GoodsDetail goodsDetail) {
+        GoodsDetail gsd = this.findGoodsDetailById(goodsDetail.getIid());
+        System.out.println("name==" + gsd.getName() + "  color==" + gsd.getColor() + "  size==" + gsd.getSize());
+        Goods gs = this.findGoodsByNCS(gsd.getName(), gsd.getColor(), gsd.getSize());
+        System.out.println("gsd====" + gsd);
+        System.out.println("gs=====" + gs);
+        Integer sum = 0;
+        if (gsd.getType() == 1) {
+            sum = gs.getAmount() - gsd.getAmount();
+            if (sum < 0)
+                return new Result(false, "库存不足，删除失败！当前 " + gs.getName() + " 的库存量为 " + gs.getAmount() + " 件！");
+        }
+        else
+            sum = gs.getAmount() + gsd.getAmount();
+        gs.setAmount(sum);
+        goodsMapper.updateGoods(gs);
+        return new Result(true, "删除成功！当前 " + gs.getName() + " 的库存量为 " + sum + " 件！");
     }
 }
