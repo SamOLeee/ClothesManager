@@ -27,7 +27,7 @@ public class GoodsDetailControllr {
 
 /////入库明细操作
     @RequestMapping("/searchInDetail")
-    public ModelAndView searchGoodsInDetail(GoodsDetail goodsDetail, Integer pageNum, Integer pageSize) {
+    public ModelAndView searchGoodsInDetail(GoodsDetail goodsDetail, Integer pageNum, Integer pageSize,HttpServletRequest request) {
         if (pageNum == null) pageNum = 1;
         if (pageSize == null) pageSize = 10;
 
@@ -45,7 +45,7 @@ public class GoodsDetailControllr {
         System.out.println(pageResult.getTotal());
 
         modelAndView.addObject("pageNum", pageNum);
-        modelAndView.addObject("gourl", "/goodsDetail/searchInDetail");
+        modelAndView.addObject("gourl", request.getRequestURI());
         return modelAndView;
     }
 

@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
+import java.net.http.HttpClient;
+
 
 @Controller
 @RequestMapping("/goodsIn")
@@ -20,7 +23,7 @@ public class GoodsInController {
     private GoodsInService goodsInService;
 
     @RequestMapping("/search")
-    public ModelAndView searchGoods(GoodsIn goodsin, Integer pageNum, Integer pageSize) {
+    public ModelAndView searchGoods(GoodsIn goodsin, Integer pageNum, Integer pageSize, HttpServletRequest request) {
         if (pageNum == null) pageNum = 1;
         if (pageSize == null) pageSize = 10;
 
@@ -30,7 +33,7 @@ public class GoodsInController {
         modelAndView.addObject("pageResult", pageResult);
         modelAndView.addObject("search", goodsin);
         modelAndView.addObject("pageNum", pageNum);
-        modelAndView.addObject("gourl", "/goodsIn/search");
+        modelAndView.addObject("gourl", request.getRequestURI());
         return modelAndView;
     }
 

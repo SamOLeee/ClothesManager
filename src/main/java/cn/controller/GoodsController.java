@@ -27,7 +27,7 @@ public class GoodsController {
 
     @ResponseBody
     @RequestMapping("/search")
-    public ModelAndView searchGoods(Goods goods, Integer pageNum, Integer pageSize) {
+    public ModelAndView searchGoods(Goods goods, Integer pageNum, Integer pageSize,HttpServletRequest request) {
         if (pageNum == null) pageNum = 1;
         if (pageSize == null) pageSize = 10;
 
@@ -38,7 +38,7 @@ public class GoodsController {
         modelAndView.addObject("pageResult", pageResult);
         modelAndView.addObject("search", goods);
         modelAndView.addObject("pageNum", pageNum);
-        modelAndView.addObject("gourl", "/goods/search");
+        modelAndView.addObject("gourl", request.getRequestURI());
         return modelAndView;
     }
 

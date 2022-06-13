@@ -91,7 +91,7 @@ public class UserController {
 
     @ResponseBody
     @RequestMapping("/search")
-    public ModelAndView searchUser(User user,Integer pageNum,Integer pageSize){
+    public ModelAndView searchUser(User user,Integer pageNum,Integer pageSize,HttpServletRequest request){
         if(pageNum == null)
             pageNum = 1;
         if(pageSize == null)
@@ -103,7 +103,7 @@ public class UserController {
         modelAndView.addObject("pageResult",pageResult);
         modelAndView.addObject("search",user);
         modelAndView.addObject("pageNum",pageNum);
-        modelAndView.addObject("gourl","/user/search");
+        modelAndView.addObject("gourl",request.getRequestURI());
         return modelAndView;
     }
 
