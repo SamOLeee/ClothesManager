@@ -560,20 +560,12 @@ function saveGoodsInDetail(pageId) {
 }
 
 
-
-
-
-
 function enSaveGoodsInDetail(pageId) {
     var url = getProjectPath() + "/goodsDetail/addGoodsDetail";
     console.log(url);
 
     var id = document.getElementById("engidid").value;
     var amount = document.getElementById("engidamount").value;
-    // var goods={
-    //     "id":id,
-    //     "amount":amount
-    // }
     console.log(id);
     console.log(amount);
 
@@ -625,12 +617,28 @@ function checkGoodsInDetailVal3() {
     }
 }
 
+
 function updateGoodsDetail(pageId) {
     var url = getProjectPath() + "/goodsDetail/updateGoodsDetail";
-    $.post(url, $("#updateGoodsDetail").serialize(), function (response) {
-        alert(response.message);
-        if (response.success == true) {
-            window.location.href = getProjectPath() + "/goodsDetail/searchInDetail?gioid=" + pageId;
+
+    var iid = document.getElementById("upid").value;
+    var amount = document.getElementById("upengidamount").value;
+    var color = document.getElementById("upengidcolor").value;
+    var size = document.getElementById("upengidsize").value;
+    var name = document.getElementById("upengidname").value;
+    $.ajax({
+        url: getProjectPath() + "/goods/updateGoodsAmount",
+        type: 'post',
+        data: "iid=" + iid + "&amount=" + amount + "&color=" + color + "&size=" + size + "&name=" + name,
+        success: function (data) {
+            alert(data.message);
+            if (data.success) {
+                $.post(url, $("#updateGoodsDetail").serialize(), function (response) {
+                    if (response.success == true) {
+                        window.location.href = getProjectPath() + "/goodsDetail/searchInDetail?gioid=" + pageId;
+                    }
+                })
+            }
         }
     })
 }
@@ -790,10 +798,24 @@ function checkGoodsOutDetailVal3() {
 
 function updateGoodsOutDetail(pageId) {
     var url = getProjectPath() + "/goodsDetail/updateGoodsDetail";
-    $.post(url, $("#updateGoodsOutDetail").serialize(), function (response) {
-        alert(response.message);
-        if (response.success == true) {
-            window.location.href = getProjectPath() + "/goodsDetail/searchOutDetail?gioid=" + pageId;
+    var iid = document.getElementById("upid").value;
+    var name = document.getElementById("upengodname").value;
+    var amount = document.getElementById("upengodamount").value;
+    var color = document.getElementById("upengodcolor").value;
+    var size = document.getElementById("upengodsize").value;
+    $.ajax({
+        url: getProjectPath() + "/goods/updateGoodsAmount",
+        type: 'post',
+        data: "iid=" + iid + "&amount=" + amount + "&color=" + color + "&size=" + size + "&name=" + name,
+        success: function (data) {
+            alert(data.message);
+            if (data.success) {
+                $.post(url, $("#updateGoodsOutDetail").serialize(), function (response) {
+                    if (response.success == true) {
+                        window.location.href = getProjectPath() + "/goodsDetail/searchOutDetail?gioid=" + pageId;
+                    }
+                })
+            }
         }
     })
 }

@@ -261,7 +261,7 @@
                             <td>类型</td>
                             <td><input class="form-control" readonly name="type" id="upengidtype" ></td>
                             <td>货物数量</td>
-                            <td><input class="form-control" readonly name="amount" id="upengidamount"
+                            <td><input class="form-control" name="amount" id="upengidamount"
                                        onblur="checkGoodsInDetailVal3()" onfocus="changeGoodsInDetail3()"></td>
                         </tr>
                         <tr>

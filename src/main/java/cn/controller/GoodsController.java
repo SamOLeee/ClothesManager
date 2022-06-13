@@ -1,6 +1,7 @@
 package cn.controller;
 
 import cn.domain.Goods;
+import cn.domain.GoodsDetail;
 import cn.domain.User;
 import cn.entity.PageResult;
 import cn.entity.Result;
@@ -109,5 +110,12 @@ public class GoodsController {
     public Result reduceGoodsAmount(Goods goods){
         System.out.println(goods);
         return goodsService.reduceGoodsAmount(goods);
+    }
+
+    @ResponseBody
+    @PostMapping("/updateGoodsAmount")
+    public Result updateGoodsAmount(GoodsDetail goodsDetail){
+        System.out.println("修改明细==== "+goodsDetail);
+        return goodsService.updateGoodsAmount(goodsDetail);
     }
 }

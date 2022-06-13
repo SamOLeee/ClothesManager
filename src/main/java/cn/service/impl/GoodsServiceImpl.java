@@ -1,8 +1,10 @@
 package cn.service.impl;
 
 import cn.domain.Goods;
+import cn.domain.GoodsDetail;
 import cn.entity.PageResult;
 import cn.entity.Result;
+import cn.mapper.GoodsDetailMapper;
 import cn.mapper.GoodsMapper;
 import cn.service.GoodsService;
 import com.github.pagehelper.Page;
@@ -18,6 +20,10 @@ public class GoodsServiceImpl implements GoodsService {
     @Autowired
     private GoodsMapper goodsMapper;
 
+    @Autowired
+    private GoodsDetailMapper goodsDetailMapper;
+
+
     @Override
     public PageResult searchGoods(Goods goods, Integer pageNum, Integer pageSize) {
         PageHelper.startPage(pageNum, pageSize);
@@ -26,9 +32,18 @@ public class GoodsServiceImpl implements GoodsService {
         return new PageResult(page.getTotal(), page.getResult());
     }
 
+    public GoodsDetail findGoodsDetailById(Integer id) {
+        return goodsDetailMapper.findGoodsDetailById(id);
+    }
+
     public Goods findGoodsById(Integer id) {
         return goodsMapper.findGoodsById(id);
     }
+
+    public Goods findGoodsByNCS(String name, String color, String size) {
+        return goodsMapper.findGoodsByNCS(name, color, size);
+    }
+
 
     public List<Goods> getAllGoodsIn() {
         return goodsMapper.getAllGoodsIn();
@@ -65,5 +80,26 @@ public class GoodsServiceImpl implements GoodsService {
         gs.setAmount(gs.getAmount() - goods.getAmount());
         goodsMapper.updateGoods(gs);
         return new Result(true, "出库成功！当前 " + gs.getName() + " 的库存量为 " + gs.getAmount() + "件！");
+    }
+
+    public Result updateGoodsAmount(GoodsDetail goodsDetail) {
+        GoodsDetail gsd = this.findGoodsDetailById(goodsDetail.getIid());
+        System.out.println("name=="+gsd.getName()+"  color=="+gsd.getColor()+"  size=="+gsd.getSize());
+        Goods gs = this.findGoodsByNCS(gsd.getName(), gsd.getColor(), gsd.getSize());
+        System.out.println("gsd====" + gsd);
+        System.out.println("gs=====" + gs);
+        Integer sum = 0;
+        if (gsd.getType() == 1) {
+            sum = gs.getAmount() - gsd.getAmount() + goodsDetail.getAmount();
+            if (sum < 0)
+                return new Result(false, "库存不足，修改失败！当前 " + gs.getName() + " 的库存量为 " + gs.getAmount() + " 件！");
+        } else {
+            sum = gs.getAmount() + gsd.getAmount() - goodsDetail.getAmount();
+            if (sum < 0)
+                return new Result(false, "库存不足，修改失败！当前 " + gs.getName() + " 的库存量为 " + gs.getAmount() + " 件！");
+        }
+        gs.setAmount(sum);
+        goodsMapper.updateGoods(gs);
+        return new Result(true, "修改成功！当前 " + gs.getName() + " 的库存量为 " + sum + " 件！");
     }
 }

@@ -1,6 +1,7 @@
 package cn.service;
 
 import cn.domain.Goods;
+import cn.domain.GoodsDetail;
 import cn.domain.User;
 import cn.entity.PageResult;
 import cn.entity.Result;
@@ -19,4 +20,5 @@ public interface GoodsService {
 
     Result addGoodsAmount(Goods goods);
     Result reduceGoodsAmount(Goods goods);
+    Result updateGoodsAmount(GoodsDetail goodsDetail);
 }
