@@ -128,14 +128,14 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h3 id="myModalLabel">入库明细信息</h3>
+                <h3 id="myModalLabel">出库明细信息</h3>
             </div>
             <div class="modal-body">
                 <form id="addGoodsOutDetail">
                     <span><input type="hidden" id="ebid" name="id"></span>
                     <table id="addGoodsOutDetailModalTab" class="table table-bordered table-striped" width="800px">
                         <tr>
-                            <td>入库物品</td>
+                            <td>出库物品</td>
                             <td>
                                 <select class="form-control" id="godname" name="name" onblur="checkGoodsOutDetailVal()"
                                         onfocus="changeGoodsOutDetail()">
@@ -183,7 +183,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h3 id="myModalLabel2">确认入库明细信息</h3>
+                <h3 id="myModalLabel2">确认出库明细信息</h3>
             </div>
             <div class="modal-body">
                 <form id="enAddGoodsOutDetail">
@@ -247,7 +247,7 @@
                     <span><input type="hidden" id="upid" name="iid"></span>
                     <table id="updateGoodsOutDetailTab" class="table table-bordered table-striped" width="800px">
                         <tr>
-                            <td>入库id</td>
+                            <td>出库id</td>
                             <td><input class="form-control" readonly name="gioid" id="upengooid"></td>
                             <td>货物id</td>
                             <td><input class="form-control" readonly name="did" id="upengodid"></td>
@@ -268,7 +268,7 @@
                             <td>类型</td>
                             <td><input class="form-control" readonly name="type" id="upengodtype"></td>
                             <td>货物数量</td>
-                            <td><input class="form-control" name="amount" id="upengodamount"
+                            <td><input class="form-control" readonly name="amount" id="upengodamount"
                             onblur="checkGoodsOutDetailVal3()" onfocus="changeGoodsOutDetail3()"></td>
                         </tr>
                         <tr>

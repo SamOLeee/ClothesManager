@@ -560,14 +560,36 @@ function saveGoodsInDetail(pageId) {
 }
 
 
+
+
+
+
 function enSaveGoodsInDetail(pageId) {
     var url = getProjectPath() + "/goodsDetail/addGoodsDetail";
     console.log(url);
-    $.post(url, $("#enAddGoodsInDetail").serialize(), function (response) {
-        console.log(response);
-        alert(response.message);
-        if (response.success == true) {
-            window.location.href = getProjectPath() + "/goodsDetail/searchInDetail?gioid=" + pageId;
+
+    var id = document.getElementById("engidid").value;
+    var amount = document.getElementById("engidamount").value;
+    // var goods={
+    //     "id":id,
+    //     "amount":amount
+    // }
+    console.log(id);
+    console.log(amount);
+
+    $.ajax({
+        url: getProjectPath() + "/goods/addGoodsAmount",
+        type: 'post',
+        data: "id=" + id + "&amount=" + amount,
+        success: function (data) {
+            alert(data.message);
+            $.post(url, $("#enAddGoodsInDetail").serialize(), function (response) {
+                console.log(response);
+                // alert(response.message);
+                if (response.success == true) {
+                    window.location.href = getProjectPath() + "/goodsDetail/searchInDetail?gioid=" + pageId;
+                }
+            })
         }
     })
 }
@@ -708,11 +730,28 @@ function saveGoodsOutDetail(pageId) {
 function enSaveGoodsOutDetail(pageId) {
     var url = getProjectPath() + "/goodsDetail/addGoodsDetail";
     console.log(url);
-    $.post(url, $("#enAddGoodsOutDetail").serialize(), function (response) {
-        console.log(response);
-        alert(response.message);
-        if (response.success == true) {
-            window.location.href = getProjectPath() + "/goodsDetail/searchOutDetail?gioid=" + pageId;
+
+    var id = document.getElementById("engodid").value;
+    var amount = document.getElementById("engodamount").value;
+    console.log(id);
+    console.log(amount);
+
+
+    $.ajax({
+        url: getProjectPath() + "/goods/reduceGoodsAmount",
+        type: 'post',
+        data: "id=" + id + "&amount=" + amount,
+        success: function (data) {
+            alert(data.message);
+            if (data.success) {
+                $.post(url, $("#enAddGoodsOutDetail").serialize(), function (response) {
+                    console.log(response);
+                    // alert(response.message);
+                    if (response.success == true) {
+                        window.location.href = getProjectPath() + "/goodsDetail/searchOutDetail?gioid=" + pageId;
+                    }
+                })
+            }
         }
     })
 }

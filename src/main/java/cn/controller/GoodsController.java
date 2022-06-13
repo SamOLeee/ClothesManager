@@ -8,6 +8,7 @@ import cn.service.GoodsService;
 import cn.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
@@ -93,5 +94,20 @@ public class GoodsController {
     public Result delUser(Integer id){
         goodsService.delGoods(id);
         return new Result(true,"删除成功");
+    }
+
+    @ResponseBody
+    @PostMapping("/addGoodsAmount")
+    public Result addGoodsAmount(Goods goods){
+        System.out.println(goods);
+        return goodsService.addGoodsAmount(goods);
+    }
+
+
+    @ResponseBody
+    @PostMapping("/reduceGoodsAmount")
+    public Result reduceGoodsAmount(Goods goods){
+        System.out.println(goods);
+        return goodsService.reduceGoodsAmount(goods);
     }
 }
