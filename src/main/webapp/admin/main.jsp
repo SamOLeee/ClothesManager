@@ -3,14 +3,21 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>xxxxx系统</title>
+    <title>服装库存管理系统</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/AdminLTE.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/_all-skins.min.css">
     <script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
     <script src="${pageContext.request.contextPath}/js/bootstrap.js"></script>
     <script src="${pageContext.request.contextPath}/js/app.js"></script>
-    <script src="${pageContext.request.contextPath}/js/my.js"></script>
+    <%--    <script src="${pageContext.request.contextPath}/js/my.js"></script>--%>
+    <script src="${pageContext.request.contextPath}/js/goods.js"></script>
+    <script src="${pageContext.request.contextPath}/js/user.js"></script>
+    <script src="${pageContext.request.contextPath}/js/goodsIn.js"></script>
+    <script src="${pageContext.request.contextPath}/js/goodsOut.js"></script>
+    <script src="${pageContext.request.contextPath}/js/pages.js"></script>
+
+
     <script type="text/javascript">
         function SetIFrameHeight() {
             var iframeid = document.getElementById("iframe");

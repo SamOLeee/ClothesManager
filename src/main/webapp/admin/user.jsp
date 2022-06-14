@@ -13,7 +13,12 @@
     <script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
     <script src="${pageContext.request.contextPath}/js/bootstrap.js"></script>
     <script src="${pageContext.request.contextPath}/js/pagination.js"></script>
-    <script src="${pageContext.request.contextPath}/js/my.js"></script>
+    <%--    <script src="${pageContext.request.contextPath}/js/my.js"></script>--%>
+    <script src="${pageContext.request.contextPath}/js/goods.js"></script>
+    <script src="${pageContext.request.contextPath}/js/user.js"></script>
+    <script src="${pageContext.request.contextPath}/js/goodsIn.js"></script>
+    <script src="${pageContext.request.contextPath}/js/goodsOut.js"></script>
+    <script src="${pageContext.request.contextPath}/js/pages.js"></script>
 </head>
 <body class="hold-transition skin-red sidebar-mini">
 <!-- .box-body -->
