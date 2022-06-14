@@ -2,6 +2,7 @@ package cn.service.impl;
 
 import cn.domain.User;
 import cn.entity.PageResult;
+import cn.entity.Result;
 import cn.service.UserService;
 import cn.mapper.UserMapper;
 import com.github.pagehelper.Page;
@@ -58,4 +59,10 @@ public class UserServiceImpl implements UserService {
         return userMapper.findUserById(id);
     }
 
+    public Result updateUserPwd(User user){
+        User u=this.findUserById(user.getId());
+        u.setPassword(user.getPassword());
+        userMapper.editUser(user);
+        return new Result(true, "密码修改成功！");
+    }
 }

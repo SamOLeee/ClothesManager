@@ -7,12 +7,9 @@ import cn.entity.PageResult;
 import cn.service.GoodsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.Mapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import cn.service.UserService;
 import cn.entity.Result;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -128,6 +125,11 @@ public class UserController {
     public Result delUser(Integer id){
         userService.delUser(id);
         return new Result(true,"删除成功");
+    }
+    @ResponseBody
+    @PostMapping("/updateUserPwd")
+    public Result updateUserPwd(User user){
+        return userService.updateUserPwd(user);
     }
 }
 

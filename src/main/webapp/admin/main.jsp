@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
     <meta charset="utf-8">
@@ -9,6 +10,7 @@
     <script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
     <script src="${pageContext.request.contextPath}/js/bootstrap.js"></script>
     <script src="${pageContext.request.contextPath}/js/app.js"></script>
+    <script src="${pageContext.request.contextPath}/js/my.js"></script>
     <script type="text/javascript">
         function SetIFrameHeight() {
             var iframeid = document.getElementById("iframe");
@@ -33,11 +35,15 @@
             <div class="navbar-custom-menu">
                 <ul class="nav navbar-nav">
                     <li class="dropdown user user-menu">
-                        <a>
-                            <img src="${pageContext.request.contextPath}/img/Sauron.jpg" class="user-image"
-                                 alt="User Image">
-                            <span class="hidden-xs">${USER.name}</span>
-                        </a>
+                        <button type="button" class="btn btn-default" title="个人中心" data-toggle="modal"
+                                data-target="#UserCenterModal" onclick="resetUserCenterFrom()"><i class="fa fa-file-o"></i>
+                            <a>
+                                <img src="${pageContext.request.contextPath}/img/Sauron.jpg" class="user-image"
+                                     alt="User Image">
+                                <span class="hidden-xs">${USER.name}</span>
+                            </a>
+                        </button>
+
                     </li>
                     <li class="dropdown user user-menu">
                         <a href="${pageContext.request.contextPath}/user/logout">
@@ -108,10 +114,47 @@
     </aside>
     <!-- 导航侧栏 /-->
     <!-- 内容展示区域 -->
-    <div class="content-wrapper" >
-            <%--<img src="${pageContext.request.contextPath}/img/333.jpg" class="user-image" alt="User Image">--%>
-        <iframe  width="100%" id="iframe" name="iframe" onload="SetIFrameHeight()" frameborder="0" >
+    <div class="content-wrapper">
+        <%--<img src="${pageContext.request.contextPath}/img/333.jpg" class="user-image" alt="User Image">--%>
+        <iframe width="100%" id="iframe" name="iframe" onload="SetIFrameHeight()" frameborder="0">
         </iframe>
+    </div>
+</div>
+<div class="modal fade" id="UserCenterModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" >
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h3 id="myModalLabe2">个人中心</h3>
+            </div>
+            <div class="modal-body">
+                <form id="UserCenter">
+                    <%--                    <span><input type="hidden" id="ubid" name="id"></span>--%>
+                    <table id="UserCenterTab" class="table table-bordered table-striped" width="800px">
+                        <tr>
+                            <td>输入密码</td>
+                            <td><input class="form-control"  name="pw" id="usrpw"
+                                       onblur="checkUserVal()" onfocus="changeUserVal()"></td>
+                        </tr>
+                        <tr>
+                            <td>再次输入密码</td>
+                            <td><input class="form-control"  name="password" id="enusrpw"
+                                       onblur="checkUserVal()" onfocus="changeUserVal()"></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><span style="color: red" id="addUsermsg"></span></td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-success" data-dismiss="modal" aria-hidden="true" id="saveUsermsg"
+                        disabled="true"
+                        onclick="updateUserPwd(${USER.id})">保存
+                </button>
+                <button class="btn btn-default" data-dismiss="modal" aria-hidden="true">关闭</button>
+            </div>
+        </div>
     </div>
 </div>
 </body>

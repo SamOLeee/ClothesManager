@@ -2,6 +2,7 @@ package cn.service;
 
 import cn.domain.User;
 import cn.entity.PageResult;
+import cn.entity.Result;
 
 
 public interface UserService {
@@ -13,4 +14,5 @@ public interface UserService {
     Integer checkName(String name);
     Integer checkEmail(String email);
     void delUser(Integer id);
+    Result updateUserPwd(User user);
 }

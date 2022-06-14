@@ -876,6 +876,57 @@ function resetUserFrom() {
     });
 }
 
+function resetUserCenterFrom() {
+    $("#saveUsermsg").attr("disabled", true)
+    $("#addUsermsg").html("")
+    var $vals = $("#UserCenter input");
+    $vals.each(function () {
+        $(this).attr("style", "").val("")
+    });
+}
+
+function changeUserVal() {
+    $("#addUsermsg").html("")
+}
+
+function checkUserVal() {
+    $("#saveUsermsg").attr("disabled", false);
+    $("#addUsermsg").html("")
+    var usrpw = $("#usrpw").val();
+    var enusrpw = $("#enusrpw").val();
+    if ($.trim(usrpw) == '') {
+        $("#saveUsermsg").attr("disabled", true);
+        $("#addUsermsg").html("密码不能为空！")
+    } else {
+        if ($.trim(enusrpw) == '') {
+            $("#saveUsermsg").attr("disabled", true);
+            $("#addUsermsg").html("确认密码不能为空！")
+        } else if (usrpw != enusrpw) {
+            $("#saveUsermsg").attr("disabled", true);
+            $("#addUsermsg").html("两次密码不一样，请重新输入！")
+        }
+    }
+}
+
+function updateUserPwd(id) {
+    var password = document.getElementById("enusrpw").value;
+    var r = confirm("是否将密码修改为 " + password + " ?");
+    if (r) {
+        $.ajax({
+            url: getProjectPath() + "/user/updateUserPwd",
+            type: 'post',
+            data: "id=" + id + "&password=" + password,
+            success: function (data) {
+                alert(data.message);
+                if (data.success) {
+                    alert("信息过期，请重新的登录！");
+                    window.location.href = getProjectPath() + "/index.jsp";
+                }
+            }
+        })
+    }
+}
+
 function findUserById(uid) {
     var url = getProjectPath() + "/user/findUserById?id=" + uid;
     $.get(url, function (response) {
