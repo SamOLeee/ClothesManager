@@ -65,7 +65,6 @@ public class GoodsController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 //    public ModelAndView getAllGoodsIn(){
 //        ModelAndView modelAndView = new ModelAndView();

@@ -153,7 +153,7 @@
                             <td>尺码</td>
                             <td>
                                 <select class="form-control" id="egsize" name="size" value="S">
-                                    c
+                                    <option value="S">S</option>
                                     <option value="M">M</option>
                                     <option value="L">L</option>
                                     <option value="XL">XL</option>

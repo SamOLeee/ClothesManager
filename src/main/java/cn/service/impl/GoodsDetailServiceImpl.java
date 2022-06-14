@@ -62,4 +62,11 @@ public class GoodsDetailServiceImpl implements GoodsDetailService {
         return new PageResult(page.getTotal(),page.getResult());
     }
 
+
+    @Override
+    public PageResult searchGoodsAllDetail(GoodsDetail goodsDetail, Integer pageNum, Integer pageSize){
+        PageHelper.startPage(pageNum,pageSize);
+        Page<GoodsDetail>page=goodsDetailMapper.searchGoodsAllDetail(goodsDetail);
+        return new PageResult(page.getTotal(),page.getResult());
+    }
 }

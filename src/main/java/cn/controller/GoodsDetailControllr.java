@@ -25,9 +25,9 @@ public class GoodsDetailControllr {
     @Autowired
     private GoodsService goodsService;
 
-/////入库明细操作
+    /////入库明细操作
     @RequestMapping("/searchInDetail")
-    public ModelAndView searchGoodsInDetail(GoodsDetail goodsDetail, Integer pageNum, Integer pageSize,HttpServletRequest request) {
+    public ModelAndView searchGoodsInDetail(GoodsDetail goodsDetail, Integer pageNum, Integer pageSize, HttpServletRequest request) {
         if (pageNum == null) pageNum = 1;
         if (pageSize == null) pageSize = 10;
 
@@ -52,7 +52,7 @@ public class GoodsDetailControllr {
 
     @ResponseBody
     @RequestMapping("/findGoodsDetailById")
-    public GoodsDetail findGoodsInDetailById(Integer id){
+    public GoodsDetail findGoodsInDetailById(Integer id) {
         System.out.println("查找goodsDetail " + goodsDetailService.findGoodsDetailById(id));
         return goodsDetailService.findGoodsDetailById(id);
     }
@@ -68,42 +68,65 @@ public class GoodsDetailControllr {
 
     @ResponseBody
     @RequestMapping("/updateGoodsDetail")
-    public Result updateGoodsDetail(GoodsDetail goodsDetail){
+    public Result updateGoodsDetail(GoodsDetail goodsDetail) {
         goodsDetailService.updateGoodsDetail(goodsDetail);
-        return new Result(true,"修改成功！");
+        return new Result(true, "修改成功！");
     }
 
     @ResponseBody
     @RequestMapping("/delGoodsDetail")
-    public Result delGoodsDetail(Integer id){
+    public Result delGoodsDetail(Integer id) {
         goodsDetailService.delGoodsDetail(id);
-        return new Result(true,"删除成功！");
+        return new Result(true, "删除成功！");
     }
 
 
+    ////////出库明细操作
+    @RequestMapping("/searchOutDetail")
+    public ModelAndView searchGoodsOutDetail(GoodsDetail goodsDetail, Integer pageNum, Integer pageSize,HttpServletRequest request) {
+        if (pageNum == null) pageNum = 1;
+        if (pageSize == null) pageSize = 10;
 
+        PageResult pageResult = goodsDetailService.searchGoodsOutDetail(goodsDetail, pageNum, pageSize);
 
-////////出库明细操作
-@RequestMapping("/searchOutDetail")
-public ModelAndView searchGoodsOutDetail(GoodsDetail goodsDetail, Integer pageNum, Integer pageSize) {
-    if (pageNum == null) pageNum = 1;
-    if (pageSize == null) pageSize = 10;
-
-    PageResult pageResult = goodsDetailService.searchGoodsOutDetail(goodsDetail, pageNum, pageSize);
-
-    System.out.println(goodsDetail);
-    ModelAndView modelAndView = new ModelAndView();
-    modelAndView.setViewName("goodsOutDetail");
-    modelAndView.addObject("pageResult2", pageResult);
+        System.out.println(goodsDetail);
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("goodsOutDetail");
+        modelAndView.addObject("pageResult2", pageResult);
 //        modelAndView.addObject("pageId", pageResult);
-    modelAndView.addObject("searchOutDetail", goodsDetail);
+        modelAndView.addObject("searchOutDetail", goodsDetail);
 
-    System.out.println(goodsDetail.getName());
-    System.out.println(goodsDetail.getAmount());
-    System.out.println(pageResult.getTotal());
+        System.out.println(goodsDetail.getName());
+        System.out.println(goodsDetail.getAmount());
+        System.out.println(pageResult.getTotal());
 
-    modelAndView.addObject("pageNum", pageNum);
-    modelAndView.addObject("gourl", "/goodsDetail/searchOutDetail");
-    return modelAndView;
-}
+        modelAndView.addObject("pageNum", pageNum);
+        modelAndView.addObject("gourl", request.getRequestURI());
+        return modelAndView;
+    }
+
+    @RequestMapping("/searchAll")
+    public ModelAndView searchGoodsAllDetail(GoodsDetail goodsDetail, Integer pageNum, Integer pageSize,HttpServletRequest request) {
+        if (pageNum == null) pageNum = 1;
+        if (pageSize == null) pageSize = 10;
+
+        PageResult pageResult = goodsDetailService.searchGoodsAllDetail(goodsDetail, pageNum, pageSize);
+
+        System.out.println(goodsDetail);
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("goodsAllDetail");
+        modelAndView.addObject("pageResult3", pageResult);
+//        modelAndView.addObject("pageId", pageResult);
+        modelAndView.addObject("searchAllDetail", goodsDetail);
+
+        System.out.println(goodsDetail.getName());
+        System.out.println(goodsDetail.getAmount());
+        System.out.println(pageResult.getTotal());
+
+        modelAndView.addObject("pageNum", pageNum);
+        modelAndView.addObject("gourl", request.getRequestURI());
+        return modelAndView;
+    }
+
+
 }

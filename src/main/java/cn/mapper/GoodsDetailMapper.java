@@ -21,17 +21,7 @@ public interface GoodsDetailMapper {
             @Result(column = "detail_type", property = "type"),
             @Result(column = "detail_delete", property = "delete")
     })
-    //select gd.* from goodsin gi,goodsdetail gd where gd.for_id=gi.gid and gi.gid=gd.for_id and gd.for_id = 2 and gd.detail_type=1
 
-
-//    @Select({"<script> " +
-//            "select gd.* from goodsin gi,goodsdetail gd " +
-//            "where gd.for_id=gi.gid " +
-////            "and gi.gid=gd.for_id "+
-//            "and gd.for_id = #{gioid} " +
-//            "and detail_type = 1 " +
-//            "</script>"
-//    })
     @Select({"<script> " +
             "select gd.* from goodsin gi,goodsdetail gd " +
             "where gd.for_id=gi.gid " +
@@ -59,6 +49,19 @@ public interface GoodsDetailMapper {
             "</script>"
     })
     Page<GoodsDetail> searchGoodsOutDetail(GoodsDetail goodsDetail);
+
+
+    @ResultMap("GoodsDetailMapper")
+    @Select({"<script> " +
+            "select * from goodsdetail " +
+            "where 1 = 1 " +
+            "<if test=\"iid !=null\"> and id like CONCAT('%',#{iid},'%') </if>" +
+            "<if test=\"name !=null\"> and detail_name like CONCAT('%',#{name},'%') </if>" +
+            "<if test=\"no !=null\"> and detail_no like CONCAT('%',#{no},'%') </if>" +
+            "<if test=\"type!=null\"> and detail_type like CONCAT('%',#{type},'%') </if>" +
+            "</script>"
+    })
+    Page<GoodsDetail> searchGoodsAllDetail(GoodsDetail goodsDetail);
 
     void addGoodsDetail(GoodsDetail goodsDetail);
 

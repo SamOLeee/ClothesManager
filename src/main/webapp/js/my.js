@@ -832,7 +832,6 @@ function updateGoodsOutDetail(pageId) {
 }
 
 
-
 function delGoodsOutDetail(id) {
     var url2 = getProjectPath() + "/goodsDetail/findGoodsDetailById?id=" + id;
     $.get(url2, function (res) {
@@ -1066,6 +1065,12 @@ var goodsOutDetailVO = {
     id: '',
     name: '',
     no: ''
+}
+var goodsAllDetailVO = {
+    id: '',
+    no: '',
+    name: '',
+    type: ''
 }
 /**
  *借阅记录查询栏的查询参数

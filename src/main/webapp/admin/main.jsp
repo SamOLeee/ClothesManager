@@ -94,6 +94,11 @@
                                 <i class="fa fa-circle-o"></i>出库管理
                             </a>
                         </li>
+                        <li>
+                            <a href="${pageContext.request.contextPath}/goodsDetail/searchAll" target="iframe">
+                                <i class="fa fa-circle-o"></i>所有明细
+                            </a>
+                        </li>
                     </ul>
                 </li>
             </ul>
