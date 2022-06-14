@@ -28,7 +28,8 @@
     <header class="main-header">
         <!-- Logo -->
         <a href="${pageContext.request.contextPath}/goods/getAllGoodsIn" class="logo">
-            <span class="logo-lg"><b>服装库存管理系统</b></span>
+<%--            <span class="logo-lg"><b>服装库存管理系统</b></span>--%>
+            <img src="${pageContext.request.contextPath}/img/logo.png" class="logo">
         </a>
         <!-- 头部导航 -->
         <nav class="navbar navbar-static-top">
