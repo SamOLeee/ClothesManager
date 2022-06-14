@@ -67,9 +67,9 @@
         <table id="dataList" class="table table-bordered table-striped table-hover dataTable text-center">
             <thead>
             <tr>
-                <th class="sorting_asc">明细id</th>
-                <th class="sorting_asc">货物id</th>
-                <th class="sorting_asc">外键id</th>
+<%--                <th class="sorting_asc">明细id</th>--%>
+<%--                <th class="sorting_asc">货物id</th>--%>
+<%--                <th class="sorting_asc">外键id</th>--%>
                 <th class="sorting">货物名称</th>
                 <th class="sorting">货物货号</th>
                 <th class="sorting">货物色号</th>
@@ -84,9 +84,9 @@
             <tbody>
             <c:forEach items="${pageResult3.rows}" var="goodsAllDetail">
                 <tr>
-                    <td>${goodsAllDetail.iid}</td>
-                    <td>${goodsAllDetail.did}</td>
-                    <td>${goodsAllDetail.gioid}</td>
+<%--                    <td>${goodsAllDetail.iid}</td>--%>
+<%--                    <td>${goodsAllDetail.did}</td>--%>
+<%--                    <td>${goodsAllDetail.gioid}</td>--%>
                     <td>${goodsAllDetail.name}</td>
                     <td>${goodsAllDetail.no}</td>
                     <td>${goodsAllDetail.color}</td>

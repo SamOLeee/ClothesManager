@@ -3,7 +3,7 @@
 <mapper namespace="cn.mapper.UserMapper">
 
     <insert id="addUser">
-        insert into user(user_name,user_password,user_email,user_role) values (#{name},#{password},#{email},#{role})
+        insert into user(user_name,user_password,user_email,user_role,user_no) values (#{name},#{password},#{email},#{role},#{no})
     </insert>
     <update id="editUser" parameterType="cn.domain.User">
         update user
@@ -21,7 +21,10 @@
                 user_role = #{role},
             </if>
             <if test="delete != null" >
-                user_delete = #{delete}
+                user_delete = #{delete},
+            </if>
+            <if test="no != null" >
+                user_no = #{no}
             </if>
         </trim>
         where user_id = #{id}

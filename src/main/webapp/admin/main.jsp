@@ -28,27 +28,28 @@
     <header class="main-header">
         <!-- Logo -->
         <a href="${pageContext.request.contextPath}/goods/getAllGoodsIn" class="logo">
-            <span class="logo-lg"><b>xxxxx系统</b></span>
+            <span class="logo-lg"><b>服装库存管理系统</b></span>
         </a>
         <!-- 头部导航 -->
         <nav class="navbar navbar-static-top">
             <div class="navbar-custom-menu">
                 <ul class="nav navbar-nav">
-                    <li class="dropdown user user-menu">
-                        <button type="button" class="btn btn-default" title="个人中心" data-toggle="modal"
+                    <li class="dropdown user user-menu" >
+                        <button type="button" class="btn btn-block btn-success" title="个人中心" data-toggle="modal"
                                 data-target="#UserCenterModal" onclick="resetUserCenterFrom()"><i class="fa fa-file-o"></i>
                             <a>
                                 <img src="${pageContext.request.contextPath}/img/Sauron.jpg" class="user-image"
                                      alt="User Image">
-                                <span class="hidden-xs">${USER.name}</span>
+                                <span class="hidden-xs"><font color="white">${USER.name}</font></span>
                             </a>
                         </button>
-
                     </li>
                     <li class="dropdown user user-menu">
-                        <a href="${pageContext.request.contextPath}/user/logout">
-                            <span class="hidden-xs">注销</span>
-                        </a>
+                        <button type="button" class="btn btn-block btn-success">
+                            <a href="${pageContext.request.contextPath}/user/logout">
+                                <span class="hidden-xs"><font color="white">注销</font></span>
+                            </a>
+                        </button>
                     </li>
                 </ul>
             </div>
