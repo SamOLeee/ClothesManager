@@ -12,4 +12,5 @@ public interface GoodsOutService {
     void addGoodsOut(GoodsOut goodsout);
     void updateGoodsOut(GoodsOut goodsout);
     void delGoodsOut(Integer id);
+    String createGoodsOutNo();
 }

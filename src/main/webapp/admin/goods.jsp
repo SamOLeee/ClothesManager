@@ -130,8 +130,7 @@
                             <td><input class="form-control" placeholder="货物名称" name="name" id="egname"
                                        onblur="checkGoodsVal()" onfocus="changeGoodsVal()"></td>
                             <td>货物货号</td>
-                            <td><input class="form-control" placeholder="货物货号" name="no" id="egno"
-                                       onblur="checkGoodsVal()" onfocus="changeGoodsVal()"></td>
+                            <td><input class="form-control" readonly  name="no" id="egno"></td>
                         </tr>
                         <tr>
 

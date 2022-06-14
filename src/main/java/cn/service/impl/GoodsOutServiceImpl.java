@@ -8,6 +8,7 @@ import cn.mapper.GoodsOutMapper;
 import cn.service.GoodsOutService;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
+import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -40,5 +41,11 @@ public class GoodsOutServiceImpl implements GoodsOutService {
 
     public GoodsOut findGoodsOutById(Integer id) {
         return goodsOutMapper.findGoodsOutById(id);
+    }
+
+    public String createGoodsOutNo(){
+        String randomString = RandomStringUtils.randomAlphanumeric(5);
+        String GoodsOutNo = "CK"+randomString;
+        return GoodsOutNo;
     }
 }

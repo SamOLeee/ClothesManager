@@ -9,10 +9,15 @@ import cn.mapper.GoodsMapper;
 import cn.service.GoodsService;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
+import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.xml.crypto.Data;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Random;
 
 @Service
 public class GoodsServiceImpl implements GoodsService {
@@ -47,6 +52,14 @@ public class GoodsServiceImpl implements GoodsService {
 
     public List<Goods> getAllGoodsIn() {
         return goodsMapper.getAllGoodsIn();
+    }
+
+    public String createGoodsNo() {
+        String randomString = RandomStringUtils.randomAlphabetic(5);
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMddhhmmss");
+        String t = dateFormat.format(new Date());
+        String GoodsNo = randomString + t;
+        return GoodsNo;
     }
 
     public void addGoods(Goods goods) {
@@ -114,8 +127,7 @@ public class GoodsServiceImpl implements GoodsService {
             sum = gs.getAmount() - gsd.getAmount();
             if (sum < 0)
                 return new Result(false, "库存不足，删除失败！当前 " + gs.getName() + " 的库存量为 " + gs.getAmount() + " 件！");
-        }
-        else
+        } else
             sum = gs.getAmount() + gsd.getAmount();
         gs.setAmount(sum);
         goodsMapper.updateGoods(gs);

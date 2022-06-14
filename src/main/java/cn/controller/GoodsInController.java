@@ -66,4 +66,9 @@ public class GoodsInController {
         goodsInService.delGoodsIn(id);
         return new Result(true,"删除成功");
     }
+    @ResponseBody
+    @RequestMapping("/createGoodsInNo")
+    public String createGoodsInNo(){
+        return goodsInService.createGoodsInNo();
+    }
 }

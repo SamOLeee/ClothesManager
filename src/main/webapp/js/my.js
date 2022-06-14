@@ -208,8 +208,12 @@ $(function () {
 
 
 function resetGoodsFrom() {
-    $("#saveGoodsmsg").attr("disabled", true)
-    $("#addGoodsmsg").html("")
+    $("#saveGoodsmsg").attr("disabled", true);
+    $("#addGoodsmsg").html("");
+    var url=getProjectPath()+"/goods/createGoodsNo";
+    $.get(url,function (response){
+        $("#egno").val(response);
+    })
     var $vals = $("#addGoods input");
     $vals.each(function () {
         $(this).attr("style", "").val("")
@@ -300,6 +304,10 @@ function delGoods(gid) {
 function resetGoodsInFrom() {
     $("#saveGoodsInmsg").attr("disabled", true)
     $("#addGoodsInmsg").html("")
+    var url=getProjectPath()+"/goodsIn/createGoodsInNo";
+    $.get(url,function (response){
+        $("#gino").val(response);
+    })
     var $vals = $("#addGoodsIn input");
     $vals.each(function () {
         $(this).attr("style", "").val("")
@@ -398,6 +406,10 @@ function delGoodsIn(gid) {
 function resetGoodsOutFrom() {
     $("#saveGoodsOutmsg").attr("disabled", true)
     $("#addGoodsOutmsg").html("")
+    var url=getProjectPath()+"/goodsOut/createGoodsOutNo";
+    $.get(url,function (response){
+        $("#gono").val(response);
+    })
     var $vals = $("#addGoodsOut input");
     $vals.each(function () {
         $(this).attr("style", "").val("")

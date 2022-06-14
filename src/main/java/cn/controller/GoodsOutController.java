@@ -64,4 +64,9 @@ public class GoodsOutController {
         goodsOutService.delGoodsOut(id);
         return new Result(true,"删除成功");
     }
+    @ResponseBody
+    @RequestMapping("/createGoodsOutNo")
+    public String createGoodsOutNo(){
+        return goodsOutService.createGoodsOutNo();
+    }
 }

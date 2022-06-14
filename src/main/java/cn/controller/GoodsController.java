@@ -75,6 +75,7 @@ public class GoodsController {
 //    }
 
 
+
     @ResponseBody
     @RequestMapping("/addGoods")
     public Result addGoods(Goods goods) {
@@ -122,5 +123,11 @@ public class GoodsController {
     public Result delGoodsAmount(GoodsDetail goodsDetail) {
         System.out.println("修改明细==== " + goodsDetail);
         return goodsService.delGoodsAmount(goodsDetail);
+    }
+
+    @ResponseBody
+    @RequestMapping("/createGoodsNo")
+    public String createGoodsNo(){
+        return goodsService.createGoodsNo();
     }
 }

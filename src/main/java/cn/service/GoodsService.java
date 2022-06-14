@@ -22,4 +22,5 @@ public interface GoodsService {
     Result reduceGoodsAmount(Goods goods);
     Result updateGoodsAmount(GoodsDetail goodsDetail);
     Result delGoodsAmount(GoodsDetail goodsDetail);
+    String createGoodsNo();
 }

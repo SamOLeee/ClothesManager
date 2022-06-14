@@ -131,7 +131,7 @@
                         <%--入库单的id,不展示在页面--%>
                         <tr>
                             <td>单据编号</td>
-                            <td><input class="form-control" placeholder="单据编号" name="no" id="gono"
+                            <td><input class="form-control"  readonly name="no" id="gono"
                                        onblur="checkGoodsOutVal()" onfocus="changeGoodsOutVal()"></td>
                             <td>出库仓库</td>
                             <td>
@@ -182,7 +182,7 @@
                             <td>出库序号</td>
                             <td><input class="form-control" readonly name="id" id="upgoid"></td>
                             <td>单据编号</td>
-                            <td><input class="form-control" name="no" id="upgono"></td>
+                            <td><input class="form-control" readonly name="no" id="upgono"></td>
                         </tr>
                         <tr>
                             <td>出库时间</td>

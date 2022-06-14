@@ -13,4 +13,5 @@ public interface GoodsInService {
     void addGoodsIn(GoodsIn goodsIn);
     void updateGoodsIn(GoodsIn goodsin);
     void delGoodsIn(Integer id);
+    String createGoodsInNo();
 }
