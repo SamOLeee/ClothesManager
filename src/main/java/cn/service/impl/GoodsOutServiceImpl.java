@@ -20,21 +20,23 @@ public class GoodsOutServiceImpl implements GoodsOutService {
     private GoodsOutMapper goodsOutMapper;
 
     @Override
-    public PageResult searchGoodsOut(GoodsOut goodsout, Integer pageNum, Integer pageSize){
-        PageHelper.startPage(pageNum,pageSize);
-        Page<GoodsOut> page=goodsOutMapper.searchGoodsOut(goodsout);
-        return new PageResult(page.getTotal(),page.getResult());
+    public PageResult searchGoodsOut(GoodsOut goodsout, Integer pageNum, Integer pageSize) {
+        PageHelper.startPage(pageNum, pageSize);
+        Page<GoodsOut> page = goodsOutMapper.searchGoodsOut(goodsout);
+        return new PageResult(page.getTotal(), page.getResult());
     }
 
-    public void addGoodsOut(GoodsOut goodsout){
+    public void addGoodsOut(GoodsOut goodsout) {
         goodsout.setDatetime(new Date());
         goodsOutMapper.addGoodsOut(goodsout);
     }
 
-    public void updateGoodsOut(GoodsOut goodsout){ goodsOutMapper.updateGoodsOut(goodsout);}
+    public void updateGoodsOut(GoodsOut goodsout) {
+        goodsOutMapper.updateGoodsOut(goodsout);
+    }
 
-    public void delGoodsOut(Integer id){
-        GoodsOut goodsout=this.findGoodsOutById(id);
+    public void delGoodsOut(Integer id) {
+        GoodsOut goodsout = this.findGoodsOutById(id);
         goodsout.setDelete(1);
         goodsOutMapper.updateGoodsOut(goodsout);
     }
@@ -43,9 +45,9 @@ public class GoodsOutServiceImpl implements GoodsOutService {
         return goodsOutMapper.findGoodsOutById(id);
     }
 
-    public String createGoodsOutNo(){
+    public String createGoodsOutNo() {
         String randomString = RandomStringUtils.randomAlphanumeric(5);
-        String GoodsOutNo = "CK"+randomString;
-        return GoodsOutNo;
+        String goodsOutNo = "CK" + randomString;
+        return goodsOutNo;
     }
 }

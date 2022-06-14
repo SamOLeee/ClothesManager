@@ -58,9 +58,9 @@
         <table id="dataList" class="table table-bordered table-striped table-hover dataTable text-center">
             <thead>
             <tr>
-                <th class="sorting_asc">明细id</th>
-                <th class="sorting_asc">货物id</th>
-                <th class="sorting_asc">外键id</th>
+<%--                <th class="sorting_asc">明细id</th>--%>
+<%--                <th class="sorting_asc">货物id</th>--%>
+<%--                <th class="sorting_asc">外键id</th>--%>
                 <th class="sorting">货物名称</th>
                 <th class="sorting">货物货号</th>
                 <th class="sorting">货物色号</th>
@@ -74,9 +74,9 @@
             <tbody>
             <c:forEach items="${pageResult.rows}" var="goodsInDetail">
                 <tr>
-                    <td>${goodsInDetail.iid}</td>
-                    <td>${goodsInDetail.did}</td>
-                    <td>${goodsInDetail.gioid}</td>
+<%--                    <td>${goodsInDetail.iid}</td>--%>
+<%--                    <td>${goodsInDetail.did}</td>--%>
+<%--                    <td>${goodsInDetail.gioid}</td>--%>
                     <td>${goodsInDetail.name}</td>
                     <td>${goodsInDetail.no}</td>
                     <td>${goodsInDetail.color}</td>
@@ -184,10 +184,10 @@
                     <span><input type="hidden" id="enbid" name="iid"></span>
                     <table id="enAddGoodsInDetailTab" class="table table-bordered table-striped" width="800px">
                         <tr>
-                            <td>入库id</td>
-                            <td><input class="form-control" readonly name="gioid" id="engioid"></td>
-                            <td>货物id</td>
-                            <td><input class="form-control" readonly name="did" id="engidid"></td>
+<%--                            <td>入库id</td>--%>
+                            <td><input class="form-control" type="hidden" readonly name="gioid" id="engioid"></td>
+<%--                            <td>货物id</td>--%>
+                            <td><input class="form-control" type="hidden" readonly name="did" id="engidid"></td>
                         </tr>
                         <tr>
                             <td>货物货号</td>

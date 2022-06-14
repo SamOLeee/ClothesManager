@@ -15,4 +15,5 @@ public interface UserService {
     Integer checkEmail(String email);
     void delUser(Integer id);
     Result updateUserPwd(User user);
+    String createUserNo();
 }

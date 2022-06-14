@@ -9,6 +9,7 @@ public class User implements Serializable {
     private String email;     //用户邮箱（用户账号）
     private String role;      //用户角色
     private Integer delete;
+    private String no;
 
     public Integer getId() {
         return id;
@@ -58,6 +59,14 @@ public class User implements Serializable {
         this.delete = delete;
     }
 
+    public String getNo() {
+        return no;
+    }
+
+    public void setNo(String no) {
+        this.no = no;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -67,6 +76,7 @@ public class User implements Serializable {
                 ", email='" + email + '\'' +
                 ", role='" + role + '\'' +
                 ", delete=" + delete +
+                ", no='" + no + '\'' +
                 '}';
     }
 }

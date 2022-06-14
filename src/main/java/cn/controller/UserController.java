@@ -131,5 +131,10 @@ public class UserController {
     public Result updateUserPwd(User user) {
         return userService.updateUserPwd(user);
     }
+    @ResponseBody
+    @RequestMapping("/createUserNo")
+    public String createUserNo(){
+        return userService.createUserNo();
+    }
 }
 

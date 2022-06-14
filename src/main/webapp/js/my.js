@@ -882,6 +882,10 @@ function delGoodsOutDetail(id) {
 function resetUserFrom() {
     $("#savemsg").attr("disabled", true)
     $("#addmsg").html("")
+    var url=getProjectPath()+"/user/createUserNo";
+    $.get(url,function (response){
+        $("#addno").val(response);
+    })
     var $vals = $("#addUer input");
     $vals.each(function () {
         $(this).attr("style", "").val("")
@@ -944,6 +948,7 @@ function findUserById(uid) {
     $.get(url, function (response) {
         console.log(response);
         $("#uid").val(response.id);
+        $("#uno").val(response.no);
         $("#uname").val(response.name);
         $("#pw").val(response.password);
         $("#urole").val(response.role);
@@ -1145,7 +1150,7 @@ var recordVO = {
     borrower: ''
 }
 var userVO = {
-    id: '',
+    no: '',
     name: ''
 }
 

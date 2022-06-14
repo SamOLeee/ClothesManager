@@ -55,7 +55,7 @@
         <table id="dataList" class="table table-bordered table-striped table-hover dataTable text-center">
             <thead>
             <tr>
-                <th class="sorting_asc">入库id</th>
+                <%--                <th class="sorting_asc">入库id</th>--%>
                 <th class="sorting">单据凭证</th>
                 <th class="sorting">入库仓库</th>
                 <th class="sorting">入库时间</th>
@@ -68,7 +68,7 @@
             <tbody>
             <c:forEach items="${pageResult.rows}" var="goodsIn">
                 <tr>
-                    <td>${goodsIn.id}</td>
+                        <%--                    <td>${goodsIn.id}</td>--%>
                     <td>
                         <a href="${pageContext.request.contextPath}/goodsDetail/searchInDetail?gioid=${goodsIn.id}"
                            target="iframe">
@@ -133,7 +133,7 @@
                         <%--入库单的id,不展示在页面--%>
                         <tr>
                             <td>单据编号</td>
-                            <td><input class="form-control"  readonly name="no" id="gino"
+                            <td><input class="form-control" readonly name="no" id="gino"
                                        onblur="checkGoodsInVal()" onfocus="changeGoodsInVal()"></td>
                             <td>入库仓库</td>
                             <td>
@@ -179,19 +179,16 @@
             </div>
             <div class="modal-body">
                 <form id="updateGoodsIn">
-                    <%--                    <span><input type="hidden" id="ubid" name="id"></span>--%>
                     <table id="updateGoodsInTab" class="table table-bordered table-striped" width="800px">
                         <tr>
-                            <td>入库序号</td>
-                            <td><input class="form-control" readonly name="id" id="upgiid"></td>
-                            <td>单据编号</td>
-                            <td><input class="form-control" readonly name="no" id="upgino"></td>
+<%--                            <td>入库序号</td>--%>
+                            <td><input class="form-control" type="hidden" readonly name="id" id="upgiid"></td>
+<%--                            <td>入库时间</td>--%>
+                            <td><input class="form-control" type="hidden" readonly name="time" id="upgitime"></td>
                         </tr>
                         <tr>
-                            <td>入库时间</td>
-                            <td><input class="form-control" readonly name="time" id="upgitime"></td>
-                            <%--                            <input type="date" class="form-control" name="clothes.goodsIn" value="<fmt:formatDate value="upgitime" pattern="yyyy-MM-dd" />">--%>
-
+                            <td>单据编号</td>
+                            <td><input class="form-control" readonly name="no" id="upgino"></td>
                             <td>入库仓库</td>
                             <td>
                                 <select class="form-control" name="library" id="upgilibrary">

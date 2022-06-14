@@ -52,7 +52,7 @@ public class GoodsInServiceImpl implements GoodsInService {
 
     public String createGoodsInNo() {
         String randomString = RandomStringUtils.randomAlphanumeric(5);
-        String GoodsInNo = "RK"+randomString;
-        return GoodsInNo;
+        String goodsInNo = "RK"+randomString;
+        return goodsInNo;
     }
 }

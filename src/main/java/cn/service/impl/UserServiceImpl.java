@@ -7,8 +7,12 @@ import cn.service.UserService;
 import cn.mapper.UserMapper;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
+import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 
 @Service
@@ -59,10 +63,18 @@ public class UserServiceImpl implements UserService {
         return userMapper.findUserById(id);
     }
 
-    public Result updateUserPwd(User user){
-        User u=this.findUserById(user.getId());
+    public Result updateUserPwd(User user) {
+        User u = this.findUserById(user.getId());
         u.setPassword(user.getPassword());
         userMapper.editUser(user);
         return new Result(true, "密码修改成功！");
+    }
+
+    public String createUserNo() {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMM");
+        String t = dateFormat.format(new Date());
+        String randomString = RandomStringUtils.randomNumeric(6);
+        String userNo = "UR" + t + randomString;
+        return userNo;
     }
 }

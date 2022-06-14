@@ -55,7 +55,7 @@
         <table id="dataList" class="table table-bordered table-striped table-hover dataTable text-center">
             <thead>
             <tr>
-                <th class="sorting_asc">出库id</th>
+                <%--                <th class="sorting_asc">出库id</th>--%>
                 <th class="sorting">单据凭证</th>
                 <th class="sorting">出库仓库</th>
                 <th class="sorting">出库时间</th>
@@ -68,9 +68,10 @@
             <tbody>
             <c:forEach items="${pageResult.rows}" var="goodsOut">
                 <tr>
-                    <td>${goodsOut.id}</td>
+                        <%--                    <td>${goodsOut.id}</td>--%>
                     <td>
-                        <a href="${pageContext.request.contextPath}/goodsDetail/searchOutDetail?gioid=${goodsOut.id}" target="iframe">
+                        <a href="${pageContext.request.contextPath}/goodsDetail/searchOutDetail?gioid=${goodsOut.id}"
+                           target="iframe">
                             <i class="fa fa-circle-o"></i>${goodsOut.no}
                         </a>
                     </td>
@@ -86,7 +87,8 @@
                         <c:if test="${goodsOut.delete == 0 }">
                             <c:if test="${USER.role =='admin'}">
                                 <button type="button" class="btn bg-olive btn-xs" data-toggle="modal"
-                                        data-target="#updateGoodsOutModal" onclick="findGoodsOutById(${goodsOut.id})"> 修改
+                                        data-target="#updateGoodsOutModal" onclick="findGoodsOutById(${goodsOut.id})">
+                                    修改
                                 </button>
                                 <button type="button" class="btn bg-olive btn-xs" data-toggle="modal"
                                         data-target="#delGoodsOutModal" onclick="delGoodsOut(${goodsOut.id})"> 删除
@@ -131,12 +133,12 @@
                         <%--入库单的id,不展示在页面--%>
                         <tr>
                             <td>单据编号</td>
-                            <td><input class="form-control"  readonly name="no" id="gono"
+                            <td><input class="form-control" readonly name="no" id="gono"
                                        onblur="checkGoodsOutVal()" onfocus="changeGoodsOutVal()"></td>
                             <td>出库仓库</td>
                             <td>
                                 <select class="form-control" placeholder="所属仓库" name="library" id="golibrary"
-                                       onblur="checkGoodsOutVal()" onfocus="changeGoodsOutVal()">
+                                        onblur="checkGoodsOutVal()" onfocus="changeGoodsOutVal()">
                                     <option value="第一仓库">第一仓库</option>
                                 </select>
                             </td>
@@ -167,7 +169,8 @@
 </div>
 
 <!-- 编辑出库单 -->
-<div class="modal fade" id="updateGoodsOutModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="updateGoodsOutModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -176,19 +179,17 @@
             </div>
             <div class="modal-body">
                 <form id="updateGoodsOut">
-                    <%--                    <span><input type="hidden" id="ubid" name="id"></span>--%>
                     <table id="updateGoodsOutTab" class="table table-bordered table-striped" width="800px">
                         <tr>
-                            <td>出库序号</td>
-                            <td><input class="form-control" readonly name="id" id="upgoid"></td>
-                            <td>单据编号</td>
-                            <td><input class="form-control" readonly name="no" id="upgono"></td>
+                            <%--                            <td>出库序号</td>--%>
+                            <td><input class="form-control" type="hidden" readonly type="hidden" name="id" id="upgoid">
+                            </td>
+                            <%--                            <td>出库时间</td>--%>
+                            <td><input class="form-control" type="hidden" readonly name="time" id="upgotime"></td>
                         </tr>
                         <tr>
-                            <td>出库时间</td>
-                            <td><input class="form-control" readonly name="time" id="upgotime"></td>
-<%--                            <input type="date" class="form-control" name="clothes.goodsIn" value="<fmt:formatDate value="upgitime" pattern="yyyy-MM-dd" />">--%>
-
+                            <td>单据编号</td>
+                            <td><input class="form-control" readonly name="no" id="upgono"></td>
                             <td>出库仓库</td>
                             <td>
                                 <select class="form-control" name="library" id="upgolibrary">
@@ -213,10 +214,6 @@
         </div>
     </div>
 </div>
-
-
-
-
 
 
 </body>

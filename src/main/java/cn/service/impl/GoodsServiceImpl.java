@@ -58,8 +58,8 @@ public class GoodsServiceImpl implements GoodsService {
         String randomString = RandomStringUtils.randomAlphabetic(5);
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMddhhmmss");
         String t = dateFormat.format(new Date());
-        String GoodsNo = randomString + t;
-        return GoodsNo;
+        String goodsNo = randomString + t;
+        return goodsNo;
     }
 
     public void addGoods(Goods goods) {

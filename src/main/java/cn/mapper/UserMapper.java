@@ -13,7 +13,8 @@ public interface UserMapper {
             @Result(column = "user_password",property = "password"),
             @Result(column = "user_email",property = "email"),
             @Result(column = "user_role",property = "role"),
-            @Result(column = "user_delete",property = "delete")
+            @Result(column = "user_delete",property = "delete"),
+            @Result(column = "user_no",property = "no")
     })
     User login(User user);
 
@@ -24,7 +25,7 @@ public interface UserMapper {
     @Select({"<script>" +
             "SELECT * FROM user " +
             "where 1=1 " +
-            "<if test=\"id != null\"> AND  user_id  like  CONCAT('%',#{id},'%')</if>" +
+            "<if test=\"no != null\"> AND  user_no  like  CONCAT('%',#{no},'%')</if>" +
             "<if test=\"name != null\"> AND user_name like  CONCAT('%', #{name},'%') </if>" +
             "</script>"
     })
