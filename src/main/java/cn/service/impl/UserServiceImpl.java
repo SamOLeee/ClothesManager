@@ -38,8 +38,8 @@ public class UserServiceImpl implements UserService {
     }
 
 
-    public PageResult searchUser(User user, Integer pageNUm, Integer pageSize) {
-        PageHelper.startPage(pageNUm, pageSize);
+    public PageResult searchUser(User user, Integer pageNum, Integer pageSize) {
+        PageHelper.startPage(pageNum, pageSize);
         Page<User> page = userMapper.searchUser(user);
         return new PageResult(page.getTotal(), page.getResult());
     }

@@ -203,11 +203,13 @@
 </div>
 </body>
 <script>
-    //总页数
-    pageargs.total =/*Math.ceil(*/${pageResult.total}/*/pageargs.pagesize)*/
-        //当前页数
-        pageargs.cur = ${pageNum}
-            pageargs.gourl = "${gourl}"
+    /*分页插件展示的总页数*/
+    pageargs.total = Math.ceil(${pageResult.total}/pageargs.pagesize);
+    /*分页插件当前的页码*/
+    pageargs.cur = ${pageNum}
+        /*分页插件页码变化时将跳转到的服务器端的路径*/
+        pageargs.gourl = "${gourl}"
+
     userVO.id = "${search.id}"
     userVO.name = "${search.name}"
     pagination(pageargs);

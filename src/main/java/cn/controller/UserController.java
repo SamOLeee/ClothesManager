@@ -27,14 +27,14 @@ public class UserController {
     private GoodsService goodsService;
 
     @RequestMapping("/login")
-    public String login(User user, HttpServletRequest request){
+    public String login(User user, HttpServletRequest request) {
         User u = userService.login(user);
         List<Goods> goodsList = goodsService.getAllGoodsIn();
 
-        if(u != null){
-            request.getSession().setAttribute("USER",u);
-            request.getSession().setAttribute("GOODS",goodsList);
-            String role=u.getRole();
+        if (u != null) {
+            request.getSession().setAttribute("USER", u);
+            request.getSession().setAttribute("GOODS", goodsList);
+            String role = u.getRole();
             if ("admin".equals(role)) {
                 return "redirect:/admin/main.jsp";
             } else {
@@ -42,22 +42,22 @@ public class UserController {
             }
         }
 
-        request.setAttribute("msg","用户名或密码输入错误！");
+        request.setAttribute("msg", "用户名或密码输入错误！");
         return "forward:/admin/login.jsp";
     }
 
     @RequestMapping("/logout")
-    public String logout(HttpServletRequest request){
-        HttpSession session =request.getSession();
+    public String logout(HttpServletRequest request) {
+        HttpSession session = request.getSession();
         session.invalidate();
         return "forward:/admin/login.jsp";
     }
 
     @ResponseBody
     @RequestMapping("/addUser")
-    public Result addUser(User user){
+    public Result addUser(User user) {
         userService.addUser(user);
-        return new Result(true,"新增成功");
+        return new Result(true, "新增成功");
     }
 
     @ResponseBody
@@ -73,6 +73,7 @@ public class UserController {
 
     /**
      * 校验用户的邮箱是否已经存在
+     *
      * @param email 被校验的用户邮箱
      */
     @ResponseBody
@@ -88,47 +89,46 @@ public class UserController {
 
     @ResponseBody
     @RequestMapping("/search")
-    public ModelAndView searchUser(User user,Integer pageNum,Integer pageSize,HttpServletRequest request){
-        if(pageNum == null)
-            pageNum = 1;
-        if(pageSize == null)
-            pageSize = 10;
+    public ModelAndView searchUser(User user, Integer pageNum, Integer pageSize, HttpServletRequest request) {
+        if (pageNum == null) pageNum = 1;
+        if (pageSize == null) pageSize = 10;
 
-        PageResult pageResult = userService.searchUser(user,pageNum,pageSize);
+        PageResult pageResult = userService.searchUser(user, pageNum, pageSize);
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("user");
-        modelAndView.addObject("pageResult",pageResult);
-        modelAndView.addObject("search",user);
-        modelAndView.addObject("pageNum",pageNum);
-        modelAndView.addObject("gourl",request.getRequestURI());
+        modelAndView.addObject("pageResult", pageResult);
+        modelAndView.addObject("search", user);
+        modelAndView.addObject("pageNum", pageNum);
+        modelAndView.addObject("gourl", request.getRequestURI());
         return modelAndView;
     }
 
     @ResponseBody
     @RequestMapping("/updateUser")
-    public Result updateUser(User user){
+    public Result updateUser(User user) {
 /*        System.out.print(123);
         System.out.println("controller"+user);*/
         userService.updateUser(user);
-        return new Result(true,"修改成功！");
+        return new Result(true, "修改成功！");
     }
 
     @ResponseBody
-    @RequestMapping ("/findUserById")
-    public User findUserById(Integer id){
+    @RequestMapping("/findUserById")
+    public User findUserById(Integer id) {
         System.out.println(10086);
         System.out.println(id);
         return userService.findUserById(id);
     }
 
     @RequestMapping("/delUser")
-    public Result delUser(Integer id){
+    public Result delUser(Integer id) {
         userService.delUser(id);
-        return new Result(true,"删除成功");
+        return new Result(true, "删除成功");
     }
+
     @ResponseBody
     @PostMapping("/updateUserPwd")
-    public Result updateUserPwd(User user){
+    public Result updateUserPwd(User user) {
         return userService.updateUserPwd(user);
     }
 }

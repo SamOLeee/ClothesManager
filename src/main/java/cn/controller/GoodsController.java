@@ -29,7 +29,7 @@ public class GoodsController {
 
     @ResponseBody
     @RequestMapping("/search")
-    public ModelAndView searchGoods(Goods goods, Integer pageNum, Integer pageSize,HttpServletRequest request) {
+    public ModelAndView searchGoods(Goods goods, Integer pageNum, Integer pageSize, HttpServletRequest request) {
         if (pageNum == null) pageNum = 1;
         if (pageSize == null) pageSize = 10;
 
@@ -58,8 +58,8 @@ public class GoodsController {
 //
 //        return goodsService.getAllGoodsIn();
 //    }
-    public void getAllGoodsIn(HttpServletRequest request, HttpServletResponse response){
-        request.getSession().setAttribute("GOODS",goodsService.getAllGoodsIn());
+    public void getAllGoodsIn(HttpServletRequest request, HttpServletResponse response) {
+        request.getSession().setAttribute("GOODS", goodsService.getAllGoodsIn());
         try {
             response.sendRedirect("/Clothes/admin/main.jsp");
         } catch (IOException e) {
@@ -75,7 +75,6 @@ public class GoodsController {
 //    }
 
 
-
     @ResponseBody
     @RequestMapping("/addGoods")
     public Result addGoods(Goods goods) {
@@ -85,20 +84,20 @@ public class GoodsController {
 
     @ResponseBody
     @RequestMapping("/updateGoods")
-    public Result updateGoods(Goods goods){
+    public Result updateGoods(Goods goods) {
         goodsService.updateGoods(goods);
-        return new Result(true,"修改成功");
+        return new Result(true, "修改成功");
     }
 
     @RequestMapping("/delGoods")
-    public Result delUser(Integer id){
+    public Result delUser(Integer id) {
         goodsService.delGoods(id);
-        return new Result(true,"删除成功");
+        return new Result(true, "删除成功");
     }
 
     @ResponseBody
     @PostMapping("/addGoodsAmount")
-    public Result addGoodsAmount(Goods goods){
+    public Result addGoodsAmount(Goods goods) {
         System.out.println(goods);
         return goodsService.addGoodsAmount(goods);
     }
@@ -106,22 +105,22 @@ public class GoodsController {
 
     @ResponseBody
     @PostMapping("/reduceGoodsAmount")
-    public Result reduceGoodsAmount(Goods goods){
+    public Result reduceGoodsAmount(Goods goods) {
         System.out.println(goods);
         return goodsService.reduceGoodsAmount(goods);
     }
 
     @ResponseBody
     @PostMapping("/updateGoodsAmount")
-    public Result updateGoodsAmount(GoodsDetail goodsDetail){
-        System.out.println("修改明细==== "+goodsDetail);
+    public Result updateGoodsAmount(GoodsDetail goodsDetail) {
+        System.out.println("修改明细==== " + goodsDetail);
         return goodsService.updateGoodsAmount(goodsDetail);
     }
 
     @ResponseBody
     @PostMapping("/delGoodsAmount")
-    public Result delGoodsAmount(GoodsDetail goodsDetail){
-        System.out.println("修改明细==== "+goodsDetail);
+    public Result delGoodsAmount(GoodsDetail goodsDetail) {
+        System.out.println("修改明细==== " + goodsDetail);
         return goodsService.delGoodsAmount(goodsDetail);
     }
 }

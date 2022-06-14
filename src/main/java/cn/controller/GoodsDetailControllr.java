@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 @Controller
 @RequestMapping("/goodsDetail")
@@ -31,8 +32,10 @@ public class GoodsDetailControllr {
         if (pageNum == null) pageNum = 1;
         if (pageSize == null) pageSize = 10;
 
-        PageResult pageResult = goodsDetailService.searchGoodsInDetail(goodsDetail, pageNum, pageSize);
+        List<Goods> goodsList = goodsService.getAllGoodsIn();
+        request.getSession().setAttribute("GOODS",goodsList);
 
+        PageResult pageResult = goodsDetailService.searchGoodsInDetail(goodsDetail, pageNum, pageSize);
         System.out.println(goodsDetail);
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("goodsInDetail");
@@ -87,8 +90,10 @@ public class GoodsDetailControllr {
         if (pageNum == null) pageNum = 1;
         if (pageSize == null) pageSize = 10;
 
-        PageResult pageResult = goodsDetailService.searchGoodsOutDetail(goodsDetail, pageNum, pageSize);
+        List<Goods> goodsList = goodsService.getAllGoodsIn();
+        request.getSession().setAttribute("GOODS",goodsList);
 
+        PageResult pageResult = goodsDetailService.searchGoodsOutDetail(goodsDetail, pageNum, pageSize);
         System.out.println(goodsDetail);
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("goodsOutDetail");

@@ -133,12 +133,12 @@
                     <table id="UserCenterTab" class="table table-bordered table-striped" width="800px">
                         <tr>
                             <td>输入密码</td>
-                            <td><input class="form-control"  name="pw" id="usrpw"
+                            <td><input class="form-control"  name="pw" id="usrpw" placeholder="输入密码"
                                        onblur="checkUserVal()" onfocus="changeUserVal()"></td>
                         </tr>
                         <tr>
                             <td>再次输入密码</td>
-                            <td><input class="form-control"  name="password" id="enusrpw"
+                            <td><input class="form-control"  name="password" id="enusrpw" placeholder="再次输入密码"
                                        onblur="checkUserVal()" onfocus="changeUserVal()"></td>
                         </tr>
                         <tr>
