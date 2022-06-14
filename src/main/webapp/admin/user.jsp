@@ -19,6 +19,8 @@
     <script src="${pageContext.request.contextPath}/js/goodsIn.js"></script>
     <script src="${pageContext.request.contextPath}/js/goodsOut.js"></script>
     <script src="${pageContext.request.contextPath}/js/pages.js"></script>
+    <script src="${pageContext.request.contextPath}/js/timeout.js"></script>
+
 </head>
 <body class="hold-transition skin-red sidebar-mini">
 <!-- .box-body -->
