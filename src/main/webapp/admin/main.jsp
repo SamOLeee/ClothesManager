@@ -56,7 +56,8 @@
                     <li class="dropdown user user-menu">
                         <button type="button" class="btn btn-block btn-success">
                             <a href="${pageContext.request.contextPath}/user/logout">
-                                <span class="hidden-xs"><font color="white">注销</font></span>
+                                <img src="${pageContext.request.contextPath}/img/turnoff.png" class="user-image"
+                                     alt="User Image">
                             </a>
                         </button>
                     </li>

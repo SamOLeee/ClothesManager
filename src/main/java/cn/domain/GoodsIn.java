@@ -13,7 +13,7 @@ public class GoodsIn implements Serializable {
     private String no;
     private String library;
 
-    @DateTimeFormat(pattern = "YYYY-MM-DD")
+    @DateTimeFormat(pattern = "YYYY-MM-DD hh:mm:ss")
     private Date datetime;
 
     private String operator;
