@@ -33,7 +33,7 @@ public class GoodsDetailControllr {
         if (pageSize == null) pageSize = 10;
 
         List<Goods> goodsList = goodsService.getAllGoodsIn();
-        request.getSession().setAttribute("GOODS",goodsList);
+        request.getSession().setAttribute("GOODS", goodsList);
 
         PageResult pageResult = goodsDetailService.searchGoodsInDetail(goodsDetail, pageNum, pageSize);
         System.out.println(goodsDetail);
@@ -63,35 +63,49 @@ public class GoodsDetailControllr {
     @ResponseBody
     @RequestMapping("/addGoodsDetail")
     public Result addGoodsDetail(GoodsDetail goodsDetail) {
-
-        goodsDetailService.addGoodsDetail(goodsDetail);
-        return new Result(true, "新增成功");
+        try {
+            goodsDetailService.addGoodsDetail(goodsDetail);
+            return new Result(true, "新增成功");
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new Result(false, "系统错误！");
+        }
     }
 
 
     @ResponseBody
     @RequestMapping("/updateGoodsDetail")
     public Result updateGoodsDetail(GoodsDetail goodsDetail) {
-        goodsDetailService.updateGoodsDetail(goodsDetail);
-        return new Result(true, "修改成功！");
+        try {
+            goodsDetailService.updateGoodsDetail(goodsDetail);
+            return new Result(true, "修改成功！");
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new Result(false, "输入错误，修改失败！");
+        }
     }
 
     @ResponseBody
     @RequestMapping("/delGoodsDetail")
     public Result delGoodsDetail(Integer id) {
-        goodsDetailService.delGoodsDetail(id);
-        return new Result(true, "删除成功！");
+        try {
+            goodsDetailService.delGoodsDetail(id);
+            return new Result(true, "删除成功！");
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new Result(false, "系统错误！");
+        }
     }
 
 
     ////////出库明细操作
     @RequestMapping("/searchOutDetail")
-    public ModelAndView searchGoodsOutDetail(GoodsDetail goodsDetail, Integer pageNum, Integer pageSize,HttpServletRequest request) {
+    public ModelAndView searchGoodsOutDetail(GoodsDetail goodsDetail, Integer pageNum, Integer pageSize, HttpServletRequest request) {
         if (pageNum == null) pageNum = 1;
         if (pageSize == null) pageSize = 10;
 
         List<Goods> goodsList = goodsService.getAllGoodsIn();
-        request.getSession().setAttribute("GOODS",goodsList);
+        request.getSession().setAttribute("GOODS", goodsList);
 
         PageResult pageResult = goodsDetailService.searchGoodsOutDetail(goodsDetail, pageNum, pageSize);
         System.out.println(goodsDetail);
@@ -111,7 +125,7 @@ public class GoodsDetailControllr {
     }
 
     @RequestMapping("/searchAll")
-    public ModelAndView searchGoodsAllDetail(GoodsDetail goodsDetail, Integer pageNum, Integer pageSize,HttpServletRequest request) {
+    public ModelAndView searchGoodsAllDetail(GoodsDetail goodsDetail, Integer pageNum, Integer pageSize, HttpServletRequest request) {
         if (pageNum == null) pageNum = 1;
         if (pageSize == null) pageSize = 10;
 
@@ -132,6 +146,4 @@ public class GoodsDetailControllr {
         modelAndView.addObject("gourl", request.getRequestURI());
         return modelAndView;
     }
-
-
 }

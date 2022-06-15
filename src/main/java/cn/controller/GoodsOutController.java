@@ -46,27 +46,42 @@ public class GoodsOutController {
     @ResponseBody
     @RequestMapping("/addGoodsOut")
     public Result addGoodsIn(GoodsOut goodsout) {
-
-        goodsOutService.addGoodsOut(goodsout);
-        return new Result(true, "新增成功");
+        try {
+            goodsOutService.addGoodsOut(goodsout);
+            return new Result(true, "新增成功");
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new Result(false, "系统错误！");
+        }
     }
 
     @ResponseBody
     @RequestMapping("/updateGoodsOut")
-    public Result updateGoodsOut(GoodsOut goodsout){
-        goodsOutService.updateGoodsOut(goodsout);
-        return new Result(true,"修改成功！");
+    public Result updateGoodsOut(GoodsOut goodsout) {
+        try {
+            goodsOutService.updateGoodsOut(goodsout);
+            return new Result(true, "修改成功！");
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new Result(false, "系统错误！");
+        }
     }
 
     @ResponseBody
     @RequestMapping("/delGoodsOut")
-    public Result delUser(Integer id){
-        goodsOutService.delGoodsOut(id);
-        return new Result(true,"删除成功");
+    public Result delUser(Integer id) {
+        try {
+            goodsOutService.delGoodsOut(id);
+            return new Result(true, "删除成功");
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new Result(false, "系统错误！");
+        }
     }
+
     @ResponseBody
     @RequestMapping("/createGoodsOutNo")
-    public String createGoodsOutNo(){
+    public String createGoodsOutNo() {
         return goodsOutService.createGoodsOutNo();
     }
 }

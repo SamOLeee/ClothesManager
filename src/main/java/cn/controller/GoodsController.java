@@ -75,59 +75,93 @@ public class GoodsController {
 //    }
 
 
-
     @ResponseBody
     @RequestMapping("/addGoods")
     public Result addGoods(Goods goods) {
-        goodsService.addGoods(goods);
-        return new Result(true, "新增成功");
+        try {
+            goodsService.addGoods(goods);
+            return new Result(true, "新增成功");
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new Result(false, "系统错误！");
+        }
     }
 
     @ResponseBody
     @RequestMapping("/updateGoods")
     public Result updateGoods(Goods goods) {
-        goodsService.updateGoods(goods);
-        return new Result(true, "修改成功");
+        try {
+            goodsService.updateGoods(goods);
+            return new Result(true, "修改成功");
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new Result(false, "系统错误！");
+        }
     }
 
     @RequestMapping("/delGoods")
     public Result delUser(Integer id) {
-        goodsService.delGoods(id);
-        return new Result(true, "删除成功");
+        try {
+            goodsService.delGoods(id);
+            return new Result(true, "删除成功");
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new Result(false, "系统错误！");
+        }
     }
 
     @ResponseBody
     @PostMapping("/addGoodsAmount")
     public Result addGoodsAmount(Goods goods) {
-        System.out.println(goods);
-        return goodsService.addGoodsAmount(goods);
+        try {
+            System.out.println(goods);
+            return goodsService.addGoodsAmount(goods);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new Result(false, "系统错误！");
+        }
     }
 
 
     @ResponseBody
     @PostMapping("/reduceGoodsAmount")
     public Result reduceGoodsAmount(Goods goods) {
-        System.out.println(goods);
-        return goodsService.reduceGoodsAmount(goods);
+        try {
+            System.out.println(goods);
+            return goodsService.reduceGoodsAmount(goods);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new Result(false, "系统错误！");
+        }
     }
 
     @ResponseBody
     @PostMapping("/updateGoodsAmount")
     public Result updateGoodsAmount(GoodsDetail goodsDetail) {
-        System.out.println("修改明细==== " + goodsDetail);
-        return goodsService.updateGoodsAmount(goodsDetail);
+        try {
+            System.out.println("修改明细==== " + goodsDetail);
+            return goodsService.updateGoodsAmount(goodsDetail);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new Result(false, "系统错误！");
+        }
     }
 
     @ResponseBody
     @PostMapping("/delGoodsAmount")
     public Result delGoodsAmount(GoodsDetail goodsDetail) {
-        System.out.println("修改明细==== " + goodsDetail);
-        return goodsService.delGoodsAmount(goodsDetail);
+        try {
+            System.out.println("修改明细==== " + goodsDetail);
+            return goodsService.delGoodsAmount(goodsDetail);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new Result(false, "系统错误！");
+        }
     }
 
     @ResponseBody
     @RequestMapping("/createGoodsNo")
-    public String createGoodsNo(){
+    public String createGoodsNo() {
         return goodsService.createGoodsNo();
     }
 }

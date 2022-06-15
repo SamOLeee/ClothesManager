@@ -10,12 +10,12 @@
     <script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
     <script src="${pageContext.request.contextPath}/js/bootstrap.js"></script>
     <script src="${pageContext.request.contextPath}/js/pagination.js"></script>
-    <%--    <script src="${pageContext.request.contextPath}/js/my.js"></script>--%>
-    <script src="${pageContext.request.contextPath}/js/goods.js"></script>
-    <script src="${pageContext.request.contextPath}/js/user.js"></script>
-    <script src="${pageContext.request.contextPath}/js/goodsIn.js"></script>
-    <script src="${pageContext.request.contextPath}/js/goodsOut.js"></script>
-    <script src="${pageContext.request.contextPath}/js/pages.js"></script>
+        <script src="${pageContext.request.contextPath}/js/my.js"></script>
+<%--    <script src="${pageContext.request.contextPath}/js/goods.js"></script>--%>
+<%--    <script src="${pageContext.request.contextPath}/js/user.js"></script>--%>
+<%--    <script src="${pageContext.request.contextPath}/js/goodsIn.js"></script>--%>
+<%--    <script src="${pageContext.request.contextPath}/js/goodsOut.js"></script>--%>
+<%--    <script src="${pageContext.request.contextPath}/js/pages.js"></script>--%>
     <script src="${pageContext.request.contextPath}/js/timeout.js"></script>
 
 </head>
@@ -213,6 +213,7 @@
                             <td><input class="form-control" readonly name="type" id="engidtype" ></td>
                             <td>货物数量</td>
                             <td><input class="form-control" name="amount" id="engidamount"
+                                       type="text" maxlength="8"  onkeyup="value=this.value.replace(/\D+/g,'')"
                                        onblur="checkGoodsInDetailVal2()" onfocus="changeGoodsInDetail2()"></td>
                         </tr>
                         <tr>
@@ -269,6 +270,7 @@
                             <td><input class="form-control" readonly name="type" id="upengidtype" ></td>
                             <td>货物数量</td>
                             <td><input class="form-control" name="amount" id="upengidamount"
+                                       type="text" maxlength="8"  onkeyup="value=this.value.replace(/\D+/g,'')"
                                        onblur="checkGoodsInDetailVal3()" onfocus="changeGoodsInDetail3()"></td>
                         </tr>
                         <tr>

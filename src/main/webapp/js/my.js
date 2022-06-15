@@ -379,13 +379,15 @@ function enSaveGoodsInDetail(pageId) {
         data: "id=" + id + "&amount=" + amount,
         success: function (data) {
             alert(data.message);
-            $.post(url, $("#enAddGoodsInDetail").serialize(), function (response) {
-                console.log(response);
-                // alert(response.message);
-                if (response.success == true) {
-                    window.location.href = getProjectPath() + "/goodsDetail/searchInDetail?gioid=" + pageId;
-                }
-            })
+            if(data.success){
+                $.post(url, $("#enAddGoodsInDetail").serialize(), function (response) {
+                    console.log(response);
+                    // alert(response.message);
+                    if (response.success == true) {
+                        window.location.href = getProjectPath() + "/goodsDetail/searchInDetail?gioid=" + pageId;
+                    }
+                })
+            }
         }
     })
 }
@@ -415,6 +417,8 @@ function checkGoodsInDetailVal3() {
     $("#upsaveGoodsInDetailmsg").attr("disabled", false)
     $("#upaddGoodsInDetailmsg").html("")
     var upengidamount = $("#upengidamount").val();
+    var len=upengidamount.length;
+    console.log(len);
     if ($.trim(upengidamount) == '') {
         $("#upsaveGoodsInDetailmsg").attr("disabled", true);
         $("#upaddGoodsInDetailmsg").html("数量不能为空！")
@@ -518,12 +522,7 @@ function changeGoodsOutDetail2() {
 function checkGoodsOutDetailVal2() {
     $("#ensaveGoodsOutDetailmsg").attr("disabled", false)
     $("#enaddGoodsOutDetailmsg").html("")
-    // var gidname = $("#gidname").val();
     var engodamount = $("#engodamount").val();
-    /* if (gidname == null) {
-         $("#saveGoodsInDetailmsg").attr("disabled", true);
-         $("#addGoodsInDetailmsg").html("请选择商品！")
-     } else */
     if ($.trim(engodamount) == '') {
         $("#ensaveGoodsOutDetailmsg").attr("disabled", true);
         $("#enaddGoodsOutDetailmsg").html("数量不能为空！")

@@ -30,34 +30,50 @@ public class UserController {
     public String login(User user, HttpServletRequest request) {
         User u = userService.login(user);
         List<Goods> goodsList = goodsService.getAllGoodsIn();
-
-        if (u != null) {
-            request.getSession().setAttribute("USER", u);
-            request.getSession().setAttribute("GOODS", goodsList);
-            String role = u.getRole();
-            if ("admin".equals(role)) {
-                return "redirect:/admin/main.jsp";
-            } else {
-                return "redirect:/admin/main.jsp";
+        try {
+            if (u != null) {
+                request.getSession().setAttribute("USER", u);
+                request.getSession().setAttribute("GOODS", goodsList);
+                String role = u.getRole();
+                if ("admin".equals(role)) {
+                    return "redirect:/admin/main.jsp";
+                } else {
+                    return "redirect:/admin/main.jsp";
+                }
             }
-        }
 
-        request.setAttribute("msg", "用户名或密码输入错误！");
-        return "forward:/admin/login.jsp";
+            request.setAttribute("msg", "用户名或密码输入错误！");
+            return "forward:/admin/login.jsp";
+        } catch (Exception e) {
+            e.printStackTrace();
+            request.setAttribute("msg", "系统错误！");
+            return "forward:/admin/login.jsp";
+        }
     }
 
     @RequestMapping("/logout")
     public String logout(HttpServletRequest request) {
-        HttpSession session = request.getSession();
-        session.invalidate();
-        return "forward:/admin/login.jsp";
+        try {
+            HttpSession session = request.getSession();
+            session.invalidate();
+            return "forward:/admin/login.jsp";
+        } catch (Exception e) {
+            e.printStackTrace();
+            request.setAttribute("msg", "系统错误！");
+            return "forward:/admin/login.jsp";
+        }
     }
 
     @ResponseBody
     @RequestMapping("/addUser")
     public Result addUser(User user) {
-        userService.addUser(user);
-        return new Result(true, "新增成功");
+        try {
+            userService.addUser(user);
+            return new Result(true, "新增成功");
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new Result(false, "系统错误！");
+        }
     }
 
     @ResponseBody
@@ -71,11 +87,6 @@ public class UserController {
         }
     }
 
-    /**
-     * 校验用户的邮箱是否已经存在
-     *
-     * @param email 被校验的用户邮箱
-     */
     @ResponseBody
     @RequestMapping("/checkEmail")
     public Result checkEmail(String email) {
@@ -108,8 +119,13 @@ public class UserController {
     public Result updateUser(User user) {
 /*        System.out.print(123);
         System.out.println("controller"+user);*/
-        userService.updateUser(user);
-        return new Result(true, "修改成功！");
+        try {
+            userService.updateUser(user);
+            return new Result(true, "修改成功！");
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new Result(false, "系统错误！");
+        }
     }
 
     @ResponseBody
@@ -122,18 +138,29 @@ public class UserController {
 
     @RequestMapping("/delUser")
     public Result delUser(Integer id) {
-        userService.delUser(id);
-        return new Result(true, "删除成功");
+        try {
+            userService.delUser(id);
+            return new Result(true, "删除成功");
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new Result(false, "系统错误！");
+        }
     }
 
     @ResponseBody
     @PostMapping("/updateUserPwd")
     public Result updateUserPwd(User user) {
-        return userService.updateUserPwd(user);
+        try {
+            return userService.updateUserPwd(user);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new Result(false, "系统错误！");
+        }
     }
+
     @ResponseBody
     @RequestMapping("/createUserNo")
-    public String createUserNo(){
+    public String createUserNo() {
         return userService.createUserNo();
     }
 }
