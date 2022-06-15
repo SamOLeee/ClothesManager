@@ -747,14 +747,23 @@ function findUserById(uid) {
     })
 }
 
-function updateUser() {
-    var url = getProjectPath() + "/user/updateUser";
-    $.post(url, $("#updateUser").serialize(), function (response) {
-        alert(response.message);
-        if (response.success == true) {
-            window.location.href = getProjectPath() + "/user/search";
-        }
-    })
+function updateUser(id) {
+    var r = confirm("是否保存修改?");
+    if(r){
+        var url = getProjectPath() + "/user/updateUser";
+        var uid = $("#uid").val();
+        $.post(url, $("#updateUser").serialize(), function (response) {
+            alert(response.message);
+            if (response.success == true) {
+                if(uid == id){
+                    alert("信息过期，请重新的登录！");
+                    window.location.href = getProjectPath() + "/index.jsp";
+                }
+                else
+                    window.location.href = getProjectPath() + "/user/search";
+            }
+        })
+    }
 }
 
 function changeVal() {

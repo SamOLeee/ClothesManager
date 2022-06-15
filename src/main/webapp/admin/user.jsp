@@ -214,7 +214,7 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-success" data-dismiss="modal" aria-hidden="true" onclick="updateUser()">保存
+                <button class="btn btn-success" data-dismiss="modal" aria-hidden="true" onclick="updateUser(${USER.id})">保存
                 </button>
                 <button class="btn btn-default btn-danger" data-dismiss="modal" aria-hidden="true">关闭</button>
             </div>
