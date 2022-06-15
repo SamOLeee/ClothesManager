@@ -130,6 +130,8 @@
         </iframe>
     </div>
 </div>
+
+<!-- 个人中心修改密码 -->
 <div class="modal fade" id="UserCenterModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" >
     <div class="modal-dialog">
         <div class="modal-content">
@@ -162,7 +164,7 @@
                         disabled="true"
                         onclick="updateUserPwd(${USER.id})">保存
                 </button>
-                <button class="btn btn-default" data-dismiss="modal" aria-hidden="true">关闭</button>
+                <button class="btn btn-default btn-danger" data-dismiss="modal" aria-hidden="true">关闭</button>
             </div>
         </div>
     </div>

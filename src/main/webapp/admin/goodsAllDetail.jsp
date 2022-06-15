@@ -61,7 +61,7 @@
                 </select>&nbsp&nbsp&nbsp&nbsp
 
 
-                <input class="btn btn-default" type="submit" value="查询">
+                <input class="btn btn-default btn-info" type="submit" value="查询">
             </form>
         </div>
     </div>

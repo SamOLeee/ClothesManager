@@ -33,12 +33,12 @@
         <div class="form-group form-inline">
             <div class="btn-group">
                 <c:if test="${USER.role =='admin'}">
-                    <button type="button" class="btn btn-default" title="新建" data-toggle="modal"
+                    <button type="button" class="btn btn-success btn-block" title="新建" data-toggle="modal"
                             data-target="#addGoodsInModal" onclick="resetGoodsInFrom()"><i class="fa fa-file-o"></i>新增
                     </button>
                 </c:if>
                 <c:if test="${USER.role =='common'}">
-                    <button type="button" class="btn btn-default" onclick="commonUser()">新增</button>
+                    <button type="button" class="btn btn-success btn-block" onclick="commonUser()">新增</button>
                 </c:if>
             </div>
         </div>
@@ -51,7 +51,7 @@
             <form action="${pageContext.request.contextPath}/goodsIn/search" method="post">
                 入库id：<input name="id" value="${search.id}">&nbsp&nbsp&nbsp&nbsp
                 单据凭证：<input name="no" value="${search.no}">&nbsp&nbsp&nbsp&nbsp
-                <input class="btn btn-default" type="submit" value="查询">
+                <input class="btn btn-default btn-info" type="submit" value="查询">
             </form>
         </div>
     </div>
@@ -94,17 +94,17 @@
                     <td class="text-center">
                         <c:if test="${goodsIn.delete == 0 }">
                             <c:if test="${USER.role =='admin'}">
-                                <button type="button" class="btn bg-olive btn-xs" data-toggle="modal"
+                                <button type="button" class="btn btn-primary btn-xs" data-toggle="modal"
                                         data-target="#updateGoodsInModal" onclick="findGoodsInById(${goodsIn.id})"> 修改
                                 </button>
-                                <button type="button" class="btn bg-olive btn-xs" data-toggle="modal"
+                                <button type="button" class="btn btn-danger btn-xs" data-toggle="modal"
                                         data-target="#delGoodsInModal" onclick="delGoodsIn(${goodsIn.id})"> 删除
                                 </button>
                             </c:if>
                             <c:if test="${ USER.role =='common'}">
-                                <button type="button" class="btn bg-olive btn-xs" onclick="commonUser()">修改</button>
+                                <button type="button" class="btn btn-primary btn-xs" onclick="commonUser()">修改</button>
                                 &nbsp&nbsp&nbsp&nbsp
-                                <button type="button" class="btn bg-olive btn-xs" onclick="commonUser()">删除</button>
+                                <button type="button" class="btn btn-danger btn-xs" onclick="commonUser()">删除</button>
                             </c:if>
                         </c:if>
 
@@ -169,7 +169,7 @@
                         disabled="true"
                         onclick="saveGoodsIn()">保存
                 </button>
-                <button class="btn btn-default" data-dismiss="modal" aria-hidden="true">关闭</button>
+                <button class="btn btn-default btn-danger" data-dismiss="modal" aria-hidden="true">关闭</button>
             </div>
         </div>
     </div>
@@ -215,7 +215,7 @@
             <div class="modal-footer">
                 <button class="btn btn-success" data-dismiss="modal" aria-hidden="true" onclick="updateGoodsIn()">保存
                 </button>
-                <button class="btn btn-default" data-dismiss="modal" aria-hidden="true">关闭</button>
+                <button class="btn btn-default btn-danger" data-dismiss="modal" aria-hidden="true">关闭</button>
             </div>
         </div>
     </div>

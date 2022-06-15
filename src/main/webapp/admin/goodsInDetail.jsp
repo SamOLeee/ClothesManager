@@ -32,13 +32,13 @@
         <div class="form-group form-inline">
             <div class="btn-group">
                 <c:if test="${USER.role =='admin'}">
-                    <button type="button" class="btn btn-default" title="新建" data-toggle="modal"
+                    <button type="button" class="btn btn-success btn-block" title="新建" data-toggle="modal"
                             data-target="#addGoodsInDetailModal" onclick="resetGoodsInDetailFrom()"><i
                             class="fa fa-file-o"></i>新增
                     </button>
                 </c:if>
                 <c:if test="${USER.role =='common'}">
-                    <button type="button" class="btn btn-default" onclick="commonUser()">新增</button>
+                    <button type="button" class="btn btn-success btn-block" onclick="commonUser()">新增</button>
                 </c:if>
             </div>
         </div>
@@ -52,7 +52,7 @@
                 入库明细id：<input name="iid" value="${searchInDetail.iid}">&nbsp&nbsp&nbsp&nbsp
                 货物名称：<input name="name" value="${searchInDetail.name}">&nbsp&nbsp&nbsp&nbsp
                 货号：<input name="no" value="${searchInDetail.no}">&nbsp&nbsp&nbsp&nbsp
-                <input class="btn btn-default" type="submit" value="查询">
+                <input class="btn btn-default btn-info" type="submit" value="查询">
             </form>
         </div>
     </div>
@@ -97,17 +97,17 @@
                     <td class="text-center">
                         <c:if test="${goodsInDetail.delete == 0 }">
                             <c:if test="${USER.role =='admin'}">
-                                <button type="button" class="btn bg-olive btn-xs" data-toggle="modal"
+                                <button type="button" class="btn btn-primary btn-xs" data-toggle="modal"
                                         data-target="#updateGoodsDetailModal" onclick="findGoodsInDetailById(${goodsInDetail.iid})"> 修改
                                 </button>
-                                <button type="button" class="btn bg-olive btn-xs" data-toggle="modal"
+                                <button type="button" class="btn btn-danger btn-xs" data-toggle="modal"
                                         data-target="#delGoodsDetailModal" onclick="delGoodsInDetail(${goodsInDetail.iid})"> 删除
                                 </button>
                             </c:if>
                             <c:if test="${ USER.role =='common'}">
-                                <button type="button" class="btn bg-olive btn-xs" onclick="commonUser()">修改</button>
+                                <button type="button" class="btn btn-primary btn-xs" onclick="commonUser()">修改</button>
                                 &nbsp&nbsp&nbsp&nbsp
-                                <button type="button" class="btn bg-olive btn-xs" onclick="commonUser()">删除</button>
+                                <button type="button" class="btn btn-danger btn-xs" onclick="commonUser()">删除</button>
                             </c:if>
                         </c:if>
                     </td>
@@ -171,7 +171,7 @@
                 <button class="btn btn-success" data-toggle="modal" data-target="#enAddGoodsInDetailModal" id="saveGoodsInDetailmsg"
                         disabled="true" onclick="saveGoodsInDetail(${searchInDetail.gioid})">确定
                 </button>
-                <button class="btn btn-default" data-dismiss="modal" aria-hidden="true">关闭</button>
+                <button class="btn btn-default btn-danger" data-dismiss="modal" aria-hidden="true">关闭</button>
             </div>
         </div>
     </div>
@@ -228,7 +228,7 @@
                         disabled="true"
                         onclick="enSaveGoodsInDetail(${searchInDetail.gioid})">保存
                 </button>
-                <button class="btn btn-default" data-dismiss="modal" aria-hidden="true">关闭</button>
+                <button class="btn btn-default btn-danger" data-dismiss="modal" aria-hidden="true">关闭</button>
             </div>
         </div>
     </div>
@@ -283,7 +283,7 @@
                 <button class="btn btn-success" data-dismiss="modal" aria-hidden="true" id="upsaveGoodsInDetailmsg"
                         disabled="true" onclick="updateGoodsDetail(${searchInDetail.gioid})">保存
                 </button>
-                <button class="btn btn-default" data-dismiss="modal" aria-hidden="true">关闭</button>
+                <button class="btn btn-default btn-danger" data-dismiss="modal" aria-hidden="true">关闭</button>
             </div>
         </div>
     </div>
