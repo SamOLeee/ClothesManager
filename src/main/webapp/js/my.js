@@ -1,9 +1,8 @@
-
 function resetGoodsFrom() {
     $("#saveGoodsmsg").attr("disabled", true);
     $("#addGoodsmsg").html("");
-    var url=getProjectPath()+"/goods/createGoodsNo";
-    $.get(url,function (response){
+    var url = getProjectPath() + "/goods/createGoodsNo";
+    $.get(url, function (response) {
         $("#egno").val(response);
     })
     var $vals = $("#addGoods input");
@@ -96,8 +95,8 @@ function delGoods(gid) {
 function resetGoodsInFrom() {
     $("#saveGoodsInmsg").attr("disabled", true)
     $("#addGoodsInmsg").html("")
-    var url=getProjectPath()+"/goodsIn/createGoodsInNo";
-    $.get(url,function (response){
+    var url = getProjectPath() + "/goodsIn/createGoodsInNo";
+    $.get(url, function (response) {
         $("#gino").val(response);
     })
     var $vals = $("#addGoodsIn input");
@@ -198,8 +197,8 @@ function delGoodsIn(gid) {
 function resetGoodsOutFrom() {
     $("#saveGoodsOutmsg").attr("disabled", true)
     $("#addGoodsOutmsg").html("")
-    var url=getProjectPath()+"/goodsOut/createGoodsOutNo";
-    $.get(url,function (response){
+    var url = getProjectPath() + "/goodsOut/createGoodsOutNo";
+    $.get(url, function (response) {
         $("#gono").val(response);
     })
     var $vals = $("#addGoodsOut input");
@@ -379,7 +378,7 @@ function enSaveGoodsInDetail(pageId) {
         data: "id=" + id + "&amount=" + amount,
         success: function (data) {
             alert(data.message);
-            if(data.success){
+            if (data.success) {
                 $.post(url, $("#enAddGoodsInDetail").serialize(), function (response) {
                     console.log(response);
                     // alert(response.message);
@@ -417,7 +416,7 @@ function checkGoodsInDetailVal3() {
     $("#upsaveGoodsInDetailmsg").attr("disabled", false)
     $("#upaddGoodsInDetailmsg").html("")
     var upengidamount = $("#upengidamount").val();
-    var len=upengidamount.length;
+    var len = upengidamount.length;
     console.log(len);
     if ($.trim(upengidamount) == '') {
         $("#upsaveGoodsInDetailmsg").attr("disabled", true);
@@ -456,15 +455,15 @@ function delGoodsInDetail(id) {
     var url2 = getProjectPath() + "/goodsDetail/findGoodsDetailById?id=" + id;
     $.get(url2, function (res) {
         var r = confirm("是否删除id为" + id + "，货物名为" + res.name + "的明细信息？");
+        if (r) {
+            $.ajax({
+                url: getProjectPath() + "/goods/delGoodsAmount",
+                type: 'post',
+                data: "iid=" + id,
+                success: function (data) {
+                    alert(data.message);
+                    if (data.success) {
 
-        $.ajax({
-            url: getProjectPath() + "/goods/delGoodsAmount",
-            type: 'post',
-            data: "iid=" + id,
-            success: function (data) {
-                alert(data.message);
-                if (data.success) {
-                    if (r) {
                         var url1 = getProjectPath() + "/goodsDetail/delGoodsDetail?id=" + id;
                         // var url2 = getProjectPath() + "/goodsDetail/findGoodsDetailById?id=" + id;
                         console.log(url2);
@@ -476,8 +475,8 @@ function delGoodsInDetail(id) {
                         })
                     }
                 }
-            }
-        })
+            })
+        }
     })
 }
 
@@ -639,14 +638,14 @@ function delGoodsOutDetail(id) {
     var url2 = getProjectPath() + "/goodsDetail/findGoodsDetailById?id=" + id;
     $.get(url2, function (res) {
         var r = confirm("是否删除id为" + id + "，货物名为" + res.name + "的明细信息？");
-        $.ajax({
-            url: getProjectPath() + "/goods/delGoodsAmount",
-            type: 'post',
-            data: 'iid=' + id,
-            success: function (data) {
-                alert(data.message);
-                if (data.success) {
-                    if (r) {
+        if (r) {
+            $.ajax({
+                url: getProjectPath() + "/goods/delGoodsAmount",
+                type: 'post',
+                data: 'iid=' + id,
+                success: function (data) {
+                    alert(data.message);
+                    if (data.success) {
                         var url1 = getProjectPath() + "/goodsDetail/delGoodsDetail?id=" + id;
                         // var url2 = getProjectPath() + "/goodsDetail/findGoodsDetailById?id=" + id;
                         console.log(url2);
@@ -656,10 +655,11 @@ function delGoodsOutDetail(id) {
                                 window.location.href = getProjectPath() + "/goodsDetail/searchOutDetail?gioid=" + res.gioid;
                             }
                         })
+
                     }
                 }
-            }
-        })
+            })
+        }
     })
 }
 
@@ -673,8 +673,8 @@ function delGoodsOutDetail(id) {
 function resetUserFrom() {
     $("#savemsg").attr("disabled", true)
     $("#addmsg").html("")
-    var url=getProjectPath()+"/user/createUserNo";
-    $.get(url,function (response){
+    var url = getProjectPath() + "/user/createUserNo";
+    $.get(url, function (response) {
         $("#addno").val(response);
     })
     var $vals = $("#addUer input");
