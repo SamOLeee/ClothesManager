@@ -10,12 +10,12 @@
     <script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
     <script src="${pageContext.request.contextPath}/js/bootstrap.js"></script>
     <script src="${pageContext.request.contextPath}/js/app.js"></script>
-        <script src="${pageContext.request.contextPath}/js/my.js"></script>
-<%--    <script src="${pageContext.request.contextPath}/js/goods.js"></script>--%>
-<%--    <script src="${pageContext.request.contextPath}/js/user.js"></script>--%>
-<%--    <script src="${pageContext.request.contextPath}/js/goodsIn.js"></script>--%>
-<%--    <script src="${pageContext.request.contextPath}/js/goodsOut.js"></script>--%>
-<%--    <script src="${pageContext.request.contextPath}/js/pages.js"></script>--%>
+    <script src="${pageContext.request.contextPath}/js/my.js"></script>
+    <%--    <script src="${pageContext.request.contextPath}/js/goods.js"></script>--%>
+    <%--    <script src="${pageContext.request.contextPath}/js/user.js"></script>--%>
+    <%--    <script src="${pageContext.request.contextPath}/js/goodsIn.js"></script>--%>
+    <%--    <script src="${pageContext.request.contextPath}/js/goodsOut.js"></script>--%>
+    <%--    <script src="${pageContext.request.contextPath}/js/pages.js"></script>--%>
     <script src="${pageContext.request.contextPath}/js/timeout.js"></script>
 
 
@@ -36,30 +36,30 @@
     <header class="main-header">
         <!-- Logo -->
         <a href="${pageContext.request.contextPath}/goods/getAllGoodsIn" class="logo">
-<%--            <span class="logo-lg"><b>服装库存管理系统</b></span>--%>
+            <%--            <span class="logo-lg"><b>服装库存管理系统</b></span>--%>
             <img src="${pageContext.request.contextPath}/img/logo.png" class="logo">
         </a>
         <!-- 头部导航 -->
         <nav class="navbar navbar-static-top">
             <div class="navbar-custom-menu">
                 <ul class="nav navbar-nav">
-                    <li class="dropdown user user-menu" >
-<%--                        <button type="button" class="btn btn-block btn-success" title="个人中心" data-toggle="modal"--%>
-<%--                                data-target="#UserCenterModal" onclick="resetUserCenterFrom()"><i class="fa fa-file-o"></i>--%>
-                            <a data-toggle="modal" data-target="#UserCenterModal" onclick="resetUserCenterFrom()">
-                                <img src="${pageContext.request.contextPath}/img/Sauron.jpg" class="user-image"
-                                     alt="User Image">
-                                <span class="hidden-xs"><font color="white">${USER.name}</font></span>
-                            </a>
-<%--                        </button>--%>
+                    <li class="dropdown user user-menu">
+                        <%--                        <button type="button" class="btn btn-block btn-success" title="个人中心" data-toggle="modal"--%>
+                        <%--                                data-target="#UserCenterModal" onclick="resetUserCenterFrom()"><i class="fa fa-file-o"></i>--%>
+                        <a data-toggle="modal" data-target="#UserCenterModal" onclick="resetUserCenterFrom()">
+                            <img src="${pageContext.request.contextPath}/img/Sauron.jpg" class="user-image"
+                                 alt="User Image">
+                            <span class="hidden-xs"><font color="white">${USER.name}</font></span>
+                        </a>
+                        <%--                        </button>--%>
                     </li>
                     <li class="dropdown user user-menu">
-<%--                        <button type="button" class="btn btn-block btn-instagram">--%>
-                            <a onclick="loginOut()">
-                                <img src="${pageContext.request.contextPath}/img/turnoff.png" class="user-image"
-                                     alt="User Image">
-                            </a>
-<%--                        </button>--%>
+                        <%--                        <button type="button" class="btn btn-block btn-instagram">--%>
+                        <a onclick="loginOut()">
+                            <img src="${pageContext.request.contextPath}/img/turnoff.png" class="user-image"
+                                 alt="User Image">
+                        </a>
+                        <%--                        </button>--%>
                     </li>
                 </ul>
             </div>
@@ -133,7 +133,7 @@
 </div>
 
 <!-- 个人中心修改密码 -->
-<div class="modal fade" id="UserCenterModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" >
+<div class="modal fade" id="UserCenterModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -145,13 +145,23 @@
                     <%--                    <span><input type="hidden" id="ubid" name="id"></span>--%>
                     <table id="UserCenterTab" class="table table-bordered table-striped" width="800px">
                         <tr>
+                            <td>尊敬的${USER.name}，欢迎您的使用！</td>
+                            <td>
+                                <c:if test="${USER.role eq 'admin'}">您的权限为：管理员</c:if>
+                                <c:if test="${USER.role eq 'common'}">您的权限为：普通</c:if>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>修改密码</td>
+                        </tr>
+                        <tr>
                             <td>输入密码</td>
-                            <td><input class="form-control"  name="pw" id="usrpw" placeholder="输入密码"
+                            <td><input class="form-control" name="pw" id="usrpw" placeholder="输入密码"
                                        onblur="checkUserVal()" onfocus="changeUserVal()"></td>
                         </tr>
                         <tr>
                             <td>再次输入密码</td>
-                            <td><input class="form-control"  name="password" id="enusrpw" placeholder="再次输入密码"
+                            <td><input class="form-control" name="password" id="enusrpw" placeholder="再次输入密码"
                                        onblur="checkUserVal()" onfocus="changeUserVal()"></td>
                         </tr>
                         <tr>

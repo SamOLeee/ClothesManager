@@ -50,7 +50,7 @@
         <div class="box-tools pull-right">
             <div class="has-feedback">
                 <form action="${pageContext.request.contextPath}/user/search" method="post">
-                    工号：<input name="no" value="${user.no}">&nbsp&nbsp&nbsp&nbsp
+                    编号：<input name="no" value="${user.no}">&nbsp&nbsp&nbsp&nbsp
                     姓名：<input name="name" value="${user.name}">&nbsp&nbsp&nbsp&nbsp
                     <input class="btn btn-default btn-info" type="submit" value="查询">
                 </form>
@@ -62,7 +62,7 @@
     <table id="dataList" class="table table-bordered table-striped table-hover dataTable text-center">
         <thead>
         <tr class="text-center">
-            <th>工号</th>
+            <th>编号</th>
             <th>姓名</th>
             <th>邮箱</th>
             <th>权限</th>
