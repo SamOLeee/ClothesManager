@@ -27,8 +27,19 @@
 </div>
 
 <div class="box-body">
+    <!--工具栏 数据搜索 -->
+    <div class="box-tools pull-left">
+        <div class="has-feedback">
+            <form action="${pageContext.request.contextPath}/goodsDetail/searchOutDetail?gioid=${searchOutDetail.gioid}" method="post">
+                <input name="iid" value="${searchOutDetail.iid}" placeholder="请输入明细id">&nbsp&nbsp&nbsp&nbsp
+                <input name="name" value="${searchOutDetail.name}" placeholder="请输入货物名称">&nbsp&nbsp&nbsp&nbsp
+                <input name="no" value="${searchOutDetail.no}" placeholder="请输入货号">&nbsp&nbsp&nbsp&nbsp
+                <input class="btn btn-default btn-info" type="submit" value="查询">
+            </form>
+        </div>
+    </div>
     <%--新增按钮：如果当前登录用户是管理员，页面展示新增按钮--%>
-    <div class="pull-left">
+    <div class="pull-right">
         <div class="form-group form-inline">
             <div class="btn-group">
                 <c:if test="${USER.role =='admin'}">
@@ -44,21 +55,7 @@
         </div>
     </div>
 
-    <%--新增按钮 /--%>
-    <!--工具栏 数据搜索 -->
-    <div class="box-tools pull-right">
-        <div class="has-feedback">
-            <form action="${pageContext.request.contextPath}/goodsDetail/searchOutDetail?gioid=${searchOutDetail.gioid}" method="post">
-                出库明细id：<input name="iid" value="${searchOutDetail.iid}">&nbsp&nbsp&nbsp&nbsp
-                货物名称：<input name="name" value="${searchOutDetail.name}">&nbsp&nbsp&nbsp&nbsp
-                货号：<input name="no" value="${searchOutDetail.no}">&nbsp&nbsp&nbsp&nbsp
-                <input class="btn btn-default btn-info" type="submit" value="查询">
-            </form>
-        </div>
-    </div>
 
-
-    <!--工具栏 数据搜索 /-->
     <!-- 数据列表 -->
     <div class="table-box">
         <!-- 数据表格 -->

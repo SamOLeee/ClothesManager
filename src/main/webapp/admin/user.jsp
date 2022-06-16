@@ -25,13 +25,22 @@
 <body class="hold-transition skin-red sidebar-mini">
 <!-- .box-body -->
 <div class="box-header with-border">
-    <h3 class="box-title">用户管理</h3>
+    <h1 class="box-title">用户管理</h1>
 </div>
 <div class="box-body">
     <!-- 数据表格 -->
     <div class="table-box">
         <!--工具栏-->
-        <div class="pull-left">
+        <div class="box-tools pull-left">
+            <div class="has-feedback">
+                <form action="${pageContext.request.contextPath}/user/search" method="post">
+                    <input name="no" value="${user.no}" placeholder="请输入编号">&nbsp&nbsp&nbsp&nbsp
+                    <input name="name" value="${user.name}" placeholder="请输入姓名">&nbsp&nbsp&nbsp&nbsp
+                    <input class="btn btn-default btn-info" type="submit" value="查询">
+                </form>
+            </div>
+        </div>
+        <div class="pull-right">
             <div class="form-group form-inline">
                 <div class="btn-group">
                     <c:if test="${USER.role =='admin'}">
@@ -45,15 +54,6 @@
                         </button>
                     </c:if>
                 </div>
-            </div>
-        </div>
-        <div class="box-tools pull-right">
-            <div class="has-feedback">
-                <form action="${pageContext.request.contextPath}/user/search" method="post">
-                    编号：<input name="no" value="${user.no}">&nbsp&nbsp&nbsp&nbsp
-                    姓名：<input name="name" value="${user.name}">&nbsp&nbsp&nbsp&nbsp
-                    <input class="btn btn-default btn-info" type="submit" value="查询">
-                </form>
             </div>
         </div>
     </div>

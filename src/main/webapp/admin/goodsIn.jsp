@@ -28,8 +28,18 @@
     <h3 class="box-title">入库管理</h3>
 </div>
 <div class="box-body">
+    <!--工具栏 数据搜索 -->
+    <div class="box-tools pull-left">
+        <div class="has-feedback">
+            <form action="${pageContext.request.contextPath}/goodsIn/search" method="post">
+                <input name="id" value="${search.id}" placeholder="请输入库单id">&nbsp&nbsp&nbsp&nbsp
+                <input name="no" value="${search.no}" placeholder="请输入单据凭证">&nbsp&nbsp&nbsp&nbsp
+                <input class="btn btn-default btn-info" type="submit" value="查询">
+            </form>
+        </div>
+    </div>
     <%--新增按钮：如果当前登录用户是管理员，页面展示新增按钮--%>
-    <div class="pull-left">
+    <div class="pull-right">
         <div class="form-group form-inline">
             <div class="btn-group">
                 <c:if test="${USER.role =='admin'}">
@@ -42,18 +52,6 @@
                     <button type="button" class="btn btn-success btn-block" onclick="commonUser()">新增</button>
                 </c:if>
             </div>
-        </div>
-    </div>
-
-    <%--新增按钮 /--%>
-    <!--工具栏 数据搜索 -->
-    <div class="box-tools pull-right">
-        <div class="has-feedback">
-            <form action="${pageContext.request.contextPath}/goodsIn/search" method="post">
-                入库id：<input name="id" value="${search.id}">&nbsp&nbsp&nbsp&nbsp
-                单据凭证：<input name="no" value="${search.no}">&nbsp&nbsp&nbsp&nbsp
-                <input class="btn btn-default btn-info" type="submit" value="查询">
-            </form>
         </div>
     </div>
     <!--工具栏 数据搜索 /-->

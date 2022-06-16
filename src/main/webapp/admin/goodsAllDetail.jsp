@@ -28,39 +28,21 @@
 
 <div class="box-body">
     <%--新增按钮：如果当前登录用户是管理员，页面展示新增按钮--%>
-    <%--    <div class="pull-left">--%>
-    <%--        <div class="form-group form-inline">--%>
-    <%--            <div class="btn-group">--%>
-    <%--                <c:if test="${USER.role =='admin'}">--%>
-    <%--                    <button type="button" class="btn btn-default" title="新建" data-toggle="modal"--%>
-    <%--                            data-target="#addGoodsInDetailModal" onclick="resetGoodsInDetailFrom()"><i--%>
-    <%--                            class="fa fa-file-o"></i>新增--%>
-    <%--                    </button>--%>
-    <%--                </c:if>--%>
-    <%--                <c:if test="${USER.role =='common'}">--%>
-    <%--                    <button type="button" class="btn btn-default" onclick="commonUser()">新增</button>--%>
-    <%--                </c:if>--%>
-    <%--            </div>--%>
-    <%--        </div>--%>
-    <%--    </div>--%>
+
 
     <%--新增按钮 /--%>
     <!--工具栏 数据搜索 -->
-    <div class="box-tools pull-right">
+    <div class="box-tools pull-left">
         <div class="has-feedback">
             <form action="${pageContext.request.contextPath}/goodsDetail/searchAll" method="post">
-                入库明细id：<input name="iid" value="${searchAllDetail.iid}">&nbsp&nbsp&nbsp&nbsp
-                货物名称：<input name="name" value="${searchAllDetail.name}">&nbsp&nbsp&nbsp&nbsp
-                货号：<input name="no" value="${searchAllDetail.no}">&nbsp&nbsp&nbsp&nbsp
-                <%--                明细类型：<input name="type" value="${searchAllDetail.type}"placeholder="0为出库 1为入库">&nbsp&nbsp&nbsp&nbsp--%>
-                明细类型：
+                <input name="iid" value="${searchAllDetail.iid}" placeholder="请输入明细id">&nbsp&nbsp&nbsp&nbsp
+                <input name="name" value="${searchAllDetail.name}" placeholder="请输入货物名称">&nbsp&nbsp&nbsp&nbsp
+                <input name="no" value="${searchAllDetail.no}" placeholder="请输入货号">&nbsp&nbsp&nbsp&nbsp
                 <select name="type" value="${searchAllDetail.type}" style="width: 200px;font-size: 18px">
                     <option value="1">入库明细</option>
                     <option value="0">出库明细</option>
-                    <option value="">不做选择</option>
+                    <option value="">所有类型</option>
                 </select>&nbsp&nbsp&nbsp&nbsp
-
-
                 <input class="btn btn-default btn-info" type="submit" value="查询">
             </form>
         </div>
