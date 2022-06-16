@@ -92,12 +92,13 @@ function delGoods(gid) {
 /////////////////////////////////////////////////////
 
 
-function resetGoodsInFrom() {
+function resetGoodsInFrom(name) {
     $("#saveGoodsInmsg").attr("disabled", true)
     $("#addGoodsInmsg").html("")
     var url = getProjectPath() + "/goodsIn/createGoodsInNo";
     $.get(url, function (response) {
         $("#gino").val(response);
+        $("#gioperator").val(name);
     })
     var $vals = $("#addGoodsIn input");
     $vals.each(function () {
@@ -194,12 +195,13 @@ function delGoodsIn(gid) {
 /////////////////////////////////////////////////
 
 
-function resetGoodsOutFrom() {
+function resetGoodsOutFrom(name) {
     $("#saveGoodsOutmsg").attr("disabled", true)
     $("#addGoodsOutmsg").html("")
     var url = getProjectPath() + "/goodsOut/createGoodsOutNo";
     $.get(url, function (response) {
         $("#gono").val(response);
+        $("#gooperator").val(name);
     })
     var $vals = $("#addGoodsOut input");
     $vals.each(function () {

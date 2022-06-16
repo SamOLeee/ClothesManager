@@ -12,12 +12,12 @@
     <script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
     <script src="${pageContext.request.contextPath}/js/bootstrap.js"></script>
     <script src="${pageContext.request.contextPath}/js/pagination.js"></script>
-        <script src="${pageContext.request.contextPath}/js/my.js"></script>
-<%--    <script src="${pageContext.request.contextPath}/js/goods.js"></script>--%>
-<%--    <script src="${pageContext.request.contextPath}/js/user.js"></script>--%>
-<%--    <script src="${pageContext.request.contextPath}/js/goodsIn.js"></script>--%>
-<%--    <script src="${pageContext.request.contextPath}/js/goodsOut.js"></script>--%>
-<%--    <script src="${pageContext.request.contextPath}/js/pages.js"></script>--%>
+    <script src="${pageContext.request.contextPath}/js/my.js"></script>
+    <%--    <script src="${pageContext.request.contextPath}/js/goods.js"></script>--%>
+    <%--    <script src="${pageContext.request.contextPath}/js/user.js"></script>--%>
+    <%--    <script src="${pageContext.request.contextPath}/js/goodsIn.js"></script>--%>
+    <%--    <script src="${pageContext.request.contextPath}/js/goodsOut.js"></script>--%>
+    <%--    <script src="${pageContext.request.contextPath}/js/pages.js"></script>--%>
     <script src="${pageContext.request.contextPath}/js/timeout.js"></script>
 
 </head>
@@ -34,7 +34,8 @@
             <div class="btn-group">
                 <c:if test="${USER.role =='admin'}">
                     <button type="button" class="btn btn-success btn-block" title="新建" data-toggle="modal"
-                            data-target="#addGoodsOutModal" onclick="resetGoodsOutFrom()"><i class="fa fa-file-o"></i>新增
+                            data-target="#addGoodsOutModal" onclick="resetGoodsOutFrom('${USER.name}')"><i
+                            class="fa fa-file-o"></i>新增
                     </button>
                 </c:if>
                 <c:if test="${USER.role =='common'}">
@@ -77,10 +78,15 @@
                 <tr>
                         <%--                    <td>${goodsOut.id}</td>--%>
                     <td>
-                        <a href="${pageContext.request.contextPath}/goodsDetail/searchOutDetail?gioid=${goodsOut.id}"
-                           target="iframe">
-                            <i class="fa fa-circle-o"></i>${goodsOut.no}
-                        </a>
+                        <c:if test="${goodsOut.delete == 0}">
+                            <a href="${pageContext.request.contextPath}/goodsDetail/searchOutDetail?gioid=${goodsOut.id}"
+                               target="iframe">
+                                <i class="fa fa-circle-o"></i>${goodsOut.no}
+                            </a>
+                        </c:if>
+                        <c:if test="${goodsOut.delete == 1}">
+                            ${goodsOut.no}
+                        </c:if>
                     </td>
                     <td>${goodsOut.library}</td>
                     <td>${goodsOut.datetime}</td>

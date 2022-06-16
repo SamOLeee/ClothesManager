@@ -27,7 +27,6 @@ E:\idea_code_space\ClothesManager\src\main\java\cn\config\JdbcConfig.java
 E:\idea_code_space\ClothesManager\src\main\java\cn\mapper\GoodsMapper.java
 E:\idea_code_space\ClothesManager\src\main\java\cn\domain\GoodsDetail.java
 E:\idea_code_space\ClothesManager\src\main\java\cn\service\GoodsDetailService.java
-E:\idea_code_space\ClothesManager\src\main\java\dao\UserDao.java
 E:\idea_code_space\ClothesManager\src\main\java\cn\entity\Result.java
 E:\idea_code_space\ClothesManager\src\main\java\cn\service\GoodsInService.java
 E:\idea_code_space\ClothesManager\src\main\java\cn\config\EncodingFilter.java

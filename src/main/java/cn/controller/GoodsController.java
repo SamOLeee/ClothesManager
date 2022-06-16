@@ -99,6 +99,7 @@ public class GoodsController {
         }
     }
 
+    @ResponseBody
     @RequestMapping("/delGoods")
     public Result delUser(Integer id) {
         try {

@@ -137,6 +137,7 @@ public class UserController {
         return userService.findUserById(id);
     }
 
+    @ResponseBody
     @RequestMapping("/delUser")
     public Result delUser(Integer id) {
         try {

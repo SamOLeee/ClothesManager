@@ -196,7 +196,7 @@
                 <form id="enAddGoodsOutDetail">
                     <span><input type="hidden" id="enobid" name="iid"></span>
                     <table id="enAddGoodsOutDetailTab" class="table table-bordered table-striped" width="800px">
-                        <tr>
+                        <tr type="hidden">
 <%--                            <td>出库id</td>--%>
                             <td><input class="form-control" type="hidden" readonly name="gioid" id="engooid"></td>
 <%--                            <td>货物id</td>--%>
@@ -254,11 +254,11 @@
                 <form id="updateGoodsOutDetail">
                     <span><input type="hidden" id="upid" name="iid"></span>
                     <table id="updateGoodsOutDetailTab" class="table table-bordered table-striped" width="800px">
-                        <tr>
-                            <td>出库id</td>
-                            <td><input class="form-control" readonly name="gioid" id="upengooid"></td>
-                            <td>货物id</td>
-                            <td><input class="form-control" readonly name="did" id="upengodid"></td>
+                        <tr type="hidden">
+<%--                            <td>出库id</td>--%>
+                            <td><input class="form-control" type="hidden" readonly name="gioid" id="upengooid"></td>
+<%--                            <td>货物id</td>--%>
+                            <td><input class="form-control" type="hidden" readonly name="did" id="upengodid"></td>
                         </tr>
                         <tr>
                             <td>货物货号</td>

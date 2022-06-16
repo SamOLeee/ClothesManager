@@ -4,7 +4,6 @@ cn\interceptor\ResourcesInterceptor.class
 cn\config\MyBatisConfig.class
 cn\service\impl\GoodsServiceImpl.class
 cn\config\ServletContainersInitConfig.class
-dao\UserDao.class
 cn\controller\UserController.class
 cn\service\GoodsInService.class
 cn\service\UserService.class

@@ -38,7 +38,7 @@ public interface GoodsMapper {
     Goods findGoodsByNCS(@Param("name") String name,@Param("color") String color,@Param("size") String size);
 
 
-    @Select("select * from goods")
+    @Select("select * from goods where goods_delete = 0")
     @ResultMap("GoodsMap")
     List<Goods> getAllGoodsIn();
 

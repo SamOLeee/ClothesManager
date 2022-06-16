@@ -186,22 +186,20 @@
                         <tr>
                             <td>姓名</td>
                             <td><input class="form-control" readonly name="name" id="uname"></td>
-                            <td>用户id</td>
-                            <td><input class="form-control" readonly name="id" id="uid"></td>
+                            <td>工号</td>
+                            <td><input class="form-control" readonly id="uno" name="no"></td></td>
+<%--                            <td>用户id</td>--%>
+                            <td><input class="form-control" type="hidden" readonly name="id" id="uid"></td>
                         </tr>
                         <tr>
                             <td>邮箱</td>
-                            <td><input class="form-control" readonly name="email" id="uemail">
-                            </td>
-                            <td>工号</td>
-                            <td><input class="form-control" readonly id="uno" name="no"></td>
-                            </td>
+                            <td><input class="form-control" readonly name="email" id="uemail"></td>
+                            <td>密码</td>
+                            <td><input class="form-control" type="password" name="password" id="pw"></td>
                             <%-- <td>入职时间</td>
                              <td><input class="form-control" readonly name="hiredate" id="uhire" ></td>--%>
                         </tr>
                         <tr>
-                            <td>密码</td>
-                            <td><input class="form-control" type="password" name="password" id="pw"></td>
                             <td>用户权限</td>
                             <td>
                                 <select class="form-control" id="urole" name="role">

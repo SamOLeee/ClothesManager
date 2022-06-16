@@ -203,19 +203,16 @@
             </div>
             <div class="modal-body">
                 <form id="updateGoods">
-<%--                    <span><input type="hidden" id="ubid" name="id"></span>--%>
                     <table id="updateGoodsTab" class="table table-bordered table-striped" width="800px">
+                        <tr type="hidden">
+<%--                            <td>货物id</td>--%>
+                            <td><input class="form-control"  type="hidden" readonly name="id" id="ugid"></td>
+                        </tr>
                         <tr>
                             <td>货物名称</td>
                             <td><input class="form-control" readonly name="name" id="ugname"></td>
-<%--                            <td>货物id</td>--%>
-                            <td><input class="form-control" type="hidden" readonly name="id" id="ugid"></td>
-                        </tr>
-                        <tr>
                             <td>货物货号</td>
                             <td><input class="form-control" readonly name="no" id="ugno"></td>
-                            <td>货物数量</td>
-                            <td><input class="form-control" readonly placeholder="货物数量" name="amount" id="ugamount"></td>
                         </tr>
                         <tr>
                             <td>色号</td>
@@ -223,7 +220,10 @@
                             <td>尺码</td>
                             <td><input class="form-control" readonly id="ugsize" name="size"></td>
                         </tr>
-
+                        <tr>
+                            <td>货物数量</td>
+                            <td><input class="form-control" readonly placeholder="货物数量" name="amount" id="ugamount"></td>
+                        </tr>
                     </table>
                 </form>
             </div>
