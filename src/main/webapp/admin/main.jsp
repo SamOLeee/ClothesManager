@@ -30,7 +30,7 @@
     </script>
 </head>
 
-<body class="hold-transition skin-green sidebar-mini">
+<body class="hold-transition skin-purple sidebar-mini">
 <div class="wrapper">
     <!-- 页面头部 -->
     <header class="main-header">
@@ -44,22 +44,22 @@
             <div class="navbar-custom-menu">
                 <ul class="nav navbar-nav">
                     <li class="dropdown user user-menu" >
-                        <button type="button" class="btn btn-block btn-success" title="个人中心" data-toggle="modal"
-                                data-target="#UserCenterModal" onclick="resetUserCenterFrom()"><i class="fa fa-file-o"></i>
-                            <a>
+<%--                        <button type="button" class="btn btn-block btn-success" title="个人中心" data-toggle="modal"--%>
+<%--                                data-target="#UserCenterModal" onclick="resetUserCenterFrom()"><i class="fa fa-file-o"></i>--%>
+                            <a data-toggle="modal" data-target="#UserCenterModal" onclick="resetUserCenterFrom()">
                                 <img src="${pageContext.request.contextPath}/img/Sauron.jpg" class="user-image"
                                      alt="User Image">
                                 <span class="hidden-xs"><font color="white">${USER.name}</font></span>
                             </a>
-                        </button>
+<%--                        </button>--%>
                     </li>
                     <li class="dropdown user user-menu">
-                        <button type="button" class="btn btn-block btn-success">
-                            <a href="${pageContext.request.contextPath}/user/logout">
+<%--                        <button type="button" class="btn btn-block btn-instagram">--%>
+                            <a onclick="loginOut()">
                                 <img src="${pageContext.request.contextPath}/img/turnoff.png" class="user-image"
                                      alt="User Image">
                             </a>
-                        </button>
+<%--                        </button>--%>
                     </li>
                 </ul>
             </div>

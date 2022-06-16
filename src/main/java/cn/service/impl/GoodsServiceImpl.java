@@ -54,13 +54,7 @@ public class GoodsServiceImpl implements GoodsService {
         return goodsMapper.getAllGoodsIn();
     }
 
-    public String createGoodsNo() {
-        String randomString = RandomStringUtils.randomAlphabetic(5);
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMddhhmmss");
-        String t = dateFormat.format(new Date());
-        String goodsNo = randomString + t;
-        return goodsNo;
-    }
+
 
     public void addGoods(Goods goods) {
         goodsMapper.addGoods(goods);
@@ -132,5 +126,12 @@ public class GoodsServiceImpl implements GoodsService {
         gs.setAmount(sum);
         goodsMapper.updateGoods(gs);
         return new Result(true, "删除成功！当前 " + gs.getName() + " 的库存量为 " + sum + " 件！");
+    }
+    public String createGoodsNo() {
+        String randomString = RandomStringUtils.randomAlphabetic(5);
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMddhhmmss");
+        String t = dateFormat.format(new Date());
+        String goodsNo = randomString + t;
+        return goodsNo;
     }
 }

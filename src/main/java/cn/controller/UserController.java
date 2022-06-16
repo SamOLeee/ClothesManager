@@ -51,16 +51,17 @@ public class UserController {
         }
     }
 
+    @ResponseBody
     @RequestMapping("/logout")
     public String logout(HttpServletRequest request) {
         try {
             HttpSession session = request.getSession();
             session.invalidate();
-            return "forward:/admin/login.jsp";
+            return "/admin/login.jsp";
         } catch (Exception e) {
             e.printStackTrace();
             request.setAttribute("msg", "系统错误！");
-            return "forward:/admin/login.jsp";
+            return "/admin/login.jsp";
         }
     }
 

@@ -692,6 +692,16 @@ function resetUserCenterFrom() {
     });
 }
 
+function loginOut() {
+    var r = confirm("确认注销?");
+    if (r) {
+        var url = getProjectPath() + "/user/logout";
+        $.get(url, function (response) {
+            window.location.href = getProjectPath() + response;
+        })
+    }
+}
+
 function changeUserVal() {
     $("#addUsermsg").html("")
 }
@@ -749,17 +759,16 @@ function findUserById(uid) {
 
 function updateUser(id) {
     var r = confirm("是否保存修改?");
-    if(r){
+    if (r) {
         var url = getProjectPath() + "/user/updateUser";
         var uid = $("#uid").val();
         $.post(url, $("#updateUser").serialize(), function (response) {
             alert(response.message);
             if (response.success == true) {
-                if(uid == id){
+                if (uid == id) {
                     alert("信息过期，请重新的登录！");
                     window.location.href = getProjectPath() + "/index.jsp";
-                }
-                else
+                } else
                     window.location.href = getProjectPath() + "/user/search";
             }
         })
