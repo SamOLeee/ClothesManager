@@ -23,7 +23,7 @@ public class GoodsInController {
     private GoodsInService goodsInService;
 
     @RequestMapping("/search")
-    public ModelAndView searchGoods(GoodsIn goodsin, Integer pageNum, Integer pageSize, HttpServletRequest request) {
+    public ModelAndView searchGoodsIn(GoodsIn goodsin, Integer pageNum, Integer pageSize, HttpServletRequest request) {
         if (pageNum == null) pageNum = 1;
         if (pageSize == null) pageSize = 10;
 
@@ -71,7 +71,7 @@ public class GoodsInController {
 
     @ResponseBody
     @RequestMapping("/delGoodsIn")
-    public Result delUser(Integer id) {
+    public Result delGoodsIn(Integer id) {
         try {
             goodsInService.delGoodsIn(id);
             return new Result(true, "删除成功");

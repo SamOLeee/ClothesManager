@@ -17,8 +17,7 @@
     <%--    <script src="${pageContext.request.contextPath}/js/goodsOut.js"></script>--%>
     <%--    <script src="${pageContext.request.contextPath}/js/pages.js"></script>--%>
     <script src="${pageContext.request.contextPath}/js/timeout.js"></script>
-
-
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/img/clothes.ico" type="image/x-icon">
     <script type="text/javascript">
         function SetIFrameHeight() {
             var iframeid = document.getElementById("iframe");
@@ -126,9 +125,13 @@
     <!-- 导航侧栏 /-->
     <!-- 内容展示区域 -->
     <div class="content-wrapper">
-        <%--<img src="${pageContext.request.contextPath}/img/333.jpg" class="user-image" alt="User Image">--%>
-        <iframe width="100%" id="iframe" name="iframe" onload="SetIFrameHeight()" frameborder="0">
+<%--        <a href="https://pointerpointer.com/" target="iframe">--%>
+<%--&lt;%&ndash;            <img src="${pageContext.request.contextPath}/img/where.png">&ndash;%&gt;--%>
+<%--            鼠标--%>
+<%--        </a>--%>
+        <iframe width="100%" id="iframe" name="iframe" onload="SetIFrameHeight()" frameborder="0" src="iframe.jsp">
         </iframe>
+
     </div>
 </div>
 

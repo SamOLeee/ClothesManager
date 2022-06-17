@@ -55,7 +55,7 @@ public class GoodsDetailControllr {
 
     @ResponseBody
     @RequestMapping("/findGoodsDetailById")
-    public GoodsDetail findGoodsInDetailById(Integer id) {
+    public GoodsDetail findGoodsDetailById(Integer id) {
         System.out.println("查找goodsDetail " + goodsDetailService.findGoodsDetailById(id));
         return goodsDetailService.findGoodsDetailById(id);
     }
