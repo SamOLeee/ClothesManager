@@ -73,7 +73,7 @@ function updateGoods() {
 function delGoods(gid) {
     var url2 = getProjectPath() + "/goods/findGoodsById?id=" + gid;
     $.get(url2, function (res) {
-        var r = confirm("是否id为" + gid + "，货物名称为" + res.name + "的货物?");
+        var r = confirm("是否删除货号为" + res.no + "，货物名称为" + res.name + "的货物?");
         console.log(r);
         if (r) {
             var url = getProjectPath() + "/goods/delGoods?id=" + gid;
@@ -843,7 +843,7 @@ function saveUser() {
 function delUser(uid) {
     var url2 = getProjectPath() + "/user/findUserById?id=" + uid;
     $.get(url2, function (res) {
-        var r = confirm("是否id为" + uid + "，名字为" + res.name + "的用户?");
+        var r = confirm("是否删除编号为" + res.no + "，名字为" + res.name + "的用户?");
         if (r) {
             var url = getProjectPath() + "/user/delUser?id=" + uid;
             $.get(url, function (response) {
@@ -863,9 +863,9 @@ function commonUser() {
 
 //获取当前项目的名称
 function getProjectPath() {
-    //获取主机地址之后的目录，如： cloudlibrary/admin/goodss.jsp
+    //获取主机地址之后的目录
     var pathName = window.document.location.pathname;
-    //获取带"/"的项目名，如：/cloudlibrary
+    //获取带"/"的项目名
     var projectName = pathName.substring(0, pathName.substr(1).indexOf('/') + 1);
     console.log(projectName);
     return projectName;
@@ -936,15 +936,7 @@ var goodsAllDetailVO = {
     name: '',
     type: ''
 }
-/**
- *借阅记录查询栏的查询参数
- * name 图书名称
- * borrower 借阅人
- */
-var recordVO = {
-    bookname: '',
-    borrower: ''
-}
+
 var userVO = {
     no: '',
     name: ''

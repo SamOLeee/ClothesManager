@@ -35,13 +35,8 @@ public class UserController {
                 request.getSession().setAttribute("USER", u);
                 request.getSession().setAttribute("GOODS", goodsList);
                 String role = u.getRole();
-                if ("admin".equals(role)) {
-                    return "redirect:/admin/main.jsp";
-                } else {
-                    return "redirect:/admin/main.jsp";
-                }
+                return "redirect:/admin/main.jsp";
             }
-
             request.setAttribute("msg", "用户名或密码输入错误！");
             return "forward:/admin/login.jsp";
         } catch (Exception e) {

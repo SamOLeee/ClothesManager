@@ -237,7 +237,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h3 id="myModalLabe2">入库单信息</h3>
+                <h3 id="myModalLabe2">修改入库明细信息</h3>
             </div>
             <div class="modal-body">
                 <form id="updateGoodsDetail">

@@ -63,15 +63,7 @@ var goodsAllDetailVO = {
     name: '',
     type: ''
 }
-/**
- *借阅记录查询栏的查询参数
- * name 图书名称
- * borrower 借阅人
- */
-var recordVO = {
-    bookname: '',
-    borrower: ''
-}
+
 var userVO = {
     no: '',
     name: ''
