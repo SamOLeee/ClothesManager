@@ -48,7 +48,9 @@ public class GoodsServiceImpl implements GoodsService {
     public Goods findGoodsByNCS(String name, String color, String size) {
         return goodsMapper.findGoodsByNCS(name, color, size);
     }
-
+//    public Integer checkGoods(String name,String color,String size){
+//        return goodsMapper.checkGoods(name,color,size);
+//    }
 
     public List<Goods> getAllGoodsIn() {
         return goodsMapper.getAllGoodsIn();

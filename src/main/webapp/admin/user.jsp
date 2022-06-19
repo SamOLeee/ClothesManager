@@ -143,7 +143,9 @@
                                        onfocus="changeVal()" name="password"></td>
                             <td>用户权限</td>
                             <td>
-                                <select class="form-control" name="role" value="USER">
+                                <select class="form-control" name="role" id="addrole" onblur="checkVal()"
+                                        onfocus="changeVal()" >
+                                    <option value="" disabled="disabled" selected="selected">--请选择--</option>
                                     <option value="common">普通</option>
                                     <option value="admin">管理员</option>
                                 </select>

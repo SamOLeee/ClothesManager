@@ -20,15 +20,34 @@ function checkGoodsVal() {
     $("#saveGoodsmsg").attr("disabled", false)
     $("#addGoodsmsg").html("")
     var egname = $("#egname").val();
-    var egno = $("#egno").val();
-    var egamount = $("#egamount").val();
-
+    // var egno = $("#egno").val();
+    // var egamount = $("#egamount").val();
+    var egcolor = document.getElementById("egcolor").value;
+    var egsize = document.getElementById("egsize").value;
+    console.log(egname);
+    console.log(egcolor);
+    console.log(egsize);
     if ($.trim(egname) == '') {
         $("#saveGoodsmsg").attr("disabled", true);
-        $("#addGoodsmsg").html("货物名称不能为空")
-    } else if ($.trim(egno) == '') {
+        $("#addGoodsmsg").html("货物名称不能为空！");
+    } else if ($.trim(egcolor) == '') {
         $("#saveGoodsmsg").attr("disabled", true);
-        $("#addGoodsmsg").html("货物货号不能为空")
+        $("#addGoodsmsg").html("请选择色号！");
+    } else if ($.trim(egsize) == '') {
+        $("#saveGoodsmsg").attr("disabled", true);
+        $("#addGoodsmsg").html("请选择尺码！");
+    } else {
+        $.ajax({
+            url: getProjectPath() + "/goods/checkGoods",
+            type: 'post',
+            data: "name=" + egname + "&color=" + egcolor + "&size=" + egsize,
+            success: function (data) {
+                if (!data.success) {
+                    $("#saveGoodsmsg").attr("disabled", true);
+                    $("#addGoodsmsg").html(data.message);
+                }
+            }
+        })
     }
 }
 
@@ -787,20 +806,27 @@ function checkVal() {
     var adduname = $("#adduname").val();
     var adduemail = $("#adduemail").val();
     var addPw = $("#addPw").val();
+    var addrole = document.getElementById("addrole").value;
+    console.log(adduname);
+    console.log(addrole);
+
     /*    var addtime = $("#time").val();*/
     if ($.trim(adduname) == '') {
         $("#savemsg").attr("disabled", true);
-        $("#addmsg").html("姓名不能为空")
+        $("#addmsg").html("姓名不能为空！")
     } else {
         checkName(adduname);
         if ($.trim(adduemail) == '') {
             $("#savemsg").attr("disabled", true);
-            $("#addmsg").html("邮箱不能为空")
+            $("#addmsg").html("邮箱不能为空！")
         } else if ($.trim(adduemail) != '') {
             checkEmail(adduemail);
             if ($.trim(addPw) == '') {
                 $("#savemsg").attr("disabled", true);
-                $("#addmsg").html("密码不能为空")
+                $("#addmsg").html("密码不能为空！");
+            } else if ($.trim(addrole) == '') {
+                $("#savemsg").attr("disabled", true);
+                $("#addmsg").html("请选择用户权限！")
             }
         }
     }

@@ -140,7 +140,9 @@
 
                             <td>色号</td>
                             <td>
-                                <select class="form-control" id="egcolor" name="color" value="白色">
+                                <select class="form-control" id="egcolor" name="color"
+                                        onblur="checkGoodsVal()" onfocus="changeGoodsVal()">
+                                    <option value="" disabled="disabled" selected="selected">--请选择--</option>
                                     <option value="白色">白色</option>
                                     <option value="黑色">黑色</option>
                                     <option value="红色">红色</option>
@@ -155,7 +157,9 @@
                             </td>
                             <td>尺码</td>
                             <td>
-                                <select class="form-control" id="egsize" name="size" value="S">
+                                <select class="form-control" id="egsize" name="size"
+                                        onblur="checkGoodsVal()" onfocus="changeGoodsVal()">
+                                    <option value="" disabled="disabled" selected="selected">--请选择--</option>
                                     <option value="S">S</option>
                                     <option value="M">M</option>
                                     <option value="L">L</option>

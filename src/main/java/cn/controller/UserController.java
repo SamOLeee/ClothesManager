@@ -75,6 +75,7 @@ public class UserController {
     @ResponseBody
     @RequestMapping("/checkName")
     public Result checkName(String name) {
+        System.out.println(name);
         Integer count = userService.checkName(name);
         if (count > 0) {
             return new Result(false, "名字重复!");

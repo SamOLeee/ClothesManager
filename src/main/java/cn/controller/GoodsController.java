@@ -165,4 +165,16 @@ public class GoodsController {
     public String createGoodsNo() {
         return goodsService.createGoodsNo();
     }
+
+    @ResponseBody
+    @PostMapping("/checkGoods")
+    public Result checkGoods(Goods goods) {
+        System.out.println(goods);
+        Goods gs = goodsService.findGoodsByNCS(goods.getName(), goods.getColor(), goods.getSize());
+        if (gs != null) {
+            return new Result(false, "已存在该类型货物!");
+        } else {
+            return new Result(true, "货物可用!");
+        }
+    }
 }
