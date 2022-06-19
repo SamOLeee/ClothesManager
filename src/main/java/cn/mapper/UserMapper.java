@@ -1,5 +1,6 @@
 package cn.mapper;
 
+import cn.domain.Goods;
 import com.github.pagehelper.Page;
 import cn.domain.User;
 import org.apache.ibatis.annotations.*;
@@ -36,9 +37,11 @@ public interface UserMapper {
     @ResultMap("userMap")
     User findUserById(Integer id);//根据用户id查询用户信息
 
-    @Select("select count(user_name) from user where user_name=#{name}")
-    Integer checkName(String name);//检查用户名是否已经存在
+    @Select("select * from user where user_name=#{name}")
+    @ResultMap("userMap")
+    User checkName(String name);//检查用户名是否已经存在
 
-    @Select("select count(user_email) from user where user_email=#{email}")
-    Integer checkEmail(String email);//检查用户邮箱是否已经存在
+    @Select("select * from user where user_email=#{email}")
+    @ResultMap("userMap")
+    User checkEmail(String email);//检查用户邮箱是否已经存在
 }

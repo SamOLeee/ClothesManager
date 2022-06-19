@@ -834,21 +834,29 @@ function checkVal() {
 
 
 function checkName(name) {
-    var url = getProjectPath() + "/user/checkName?name=" + name;
-    $.post(url, function (response) {
-        if (response.success != true) {
-            $("#savemsg").attr("disabled", true);
-            $("#addmsg").html(response.message)
+    $.ajax({
+        url: getProjectPath() + "/user/checkName",
+        type: 'post',
+        data: "name=" + name,
+        success: function (data) {
+            if (data.success != true) {
+                $("#savemsg").attr("disabled", true);
+                $("#addmsg").html(data.message);
+            }
         }
     })
 }
 
 function checkEmail(email) {
-    var url = getProjectPath() + "/user/checkEmail?email=" + email;
-    $.post(url, function (response) {
-        if (response.success != true) {
-            $("#savemsg").attr("disabled", true);
-            $("#addmsg").html(response.message)
+    $.ajax({
+        url: getProjectPath() + "/user/checkEmail",
+        type: 'post',
+        data: "email=" + email,
+        success: function (data) {
+            if (data.success != true) {
+                $("#savemsg").attr("disabled", true);
+                $("#addmsg").html(data.message);
+            }
         }
     })
 }

@@ -1,5 +1,6 @@
 package cn.service.impl;
 
+import cn.domain.Goods;
 import cn.domain.User;
 import cn.entity.PageResult;
 import cn.entity.Result;
@@ -31,13 +32,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Integer checkName(String name) {
+    public User checkName(String name) {
         return userMapper.checkName(name);
     }
 
 
     @Override
-    public Integer checkEmail(String email) {
+    public User checkEmail(String email) {
         return userMapper.checkEmail(email);
     }
 

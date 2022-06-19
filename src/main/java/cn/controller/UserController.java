@@ -73,11 +73,13 @@ public class UserController {
     }
 
     @ResponseBody
-    @RequestMapping("/checkName")
-    public Result checkName(String name) {
-        System.out.println(name);
-        Integer count = userService.checkName(name);
-        if (count > 0) {
+    @PostMapping("/checkName")
+    public Result checkName(User user) {
+        System.out.println(user);
+        System.out.println("判断=="+user.getName());
+        User u = userService.checkName(user.getName());
+        System.out.println(u);
+        if (u != null) {
             return new Result(false, "名字重复!");
         } else {
             return new Result(true, "名字可用!");
@@ -85,10 +87,13 @@ public class UserController {
     }
 
     @ResponseBody
-    @RequestMapping("/checkEmail")
-    public Result checkEmail(String email) {
-        Integer count = userService.checkEmail(email);
-        if (count > 0) {
+    @PostMapping("/checkEmail")
+    public Result checkEmail(User user) {
+        System.out.println(user);
+        System.out.println("判断=="+user.getEmail());
+        User u = userService.checkEmail(user.getEmail());
+        System.out.println(u);
+        if (u != null) {
             return new Result(false, "邮箱重复!");
         } else {
             return new Result(true, "邮箱可用!");
