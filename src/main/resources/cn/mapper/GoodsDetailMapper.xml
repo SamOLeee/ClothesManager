@@ -57,9 +57,6 @@
     <update id="editGoodsDetail" parameterType="cn.domain.GoodsDetail">
         update goodsDetail
         <trim prefix="set" suffixOverrides=",">
-            <if test="did != null">
-                goodsid = #{did},
-            </if>
             <if test="name != null">
                 detail_name = #{name},
             </if>
@@ -81,8 +78,7 @@
             <if test="type !=null">
                 detail_type = #{type}
             </if>
-
         </trim>
-        where for_id = #{gioid}
+        where goodsid = #{did}
     </update>
 </mapper>

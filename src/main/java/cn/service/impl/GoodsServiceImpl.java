@@ -65,7 +65,7 @@ public class GoodsServiceImpl implements GoodsService {
     public void updateGoods(Goods goods) {
         goodsMapper.updateGoods(goods);
         GoodsDetail gd = new GoodsDetail();
-        gd.setGioid(goods.getId());
+        gd.setDid(goods.getId());
         gd.setColor(goods.getColor());
         gd.setSize(goods.getSize());
         gd.setName(goods.getName());

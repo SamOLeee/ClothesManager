@@ -84,10 +84,10 @@
                         <i class="fa fa-circle-o"></i>用户管理
                     </a>
                 </li>
-                <!-- 货号管理 -->
+                <!-- 货物管理 -->
                 <li id="goods-manage">
                     <a href="${pageContext.request.contextPath}/goods/search" target="iframe">
-                        <i class="fa fa-circle-o"></i>货号管理
+                        <i class="fa fa-circle-o"></i>货物管理
                     </a>
                 </li>
                 <!-- 库存管理 -->
