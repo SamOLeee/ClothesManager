@@ -254,10 +254,9 @@
                         <tr>
                             <td>货物数量</td>
                             <td><input class="form-control" readonly placeholder="货物数量" name="amount" id="ugamount"></td>
-                        </tr>
-                        <tr>
                             <td colspan="2"><span style="color: red" id="upaddGoodsmsg"></span></td>
                         </tr>
+
                     </table>
                 </form>
             </div>
