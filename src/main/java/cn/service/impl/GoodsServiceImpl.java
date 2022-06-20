@@ -48,14 +48,14 @@ public class GoodsServiceImpl implements GoodsService {
     public Goods findGoodsByNCS(String name, String color, String size) {
         return goodsMapper.findGoodsByNCS(name, color, size);
     }
-//    public Integer checkGoods(String name,String color,String size){
-//        return goodsMapper.checkGoods(name,color,size);
-//    }
+
+    public Integer checkGoodsExist(String name, String color, String size) {
+        return goodsMapper.checkGoodsExist(name, color, size);
+    }
 
     public List<Goods> getAllGoodsIn() {
         return goodsMapper.getAllGoodsIn();
     }
-
 
 
     public void addGoods(Goods goods) {
@@ -64,6 +64,12 @@ public class GoodsServiceImpl implements GoodsService {
 
     public void updateGoods(Goods goods) {
         goodsMapper.updateGoods(goods);
+        GoodsDetail gd = new GoodsDetail();
+        gd.setGioid(goods.getId());
+        gd.setColor(goods.getColor());
+        gd.setSize(goods.getSize());
+        gd.setName(goods.getName());
+        goodsDetailMapper.editGoodsDetail(gd);
     }
 
     public void delGoods(Integer id) {
@@ -129,6 +135,7 @@ public class GoodsServiceImpl implements GoodsService {
         goodsMapper.updateGoods(gs);
         return new Result(true, "删除成功！当前 " + gs.getName() + " 的库存量为 " + sum + " 件！");
     }
+
     public String createGoodsNo() {
         String randomString = RandomStringUtils.randomAlphabetic(5);
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMddhhmmss");

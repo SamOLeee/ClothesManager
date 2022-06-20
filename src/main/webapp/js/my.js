@@ -77,6 +77,71 @@ function findGoodsById(gid) {
         $("#ugsize").val(response.size);
     })
 }
+function upchangeGoodsVal() {
+    $("#upaddGoodsmsg").html("")
+}
+
+function upcheckGoodsVal() {
+    $("#upsaveGoodsmsg").attr("disabled", false)
+    $("#upaddGoodsmsg").html("")
+    var ugname = $("#ugname").val();
+    var ugcolor = document.getElementById("ugcolor").value;
+    var ugsize = document.getElementById("ugsize").value;
+    console.log(ugname);
+    console.log(ugcolor);
+    console.log(ugsize);
+    if ($.trim(ugname) == '') {
+        $("#upsaveGoodsmsg").attr("disabled", true);
+        $("#upaddGoodsmsg").html("货物名称不能为空！");
+    } else if ($.trim(ugcolor) == '') {
+        $("#upsaveGoodsmsg").attr("disabled", true);
+        $("#upaddGoodsmsg").html("请选择色号！");
+    } else if ($.trim(ugsize) == '') {
+        $("#upsaveGoodsmsg").attr("disabled", true);
+        $("#upaddGoodsmsg").html("请选择尺码！");
+    }else{
+        var ugid = document.getElementById("ugid").value;
+        // var ugname = document.getElementById("ugname").value;
+        // var ugcolor = document.getElementById("ugcolor").value;
+        // var ugsize = document.getElementById("ugsize").value;
+        $.ajax({
+            url: getProjectPath() + "/goods/checkGoodsExist",
+            type: 'post',
+            data: "name=" + ugname + "&color=" + ugcolor + "&size=" + ugsize,
+            success:function (data){
+                if (!data.success) {
+                    $("#upsaveGoodsmsg").attr("disabled", true);
+                    $("#upaddGoodsmsg").html(data.message);
+                }
+            }
+        })
+    }
+}
+//
+// function updateGoodsDetail(pageId) {
+//     var url = getProjectPath() + "/goodsDetail/updateGoodsDetail";
+//
+//     var iid = document.getElementById("upid").value;
+//     var amount = document.getElementById("upengidamount").value;
+//     var color = document.getElementById("upengidcolor").value;
+//     var size = document.getElementById("upengidsize").value;
+//     var name = document.getElementById("upengidname").value;
+//     $.ajax({
+//         url: getProjectPath() + "/goods/updateGoodsAmount",
+//         type: 'post',
+//         data: "iid=" + iid + "&amount=" + amount + "&color=" + color + "&size=" + size + "&name=" + name,
+//         success: function (data) {
+//             alert(data.message);
+//             if (data.success) {
+//                 $.post(url, $("#updateGoodsDetail").serialize(), function (response) {
+//                     if (response.success == true) {
+//                         window.location.href = getProjectPath() + "/goodsDetail/searchInDetail?gioid=" + pageId;
+//                     }
+//                 })
+//             }
+//         }
+//     })
+// }
 
 function updateGoods() {
     var url = getProjectPath() + "/goods/updateGoods";

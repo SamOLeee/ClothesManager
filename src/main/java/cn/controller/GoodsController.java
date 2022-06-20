@@ -177,4 +177,17 @@ public class GoodsController {
             return new Result(true, "货物可用!");
         }
     }
+
+    @ResponseBody
+    @PostMapping("/checkGoodsExist")
+    public Result checkGoodsExist(Goods goods) {
+        System.out.println("修改==="+goods);
+        Integer cnt = goodsService.checkGoodsExist(goods.getName(), goods.getColor(), goods.getSize());
+        System.out.println("数量==="+cnt);
+        if (cnt >= 1) {
+            return new Result(false, "已存在该类型货物!");
+        } else {
+            return new Result(true, "货物可用!");
+        }
+    }
 }

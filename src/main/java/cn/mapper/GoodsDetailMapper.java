@@ -67,6 +67,7 @@ public interface GoodsDetailMapper {
 
     void updateGoodsDetail(GoodsDetail goodsDetail);
 
+    void editGoodsDetail(GoodsDetail goodsDetail);
 
     @ResultMap("GoodsDetailMapper")
     @Select("select * from goodsdetail where id = #{iid}")

@@ -23,6 +23,6 @@ public interface GoodsService {
     Result updateGoodsAmount(GoodsDetail goodsDetail);
     Result delGoodsAmount(GoodsDetail goodsDetail);
     String createGoodsNo();
-//    Integer checkGoods(String name,String color,String size);
+    Integer checkGoodsExist(String name,String color,String size);
     Goods findGoodsByNCS(String name,String color,String size);
 }

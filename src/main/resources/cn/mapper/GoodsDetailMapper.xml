@@ -54,4 +54,35 @@
         </trim>
         where id = #{iid}
     </update>
+    <update id="editGoodsDetail" parameterType="cn.domain.GoodsDetail">
+        update goodsDetail
+        <trim prefix="set" suffixOverrides=",">
+            <if test="did != null">
+                goodsid = #{did},
+            </if>
+            <if test="name != null">
+                detail_name = #{name},
+            </if>
+            <if test="no != null">
+                detail_no = #{no},
+            </if>
+            <if test="color != null">
+                detail_color = #{color},
+            </if>
+            <if test="size != null">
+                detail_size = #{size},
+            </if>
+            <if test="amount != null">
+                detail_amount = #{amount},
+            </if>
+            <if test="delete != null">
+                detail_delete = #{delete},
+            </if>
+            <if test="type !=null">
+                detail_type = #{type}
+            </if>
+
+        </trim>
+        where for_id = #{gioid}
+    </update>
 </mapper>

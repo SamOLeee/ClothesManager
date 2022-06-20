@@ -212,25 +212,59 @@
                         </tr>
                         <tr>
                             <td>货物名称</td>
-                            <td><input class="form-control" readonly name="name" id="ugname"></td>
+                            <td><input class="form-control"  name="name" id="ugname"
+                                       onblur="upcheckGoodsVal()" onfocus="upchangeGoodsVal()"></td>
                             <td>货物货号</td>
                             <td><input class="form-control" readonly name="no" id="ugno"></td>
                         </tr>
                         <tr>
                             <td>色号</td>
-                            <td><input class="form-control" readonly id="ugcolor" name="color"></td>
+                            <td>
+                                <select class="form-control" id="ugcolor" name="color"
+                                        onblur="upcheckGoodsVal()" onfocus="upchangeGoodsVal()">
+                                    <option value="" disabled="disabled" selected="selected">--请选择--</option>
+                                    <option value="白色">白色</option>
+                                    <option value="黑色">黑色</option>
+                                    <option value="红色">红色</option>
+                                    <option value="黄色">黄色</option>
+                                    <option value="蓝色">蓝色</option>
+                                    <option value="绿色">绿色</option>
+                                    <option value="青色">青色</option>
+                                    <option value="橙色">橙色</option>
+                                    <option value="紫色">紫色</option>
+
+                                </select>
+                            </td>
                             <td>尺码</td>
-                            <td><input class="form-control" readonly id="ugsize" name="size"></td>
+                            <td>
+                                <select class="form-control" id="ugsize" name="size"
+                                        onblur="upcheckGoodsVal()" onfocus="upchangeGoodsVal()">
+                                    <option value="" disabled="disabled" selected="selected">--请选择--</option>
+                                    <option value="S">S</option>
+                                    <option value="M">M</option>
+                                    <option value="L">L</option>
+                                    <option value="XL">XL</option>
+                                    <option value="XXL">XXL</option>
+                                    <option value="XXXL">XXXL</option>
+                                    <option value="XXXXL">XXXXL</option>
+
+                                </select>
+                            </td>
                         </tr>
                         <tr>
                             <td>货物数量</td>
                             <td><input class="form-control" readonly placeholder="货物数量" name="amount" id="ugamount"></td>
                         </tr>
+                        <tr>
+                            <td colspan="2"><span style="color: red" id="upaddGoodsmsg"></span></td>
+                        </tr>
                     </table>
                 </form>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-success" data-dismiss="modal" aria-hidden="true" onclick="updateGoods()">保存
+                <button class="btn btn-success" data-dismiss="modal" aria-hidden="true" id="upsaveGoodsmsg"
+                        disabled="true"
+                        onclick="updateGoods()">保存
                 </button>
                 <button class="btn btn-default btn-danger" data-dismiss="modal" aria-hidden="true">关闭</button>
             </div>

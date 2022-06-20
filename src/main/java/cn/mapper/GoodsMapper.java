@@ -43,8 +43,8 @@ public interface GoodsMapper {
     List<Goods> getAllGoodsIn();
 
 
-//    @Select("select count(goods_name) from goods where goods_name=#{name} and goods_color=#{color} and goods_size=#{size} ")
-//    Integer checkGoods(@Param("name") String name, @Param("color") String color, @Param("size") String size);
+    @Select("select count(goods_name) from goods where goods_name=#{name} and goods_color=#{color} and goods_size=#{size} ")
+    Integer checkGoodsExist(@Param("name") String name, @Param("color") String color, @Param("size") String size);
 
     void addGoods(Goods goods);
 
