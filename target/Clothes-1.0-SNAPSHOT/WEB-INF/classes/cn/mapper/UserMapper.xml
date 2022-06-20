@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.mapper.UserMapper">
+
+    <insert id="addUser">
+        insert into user(user_name,user_password,user_email,user_role,user_no) values (#{name},#{password},#{email},#{role},#{no})
+    </insert>
+    <update id="editUser" parameterType="cn.domain.User">
+        update user
+        <trim prefix="set" suffixOverrides=",">
+            <if test="name != null" >
+                user_name = #{name},
+            </if>
+            <if test="password != null" >
+                user_password = #{password},
+            </if>
+            <if test="email != null" >
+                user_email = #{email},
+            </if>
+            <if test="role != null" >
+                user_role = #{role},
+            </if>
+            <if test="delete != null" >
+                user_delete = #{delete},
+            </if>
+            <if test="no != null" >
+                user_no = #{no}
+            </if>
+        </trim>
+        where user_id = #{id}
+    </update>
+</mapper>
