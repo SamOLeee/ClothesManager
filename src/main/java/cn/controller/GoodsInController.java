@@ -28,12 +28,17 @@ public class GoodsInController {
         if (pageNum == null) pageNum = 1;
         if (pageSize == null) pageSize = 10;
 
+        //调用service
         PageResult pageResult = goodsInService.searchGoodsIn(goodsin, pageNum, pageSize);
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("goodsIn");
+        //分页数据信息
         modelAndView.addObject("pageResult", pageResult);
+        //数据信息回显示
         modelAndView.addObject("search", goodsin);
+        //当前页码数
         modelAndView.addObject("pageNum", pageNum);
+        //分页再次请求的地址
         modelAndView.addObject("gourl", request.getRequestURI());
         return modelAndView;
     }

@@ -26,13 +26,17 @@ public class GoodsOutController {
         if (pageNum == null) pageNum = 1;
         if (pageSize == null) pageSize = 10;
 
-        //将出库单信息和页码封装
+        //调用service
         PageResult pageResult = goodsOutService.searchGoodsOut(goodsout, pageNum, pageSize);
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("goodsOut");//挑战goodsOut.jsp
+        modelAndView.setViewName("goodsOut");
+        //分页数据信息
         modelAndView.addObject("pageResult", pageResult);
+        //数据信息回显示
         modelAndView.addObject("search", goodsout);
+        //当前页码数
         modelAndView.addObject("pageNUm", pageNum);
+        //分页再次请求的地址
         modelAndView.addObject("gourl", request.getRequestURI());
         return modelAndView;
     }

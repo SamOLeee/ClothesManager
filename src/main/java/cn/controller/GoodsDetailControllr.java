@@ -35,19 +35,24 @@ public class GoodsDetailControllr {
         List<Goods> goodsList = goodsService.getAllGoodsIn();
         request.getSession().setAttribute("GOODS", goodsList);
 
+        //调用service
         PageResult pageResult = goodsDetailService.searchGoodsInDetail(goodsDetail, pageNum, pageSize);
         System.out.println(goodsDetail);
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("goodsInDetail");
+        //分页数据信息
         modelAndView.addObject("pageResult", pageResult);
 //        modelAndView.addObject("pageId", pageResult);
+        //数据信息回显示
         modelAndView.addObject("searchInDetail", goodsDetail);
 
         System.out.println(goodsDetail.getName());
         System.out.println(goodsDetail.getAmount());
         System.out.println(pageResult.getTotal());
 
+        //当前页码数
         modelAndView.addObject("pageNum", pageNum);
+        //分页再次请求的地址
         modelAndView.addObject("gourl", request.getRequestURI());
         return modelAndView;
     }
@@ -110,20 +115,24 @@ public class GoodsDetailControllr {
 
         List<Goods> goodsList = goodsService.getAllGoodsIn();
         request.getSession().setAttribute("GOODS", goodsList);
-
+        //调用service
         PageResult pageResult = goodsDetailService.searchGoodsOutDetail(goodsDetail, pageNum, pageSize);
         System.out.println(goodsDetail);
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("goodsOutDetail");
+        //分页数据信息
         modelAndView.addObject("pageResult2", pageResult);
 //        modelAndView.addObject("pageId", pageResult);
+        //数据信息回显示
         modelAndView.addObject("searchOutDetail", goodsDetail);
 
         System.out.println(goodsDetail.getName());
         System.out.println(goodsDetail.getAmount());
         System.out.println(pageResult.getTotal());
 
+        //当前页码数
         modelAndView.addObject("pageNum", pageNum);
+        //分页再次请求的地址
         modelAndView.addObject("gourl", request.getRequestURI());
         return modelAndView;
     }
@@ -134,20 +143,24 @@ public class GoodsDetailControllr {
         if (pageNum == null) pageNum = 1;
         if (pageSize == null) pageSize = 10;
 
+        //调用service
         PageResult pageResult = goodsDetailService.searchGoodsAllDetail(goodsDetail, pageNum, pageSize);
-
         System.out.println(goodsDetail);
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("goodsAllDetail");
+        //分页数据信息
         modelAndView.addObject("pageResult3", pageResult);
 //        modelAndView.addObject("pageId", pageResult);
+        //数据信息回显示
         modelAndView.addObject("searchAllDetail", goodsDetail);
 
         System.out.println(goodsDetail.getName());
         System.out.println(goodsDetail.getAmount());
         System.out.println(pageResult.getTotal());
 
+        //当前页码数
         modelAndView.addObject("pageNum", pageNum);
+        //分页再次请求的地址
         modelAndView.addObject("gourl", request.getRequestURI());
         return modelAndView;
     }

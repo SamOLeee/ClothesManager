@@ -34,13 +34,18 @@ public class GoodsController {
         if (pageNum == null) pageNum = 1;
         if (pageSize == null) pageSize = 10;
 
+        //调用service
         PageResult pageResult = goodsService.searchGoods(goods, pageNum, pageSize);//将货物信息和页码封装在pageResult内
         System.out.println(goods);
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("goods");//跳转到goods.jsp
+        modelAndView.setViewName("goods");
+        //分页数据信息
         modelAndView.addObject("pageResult", pageResult);
+        //数据信息回显示
         modelAndView.addObject("search", goods);
+        //当前页码数
         modelAndView.addObject("pageNum", pageNum);
+        //分页再次请求的地址
         modelAndView.addObject("gourl", request.getRequestURI());
         return modelAndView;
     }

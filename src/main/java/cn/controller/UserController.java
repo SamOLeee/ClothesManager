@@ -113,13 +113,18 @@ public class UserController {
     public ModelAndView searchUser(User user, Integer pageNum, Integer pageSize, HttpServletRequest request) {
         if (pageNum == null) pageNum = 1;
         if (pageSize == null) pageSize = 10;
-
+        //调用service
         PageResult pageResult = userService.searchUser(user, pageNum, pageSize);
         ModelAndView modelAndView = new ModelAndView();
+
         modelAndView.setViewName("user");
+        //分页数据信息
         modelAndView.addObject("pageResult", pageResult);
+        //数据信息回显示
         modelAndView.addObject("search", user);
+        //当前页码数
         modelAndView.addObject("pageNum", pageNum);
+        //分页再次请求的地址
         modelAndView.addObject("gourl", request.getRequestURI());
         return modelAndView;
     }
