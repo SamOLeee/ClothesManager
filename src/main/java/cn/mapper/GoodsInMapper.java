@@ -16,6 +16,8 @@ public interface GoodsInMapper {
             "</script>"
     })
     @Results(id ="GoodsInMap" ,value={
+            //id字段默认为false，表示不是主键
+            //column表示数据库表字段，property表示实体类属性名
             @Result(id = true,column = "gid",property = "id"),
             @Result(column = "goodsIn_no",property = "no"),
             @Result(column = "goodsIn_library",property = "library"),
@@ -24,17 +26,17 @@ public interface GoodsInMapper {
             @Result(column = "goodsIn_source",property = "source"),
             @Result(column = "goodsIn_delete",property = "delete")
     })
-    Page<GoodsIn> searchGoodsIn(GoodsIn goodsin);
+    Page<GoodsIn> searchGoodsIn(GoodsIn goodsin);//查询入库单
 
 //    @Select("select * from goodsin where gid = #{id}")
 //    List<GoodsIn> selectGoodsInById(Integer gid);
 
     @ResultMap("GoodsInMap")
     @Select("select * from goodsIn where gid=#{id}")
-    GoodsIn findGoodsInById(Integer id);
+    GoodsIn findGoodsInById(Integer id);//根据id查询入库单
 
-    void addGoodsIn(GoodsIn goodsin);
+    void addGoodsIn(GoodsIn goodsin);//新增入库单
 
 
-    void updateGoodsIn(GoodsIn goodsin);
+    void updateGoodsIn(GoodsIn goodsin);//更新入库单
 }

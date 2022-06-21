@@ -15,6 +15,8 @@ public interface GoodsOutMapper {
             "</script>"
     })
     @Results(id ="GoodsOutMap" ,value={
+            //id字段默认为false，表示不是主键
+            //column表示数据库表字段，property表示实体类属性名
             @Result(id = true,column = "gid",property = "id"),
             @Result(column = "goodsOut_no",property = "no"),
             @Result(column = "goodsOut_library",property = "library"),
@@ -23,12 +25,12 @@ public interface GoodsOutMapper {
             @Result(column = "goodsOut_goto",property = "send"),
             @Result(column = "goodsOut_delete",property = "delete")
     })
-    Page<GoodsOut> searchGoodsOut(GoodsOut goodsout);
+    Page<GoodsOut> searchGoodsOut(GoodsOut goodsout);//查询出库单
 
     @Select("select * from goodsOut where gid=#{id}")
     @ResultMap("GoodsOutMap")
-    GoodsOut findGoodsOutById(Integer id);
+    GoodsOut findGoodsOutById(Integer id);//根据id查询出库单
 
-    void addGoodsOut(GoodsOut goodsout);
-    void updateGoodsOut(GoodsOut goodsout);
+    void addGoodsOut(GoodsOut goodsout);//新增出库单
+    void updateGoodsOut(GoodsOut goodsout);//更新出库单
 }

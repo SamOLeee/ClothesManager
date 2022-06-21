@@ -9,6 +9,8 @@ import org.apache.ibatis.annotations.*;
 
 @Mapper
 public interface GoodsDetailMapper {
+    //id字段默认为false，表示不是主键
+    //column表示数据库表字段，property表示实体类属性名
     @Results(id = "GoodsDetailMapper", value = {
             @Result(id = true, column = "id", property = "iid"),
             @Result(column = "goodsin", property = "did"),
@@ -33,7 +35,7 @@ public interface GoodsDetailMapper {
             "and detail_type = 1 " +
             "</script>"
     })
-    Page<GoodsDetail> searchGoodsInDetail(GoodsDetail goodsDetail);
+    Page<GoodsDetail> searchGoodsInDetail(GoodsDetail goodsDetail);//查询入库明细
 
 
     @ResultMap("GoodsDetailMapper")
@@ -48,7 +50,7 @@ public interface GoodsDetailMapper {
             "and detail_type = 0 " +
             "</script>"
     })
-    Page<GoodsDetail> searchGoodsOutDetail(GoodsDetail goodsDetail);
+    Page<GoodsDetail> searchGoodsOutDetail(GoodsDetail goodsDetail);//查询出库明细
 
 
     @ResultMap("GoodsDetailMapper")
@@ -61,15 +63,15 @@ public interface GoodsDetailMapper {
             "<if test=\"type!=null\"> and detail_type like CONCAT('%',#{type},'%') </if>" +
             "</script>"
     })
-    Page<GoodsDetail> searchGoodsAllDetail(GoodsDetail goodsDetail);
+    Page<GoodsDetail> searchGoodsAllDetail(GoodsDetail goodsDetail);//查询所有明细
 
-    void addGoodsDetail(GoodsDetail goodsDetail);
+    void addGoodsDetail(GoodsDetail goodsDetail);//新增明细
 
-    void updateGoodsDetail(GoodsDetail goodsDetail);
+    void updateGoodsDetail(GoodsDetail goodsDetail);//更新明细
 
-    void editGoodsDetail(GoodsDetail goodsDetail);
+    void editGoodsDetail(GoodsDetail goodsDetail);//修改货物信息时明细信息自动更新
 
     @ResultMap("GoodsDetailMapper")
     @Select("select * from goodsdetail where id = #{iid}")
-    GoodsDetail findGoodsDetailById(Integer id);
+    GoodsDetail findGoodsDetailById(Integer id);//根据id查询明细
 }

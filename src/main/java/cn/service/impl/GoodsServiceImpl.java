@@ -81,7 +81,7 @@ public class GoodsServiceImpl implements GoodsService {
     public Result addGoodsAmount(Goods goods) {
         Goods gs = this.findGoodsById(goods.getId());
 
-        gs.setAmount(gs.getAmount() + goods.getAmount());
+        gs.setAmount(gs.getAmount() + goods.getAmount());//库存增加
         goodsMapper.updateGoods(gs);
         return new Result(true, "入库成功！当前 " + gs.getName() + " 的库存量为 " + gs.getAmount() + "件！");
     }
@@ -90,9 +90,9 @@ public class GoodsServiceImpl implements GoodsService {
     public Result reduceGoodsAmount(Goods goods) {
         Goods gs = this.findGoodsById(goods.getId());
         System.out.println("gs===" + gs);
-        if (gs.getAmount() < goods.getAmount())
+        if (gs.getAmount() < goods.getAmount())//库存不足
             return new Result(false, "库存不足，出库失败！当前 " + gs.getName() + " 的库存量为 " + gs.getAmount() + "件！");
-        gs.setAmount(gs.getAmount() - goods.getAmount());
+        gs.setAmount(gs.getAmount() - goods.getAmount());//库存减少
         goodsMapper.updateGoods(gs);
         return new Result(true, "出库成功！当前 " + gs.getName() + " 的库存量为 " + gs.getAmount() + "件！");
     }
@@ -105,11 +105,11 @@ public class GoodsServiceImpl implements GoodsService {
         System.out.println("gs=====" + gs);
         Integer sum = 0;
         if (gsd.getType() == 1) {
-            sum = gs.getAmount() - gsd.getAmount() + goodsDetail.getAmount();
+            sum = gs.getAmount() - gsd.getAmount() + goodsDetail.getAmount();//入库库存计算：当前库存-之前增加的库存+修改以后的库存
             if (sum < 0)
                 return new Result(false, "库存不足，修改失败！当前 " + gs.getName() + " 的库存量为 " + gs.getAmount() + " 件！");
         } else {
-            sum = gs.getAmount() + gsd.getAmount() - goodsDetail.getAmount();
+            sum = gs.getAmount() + gsd.getAmount() - goodsDetail.getAmount();//出库库存计算：当前库存+之前减少的库存-修改以后的库存
             if (sum < 0)
                 return new Result(false, "库存不足，修改失败！当前 " + gs.getName() + " 的库存量为 " + gs.getAmount() + " 件！");
         }
@@ -126,11 +126,11 @@ public class GoodsServiceImpl implements GoodsService {
         System.out.println("gs=====" + gs);
         Integer sum = 0;
         if (gsd.getType() == 1) {
-            sum = gs.getAmount() - gsd.getAmount();
+            sum = gs.getAmount() - gsd.getAmount();//删除之前新增的库存
             if (sum < 0)
                 return new Result(false, "库存不足，删除失败！当前 " + gs.getName() + " 的库存量为 " + gs.getAmount() + " 件！");
         } else
-            sum = gs.getAmount() + gsd.getAmount();
+            sum = gs.getAmount() + gsd.getAmount();//加上之前减少的库存
         gs.setAmount(sum);
         goodsMapper.updateGoods(gs);
         return new Result(true, "删除成功！当前 " + gs.getName() + " 的库存量为 " + sum + " 件！");

@@ -23,6 +23,7 @@ public class GoodsInController {
     private GoodsInService goodsInService;
 
     @RequestMapping("/search")
+    //显示和查询入库单信息
     public ModelAndView searchGoodsIn(GoodsIn goodsin, Integer pageNum, Integer pageSize, HttpServletRequest request) {
         if (pageNum == null) pageNum = 1;
         if (pageSize == null) pageSize = 10;
@@ -39,6 +40,7 @@ public class GoodsInController {
 
     @ResponseBody
     @RequestMapping("/findGoodsInById")
+    //根据id查询入库单
     public GoodsIn findGoodsInById(Integer id) {
 /*        System.out.println(10086);
         System.out.println(id);*/
@@ -47,6 +49,7 @@ public class GoodsInController {
 
     @ResponseBody
     @RequestMapping("/addGoodsIn")
+    //新增入库单
     public Result addGoodsIn(GoodsIn goodsin) {
         try {
             goodsInService.addGoodsIn(goodsin);
@@ -59,6 +62,7 @@ public class GoodsInController {
 
     @ResponseBody
     @RequestMapping("/updateGoodsIn")
+    //更新入库单
     public Result updateGoodsIn(GoodsIn goodsin) {
         try {
             goodsInService.updateGoodsIn(goodsin);
@@ -71,6 +75,7 @@ public class GoodsInController {
 
     @ResponseBody
     @RequestMapping("/delGoodsIn")
+    //删除入库单，实际为修改入库单
     public Result delGoodsIn(Integer id) {
         try {
             goodsInService.delGoodsIn(id);
@@ -83,6 +88,7 @@ public class GoodsInController {
 
     @ResponseBody
     @RequestMapping("/createGoodsInNo")
+    //随机生成入库单据凭证
     public String createGoodsInNo() {
         return goodsInService.createGoodsInNo();
     }

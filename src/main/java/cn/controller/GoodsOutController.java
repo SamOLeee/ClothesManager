@@ -21,13 +21,15 @@ public class GoodsOutController {
     private GoodsOutService goodsOutService;
 
     @RequestMapping("/search")
+    //出库单的显示和查询
     public ModelAndView searchGoodsOut(GoodsOut goodsout, Integer pageNum, Integer pageSize, HttpServletRequest request) {
         if (pageNum == null) pageNum = 1;
         if (pageSize == null) pageSize = 10;
 
+        //将出库单信息和页码封装
         PageResult pageResult = goodsOutService.searchGoodsOut(goodsout, pageNum, pageSize);
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("goodsOut");
+        modelAndView.setViewName("goodsOut");//挑战goodsOut.jsp
         modelAndView.addObject("pageResult", pageResult);
         modelAndView.addObject("search", goodsout);
         modelAndView.addObject("pageNUm", pageNum);
@@ -37,6 +39,7 @@ public class GoodsOutController {
 
     @ResponseBody
     @RequestMapping("/findGoodsOutById")
+    //根据id查询出库单
     public GoodsOut findGoodsOutById(Integer id) {
 /*        System.out.println(10086);
         System.out.println(id);*/
@@ -45,6 +48,7 @@ public class GoodsOutController {
 
     @ResponseBody
     @RequestMapping("/addGoodsOut")
+    //出库单新增
     public Result addGoodsIn(GoodsOut goodsout) {
         try {
             goodsOutService.addGoodsOut(goodsout);
@@ -57,6 +61,7 @@ public class GoodsOutController {
 
     @ResponseBody
     @RequestMapping("/updateGoodsOut")
+    //出库单修改
     public Result updateGoodsOut(GoodsOut goodsout) {
         try {
             goodsOutService.updateGoodsOut(goodsout);
@@ -69,6 +74,7 @@ public class GoodsOutController {
 
     @ResponseBody
     @RequestMapping("/delGoodsOut")
+    //出库单删除，实际上为更新
     public Result delUser(Integer id) {
         try {
             goodsOutService.delGoodsOut(id);
@@ -81,6 +87,7 @@ public class GoodsOutController {
 
     @ResponseBody
     @RequestMapping("/createGoodsOutNo")
+    //随即生成出库单据凭证
     public String createGoodsOutNo() {
         return goodsOutService.createGoodsOutNo();
     }

@@ -27,6 +27,7 @@ public class UserController {
     private GoodsService goodsService;
 
     @RequestMapping("/login")
+    //用户登录
     public String login(User user, HttpServletRequest request) {
         User u = userService.login(user);
         List<Goods> goodsList = goodsService.getAllGoodsIn();
@@ -36,7 +37,7 @@ public class UserController {
                 //将用户信息存在session USER中，以便于后续使用
                 request.getSession().setAttribute("GOODS", goodsList);
                 String role = u.getRole();
-                return "redirect:/admin/main.jsp";
+                return "redirect:/admin/main.jsp";//重定向至main.jsp
             }
             request.setAttribute("msg", "用户名或密码输入错误！");
             return "forward:/admin/login.jsp";
@@ -49,6 +50,7 @@ public class UserController {
 
     @ResponseBody
     @RequestMapping("/logout")
+    //注销登录
     public String logout(HttpServletRequest request) {
         try {
             HttpSession session = request.getSession();
@@ -64,6 +66,7 @@ public class UserController {
 
     @ResponseBody
     @RequestMapping("/addUser")
+    //用户新增
     public Result addUser(User user) {
         try {
             userService.addUser(user);
@@ -76,6 +79,7 @@ public class UserController {
 
     @ResponseBody
     @PostMapping("/checkName")
+    //判断用户姓名是否存在
     public Result checkName(User user) {
         System.out.println(user);
         System.out.println("判断=="+user.getName());
@@ -90,6 +94,7 @@ public class UserController {
 
     @ResponseBody
     @PostMapping("/checkEmail")
+    //判断邮箱是否存在
     public Result checkEmail(User user) {
         System.out.println(user);
         System.out.println("判断=="+user.getEmail());
@@ -104,6 +109,7 @@ public class UserController {
 
     @ResponseBody
     @RequestMapping("/search")
+    //用户信息的显示和查询
     public ModelAndView searchUser(User user, Integer pageNum, Integer pageSize, HttpServletRequest request) {
         if (pageNum == null) pageNum = 1;
         if (pageSize == null) pageSize = 10;
@@ -120,6 +126,7 @@ public class UserController {
 
     @ResponseBody
     @RequestMapping("/updateUser")
+    //更新用户信息
     public Result updateUser(User user) {
 /*        System.out.print(123);
         System.out.println("controller"+user);*/
@@ -134,6 +141,7 @@ public class UserController {
 
     @ResponseBody
     @RequestMapping("/findUserById")
+    //根据id查询用户
     public User findUserById(Integer id) {
         System.out.println(10086);
         System.out.println(id);
@@ -142,6 +150,7 @@ public class UserController {
 
     @ResponseBody
     @RequestMapping("/delUser")
+    //删除用户，实际上是修改用户信息
     public Result delUser(Integer id) {
         try {
             userService.delUser(id);
@@ -154,6 +163,7 @@ public class UserController {
 
     @ResponseBody
     @PostMapping("/updateUserPwd")
+    //更新用户密码
     public Result updateUserPwd(User user) {
         try {
             return userService.updateUserPwd(user);
@@ -165,6 +175,7 @@ public class UserController {
 
     @ResponseBody
     @RequestMapping("/createUserNo")
+    //随机生成用户编号
     public String createUserNo() {
         return userService.createUserNo();
     }

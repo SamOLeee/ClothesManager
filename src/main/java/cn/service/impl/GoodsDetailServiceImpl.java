@@ -28,7 +28,7 @@ public class GoodsDetailServiceImpl implements GoodsDetailService {
     public PageResult searchGoodsInDetail(GoodsDetail goodsDetail, Integer pageNum, Integer pageSize){
         PageHelper.startPage(pageNum,pageSize);
         System.out.println("serviccImpl ====="+goodsDetail);
-        Page<GoodsDetail>page=goodsDetailMapper.searchGoodsInDetail(goodsDetail);
+        Page<GoodsDetail>page=goodsDetailMapper.searchGoodsInDetail(goodsDetail);//获取明细存在page实体类中
         return new PageResult(page.getTotal(),page.getResult());
     }
 
@@ -48,7 +48,7 @@ public class GoodsDetailServiceImpl implements GoodsDetailService {
 
     public void delGoodsDetail(Integer id){
         GoodsDetail goodsDetail=this.findGoodsDetailById(id);
-        goodsDetail.setDelete(1);
+        goodsDetail.setDelete(1);//逻辑删除，将明细的delete修改成0表示删除
         goodsDetailMapper.updateGoodsDetail(goodsDetail);
     }
 

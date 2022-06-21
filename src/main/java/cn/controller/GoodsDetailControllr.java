@@ -26,7 +26,7 @@ public class GoodsDetailControllr {
     @Autowired
     private GoodsService goodsService;
 
-    /////入库明细操作
+    /////入库明细显示和查询
     @RequestMapping("/searchInDetail")
     public ModelAndView searchGoodsInDetail(GoodsDetail goodsDetail, Integer pageNum, Integer pageSize, HttpServletRequest request) {
         if (pageNum == null) pageNum = 1;
@@ -55,6 +55,7 @@ public class GoodsDetailControllr {
 
     @ResponseBody
     @RequestMapping("/findGoodsDetailById")
+    //根据id查询明细信息
     public GoodsDetail findGoodsDetailById(Integer id) {
         System.out.println("查找goodsDetail " + goodsDetailService.findGoodsDetailById(id));
         return goodsDetailService.findGoodsDetailById(id);
@@ -62,6 +63,7 @@ public class GoodsDetailControllr {
 
     @ResponseBody
     @RequestMapping("/addGoodsDetail")
+    //新增明细
     public Result addGoodsDetail(GoodsDetail goodsDetail) {
         try {
             goodsDetailService.addGoodsDetail(goodsDetail);
@@ -75,6 +77,7 @@ public class GoodsDetailControllr {
 
     @ResponseBody
     @RequestMapping("/updateGoodsDetail")
+    //更新明细信息
     public Result updateGoodsDetail(GoodsDetail goodsDetail) {
         try {
             goodsDetailService.updateGoodsDetail(goodsDetail);
@@ -87,6 +90,7 @@ public class GoodsDetailControllr {
 
     @ResponseBody
     @RequestMapping("/delGoodsDetail")
+    //删除明细信息，实际时修改明细
     public Result delGoodsDetail(Integer id) {
         try {
             goodsDetailService.delGoodsDetail(id);
@@ -98,7 +102,7 @@ public class GoodsDetailControllr {
     }
 
 
-    ////////出库明细操作
+    ////////出库明细显示和查询
     @RequestMapping("/searchOutDetail")
     public ModelAndView searchGoodsOutDetail(GoodsDetail goodsDetail, Integer pageNum, Integer pageSize, HttpServletRequest request) {
         if (pageNum == null) pageNum = 1;
@@ -125,6 +129,7 @@ public class GoodsDetailControllr {
     }
 
     @RequestMapping("/searchAll")
+    //显示和查询所有明细
     public ModelAndView searchGoodsAllDetail(GoodsDetail goodsDetail, Integer pageNum, Integer pageSize, HttpServletRequest request) {
         if (pageNum == null) pageNum = 1;
         if (pageSize == null) pageSize = 10;
