@@ -197,7 +197,8 @@
                             <td>邮箱</td>
                             <td><input class="form-control" readonly name="email" id="uemail"></td>
                             <td>密码</td>
-                            <td><input class="form-control" type="password" name="password" id="pw"></td>
+                            <td><input class="form-control" type="password" name="password" id="pw"
+                                       onblur="checkVal2()" onfocus="changeVal2()"></td>
                             <%-- <td>入职时间</td>
                              <td><input class="form-control" readonly name="hiredate" id="uhire" ></td>--%>
                         </tr>
@@ -208,13 +209,16 @@
                                     <option value="common">普通</option>
                                     <option value="admin">管理员</option>
                                 </select>
+                            <td colspan="2"><span style="color: red" id="upaddmsg"></span></td>
                             </td>
                         </tr>
                     </table>
                 </form>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-success" data-dismiss="modal" aria-hidden="true" onclick="updateUser(${USER.id})">保存
+                <button class="btn btn-success" data-dismiss="modal" aria-hidden="true" disabled="true"
+                        id="upsavemsg"
+                        onclick="updateUser(${USER.id})">保存
                 </button>
                 <button class="btn btn-default btn-danger" data-dismiss="modal" aria-hidden="true">关闭</button>
             </div>

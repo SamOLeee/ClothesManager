@@ -1,3 +1,4 @@
+//重置新增弹窗
 function resetGoodsFrom() {
     $("#saveGoodsmsg").attr("disabled", true);
     $("#addGoodsmsg").html("");
@@ -11,11 +12,11 @@ function resetGoodsFrom() {
     });
 }
 
+
 function changeGoodsVal() {
     $("#addGoodsmsg").html("")
 }
-
-
+//判断新增输入是否正确
 function checkGoodsVal() {
     $("#saveGoodsmsg").attr("disabled", false)
     $("#addGoodsmsg").html("")
@@ -50,7 +51,7 @@ function checkGoodsVal() {
         })
     }
 }
-
+//保存新增信息
 function saveGoods() {
     var url = getProjectPath() + "/goods/addGoods";
     console.log(url);
@@ -63,6 +64,8 @@ function saveGoods() {
     })
 }
 
+
+//根据id查询货物，用于修改
 function findGoodsById(gid) {
     var url = getProjectPath() + "/goods/findGoodsById?id=" + gid;
     // console.log(url);
@@ -80,7 +83,7 @@ function findGoodsById(gid) {
 function upchangeGoodsVal() {
     $("#upaddGoodsmsg").html("")
 }
-
+//判断修改时的输入是否正确
 function upcheckGoodsVal() {
     $("#upsaveGoodsmsg").attr("disabled", false)
     $("#upaddGoodsmsg").html("")
@@ -99,7 +102,7 @@ function upcheckGoodsVal() {
     } else if ($.trim(ugsize) == '') {
         $("#upsaveGoodsmsg").attr("disabled", true);
         $("#upaddGoodsmsg").html("请选择尺码！");
-    }else{
+    } else {
         var ugid = document.getElementById("ugid").value;
         // var ugname = document.getElementById("ugname").value;
         // var ugcolor = document.getElementById("ugcolor").value;
@@ -108,7 +111,7 @@ function upcheckGoodsVal() {
             url: getProjectPath() + "/goods/checkGoodsExist",
             type: 'post',
             data: "name=" + ugname + "&color=" + ugcolor + "&size=" + ugsize,
-            success:function (data){
+            success: function (data) {
                 if (!data.success) {
                     $("#upsaveGoodsmsg").attr("disabled", true);
                     $("#upaddGoodsmsg").html(data.message);
@@ -117,32 +120,7 @@ function upcheckGoodsVal() {
         })
     }
 }
-//
-// function updateGoodsDetail(pageId) {
-//     var url = getProjectPath() + "/goodsDetail/updateGoodsDetail";
-//
-//     var iid = document.getElementById("upid").value;
-//     var amount = document.getElementById("upengidamount").value;
-//     var color = document.getElementById("upengidcolor").value;
-//     var size = document.getElementById("upengidsize").value;
-//     var name = document.getElementById("upengidname").value;
-//     $.ajax({
-//         url: getProjectPath() + "/goods/updateGoodsAmount",
-//         type: 'post',
-//         data: "iid=" + iid + "&amount=" + amount + "&color=" + color + "&size=" + size + "&name=" + name,
-//         success: function (data) {
-//             alert(data.message);
-//             if (data.success) {
-//                 $.post(url, $("#updateGoodsDetail").serialize(), function (response) {
-//                     if (response.success == true) {
-//                         window.location.href = getProjectPath() + "/goodsDetail/searchInDetail?gioid=" + pageId;
-//                     }
-//                 })
-//             }
-//         }
-//     })
-// }
-
+//保存修改信息
 function updateGoods() {
     var url = getProjectPath() + "/goods/updateGoods";
     console.log(url);
@@ -154,6 +132,8 @@ function updateGoods() {
     })
 }
 
+
+//删除货物
 function delGoods(gid) {
     var url2 = getProjectPath() + "/goods/findGoodsById?id=" + gid;
     $.get(url2, function (res) {
@@ -175,7 +155,7 @@ function delGoods(gid) {
 ///////////////////////////////////////////////
 /////////////////////////////////////////////////////
 
-
+//重置入库单新增小窗
 function resetGoodsInFrom(name) {
     $("#saveGoodsInmsg").attr("disabled", true)
     $("#addGoodsInmsg").html("")
@@ -190,10 +170,11 @@ function resetGoodsInFrom(name) {
     });
 }
 
+
 function changeGoodsInVal() {
     $("#addGoodsInmsg").html("")
 }
-
+//判断入库信息输入是否正确
 function checkGoodsInVal() {
     $("#saveGoodsInmsg").attr("disabled", false)
     $("#addGoodsInmsg").html("")
@@ -216,7 +197,7 @@ function checkGoodsInVal() {
         $("#addGoodsInmsg").html("来源不能为空！")
     }
 }
-
+//保存新增入库单信息
 function saveGoodsIn() {
     var url = getProjectPath() + "/goodsIn/addGoodsIn";
     console.log(url);
@@ -230,6 +211,7 @@ function saveGoodsIn() {
 }
 
 
+//根据id查询入库单信息，用于修改
 function findGoodsInById(gid) {
     var url = getProjectPath() + "/goodsIn/findGoodsInById?id=" + gid;
     console.log(url);
@@ -247,7 +229,7 @@ function findGoodsInById(gid) {
 function changeGoodsInVal2() {
     $("#upaddGoodsInmsg").html("")
 }
-
+//判断修改时输入内容是否正确
 function checkGoodsInVal2() {
     $("#upsaveGoodsInmsg").attr("disabled", false)
     $("#upaddGoodsInmsg").html("")
@@ -270,8 +252,7 @@ function checkGoodsInVal2() {
         $("#upaddGoodsInmsg").html("来源不能为空！")
     }
 }
-
-
+//保存修改内容
 function updateGoodsIn() {
     var url = getProjectPath() + "/goodsIn/updateGoodsIn";
     $.post(url, $("#updateGoodsIn").serialize(), function (response) {
@@ -282,6 +263,8 @@ function updateGoodsIn() {
     })
 }
 
+
+//删除入库单
 function delGoodsIn(gid) {
     var url2 = getProjectPath() + "/goodsIn/findGoodsInById?id=" + gid;
     $.get(url2, function (res) {
@@ -304,7 +287,7 @@ function delGoodsIn(gid) {
 ///////////////////////////////////////////
 /////////////////////////////////////////////////
 
-
+//重置出库单新增小窗
 function resetGoodsOutFrom(name) {
     $("#saveGoodsOutmsg").attr("disabled", true)
     $("#addGoodsOutmsg").html("")
@@ -319,10 +302,11 @@ function resetGoodsOutFrom(name) {
     });
 }
 
+
 function changeGoodsOutVal() {
     $("#addGoodsOutmsg").html("")
 }
-
+//判断出库单新增输入是否正确
 function checkGoodsOutVal() {
     $("#saveGoodsOutmsg").attr("disabled", false)
     $("#addGoodsOutmsg").html("")
@@ -349,7 +333,7 @@ function checkGoodsOutVal() {
     console.log(gooperator);
     console.log(gosend);
 }
-
+//保存新增信息
 function saveGoodsOut() {
     var url = getProjectPath() + "/goodsOut/addGoodsOut";
     console.log(url);
@@ -363,6 +347,7 @@ function saveGoodsOut() {
 }
 
 
+//根据id查询出库单信息，用于修改
 function findGoodsOutById(gid) {
     var url = getProjectPath() + "/goodsOut/findGoodsOutById?id=" + gid;
     console.log(url);
@@ -380,7 +365,7 @@ function findGoodsOutById(gid) {
 function changeGoodsOutVal2() {
     $("#upaddGoodsOutmsg").html("")
 }
-
+//判断修改内容输入是否正确
 function checkGoodsOutVal2() {
     $("#upsaveGoodsOutmsg").attr("disabled", false)
     $("#upaddGoodsOutmsg").html("")
@@ -403,7 +388,7 @@ function checkGoodsOutVal2() {
         $("#upaddGoodsOutmsg").html("去向不能为空！")
     }
 }
-
+//保存修改内容
 function updateGoodsOut() {
     var url = getProjectPath() + "/goodsOut/updateGoodsOut";
     console.log(url);
@@ -415,6 +400,9 @@ function updateGoodsOut() {
     })
 }
 
+
+
+//删除出库单
 function delGoodsOut(gid) {
     var url2 = getProjectPath() + "/goodsOut/findGoodsOutById?id=" + gid;
     $.get(url2, function (res) {
@@ -437,6 +425,8 @@ function delGoodsOut(gid) {
 //////////////////////////////////////////
 ///////////////////////////////////////////
 /////////////////////////////////////////////////
+
+//重置入库明细新增小窗
 function resetGoodsInDetailFrom() {
     $("#saveGoodsInDetailmsg").attr("disabled", true)
     $("#addGoodsInDetailmsg").html("")
@@ -450,7 +440,7 @@ function resetGoodsInDetailFrom() {
 function changeGoodsInDetail() {
     $("#addGoodsInDetailmsg").html("")
 }
-
+//判断新增时是否选择了货物
 function checkGoodsInDetailVal() {
     $("#saveGoodsInDetailmsg").attr("disabled", false)
     $("#addGoodsInDetailmsg").html("")
@@ -465,11 +455,10 @@ function checkGoodsInDetailVal() {
         $("#addGoodsInDetailmsg").html("数量不能为空！")
     }*/
 }
-
 function changeGoodsInDetail2() {
     $("#enaddGoodsInDetailmsg").html("")
 }
-
+//判断新增时的数量是否输入正确
 function checkGoodsInDetailVal2() {
     $("#ensaveGoodsInDetailmsg").attr("disabled", false)
     $("#enaddGoodsInDetailmsg").html("")
@@ -480,7 +469,7 @@ function checkGoodsInDetailVal2() {
         $("#enaddGoodsInDetailmsg").html("数量不能为空！")
     }
 }
-
+//将相关信息显示在确认小窗上
 function saveGoodsInDetail(pageId) {
     var select = document.getElementById("gidname");
     var value = select.value;
@@ -499,8 +488,7 @@ function saveGoodsInDetail(pageId) {
         $("#engidid").val(response.id);
     })
 }
-
-
+//保存新增信息
 function enSaveGoodsInDetail(pageId) {
     var url = getProjectPath() + "/goodsDetail/addGoodsDetail";
     console.log(url);
@@ -529,6 +517,8 @@ function enSaveGoodsInDetail(pageId) {
     })
 }
 
+
+//根据id查询入库明细，用于修改
 function findGoodsInDetailById(iid) {
     var url = getProjectPath() + "/goodsDetail/findGoodsDetailById?id=" + iid;
     console.log(url);
@@ -545,11 +535,10 @@ function findGoodsInDetailById(iid) {
         $("#upengidid").val(response.did);
     })
 }
-
 function changeGoodsInDetail3() {
     $("#upaddGoodsInDetailmsg").html("")
 }
-
+//判断输入是否正确
 function checkGoodsInDetailVal3() {
     $("#upsaveGoodsInDetailmsg").attr("disabled", false)
     $("#upaddGoodsInDetailmsg").html("")
@@ -561,8 +550,7 @@ function checkGoodsInDetailVal3() {
         $("#upaddGoodsInDetailmsg").html("数量不能为空！")
     }
 }
-
-
+//保存修改的数据
 function updateGoodsDetail(pageId) {
     var url = getProjectPath() + "/goodsDetail/updateGoodsDetail";
 
@@ -589,6 +577,7 @@ function updateGoodsDetail(pageId) {
 }
 
 
+//删除入库明细
 function delGoodsInDetail(id) {
     var url2 = getProjectPath() + "/goodsDetail/findGoodsDetailById?id=" + id;
     $.get(url2, function (res) {
@@ -623,7 +612,7 @@ function delGoodsInDetail(id) {
 ///////////////////////////////////////////
 /////////////////////////////////////////////////
 
-
+//重置出库明细新增小窗
 function resetGoodsOutDetailFrom() {
     $("#saveGoodsOutDetailmsg").attr("disabled", true)
     $("#addGoodsOutDetailmsg").html("")
@@ -637,7 +626,7 @@ function resetGoodsOutDetailFrom() {
 function changeGoodsOutDetail() {
     $("#addGoodsOutDetailmsg").html("")
 }
-
+//判断是否选择了货物
 function checkGoodsOutDetailVal() {
     $("#saveGoodsOutDetailmsg").attr("disabled", false)
     $("#addGoodsOutDetailmsg").html("")
@@ -651,11 +640,10 @@ function checkGoodsOutDetailVal() {
         $("#addGoodsInDetailmsg").html("数量不能为空！")
     }*/
 }
-
 function changeGoodsOutDetail2() {
     $("#enaddGoodsOutDetailmsg").html("")
 }
-
+//判断数量是否输入正确
 function checkGoodsOutDetailVal2() {
     $("#ensaveGoodsOutDetailmsg").attr("disabled", false)
     $("#enaddGoodsOutDetailmsg").html("")
@@ -665,7 +653,7 @@ function checkGoodsOutDetailVal2() {
         $("#enaddGoodsOutDetailmsg").html("数量不能为空！")
     }
 }
-
+//将相关信息显示在确认界面
 function saveGoodsOutDetail(pageId) {
     var select = document.getElementById("godname");
     var value = select.value;
@@ -684,8 +672,7 @@ function saveGoodsOutDetail(pageId) {
         $("#engodid").val(response.id);
     })
 }
-
-
+//保存新增信息
 function enSaveGoodsOutDetail(pageId) {
     var url = getProjectPath() + "/goodsDetail/addGoodsDetail";
     console.log(url);
@@ -715,6 +702,9 @@ function enSaveGoodsOutDetail(pageId) {
     })
 }
 
+
+
+//根据id查询出库明细，用于修改
 function findGoodsOutDetailById(iid) {
     var url = getProjectPath() + "/goodsDetail/findGoodsDetailById?id=" + iid;
     console.log(url);
@@ -731,12 +721,10 @@ function findGoodsOutDetailById(iid) {
         $("#upengodid").val(response.did);
     })
 }
-
-
 function changeGoodsOutDetail3() {
     $("#upaddGoodsOutDetailmsg").html("")
 }
-
+//判断修改数量输入是否正确
 function checkGoodsOutDetailVal3() {
     $("#upsaveGoodsOutDetailmsg").attr("disabled", false)
     $("#upaddGoodsOutDetailmsg").html("")
@@ -746,7 +734,7 @@ function checkGoodsOutDetailVal3() {
         $("#upaddGoodsOutDetailmsg").html("数量不能为空！")
     }
 }
-
+//保存修改的内容
 function updateGoodsOutDetail(pageId) {
     var url = getProjectPath() + "/goodsDetail/updateGoodsDetail";
     var iid = document.getElementById("upid").value;
@@ -772,6 +760,8 @@ function updateGoodsOutDetail(pageId) {
 }
 
 
+
+//删除出库明细
 function delGoodsOutDetail(id) {
     var url2 = getProjectPath() + "/goodsDetail/findGoodsDetailById?id=" + id;
     $.get(url2, function (res) {
@@ -821,6 +811,7 @@ function resetUserFrom() {
     });
 }
 
+//重置个人中心小窗
 function resetUserCenterFrom() {
     $("#saveUsermsg").attr("disabled", true)
     $("#addUsermsg").html("")
@@ -830,6 +821,7 @@ function resetUserCenterFrom() {
     });
 }
 
+//注销
 function loginOut() {
     var r = confirm("确认注销?");
     if (r) {
@@ -840,10 +832,11 @@ function loginOut() {
     }
 }
 
+
 function changeUserVal() {
     $("#addUsermsg").html("")
 }
-
+//判断个人中心数据是否输入正确
 function checkUserVal() {
     $("#saveUsermsg").attr("disabled", false);
     $("#addUsermsg").html("")
@@ -862,7 +855,7 @@ function checkUserVal() {
         }
     }
 }
-
+//用户中心修改密码
 function updateUserPwd(id) {
     var password = document.getElementById("enusrpw").value;
     var r = confirm("是否将密码修改为 " + password + " ?");
@@ -882,6 +875,21 @@ function updateUserPwd(id) {
     }
 }
 
+
+function changeVal2() {
+    $("#upaddmsg").html("")
+}
+//判断修改数据输入是否正确
+function checkVal2() {
+    $("#upsavemsg").attr("disabled", false);
+    $("#upaddmsg").html("")
+    var pw = $("#pw").val();
+    if ($.trim(pw) == '') {
+        $("#upsavemsg").attr("disabled", true);
+        $("#upaddmsg").html("密码不能为空！")
+    }
+}
+//根据id查询用户，用于修改
 function findUserById(uid) {
     var url = getProjectPath() + "/user/findUserById?id=" + uid;
     $.get(url, function (response) {
@@ -894,7 +902,7 @@ function findUserById(uid) {
         $("#uemail").val(response.email);
     })
 }
-
+//保存修改内容
 function updateUser(id) {
     var r = confirm("是否保存修改?");
     if (r) {
@@ -913,10 +921,11 @@ function updateUser(id) {
     }
 }
 
+
 function changeVal() {
     $("#addmsg").html("")
 }
-
+//判断新增数据输入是否正确
 function checkVal() {
     $("#savemsg").attr("disabled", false);
     $("#addmsg").html("")
@@ -948,8 +957,7 @@ function checkVal() {
         }
     }
 }
-
-
+//判断用户名是否存在
 function checkName(name) {
     $.ajax({
         url: getProjectPath() + "/user/checkName",
@@ -963,7 +971,7 @@ function checkName(name) {
         }
     })
 }
-
+//判断用户邮箱是否存在
 function checkEmail(email) {
     $.ajax({
         url: getProjectPath() + "/user/checkEmail",
@@ -977,8 +985,7 @@ function checkEmail(email) {
         }
     })
 }
-
-
+//保存新增用户信息
 function saveUser() {
     var url = getProjectPath() + "/user/addUser";
     console.log(url);
@@ -991,6 +998,8 @@ function saveUser() {
     })
 }
 
+
+//删除用户
 function delUser(uid) {
     var url2 = getProjectPath() + "/user/findUserById?id=" + uid;
     $.get(url2, function (res) {
@@ -1008,6 +1017,7 @@ function delUser(uid) {
 
 }
 
+//无权限提示
 function commonUser() {
     var r = confirm("没有权限");
 }
@@ -1100,22 +1110,18 @@ function changePage(pageNo, pageSize) {
     document.write("<form action=" + pageargs.gourl + " method=post name=form1 style='display:none'>");
     document.write("<input type=hidden name='pageNum' value=" + pageargs.cur + " >");
     document.write("<input type=hidden name='pageSize' value=" + pageargs.pagesize + " >");
-    //如果跳转的是图书信息查询的相关链接，提交图书查询栏中的参数
-    if (pageargs.gourl.indexOf("book") >= 0) {
-        document.write("<input type=hidden name='id' value=" + bookVO.id + " >");
-        document.write("<input type=hidden name='name' value=" + bookVO.name + " >");
-        document.write("<input type=hidden name='no' value=" + bookVO.no + " >");
+    //如果跳转的是货物信息查询的相关链接，提交货物查询栏中的参数
+    if (pageargs.gourl.indexOf("goods") >= 0) {
+        document.write("<input type=hidden name='id' value=" + goodsVO.id + " >");
+        document.write("<input type=hidden name='name' value=" + goodsVO.name + " >");
+        document.write("<input type=hidden name='no' value=" + goodsVO.no + " >");
     }
-    //如果跳转的是图书记录查询的相关链接，提交图书记录查询栏中的参数
+    //如果跳转的是图书记录查询的相关链接，提交用户查询栏中的参数
     if (pageargs.gourl.indexOf("user") >= 0) {
         document.write("<input type=hidden name='id' value=" + userVO.id + " >");
         document.write("<input type=hidden name='name' value=" + userVO.name + " >");
     }
-    //如果跳转的是图书记录查询的相关链接，提交图书记录查询栏中的参数
-    if (pageargs.gourl.indexOf("record") >= 0) {
-        document.write("<input type=hidden name='bookname' value=" + recordVO.bookname + " >");
-        document.write("<input type=hidden name='borrower' value=" + recordVO.borrower + " >");
-    }
+
     document.write("</form>");
     document.form1.submit();
     pagination(pageargs);
