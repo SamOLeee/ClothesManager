@@ -8,6 +8,8 @@ import org.apache.ibatis.annotations.*;
 @Mapper
 public interface UserMapper {
     @Select("select * from user where user_email=#{email} AND user_password=#{password} and user_delete = 0")
+    //id字段默认为false，表示不是主键
+    //column表示数据库表字段，property表示实体类属性名。
     @Results(id ="userMap" ,value={
             @Result(id = true,column = "user_id",property = "id"),
             @Result(column = "user_name",property = "name"),

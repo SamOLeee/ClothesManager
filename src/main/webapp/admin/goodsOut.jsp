@@ -31,7 +31,7 @@
     <!--工具栏 数据搜索 -->
     <div class="box-tools pull-left">
         <div class="has-feedback">
-            <form action="${pageContext.request.contextPath}/goodsIn/search" method="post">
+            <form action="${pageContext.request.contextPath}/goodsOut/search" method="post">
                 <input name="id" value="${search.id}" placeholder="请输入库单id">&nbsp&nbsp&nbsp&nbsp
                 <input name="no" value="${search.no}" placeholder="请输入单据凭证">&nbsp&nbsp&nbsp&nbsp
                 <input class="btn btn-default btn-info" type="submit" value="查询">
@@ -209,15 +209,22 @@
                         </tr>
                         <tr>
                             <td>经办人</td>
-                            <td><input class="form-control" name="operator" id="upgooperator"></td>
+                            <td><input class="form-control" name="operator" id="upgooperator"
+                                       onblur="checkGoodsOutVal2()" onfocus="changeGoodsOutVal2()"></td>
                             <td>去向</td>
-                            <td><input class="form-control" name="send" id="upgosend"></td>
+                            <td><input class="form-control" name="send" id="upgosend"
+                                       onblur="checkGoodsOutVal2()" onfocus="changeGoodsOutVal()"></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><span style="color: red" id="upaddGoodsOutmsg"></span></td>
                         </tr>
                     </table>
                 </form>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-success" data-dismiss="modal" aria-hidden="true" onclick="updateGoodsOut()">保存
+                <button class="btn btn-success" data-dismiss="modal" aria-hidden="true" id="upsaveGoodsOutmsg"
+                        disabled="true"
+                        onclick="updateGoodsOut()">保存
                 </button>
                 <button class="btn btn-default btn-danger" data-dismiss="modal" aria-hidden="true">关闭</button>
             </div>

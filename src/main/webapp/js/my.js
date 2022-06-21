@@ -244,6 +244,32 @@ function findGoodsInById(gid) {
         console.log(response);
     })
 }
+function changeGoodsInVal2() {
+    $("#upaddGoodsInmsg").html("")
+}
+
+function checkGoodsInVal2() {
+    $("#upsaveGoodsInmsg").attr("disabled", false)
+    $("#upaddGoodsInmsg").html("")
+    var upgino = $("#upgino").val();
+    var upgilibrary = $("#upgilibrary").val();
+    var upgioperator = $("#upgioperator").val();
+    var ugsource = $("#ugsource").val();
+
+    if ($.trim(upgino) == '') {
+        $("#upsaveGoodsInmsg").attr("disabled", true);
+        $("#upaddGoodsInmsg").html("单据凭证不能为空！")
+    } else if ($.trim(upgilibrary) == '') {
+        $("#upsaveGoodsInmsg").attr("disabled", true);
+        $("#upaddGoodsInmsg").html("仓库不能为空！")
+    } else if ($.trim(upgioperator) == '') {
+        $("#upsaveGoodsInmsg").attr("disabled", true);
+        $("#upaddGoodsInmsg").html("经办人不能为空！")
+    } else if ($.trim(ugsource) == '') {
+        $("#saveGoodsInmsg").attr("disabled", true);
+        $("#upaddGoodsInmsg").html("来源不能为空！")
+    }
+}
 
 
 function updateGoodsIn() {
@@ -350,6 +376,32 @@ function findGoodsOutById(gid) {
         $("#upgosend").val(response.send);
         console.log(response);
     })
+}
+function changeGoodsOutVal2() {
+    $("#upaddGoodsOutmsg").html("")
+}
+
+function checkGoodsOutVal2() {
+    $("#upsaveGoodsOutmsg").attr("disabled", false)
+    $("#upaddGoodsOutmsg").html("")
+    var upgono = $("#upgono").val();
+    var upgolibrary = $("#upgolibrary").val();
+    var upgooperator = $("#upgooperator").val();
+    var upgosend = $("#upgosend").val();
+
+    if ($.trim(upgono) == '') {
+        $("#upsaveGoodsOutmsg").attr("disabled", true);
+        $("#upaddGoodsOutmsg").html("单据凭证不能为空！")
+    } else if ($.trim(upgolibrary) == '') {
+        $("#upsaveGoodsOutmsg").attr("disabled", true);
+        $("#upaddGoodsOutmsg").html("所属仓库不能为空！")
+    } else if ($.trim(upgooperator) == '') {
+        $("#upsaveGoodsOutmsg").attr("disabled", true);
+        $("#upaddGoodsOutmsg").html("经办人不能为空！")
+    } else if ($.trim(upgosend) == '') {
+        $("#upsaveGoodsOutmsg").attr("disabled", true);
+        $("#upaddGoodsOutmsg").html("去向不能为空！")
+    }
 }
 
 function updateGoodsOut() {

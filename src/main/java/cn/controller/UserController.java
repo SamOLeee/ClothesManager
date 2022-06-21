@@ -33,6 +33,7 @@ public class UserController {
         try {
             if (u != null) {
                 request.getSession().setAttribute("USER", u);
+                //将用户信息存在session USER中，以便于后续使用
                 request.getSession().setAttribute("GOODS", goodsList);
                 String role = u.getRole();
                 return "redirect:/admin/main.jsp";
@@ -52,6 +53,7 @@ public class UserController {
         try {
             HttpSession session = request.getSession();
             session.invalidate();
+            //解除session和对象联系
             return "/admin/login.jsp";
         } catch (Exception e) {
             e.printStackTrace();

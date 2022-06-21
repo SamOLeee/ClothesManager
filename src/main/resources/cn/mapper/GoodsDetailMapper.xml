@@ -54,6 +54,7 @@
         </trim>
         where id = #{iid}
     </update>
+    <!--修改goods信息时修改goodsDetail信息-->
     <update id="editGoodsDetail" parameterType="cn.domain.GoodsDetail">
         update goodsDetail
         <trim prefix="set" suffixOverrides=",">

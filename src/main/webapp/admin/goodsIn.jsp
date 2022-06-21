@@ -209,15 +209,22 @@
                         </tr>
                         <tr>
                             <td>经办人</td>
-                            <td><input class="form-control" name="operator" id="upgioperator"></td>
+                            <td><input class="form-control" name="operator" id="upgioperator"
+                                       onblur="checkGoodsInVal2()" onfocus="changeGoodsInVal2()"></td>
                             <td>来源</td>
-                            <td><input class="form-control" name="source" id="ugsource"></td>
+                            <td><input class="form-control" name="source" id="ugsource"
+                                       onblur="checkGoodsInVal2()" onfocus="changeGoodsInVal2()"></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><span style="color: red" id="upaddGoodsInmsg"></span></td>
                         </tr>
                     </table>
                 </form>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-success" data-dismiss="modal" aria-hidden="true" onclick="updateGoodsIn()">保存
+                <button class="btn btn-success" data-dismiss="modal" aria-hidden="true" id="upsaveGoodsInmsg"
+                        disabled="true"
+                        onclick="updateGoodsIn()">保存
                 </button>
                 <button class="btn btn-default btn-danger" data-dismiss="modal" aria-hidden="true">关闭</button>
             </div>
