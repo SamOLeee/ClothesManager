@@ -46,7 +46,7 @@ public class GoodsOutServiceImpl implements GoodsOutService {
     }
 
     public String createGoodsOutNo() {
-        String randomString = RandomStringUtils.randomAlphanumeric(5);
+        String randomString = RandomStringUtils.randomAlphanumeric(5);//随机生成5位字母数字字符串
         String goodsOutNo = "CK" + randomString;
         return goodsOutNo;
     }

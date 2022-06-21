@@ -51,7 +51,7 @@ public class GoodsInServiceImpl implements GoodsInService {
     }
 
     public String createGoodsInNo() {
-        String randomString = RandomStringUtils.randomAlphanumeric(5);
+        String randomString = RandomStringUtils.randomAlphanumeric(5);//随机生成5位字母数字字符串
         String goodsInNo = "RK"+randomString;
         return goodsInNo;
     }

@@ -137,7 +137,7 @@ public class GoodsServiceImpl implements GoodsService {
     }
 
     public String createGoodsNo() {
-        String randomString = RandomStringUtils.randomAlphabetic(5);
+        String randomString = RandomStringUtils.randomAlphabetic(5);//随机生成5位字母字符串
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMddhhmmss");
         String t = dateFormat.format(new Date());
         String goodsNo = randomString + t;

@@ -74,7 +74,7 @@ public class UserServiceImpl implements UserService {
     public String createUserNo() {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMM");
         String t = dateFormat.format(new Date());
-        String randomString = RandomStringUtils.randomNumeric(6);
+        String randomString = RandomStringUtils.randomNumeric(6);//随机生成6为数字
         String userNo = "UR" + t + randomString;
         return userNo;
     }
